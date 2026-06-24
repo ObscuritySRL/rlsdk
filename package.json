@@ -1,0 +1,31 @@
+{
+  "name": "rlsdk",
+  "private": true,
+  "type": "module",
+  "description": "Monorepo for the Rocket League TypeScript SDKs (@rlsdk/epic-games, @rlsdk/steam)",
+  "author": "Stev Peifer <stev.p@outlook.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ObscuritySRL/rlsdk.git"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "typecheck": "bun run --filter '@rlsdk/*' typecheck",
+    "format": "biome format --write .",
+    "check": "biome check .",
+    "publish:epic-games": "cd packages/epic-games && npm publish",
+    "publish:steam": "cd packages/steam && npm publish"
+  },
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.16",
+    "@types/bun": "latest",
+    "@types/node": "^25.6.0",
+    "typescript": "^5"
+  }
+}

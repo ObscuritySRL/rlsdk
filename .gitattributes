@@ -1,0 +1,4 @@
+# The SDK is generated with LF endings (bun/prettier), and the sync workflow
+# relies on clean diffs against freshly generated output. Pin everything to LF
+# so line endings don't depend on each machine's core.autocrlf.
+* text=auto eol=lf
