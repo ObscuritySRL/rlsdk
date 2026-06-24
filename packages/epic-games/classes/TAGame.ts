@@ -61,6 +61,7 @@ import type {
   EActiveVoiceLocation,
   EActivityFeedType,
   EAdHocState,
+  EAnonymizationTargets,
   EArchiveProductFilter,
   EAttackType,
   EAxleToForce,
@@ -91,6 +92,8 @@ import type {
   ECrowdValueType,
   ECurrency,
   ECustomMatchSettingsType,
+  EDemoSelectionState,
+  EDemoSpawnPreference,
   EDemolishSource,
   EDemolishSpeed,
   EDemolishTarget,
@@ -367,6 +370,7 @@ import type {
   FBTDynamicLinkData,
   FBTStatusLog,
   FBallData,
+  FBallExtraData,
   FBallHitCrowdNoise,
   FBallHitInfo,
   FBallInfo,
@@ -469,10 +473,13 @@ import type {
   FDebugCategory,
   FDebugColor,
   FDebugMicroEventPlaylistID,
+  FDemoSpawnEvent,
+  FDemoSpawnSelectionData,
   FDemolishData,
   FDemolishData2,
   FDemolishDataExtended,
   FDemolishDataGoalExplosion,
+  FDemolishInvulnerability,
   FDepartmentData,
   FDifficultyInfo,
   FDragonEntry,
@@ -696,8 +703,10 @@ import type {
   FPlayerLeavingData,
   FPlayerLoadoutData,
   FPlayerMessageInfo,
+  FPlayerPickupData,
   FPlayerPrivateMatchData,
   FPlayerReportReason,
+  FPlayerRepresentingTeamData,
   FPlayerStats,
   FPlayerUpdateState,
   FPlayerVoiceRoomCredentials,
@@ -929,6 +938,7 @@ import type {
   FWheelSkelControlSet,
   FWorldColorData,
   FWorldContactData,
+  FWorldCupData,
   FXPInfo,
 } from '../structs/TAGame';
 import type { UAkBusActor, UAkParamGroup, UAkPlaySoundComponent, UAkRevPhysicsSimulation, UAkSoundCue, UAkSoundSource } from './AkAudio';
@@ -961,6 +971,8 @@ import type {
   UCylinderComponent,
   UDecalComponent,
   UDistributionFloatParameterBase,
+  UDrawBoxComponent,
+  UDrawCylinderComponent,
   UDrawSphereComponent,
   UDynamicLightEnvironmentComponent,
   UDynamicSMActor_Spawnable,
@@ -1281,6 +1293,18 @@ export type U____GFxData_Mutators_TA__SetGameModeMutatorPresets_0x2____GFxData_M
 // ____GFxData_Mutators_TA__SetGameModeMutatorPresets_0x2____GFxData_Mutators_TA__SetGameModeMutatorPresets_0x2_0x1(S: FCustomGameSetting): boolean
 
 /**
+ * Class TAGame.____RecentPlayers_TA__UpdateFromOnline_0x2____RecentPlayers_TA__UpdateFromOnline_0x2_0x1
+ * Size: 0x00B8
+ * Extends: UObject
+ */
+export type U____RecentPlayers_TA__UpdateFromOnline_0x2____RecentPlayers_TA__UpdateFromOnline_0x2_0x1 = UObject & {
+  P: FPersonaDataId; // 0x0060 (0x0058) [FPersonaDataId]
+};
+
+// ____RecentPlayers_TA__UpdateFromOnline_0x2____RecentPlayers_TA__UpdateFromOnline_0x2_0x1 Functions
+// ____RecentPlayers_TA__UpdateFromOnline_0x2____RecentPlayers_TA__UpdateFromOnline_0x2_0x1(C: FPersonaDataId): boolean
+
+/**
  * Class TAGame.____SaveData_TA__GetOnlineProductQuantity_0x2____SaveData_TA__GetOnlineProductQuantity_0x3_0x1
  * Size: 0x0068
  * Extends: UObject
@@ -1576,6 +1600,18 @@ export type U__Car_TA__HandleTargetRemoved_0x1 = UObject & {
 // __Car_TA__HandleTargetRemoved_0x1(T: UTargetIndicator_TA): boolean
 
 /**
+ * Class TAGame.__Car_TA__IsInvulnerableToDemolishSource_0x1
+ * Size: 0x0061
+ * Extends: UObject
+ */
+export type U__Car_TA__IsInvulnerableToDemolishSource_0x1 = UObject & {
+  DemoSource: EDemolishSource; // 0x0060 (0x0001) [EDemolishSource]
+};
+
+// __Car_TA__IsInvulnerableToDemolishSource_0x1 Functions
+// __Car_TA__IsInvulnerableToDemolishSource_0x1(P: FDemolishInvulnerability): boolean
+
+/**
  * Class TAGame.__Car_TA__QueueDemolish_0x1
  * Size: 0x00B0
  * Extends: UObject
@@ -1677,6 +1713,18 @@ export type U__CarMeshComponentBase_TA__CreateWheelAttachment_0x1 = UObject & {
 
 // __CarMeshComponentBase_TA__CreateWheelAttachment_0x1 Functions
 // __CarMeshComponentBase_TA__CreateWheelAttachment_0x1(Behavior: UAttachmentBehavior_TA): void
+
+/**
+ * Class TAGame.__CarMeshComponentBase_TA__CreateWheelFXActor_0x1
+ * Size: 0x0068
+ * Extends: UObject
+ */
+export type U__CarMeshComponentBase_TA__CreateWheelFXActor_0x1 = UObject & {
+  Asset: UProductAsset_Wheel_TA; // 0x0060 (0x0008) [UProductAsset_Wheel_TA*]
+};
+
+// __CarMeshComponentBase_TA__CreateWheelFXActor_0x1 Functions
+// __CarMeshComponentBase_TA__CreateWheelFXActor_0x1(C: UPrimitiveComponent): void
 
 /**
  * Class TAGame.__CarMeshComponentBase_TA__CreateWheelMesh_0x1
@@ -2556,6 +2604,18 @@ export type U__GameEvent_Soccar_TA__GetShouldStart_0x1 = UObject & {
 // __GameEvent_Soccar_TA__GetShouldStart_0x1(PRI: UPRI_TA): void
 
 /**
+ * Class TAGame.__GameEvent_Soccar_TA__HandleGetPlayerCountriesDataReceived_0x1
+ * Size: 0x0064
+ * Extends: UObject
+ */
+export type U__GameEvent_Soccar_TA__HandleGetPlayerCountriesDataReceived_0x1 = UObject & {
+  Index: number; // 0x0060 (0x0004) [int32]
+};
+
+// __GameEvent_Soccar_TA__HandleGetPlayerCountriesDataReceived_0x1 Functions
+// __GameEvent_Soccar_TA__HandleGetPlayerCountriesDataReceived_0x1(P: FReservationData): boolean
+
+/**
  * Class TAGame.__GameEvent_Soccar_TA__HandlePlayerSkillUpdated_0x1
  * Size: 0x0130
  * Extends: UObject
@@ -2962,6 +3022,18 @@ export type U__GFxData_CarRumble_TA__HandlePawnSet_0x1 = UObject & {
 // __GFxData_CarRumble_TA__HandlePawnSet_0x1(): void
 
 /**
+ * Class TAGame.__GFxData_ChallengeManager_TA__HasTargetedChallengeEvent_0x1
+ * Size: 0x0070
+ * Extends: UObject
+ */
+export type U__GFxData_ChallengeManager_TA__HasTargetedChallengeEvent_0x1 = UObject & {
+  SpecialEventChallengeFolderName: string; // 0x0060 (0x0010) [FString]
+};
+
+// __GFxData_ChallengeManager_TA__HasTargetedChallengeEvent_0x1 Functions
+// __GFxData_ChallengeManager_TA__HasTargetedChallengeEvent_0x1(ch: UGFxData_ChallengePage_TA): boolean
+
+/**
  * Class TAGame.__GFxData_ChallengeManager_TA__UpdateRewardsAvailable_0x1
  * Size: 0x0070
  * Extends: UObject
@@ -3024,14 +3096,16 @@ export type U__GFxData_Chat_TA__GetMatchChatLog_0x1 = UObject & {
 
 /**
  * Class TAGame.__GFxData_Chat_TA__InternalAddMessage_0x1
- * Size: 0x0061
+ * Size: 0x00B0
  * Extends: UObject
  */
 export type U__GFxData_Chat_TA__InternalAddMessage_0x1 = UObject & {
   ChatChannel: EChatChannel; // 0x0060 (0x0001) [EChatChannel]
+  SenderId: FUniqueNetId; // 0x0068 (0x0048) [FUniqueNetId]
 };
 
 // __GFxData_Chat_TA__InternalAddMessage_0x1 Functions
+// __GFxData_Chat_TA__InternalAddMessage_0x4(P: UPRI_TA): boolean
 // __GFxData_Chat_TA__InternalAddMessage_0x1(P: FChatChannelHistory): boolean
 
 /**
@@ -3451,6 +3525,18 @@ export type U__GFxData_EOSVoiceRoom_TA__HandleBlockStatusChanged_0x1 = UObject &
 // __GFxData_EOSVoiceRoom_TA__HandleBlockStatusChanged_0x1(M: UGFxData_EOSVoiceRoomMember_TA): boolean
 
 /**
+ * Class TAGame.__GFxData_EOSVoiceRoom_TA__SendChatNotification_0x1
+ * Size: 0x00A8
+ * Extends: UObject
+ */
+export type U__GFxData_EOSVoiceRoom_TA__SendChatNotification_0x1 = UObject & {
+  PlayerID: FUniqueNetId; // 0x0060 (0x0048) [FUniqueNetId]
+};
+
+// __GFxData_EOSVoiceRoom_TA__SendChatNotification_0x1 Functions
+// __GFxData_EOSVoiceRoom_TA__SendChatNotification_0x1(P: UPRI_TA): boolean
+
+/**
  * Class TAGame.__GFxData_EpicLogin_TA__RequestAccountAuthorization_0x1
  * Size: 0x0068
  * Extends: UObject
@@ -3552,6 +3638,18 @@ export type U__GFxData_Friends_TA__DeleteFriendGroup_0x1 = UObject & {
 
 // __GFxData_Friends_TA__DeleteFriendGroup_0x1 Functions
 // __GFxData_Friends_TA__DeleteFriendGroup_0x1(P: UPersona_TA): void
+
+/**
+ * Class TAGame.__GFxData_Friends_TA__GetAnonymizedName_0x1
+ * Size: 0x0068
+ * Extends: UObject
+ */
+export type U__GFxData_Friends_TA__GetAnonymizedName_0x1 = UObject & {
+  InPersona: UPersona_TA; // 0x0060 (0x0008) [UPersona_TA*]
+};
+
+// __GFxData_Friends_TA__GetAnonymizedName_0x1 Functions
+// __GFxData_Friends_TA__GetAnonymizedName_0x1(P: UPlayerReplicationInfo): boolean
 
 /**
  * Class TAGame.__GFxData_Friends_TA__HandleMatchGUIDChanged_0x1
@@ -4957,6 +5055,30 @@ export type U__GFxData_Wallet_TA__GetCurrencyRow_0x1 = UObject & {
 // __GFxData_Wallet_TA__GetCurrencyRow_0x1(C: UGFxData_WalletCurrency_TA): boolean
 
 /**
+ * Class TAGame.__GFxData_WorldCupManager_TA__HandleGetWorldCupEventDataReceived_0x1
+ * Size: 0x0070
+ * Extends: UObject
+ */
+export type U__GFxData_WorldCupManager_TA__HandleGetWorldCupEventDataReceived_0x1 = UObject & {
+  SelectedTeam: string; // 0x0060 (0x0010) [FString]
+};
+
+// __GFxData_WorldCupManager_TA__HandleGetWorldCupEventDataReceived_0x1 Functions
+// __GFxData_WorldCupManager_TA__HandleGetWorldCupEventDataReceived_0x1(P: FWorldCupData): boolean
+
+/**
+ * Class TAGame.__GFxData_WorldCupManager_TA__HandleSelectedCountrySet_0x1
+ * Size: 0x0068
+ * Extends: UObject
+ */
+export type U__GFxData_WorldCupManager_TA__HandleSelectedCountrySet_0x1 = UObject & {
+  InSetWorldCupCountryRPC: URPC_SetWorldCupCountry_TA; // 0x0060 (0x0008) [URPC_SetWorldCupCountry_TA*]
+};
+
+// __GFxData_WorldCupManager_TA__HandleSelectedCountrySet_0x1 Functions
+// __GFxData_WorldCupManager_TA__HandleSelectedCountrySet_0x1(P: FWorldCupData): boolean
+
+/**
  * Class TAGame.__GFxEngine_TA__InitOnlineSub_0x1
  * Size: 0x0068
  * Extends: UObject
@@ -5961,6 +6083,18 @@ export type U__PlayerController_TA__HandleProfileGamepadSave_0x1 = UObject & {
 // __PlayerController_TA__HandleProfileGamepadSave_0x1(InPRI: UPRI_TA): void
 
 /**
+ * Class TAGame.__PlayerController_TA__HandleProfileGameplaySave_0x1
+ * Size: 0x0068
+ * Extends: UObject
+ */
+export type U__PlayerController_TA__HandleProfileGameplaySave_0x1 = UObject & {
+  GameplaySave: UProfileGameplaySave_TA; // 0x0060 (0x0008) [UProfileGameplaySave_TA*]
+};
+
+// __PlayerController_TA__HandleProfileGameplaySave_0x1 Functions
+// __PlayerController_TA__HandleProfileGameplaySave_0x1(InPRI: UPRI_TA): void
+
+/**
  * Class TAGame.__PlayerController_TA__InitNetworkSave_0x1
  * Size: 0x0068
  * Extends: UObject
@@ -6025,11 +6159,13 @@ export type U__PlayerInput_TA__RemoveBindingsForKey_0x1 = UObject & {
 
 /**
  * Class TAGame.__PlayerSpawnSystem_TA__CreateSpawnTicket_0x1
- * Size: 0x0068
+ * Size: 0x0078
  * Extends: UObject
  */
 export type U__PlayerSpawnSystem_TA__CreateSpawnTicket_0x1 = UObject & {
   GameEvent: UGameEvent_TA; // 0x0060 (0x0008) [UGameEvent_TA*]
+  PRI: UPRI_TA; // 0x0068 (0x0008) [UPRI_TA*]
+  Ticket: UPlayerSpawnTicket_TA; // 0x0070 (0x0008) [UPlayerSpawnTicket_TA*]
 };
 
 // __PlayerSpawnSystem_TA__CreateSpawnTicket_0x1 Functions
@@ -6348,6 +6484,30 @@ export type U__RecentPlayers_TA__FilterFriends_0x1 = UObject & {
 
 // __RecentPlayers_TA__FilterFriends_0x1 Functions
 // __RecentPlayers_TA__FilterFriends_0x1(RecentPlayer: FPersonaDataId): boolean
+
+/**
+ * Class TAGame.__RecentPlayers_TA__RemoveRecentDuplicates_0x1
+ * Size: 0x00B8
+ * Extends: UObject
+ */
+export type U__RecentPlayers_TA__RemoveRecentDuplicates_0x1 = UObject & {
+  PersonaData: FPersonaDataId; // 0x0060 (0x0058) [FPersonaDataId]
+};
+
+// __RecentPlayers_TA__RemoveRecentDuplicates_0x1 Functions
+// __RecentPlayers_TA__RemoveRecentDuplicates_0x1(C: FPersonaDataId): boolean
+
+/**
+ * Class TAGame.__RecentPlayers_TA__UpdateFromOnline_0x2
+ * Size: 0x0070
+ * Extends: UObject
+ */
+export type U__RecentPlayers_TA__UpdateFromOnline_0x2 = UObject & {
+  RecentPlayerIds: FPersonaDataId[]; // 0x0060 (0x0010) [TArray<FPersonaDataId>]
+};
+
+// __RecentPlayers_TA__UpdateFromOnline_0x2 Functions
+// __RecentPlayers_TA__UpdateFromOnline_0x2(P: FPersonaDataId): boolean
 
 /**
  * Class TAGame.__RecentPlayersMet_TA__RecordRecentPlayers_0x2
@@ -7060,6 +7220,19 @@ export type U__TAsyncResult__UserBugReportUploadResult_TA__SetResultWhen_0x1 = U
 
 // __TAsyncResult__UserBugReportUploadResult_TA__SetResultWhen_0x1 Functions
 // __TAsyncResult__UserBugReportUploadResult_TA__SetResultWhen_0x1(): void
+
+/**
+ * Class TAGame.__Team_Soccar_TA__GetNextSpawnActor_0x1
+ * Size: 0x0068
+ * Extends: UObject
+ */
+export type U__Team_Soccar_TA__GetNextSpawnActor_0x1 = UObject & {
+  CurrentSelection: UActor; // 0x0060 (0x0008) [UActor*]
+};
+
+// __Team_Soccar_TA__GetNextSpawnActor_0x1 Functions
+// __Team_Soccar_TA__GetNextSpawnActor_0x2(P: UActor): boolean
+// __Team_Soccar_TA__GetNextSpawnActor_0x1(P: UActor): boolean
 
 /**
  * Class TAGame.__Team_TA__GetPartyFollowerIds_0x1
@@ -8260,6 +8433,7 @@ export type UJsonSaveObject_TA = USaveObject_TA & {
 };
 
 // JsonSaveObject_TA Functions
+// GetProducts(): FProductInstanceID[]
 // SanitizeValues(): void
 
 /**
@@ -8947,7 +9121,7 @@ export type UAntiCheatMessenger_TA = UOwnerReplicatedActor_ORS & {
   EACBanReason: string; // 0x02d0 (0x0010) [FString]
   AntiCheatManager: UAntiCheatManager_TA; // 0x02e0 (0x0008) [UAntiCheatManager_TA*]
   PlayerIdCache: UServerPlayerIdCache_X; // 0x02e8 (0x0008) [UServerPlayerIdCache_X*]
-  GameEvent: UGameEvent_Soccar_TA; // 0x02f0 (0x0008) [UGameEvent_Soccar_TA*]
+  GameEvent: UGameEvent_TA; // 0x02f0 (0x0008) [UGameEvent_TA*]
   PlayerPermissions: UOnlinePlayerPermissions_X; // 0x02f8 (0x0008) [UOnlinePlayerPermissions_X*]
   Config: UAntiCheatConfig_TA; // 0x0300 (0x0008) [UAntiCheatConfig_TA*]
   GRI: UGRI_X; // 0x0308 (0x0008) [UGRI_X*]
@@ -9031,6 +9205,7 @@ export type UApplyVelocityHitHandler_TA = UExplosionHitHandler_TA & {
 export type UAppMetrics_TA = UMetricsGroup_X & {};
 
 // AppMetrics_TA Functions
+// ClientLaunch(PlatformType: string): void
 // AppStart(): void
 
 /**
@@ -9718,7 +9893,7 @@ export type UBackFillPolicy_TA = UObject & {
 
 /**
  * Class TAGame.RBActor_TA
- * Size: 0x07B8
+ * Size: 0x07C0
  * Extends: UPawn_X
  */
 export type URBActor_TA = UPawn_X & {
@@ -9758,13 +9933,14 @@ export type URBActor_TA = UPawn_X & {
   ReplicatedGravityScale: number; // 0x0764 (0x0004) [float]
   ReplicatedCollisionScale: number; // 0x0768 (0x0004) [float]
   Constraint2D: FPointer; // 0x0770 (0x0008) [FPointer]
-  BulletRigidBody: FPointer; // 0x0778 (0x0008) [FPointer]
-  PhysicsConfig: UPhysicsConfig_TA; // 0x0780 (0x0008) [UPhysicsConfig_TA*]
-  TeleportCounter: number; // 0x0788 (0x0001) [uint8]
-  AttackerDemolishFX: UFXActor_X; // 0x0790 (0x0008) [UFXActor_X*]
-  GroundTraceDistance: number; // 0x0798 (0x0004) [float]
-  GroundOffsetDistance: number; // 0x079c (0x0004) [float]
-  __EventRigidBodyCollision__Delegate: FScriptDelegate; // 0x07a0 (0x0018) [FScriptDelegate]
+  Constraint3D: FPointer; // 0x0778 (0x0008) [FPointer]
+  BulletRigidBody: FPointer; // 0x0780 (0x0008) [FPointer]
+  PhysicsConfig: UPhysicsConfig_TA; // 0x0788 (0x0008) [UPhysicsConfig_TA*]
+  TeleportCounter: number; // 0x0790 (0x0001) [uint8]
+  AttackerDemolishFX: UFXActor_X; // 0x0798 (0x0008) [UFXActor_X*]
+  GroundTraceDistance: number; // 0x07a0 (0x0004) [float]
+  GroundOffsetDistance: number; // 0x07a4 (0x0004) [float]
+  __EventRigidBodyCollision__Delegate: FScriptDelegate; // 0x07a8 (0x0018) [FScriptDelegate]
 };
 
 // RBActor_TA Functions
@@ -9778,7 +9954,7 @@ export type URBActor_TA = UPawn_X & {
 // PrintDebugInfo(Drawer: UDebugDrawer): void
 // GetTimeOfImpact(HitActor: URBActor_TA, OutData: FTimeOfImpactData): void
 // SetMass(NewMass: number): void
-// SetConstrained3D(LinearLower: FVector, LinearUpper: FVector, AngularLower: FVector, AngularUpper: FVector): void
+// SetConstrained3D(bConstrain3D: boolean): void
 // SetConstrained2D(bConstrain2D: boolean): void
 // EnableCCD(bEnable: boolean): void
 // SetPhysicsState(NewState: FReplicatedRBState): void
@@ -9817,92 +9993,92 @@ export type URBActor_TA = UPawn_X & {
 
 /**
  * Class TAGame.Ball_TA
- * Size: 0x0B20
+ * Size: 0x0B28
  * Extends: URBActor_TA
  */
 export type UBall_TA = URBActor_TA & {
-  StaticMesh: UStaticMeshComponent; // 0x07b8 (0x0008) [UStaticMeshComponent*]
-  TranslucentStaticMesh: UStaticMeshComponent; // 0x07c0 (0x0008) [UStaticMeshComponent*]
-  MeshTranslucency: number; // 0x07c8 (0x0004) [float]
-  TranslucentMaterials: UMaterialInterface[]; // 0x07d0 (0x0010) [TArray<UMaterialInterface*>]
-  CarInteraction: FCarBallInteractionSettings; // 0x07e0 (0x0038) [FCarBallInteractionSettings]
-  EndOfGameFXArchetype: UFXActor_X; // 0x0818 (0x0008) [UFXActor_X*]
-  WarnFXActorArchetype: UFXActor_X; // 0x0820 (0x0008) [UFXActor_X*]
-  WarnFXActor: UFXActor_X; // 0x0828 (0x0008) [UFXActor_X*]
-  ExplosionArchetype: UExplosion_X; // 0x0830 (0x0008) [UExplosion_X*]
-  NoGoalExplosionArchetype: UExplosion_X; // 0x0838 (0x0008) [UExplosion_X*]
-  bAllowPlayerExplosionOverride: boolean; // 0x0840 (0x0004) [bool : 0x1]
-  bNotifyGroundHit: boolean; // 0x0840 (0x0004) [bool : 0x2]
-  bAwardDemolishCredit: boolean; // 0x0840 (0x0004) [bool : 0x4]
-  bEndOfGameHidden: boolean; // 0x0840 (0x0004) [bool : 0x8]
-  bFadeIn: boolean; // 0x0840 (0x0004) [bool : 0x10]
-  bFadeOut: boolean; // 0x0840 (0x0004) [bool : 0x20]
-  bPredictionOnGround: boolean; // 0x0840 (0x0004) [bool : 0x40]
-  bCanBeAttached: boolean; // 0x0840 (0x0004) [bool : 0x80]
-  bItemFreeze: boolean; // 0x0840 (0x0004) [bool : 0x100]
-  bWarnBallReset: boolean; // 0x0840 (0x0004) [bool : 0x200]
-  bCanBeScored: boolean; // 0x0840 (0x0004) [bool : 0x400]
-  bCanEndRoundOnGroundTouch: boolean; // 0x0840 (0x0004) [bool : 0x800]
-  bPossessionEnabled: boolean; // 0x0840 (0x0004) [bool : 0x1000]
-  MagnusCoefficient: FVector; // 0x0844 (0x000c) [FVector]
-  MagnusMinSpeed: number; // 0x0850 (0x0004) [float]
-  AngularVelocityDamping: number; // 0x0854 (0x0004) [float]
-  BallHitSpinScale: number; // 0x0858 (0x0004) [float]
-  BallCamTarget: UBallCamTarget_TA; // 0x0860 (0x0008) [UBallCamTarget_TA*]
-  Radius: number; // 0x0868 (0x0004) [float]
-  SpawnWidth: number; // 0x086c (0x0004) [float]
-  VisualRadius: number; // 0x0870 (0x0004) [float]
-  Touches: FBallHitInfo[]; // 0x0878 (0x0010) [TArray<FBallHitInfo>]
-  VehicleDemolishMode: EVehicleDemolishMode; // 0x0888 (0x0001) [EVehicleDemolishMode]
-  HitTeamNum: number; // 0x0889 (0x0001) [uint8]
-  LastCalculateCarHit: number; // 0x088c (0x0004) [float]
-  InitialLocation: FVector; // 0x0890 (0x000c) [FVector]
-  InitialRotation: FRotator; // 0x089c (0x000c) [FRotator]
-  LastHitWorldTime: number; // 0x08a8 (0x0004) [float]
-  ReplicatedBallScale: number; // 0x08ac (0x0004) [float]
-  ReplicatedBallMesh: UStaticMesh; // 0x08b0 (0x0008) [UStaticMesh*]
-  ReplicatedWorldBounceScale: number; // 0x08b8 (0x0004) [float]
-  ReplicatedBallGravityScale: number; // 0x08bc (0x0004) [float]
-  ReplicatedBallMaxLinearSpeedScale: number; // 0x08c0 (0x0004) [float]
-  ReplicatedAddedCarBounceScale: number; // 0x08c4 (0x0004) [float]
-  AdditionalCarGroundBounceScaleZ: number; // 0x08c8 (0x0004) [float]
-  AdditionalCarGroundBounceScaleXY: number; // 0x08cc (0x0004) [float]
-  ReplicatedPhysMatOverride: UPhysicalMaterial; // 0x08d0 (0x0008) [UPhysicalMaterial*]
-  GameBallIndex: number; // 0x08d8 (0x0004) [int32]
-  GameEvent: UGameEvent_Soccar_TA; // 0x08e0 (0x0008) [UGameEvent_Soccar_TA*]
-  ReplicatedExplosionData: FExplosionData; // 0x08e8 (0x0018) [FExplosionData]
-  ReplicatedExplosionDataExtended: FExplosionDataExtended; // 0x0900 (0x0020) [FExplosionDataExtended]
-  Explosion: UExplosion_X; // 0x0920 (0x0008) [UExplosion_X*]
-  ExplosionTime: number; // 0x0928 (0x0004) [float]
-  OldLocation: FVector; // 0x092c (0x000c) [FVector]
-  FadeMaterials: UMaterialInterface[]; // 0x0938 (0x0010) [TArray<UMaterialInterface*>]
-  PredictionTimestep: number; // 0x0948 (0x0004) [float]
-  PredictedPositions: FPredictedPosition[]; // 0x0950 (0x0010) [TArray<FPredictedPosition>]
-  LastPredictionTime: number; // 0x0960 (0x0004) [float]
-  GoalPenetration: FGoalPenetrationData; // 0x0968 (0x0028) [FGoalPenetrationData]
-  GroundForce: number; // 0x0990 (0x0004) [float]
-  CurrentAffector: UCar_TA; // 0x0998 (0x0008) [UCar_TA*]
-  TrajectoryComponent: UBallTrajectoryComponent_TA; // 0x09a0 (0x0008) [UBallTrajectoryComponent_TA*]
-  PitchTekComponent: UPitchTekDrawingComponent_TA; // 0x09a8 (0x0008) [UPitchTekDrawingComponent_TA*]
-  GoalExplosionOrientation: UGoalExplosionOrientation_TA; // 0x09b0 (0x0008) [UGoalExplosionOrientation_TA*]
-  PossessionFXActorArchetype: UFXActor_X; // 0x09b8 (0x0008) [UFXActor_X*]
-  PossessionFXActor: UFXActor_X; // 0x09c0 (0x0008) [UFXActor_X*]
-  AirResistance: FVector; // 0x09c8 (0x000c) [FVector]
-  MinResistanceVelocity: FVector; // 0x09d4 (0x000c) [FVector]
-  SecondsSinceGroundedChanged: number; // 0x09e0 (0x0004) [float]
-  __EventCarTouch__Delegate: FScriptDelegate; // 0x09e8 (0x0018) [FScriptDelegate]
-  __EventHitWorld__Delegate: FScriptDelegate; // 0x0a00 (0x0018) [FScriptDelegate]
-  __EventHitGround__Delegate: FScriptDelegate; // 0x0a18 (0x0018) [FScriptDelegate]
-  __EventHitGoal__Delegate: FScriptDelegate; // 0x0a30 (0x0018) [FScriptDelegate]
-  __EventGameEventSet__Delegate: FScriptDelegate; // 0x0a48 (0x0018) [FScriptDelegate]
-  __EventExploded__Delegate: FScriptDelegate; // 0x0a60 (0x0018) [FScriptDelegate]
-  __EventHitTeamNumChanged__Delegate: FScriptDelegate; // 0x0a78 (0x0018) [FScriptDelegate]
-  __EventTrailIntensityChanged__Delegate: FScriptDelegate; // 0x0a90 (0x0018) [FScriptDelegate]
-  __EventBallTeleported__Delegate: FScriptDelegate; // 0x0aa8 (0x0018) [FScriptDelegate]
-  __EventDemolishedCar__Delegate: FScriptDelegate; // 0x0ac0 (0x0018) [FScriptDelegate]
-  __EventCrossbarHit__Delegate: FScriptDelegate; // 0x0ad8 (0x0018) [FScriptDelegate]
-  __EventScaleUpdated__Delegate: FScriptDelegate; // 0x0af0 (0x0018) [FScriptDelegate]
-  __bItemFreeze__ChangeNotify: FScriptDelegate; // 0x0b08 (0x0018) [FScriptDelegate]
+  StaticMesh: UStaticMeshComponent; // 0x07c0 (0x0008) [UStaticMeshComponent*]
+  TranslucentStaticMesh: UStaticMeshComponent; // 0x07c8 (0x0008) [UStaticMeshComponent*]
+  MeshTranslucency: number; // 0x07d0 (0x0004) [float]
+  TranslucentMaterials: UMaterialInterface[]; // 0x07d8 (0x0010) [TArray<UMaterialInterface*>]
+  CarInteraction: FCarBallInteractionSettings; // 0x07e8 (0x0038) [FCarBallInteractionSettings]
+  EndOfGameFXArchetype: UFXActor_X; // 0x0820 (0x0008) [UFXActor_X*]
+  WarnFXActorArchetype: UFXActor_X; // 0x0828 (0x0008) [UFXActor_X*]
+  WarnFXActor: UFXActor_X; // 0x0830 (0x0008) [UFXActor_X*]
+  ExplosionArchetype: UExplosion_X; // 0x0838 (0x0008) [UExplosion_X*]
+  NoGoalExplosionArchetype: UExplosion_X; // 0x0840 (0x0008) [UExplosion_X*]
+  bAllowPlayerExplosionOverride: boolean; // 0x0848 (0x0004) [bool : 0x1]
+  bNotifyGroundHit: boolean; // 0x0848 (0x0004) [bool : 0x2]
+  bAwardDemolishCredit: boolean; // 0x0848 (0x0004) [bool : 0x4]
+  bEndOfGameHidden: boolean; // 0x0848 (0x0004) [bool : 0x8]
+  bFadeIn: boolean; // 0x0848 (0x0004) [bool : 0x10]
+  bFadeOut: boolean; // 0x0848 (0x0004) [bool : 0x20]
+  bPredictionOnGround: boolean; // 0x0848 (0x0004) [bool : 0x40]
+  bCanBeAttached: boolean; // 0x0848 (0x0004) [bool : 0x80]
+  bItemFreeze: boolean; // 0x0848 (0x0004) [bool : 0x100]
+  bWarnBallReset: boolean; // 0x0848 (0x0004) [bool : 0x200]
+  bCanBeScored: boolean; // 0x0848 (0x0004) [bool : 0x400]
+  bCanEndRoundOnGroundTouch: boolean; // 0x0848 (0x0004) [bool : 0x800]
+  bPossessionEnabled: boolean; // 0x0848 (0x0004) [bool : 0x1000]
+  MagnusCoefficient: FVector; // 0x084c (0x000c) [FVector]
+  MagnusMinSpeed: number; // 0x0858 (0x0004) [float]
+  AngularVelocityDamping: number; // 0x085c (0x0004) [float]
+  BallHitSpinScale: number; // 0x0860 (0x0004) [float]
+  BallCamTarget: UBallCamTarget_TA; // 0x0868 (0x0008) [UBallCamTarget_TA*]
+  Radius: number; // 0x0870 (0x0004) [float]
+  SpawnWidth: number; // 0x0874 (0x0004) [float]
+  VisualRadius: number; // 0x0878 (0x0004) [float]
+  Touches: FBallHitInfo[]; // 0x0880 (0x0010) [TArray<FBallHitInfo>]
+  VehicleDemolishMode: EVehicleDemolishMode; // 0x0890 (0x0001) [EVehicleDemolishMode]
+  HitTeamNum: number; // 0x0891 (0x0001) [uint8]
+  LastCalculateCarHit: number; // 0x0894 (0x0004) [float]
+  InitialLocation: FVector; // 0x0898 (0x000c) [FVector]
+  InitialRotation: FRotator; // 0x08a4 (0x000c) [FRotator]
+  LastHitWorldTime: number; // 0x08b0 (0x0004) [float]
+  ReplicatedBallScale: number; // 0x08b4 (0x0004) [float]
+  ReplicatedBallMesh: UStaticMesh; // 0x08b8 (0x0008) [UStaticMesh*]
+  ReplicatedWorldBounceScale: number; // 0x08c0 (0x0004) [float]
+  ReplicatedBallGravityScale: number; // 0x08c4 (0x0004) [float]
+  ReplicatedBallMaxLinearSpeedScale: number; // 0x08c8 (0x0004) [float]
+  ReplicatedAddedCarBounceScale: number; // 0x08cc (0x0004) [float]
+  AdditionalCarGroundBounceScaleZ: number; // 0x08d0 (0x0004) [float]
+  AdditionalCarGroundBounceScaleXY: number; // 0x08d4 (0x0004) [float]
+  ReplicatedPhysMatOverride: UPhysicalMaterial; // 0x08d8 (0x0008) [UPhysicalMaterial*]
+  GameBallIndex: number; // 0x08e0 (0x0004) [int32]
+  GameEvent: UGameEvent_Soccar_TA; // 0x08e8 (0x0008) [UGameEvent_Soccar_TA*]
+  ReplicatedExplosionData: FExplosionData; // 0x08f0 (0x0018) [FExplosionData]
+  ReplicatedExplosionDataExtended: FExplosionDataExtended; // 0x0908 (0x0020) [FExplosionDataExtended]
+  Explosion: UExplosion_X; // 0x0928 (0x0008) [UExplosion_X*]
+  ExplosionTime: number; // 0x0930 (0x0004) [float]
+  OldLocation: FVector; // 0x0934 (0x000c) [FVector]
+  FadeMaterials: UMaterialInterface[]; // 0x0940 (0x0010) [TArray<UMaterialInterface*>]
+  PredictionTimestep: number; // 0x0950 (0x0004) [float]
+  PredictedPositions: FPredictedPosition[]; // 0x0958 (0x0010) [TArray<FPredictedPosition>]
+  LastPredictionTime: number; // 0x0968 (0x0004) [float]
+  GoalPenetration: FGoalPenetrationData; // 0x0970 (0x0028) [FGoalPenetrationData]
+  GroundForce: number; // 0x0998 (0x0004) [float]
+  CurrentAffector: UCar_TA; // 0x09a0 (0x0008) [UCar_TA*]
+  TrajectoryComponent: UBallTrajectoryComponent_TA; // 0x09a8 (0x0008) [UBallTrajectoryComponent_TA*]
+  PitchTekComponent: UPitchTekDrawingComponent_TA; // 0x09b0 (0x0008) [UPitchTekDrawingComponent_TA*]
+  GoalExplosionOrientation: UGoalExplosionOrientation_TA; // 0x09b8 (0x0008) [UGoalExplosionOrientation_TA*]
+  PossessionFXActorArchetype: UFXActor_X; // 0x09c0 (0x0008) [UFXActor_X*]
+  PossessionFXActor: UFXActor_X; // 0x09c8 (0x0008) [UFXActor_X*]
+  AirResistance: FVector; // 0x09d0 (0x000c) [FVector]
+  MinResistanceVelocity: FVector; // 0x09dc (0x000c) [FVector]
+  SecondsSinceGroundedChanged: number; // 0x09e8 (0x0004) [float]
+  __EventCarTouch__Delegate: FScriptDelegate; // 0x09f0 (0x0018) [FScriptDelegate]
+  __EventHitWorld__Delegate: FScriptDelegate; // 0x0a08 (0x0018) [FScriptDelegate]
+  __EventHitGround__Delegate: FScriptDelegate; // 0x0a20 (0x0018) [FScriptDelegate]
+  __EventHitGoal__Delegate: FScriptDelegate; // 0x0a38 (0x0018) [FScriptDelegate]
+  __EventGameEventSet__Delegate: FScriptDelegate; // 0x0a50 (0x0018) [FScriptDelegate]
+  __EventExploded__Delegate: FScriptDelegate; // 0x0a68 (0x0018) [FScriptDelegate]
+  __EventHitTeamNumChanged__Delegate: FScriptDelegate; // 0x0a80 (0x0018) [FScriptDelegate]
+  __EventTrailIntensityChanged__Delegate: FScriptDelegate; // 0x0a98 (0x0018) [FScriptDelegate]
+  __EventBallTeleported__Delegate: FScriptDelegate; // 0x0ab0 (0x0018) [FScriptDelegate]
+  __EventDemolishedCar__Delegate: FScriptDelegate; // 0x0ac8 (0x0018) [FScriptDelegate]
+  __EventCrossbarHit__Delegate: FScriptDelegate; // 0x0ae0 (0x0018) [FScriptDelegate]
+  __EventScaleUpdated__Delegate: FScriptDelegate; // 0x0af8 (0x0018) [FScriptDelegate]
+  __bItemFreeze__ChangeNotify: FScriptDelegate; // 0x0b10 (0x0018) [FScriptDelegate]
 };
 
 // Ball_TA Functions
@@ -9976,6 +10152,7 @@ export type UBall_TA = URBActor_TA & {
 // SetBallMaxLinearSpeedScale(InMaxLinearSpeedScale: number): void
 // SetBallGravityScale(InBallGravityScale: number): void
 // SetBallScale(NewScale: number): void
+// GetExtraData(): FBallExtraData
 // ReplicatedEvent(VarName: FName): void
 // EventScaleUpdated(Ball: UBall_TA): void
 // EventCrossbarHit(Ball: UBall_TA, ImpactForce: number): void
@@ -9992,38 +10169,39 @@ export type UBall_TA = URBActor_TA & {
 
 /**
  * Class TAGame.Ball_Breakout_TA
- * Size: 0x0C88
+ * Size: 0x0C90
  * Extends: UBall_TA
  */
 export type UBall_Breakout_TA = UBall_TA & {
-  DamageAtTime: FBreakoutDamage[]; // 0x0b20 (0x0010) [TArray<FBreakoutDamage>]
-  DamageForceLevels: number[]; // 0x0b30 (0x0010) [TArray<int32>]
-  bClearTeamOnDamage: boolean; // 0x0b40 (0x0004) [bool : 0x1]
-  bCanDamageOwnTeam: boolean; // 0x0b40 (0x0004) [bool : 0x2]
-  MinDamageVelocity: number; // 0x0b44 (0x0004) [float]
-  MinDamageTime: number; // 0x0b48 (0x0004) [float]
-  MinImpactSpeedForCharge: number; // 0x0b4c (0x0004) [int32]
-  DoubleTapTime: number; // 0x0b50 (0x0004) [float]
-  ForceAccumDecayPerSecond: number; // 0x0b54 (0x0004) [float]
-  ForceAccumMax: number; // 0x0b58 (0x0004) [float]
-  ForceAccumRecent: number; // 0x0b5c (0x0004) [float]
-  LastTeamTouch: number; // 0x0b60 (0x0001) [uint8]
-  LastCarTouch: UCar_TA; // 0x0b68 (0x0008) [UCar_TA*]
-  LastDamage: number; // 0x0b70 (0x0004) [int32]
-  LastDamageTime: number; // 0x0b74 (0x0004) [float]
-  DamageIndex: number; // 0x0b78 (0x0004) [int32]
-  LockedDamageIndex: number; // 0x0b7c (0x0004) [int32]
-  DamageIndexPointsToAward: number[]; // 0x0b80 (0x0010) [TArray<int32>]
-  AbsorbedForce: number; // 0x0b90 (0x0004) [float]
-  AppliedDamage: FAppliedBreakoutDamage; // 0x0b94 (0x0018) [FAppliedBreakoutDamage]
-  ClosestPlatformCollision: FAccumulatedRigidBodyCollision; // 0x0bb0 (0x0080) [FAccumulatedRigidBodyCollision]
-  WorldCollisions: FAccumulatedRigidBodyCollision[]; // 0x0c30 (0x0010) [TArray<FAccumulatedRigidBodyCollision>]
-  __EventDamageIndexChanged__Delegate: FScriptDelegate; // 0x0c40 (0x0018) [FScriptDelegate]
-  __EventLastTeamTouchChanged__Delegate: FScriptDelegate; // 0x0c58 (0x0018) [FScriptDelegate]
-  __EventAppliedDamage__Delegate: FScriptDelegate; // 0x0c70 (0x0018) [FScriptDelegate]
+  DamageAtTime: FBreakoutDamage[]; // 0x0b28 (0x0010) [TArray<FBreakoutDamage>]
+  DamageForceLevels: number[]; // 0x0b38 (0x0010) [TArray<int32>]
+  bClearTeamOnDamage: boolean; // 0x0b48 (0x0004) [bool : 0x1]
+  bCanDamageOwnTeam: boolean; // 0x0b48 (0x0004) [bool : 0x2]
+  MinDamageVelocity: number; // 0x0b4c (0x0004) [float]
+  MinDamageTime: number; // 0x0b50 (0x0004) [float]
+  MinImpactSpeedForCharge: number; // 0x0b54 (0x0004) [int32]
+  DoubleTapTime: number; // 0x0b58 (0x0004) [float]
+  ForceAccumDecayPerSecond: number; // 0x0b5c (0x0004) [float]
+  ForceAccumMax: number; // 0x0b60 (0x0004) [float]
+  ForceAccumRecent: number; // 0x0b64 (0x0004) [float]
+  LastTeamTouch: number; // 0x0b68 (0x0001) [uint8]
+  LastCarTouch: UCar_TA; // 0x0b70 (0x0008) [UCar_TA*]
+  LastDamage: number; // 0x0b78 (0x0004) [int32]
+  LastDamageTime: number; // 0x0b7c (0x0004) [float]
+  DamageIndex: number; // 0x0b80 (0x0004) [int32]
+  LockedDamageIndex: number; // 0x0b84 (0x0004) [int32]
+  DamageIndexPointsToAward: number[]; // 0x0b88 (0x0010) [TArray<int32>]
+  AbsorbedForce: number; // 0x0b98 (0x0004) [float]
+  AppliedDamage: FAppliedBreakoutDamage; // 0x0b9c (0x0018) [FAppliedBreakoutDamage]
+  ClosestPlatformCollision: FAccumulatedRigidBodyCollision; // 0x0bb8 (0x0080) [FAccumulatedRigidBodyCollision]
+  WorldCollisions: FAccumulatedRigidBodyCollision[]; // 0x0c38 (0x0010) [TArray<FAccumulatedRigidBodyCollision>]
+  __EventDamageIndexChanged__Delegate: FScriptDelegate; // 0x0c48 (0x0018) [FScriptDelegate]
+  __EventLastTeamTouchChanged__Delegate: FScriptDelegate; // 0x0c60 (0x0018) [FScriptDelegate]
+  __EventAppliedDamage__Delegate: FScriptDelegate; // 0x0c78 (0x0018) [FScriptDelegate]
 };
 
 // Ball_Breakout_TA Functions
+// GetExtraData(): FBallExtraData
 // GetGoalScorePoints(): number
 // OnRBActorTeleport(): void
 // GetDamagePercent(): number
@@ -10046,43 +10224,46 @@ export type UBall_Breakout_TA = UBall_TA & {
 
 /**
  * Class TAGame.Ball_God_TA
- * Size: 0x0BAC
+ * Size: 0x0BB4
  * Extends: UBall_TA
  */
 export type UBall_God_TA = UBall_TA & {
-  WallBounceSpeed: number; // 0x0b20 (0x0004) [float]
-  WallBounceBlend: number; // 0x0b24 (0x0004) [float]
-  WallBounceBackDistance: number; // 0x0b28 (0x0004) [float]
-  TargetBlendScaleXY: number; // 0x0b2c (0x0004) [float]
-  TargetBlendScaleZ: number; // 0x0b30 (0x0004) [float]
-  TargetSpeed: number; // 0x0b34 (0x0004) [float]
-  TargetSpeedIncrement: number; // 0x0b38 (0x0004) [float]
-  TargetSpeedBlend: number; // 0x0b3c (0x0004) [float]
-  MaxVelocityPitch: number; // 0x0b40 (0x0004) [float]
-  LastSpeedIncrementTime: number; // 0x0b44 (0x0004) [float]
-  TargetSpeedIncrementTime: number; // 0x0b48 (0x0004) [float]
-  MinGlowBrightness: number; // 0x0b4c (0x0004) [float]
-  MaxGlowBrightness: number; // 0x0b50 (0x0004) [float]
-  PulseSpeedScale: number; // 0x0b54 (0x0004) [float]
-  PulseBrightnessScale: number; // 0x0b58 (0x0004) [float]
-  PulseMinBrightness: number; // 0x0b5c (0x0004) [float]
-  PulseLifetime: number; // 0x0b60 (0x0004) [float]
-  GlowDefaultColor: FLinearColor; // 0x0b64 (0x0010) [FLinearColor]
-  MaxSpeedColor: FLinearColor; // 0x0b74 (0x0010) [FLinearColor]
-  AudioCurveName: FName; // 0x0b84 (0x0008) [FName]
-  AudioIntensityName: FName; // 0x0b8c (0x0008) [FName]
-  FXEvent_TeamChanged: UFXActorEvent_X; // 0x0b98 (0x0008) [UFXActorEvent_X*]
-  FXEvent_IntensityChanged: UFXActorEvent_X; // 0x0ba0 (0x0008) [UFXActorEvent_X*]
-  bSwapTeamOnWorldHit: boolean; // 0x0ba8 (0x0004) [bool : 0x1]
-  bBackwardsDirectionCheckEnabled: boolean; // 0x0ba8 (0x0004) [bool : 0x2]
+  WallBounceSpeed: number; // 0x0b28 (0x0004) [float]
+  WallBounceBlend: number; // 0x0b2c (0x0004) [float]
+  WallBounceBackDistance: number; // 0x0b30 (0x0004) [float]
+  TargetBlendScaleXY: number; // 0x0b34 (0x0004) [float]
+  TargetBlendScaleZ: number; // 0x0b38 (0x0004) [float]
+  TargetSpeed: number; // 0x0b3c (0x0004) [float]
+  TargetSpeedIncrement: number; // 0x0b40 (0x0004) [float]
+  TargetSpeedBlend: number; // 0x0b44 (0x0004) [float]
+  MaxVelocityPitch: number; // 0x0b48 (0x0004) [float]
+  LastSpeedIncrementTime: number; // 0x0b4c (0x0004) [float]
+  TargetSpeedIncrementTime: number; // 0x0b50 (0x0004) [float]
+  MinGlowBrightness: number; // 0x0b54 (0x0004) [float]
+  MaxGlowBrightness: number; // 0x0b58 (0x0004) [float]
+  PulseSpeedScale: number; // 0x0b5c (0x0004) [float]
+  PulseBrightnessScale: number; // 0x0b60 (0x0004) [float]
+  PulseMinBrightness: number; // 0x0b64 (0x0004) [float]
+  PulseLifetime: number; // 0x0b68 (0x0004) [float]
+  GlowDefaultColor: FLinearColor; // 0x0b6c (0x0010) [FLinearColor]
+  MaxSpeedColor: FLinearColor; // 0x0b7c (0x0010) [FLinearColor]
+  AudioCurveName: FName; // 0x0b8c (0x0008) [FName]
+  AudioIntensityName: FName; // 0x0b94 (0x0008) [FName]
+  FXEvent_TeamChanged: UFXActorEvent_X; // 0x0ba0 (0x0008) [UFXActorEvent_X*]
+  FXEvent_IntensityChanged: UFXActorEvent_X; // 0x0ba8 (0x0008) [UFXActorEvent_X*]
+  bSwapTeamOnWorldHit: boolean; // 0x0bb0 (0x0004) [bool : 0x1]
+  bBackwardsDirectionCheckEnabled: boolean; // 0x0bb0 (0x0004) [bool : 0x2]
+  bIncrementSpeedOnHitNumChange: boolean; // 0x0bb0 (0x0004) [bool : 0x4]
 };
 
 // Ball_God_TA Functions
 // __Ball_God_TA__Construct_0x2(_: UGameEvent_Team_TA): void
 // __Ball_God_TA__Construct_0x1(Ball: UBall_TA): void
+// GetExtraData(): FBallExtraData
 // GetDirectionToTarget(): FVector
 // GetAimLocation(): FVector
 // GetMaxSpeedColor(): FLinearColor
+// GetTargetSpeed(): number
 // GetTargetSpeedScalar(): number
 // GetRedirectScalar(): number
 // GetTrailIntensity(): number
@@ -10106,31 +10287,31 @@ export type UBall_God_TA = UBall_TA & {
 
 /**
  * Class TAGame.Ball_Fire_TA
- * Size: 0x0C48
+ * Size: 0x0C50
  * Extends: UBall_God_TA
  */
 export type UBall_Fire_TA = UBall_God_TA & {
-  SpinPSArchetype: UParticleSystem; // 0x0bb0 (0x0008) [UParticleSystem*]
-  SpinPSC: UParticleSystemComponent; // 0x0bb8 (0x0008) [UParticleSystemComponent*]
-  ParticleColorParamName: string; // 0x0bc0 (0x0010) [FString]
-  DefaultParticleColor: FLinearColor; // 0x0bd0 (0x0010) [FLinearColor]
-  SupersonicParticleColor: FLinearColor; // 0x0be0 (0x0010) [FLinearColor]
-  SecondsToRampUp: number; // 0x0bf0 (0x0004) [float]
-  MinSpeedScalar: number; // 0x0bf4 (0x0004) [float]
-  MinRedirectScalar: number; // 0x0bf8 (0x0004) [float]
-  TeamNumChangeTimestamp: number; // 0x0bfc (0x0004) [float]
-  TimeSinceLastChangeTimeStamp: number; // 0x0c00 (0x0004) [float]
-  bUseTargetTeamIndex: boolean; // 0x0c04 (0x0004) [bool : 0x1]
-  bAtSupersonicThreshold: boolean; // 0x0c04 (0x0004) [bool : 0x2]
-  MaxDistanceForSave: number; // 0x0c08 (0x0004) [float]
-  DotProductSaveThreshold: number; // 0x0c0c (0x0004) [float]
-  TargetLowSpeedDistanceThreshold: number; // 0x0c10 (0x0004) [float]
-  TargetLowSpeedThreshold: number; // 0x0c14 (0x0004) [float]
-  TargetLowSpeedScalar: number; // 0x0c18 (0x0004) [float]
-  TargetAlphaThreshold: number; // 0x0c1c (0x0004) [float]
-  SpeedupCue: UAkSoundCue; // 0x0c20 (0x0008) [UAkSoundCue*]
-  SpeedThresholdState: number; // 0x0c28 (0x0004) [int32]
-  __EventDemolitionSave__Delegate: FScriptDelegate; // 0x0c30 (0x0018) [FScriptDelegate]
+  SpinPSArchetype: UParticleSystem; // 0x0bb8 (0x0008) [UParticleSystem*]
+  SpinPSC: UParticleSystemComponent; // 0x0bc0 (0x0008) [UParticleSystemComponent*]
+  ParticleColorParamName: string; // 0x0bc8 (0x0010) [FString]
+  DefaultParticleColor: FLinearColor; // 0x0bd8 (0x0010) [FLinearColor]
+  SupersonicParticleColor: FLinearColor; // 0x0be8 (0x0010) [FLinearColor]
+  SecondsToRampUp: number; // 0x0bf8 (0x0004) [float]
+  MinSpeedScalar: number; // 0x0bfc (0x0004) [float]
+  MinRedirectScalar: number; // 0x0c00 (0x0004) [float]
+  TeamNumChangeTimestamp: number; // 0x0c04 (0x0004) [float]
+  TimeSinceLastChangeTimeStamp: number; // 0x0c08 (0x0004) [float]
+  bUseTargetTeamIndex: boolean; // 0x0c0c (0x0004) [bool : 0x1]
+  bAtSupersonicThreshold: boolean; // 0x0c0c (0x0004) [bool : 0x2]
+  MaxDistanceForSave: number; // 0x0c10 (0x0004) [float]
+  DotProductSaveThreshold: number; // 0x0c14 (0x0004) [float]
+  TargetLowSpeedDistanceThreshold: number; // 0x0c18 (0x0004) [float]
+  TargetLowSpeedThreshold: number; // 0x0c1c (0x0004) [float]
+  TargetLowSpeedScalar: number; // 0x0c20 (0x0004) [float]
+  TargetAlphaThreshold: number; // 0x0c24 (0x0004) [float]
+  SpeedupCue: UAkSoundCue; // 0x0c28 (0x0008) [UAkSoundCue*]
+  SpeedThresholdState: number; // 0x0c30 (0x0004) [int32]
+  __EventDemolitionSave__Delegate: FScriptDelegate; // 0x0c38 (0x0018) [FScriptDelegate]
 };
 
 // Ball_Fire_TA Functions
@@ -10156,26 +10337,26 @@ export type UBall_Fire_TA = UBall_God_TA & {
 
 /**
  * Class TAGame.Ball_GameEditor_TA
- * Size: 0x0BF8
+ * Size: 0x0C00
  * Extends: UBall_TA
  */
 export type UBall_GameEditor_TA = UBall_TA & {
-  StartLocation: FVector; // 0x0b20 (0x000c) [FVector]
-  StartRotation: FRotator; // 0x0b2c (0x000c) [FRotator]
-  VelocityStartSpeed: number; // 0x0b38 (0x0004) [float]
-  VelocityStartRotation: FRotator; // 0x0b3c (0x000c) [FRotator]
-  BallResetTime: number; // 0x0b48 (0x0004) [float]
-  FirstHitTime: number; // 0x0b4c (0x0004) [float]
-  CameraPositionOffset: FVector; // 0x0b50 (0x000c) [FVector]
-  EditingFXActorArchetype: UFXActor_X; // 0x0b60 (0x0008) [UFXActor_X*]
-  EditingFXActor: UFXActor_X; // 0x0b68 (0x0008) [UFXActor_X*]
-  bUpdateTrajectory: boolean; // 0x0b70 (0x0004) [bool : 0x1]
-  ToLocation: FVector; // 0x0b74 (0x000c) [FVector]
-  __EventBallWentThruRing__Delegate: FScriptDelegate; // 0x0b80 (0x0018) [FScriptDelegate]
-  __EventVelocityStartSpeedChanged__Delegate: FScriptDelegate; // 0x0b98 (0x0018) [FScriptDelegate]
-  __EventFire__Delegate: FScriptDelegate; // 0x0bb0 (0x0018) [FScriptDelegate]
-  __EventReset__Delegate: FScriptDelegate; // 0x0bc8 (0x0018) [FScriptDelegate]
-  __EventSelectionChange__Delegate: FScriptDelegate; // 0x0be0 (0x0018) [FScriptDelegate]
+  StartLocation: FVector; // 0x0b28 (0x000c) [FVector]
+  StartRotation: FRotator; // 0x0b34 (0x000c) [FRotator]
+  VelocityStartSpeed: number; // 0x0b40 (0x0004) [float]
+  VelocityStartRotation: FRotator; // 0x0b44 (0x000c) [FRotator]
+  BallResetTime: number; // 0x0b50 (0x0004) [float]
+  FirstHitTime: number; // 0x0b54 (0x0004) [float]
+  CameraPositionOffset: FVector; // 0x0b58 (0x000c) [FVector]
+  EditingFXActorArchetype: UFXActor_X; // 0x0b68 (0x0008) [UFXActor_X*]
+  EditingFXActor: UFXActor_X; // 0x0b70 (0x0008) [UFXActor_X*]
+  bUpdateTrajectory: boolean; // 0x0b78 (0x0004) [bool : 0x1]
+  ToLocation: FVector; // 0x0b7c (0x000c) [FVector]
+  __EventBallWentThruRing__Delegate: FScriptDelegate; // 0x0b88 (0x0018) [FScriptDelegate]
+  __EventVelocityStartSpeedChanged__Delegate: FScriptDelegate; // 0x0ba0 (0x0018) [FScriptDelegate]
+  __EventFire__Delegate: FScriptDelegate; // 0x0bb8 (0x0018) [FScriptDelegate]
+  __EventReset__Delegate: FScriptDelegate; // 0x0bd0 (0x0018) [FScriptDelegate]
+  __EventSelectionChange__Delegate: FScriptDelegate; // 0x0be8 (0x0018) [FScriptDelegate]
 };
 
 // Ball_GameEditor_TA Functions
@@ -10226,42 +10407,42 @@ export type UBall_GameEditor_TA = UBall_TA & {
 
 /**
  * Class TAGame.Ball_Haunted_TA
- * Size: 0x0C28
+ * Size: 0x0C30
  * Extends: UBall_TA
  */
 export type UBall_Haunted_TA = UBall_TA & {
-  SeekPositionRangeLength: FVector2D; // 0x0b20 (0x0008) [FVector2D]
-  SeekPositionRangeWidth: FVector2D; // 0x0b28 (0x0008) [FVector2D]
-  SeekPositionRangeHeight: FVector2D; // 0x0b30 (0x0008) [FVector2D]
-  NextSeekTimeRange: FVector2D; // 0x0b38 (0x0008) [FVector2D]
-  TrappedHoverHeight: number; // 0x0b40 (0x0004) [float]
-  HorizontalSpeed: number; // 0x0b44 (0x0004) [float]
-  VerticalSpeed: number; // 0x0b48 (0x0004) [float]
-  ArrivalDistance: number; // 0x0b4c (0x0004) [float]
-  TrappedHorizontalSpeed: number; // 0x0b50 (0x0004) [float]
-  TrappedVerticalSpeed: number; // 0x0b54 (0x0004) [float]
-  TrappedCaptureTime: number; // 0x0b58 (0x0004) [float]
-  HitPhysicsDuration: number; // 0x0b5c (0x0004) [float]
-  ReplicatedBeamBrokenValue: number; // 0x0b60 (0x0001) [uint8]
-  LastTeamTouch: number; // 0x0b61 (0x0001) [uint8]
-  DeactivatedGoalIndex: number; // 0x0b62 (0x0001) [uint8]
-  TotalActiveBeams: number; // 0x0b63 (0x0001) [uint8]
-  SeekTarget: FVector; // 0x0b64 (0x000c) [FVector]
-  NextNeutralTime: number; // 0x0b70 (0x0004) [float]
-  bHitPhysicsActive: boolean; // 0x0b74 (0x0004) [bool : 0x1]
-  bIsBallBeamed: boolean; // 0x0b74 (0x0004) [bool : 0x2]
-  bIsTrapped: boolean; // 0x0b74 (0x0004) [bool : 0x4]
-  CurrentCaptureTime: number; // 0x0b78 (0x0004) [float]
-  CaptureTimePercentage: number; // 0x0b7c (0x0004) [float]
-  CaptureTimeAtExit: number; // 0x0b80 (0x0004) [float]
-  ActiveGoal: UGoal_TA; // 0x0b88 (0x0008) [UGoal_TA*]
-  NumActiveBeamsByTeam: number; // 0x0b90 (0x0008) [int32]
-  __EventLastTeamTouchChanged__Delegate: FScriptDelegate; // 0x0b98 (0x0018) [FScriptDelegate]
-  __EventIsTrapped__Delegate: FScriptDelegate; // 0x0bb0 (0x0018) [FScriptDelegate]
-  __EventBeamIsBroken__Delegate: FScriptDelegate; // 0x0bc8 (0x0018) [FScriptDelegate]
-  __ReplicatedBeamBrokenValue__ChangeNotify: FScriptDelegate; // 0x0be0 (0x0018) [FScriptDelegate]
-  __LastTeamTouch__ChangeNotify: FScriptDelegate; // 0x0bf8 (0x0018) [FScriptDelegate]
-  __DeactivatedGoalIndex__ChangeNotify: FScriptDelegate; // 0x0c10 (0x0018) [FScriptDelegate]
+  SeekPositionRangeLength: FVector2D; // 0x0b28 (0x0008) [FVector2D]
+  SeekPositionRangeWidth: FVector2D; // 0x0b30 (0x0008) [FVector2D]
+  SeekPositionRangeHeight: FVector2D; // 0x0b38 (0x0008) [FVector2D]
+  NextSeekTimeRange: FVector2D; // 0x0b40 (0x0008) [FVector2D]
+  TrappedHoverHeight: number; // 0x0b48 (0x0004) [float]
+  HorizontalSpeed: number; // 0x0b4c (0x0004) [float]
+  VerticalSpeed: number; // 0x0b50 (0x0004) [float]
+  ArrivalDistance: number; // 0x0b54 (0x0004) [float]
+  TrappedHorizontalSpeed: number; // 0x0b58 (0x0004) [float]
+  TrappedVerticalSpeed: number; // 0x0b5c (0x0004) [float]
+  TrappedCaptureTime: number; // 0x0b60 (0x0004) [float]
+  HitPhysicsDuration: number; // 0x0b64 (0x0004) [float]
+  ReplicatedBeamBrokenValue: number; // 0x0b68 (0x0001) [uint8]
+  LastTeamTouch: number; // 0x0b69 (0x0001) [uint8]
+  DeactivatedGoalIndex: number; // 0x0b6a (0x0001) [uint8]
+  TotalActiveBeams: number; // 0x0b6b (0x0001) [uint8]
+  SeekTarget: FVector; // 0x0b6c (0x000c) [FVector]
+  NextNeutralTime: number; // 0x0b78 (0x0004) [float]
+  bHitPhysicsActive: boolean; // 0x0b7c (0x0004) [bool : 0x1]
+  bIsBallBeamed: boolean; // 0x0b7c (0x0004) [bool : 0x2]
+  bIsTrapped: boolean; // 0x0b7c (0x0004) [bool : 0x4]
+  CurrentCaptureTime: number; // 0x0b80 (0x0004) [float]
+  CaptureTimePercentage: number; // 0x0b84 (0x0004) [float]
+  CaptureTimeAtExit: number; // 0x0b88 (0x0004) [float]
+  ActiveGoal: UGoal_TA; // 0x0b90 (0x0008) [UGoal_TA*]
+  NumActiveBeamsByTeam: number; // 0x0b98 (0x0008) [int32]
+  __EventLastTeamTouchChanged__Delegate: FScriptDelegate; // 0x0ba0 (0x0018) [FScriptDelegate]
+  __EventIsTrapped__Delegate: FScriptDelegate; // 0x0bb8 (0x0018) [FScriptDelegate]
+  __EventBeamIsBroken__Delegate: FScriptDelegate; // 0x0bd0 (0x0018) [FScriptDelegate]
+  __ReplicatedBeamBrokenValue__ChangeNotify: FScriptDelegate; // 0x0be8 (0x0018) [FScriptDelegate]
+  __LastTeamTouch__ChangeNotify: FScriptDelegate; // 0x0c00 (0x0018) [FScriptDelegate]
+  __DeactivatedGoalIndex__ChangeNotify: FScriptDelegate; // 0x0c18 (0x0018) [FScriptDelegate]
 };
 
 // Ball_Haunted_TA Functions
@@ -10328,26 +10509,26 @@ export type UBall_Spawner_TA = UActor & {
 
 /**
  * Class TAGame.Ball_Trajectory_TA
- * Size: 0x0BB0
+ * Size: 0x0BB8
  * Extends: UBall_TA
  */
 export type UBall_Trajectory_TA = UBall_TA & {
-  AccurateTrajectoryPoints: FVector[]; // 0x0b20 (0x0010) [TArray<FVector>]
-  AllPoints: FVector[]; // 0x0b30 (0x0010) [TArray<FVector>]
-  LastCalculateTime: number; // 0x0b40 (0x0004) [float]
-  FixedDeltaTime: number; // 0x0b44 (0x0004) [float]
-  TotalPathDistance: number; // 0x0b48 (0x0004) [float]
-  FrameCount: number; // 0x0b4c (0x0004) [int32]
-  TotalStepCount: number; // 0x0b50 (0x0004) [int32]
-  TotalFrameCount: number; // 0x0b54 (0x0004) [int32]
-  CurrentStepCount: number; // 0x0b58 (0x0004) [int32]
-  StepToPutAPointAt: number; // 0x0b5c (0x0004) [int32]
-  LastLocation: FVector; // 0x0b60 (0x000c) [FVector]
-  LastVelocity: FVector; // 0x0b6c (0x000c) [FVector]
-  LastAngularVelocity: FVector; // 0x0b78 (0x000c) [FVector]
-  LastRotation: FRotator; // 0x0b84 (0x000c) [FRotator]
-  TrajectorySettings: FTrajectorySetup; // 0x0b90 (0x0014) [FTrajectorySetup]
-  TrajectoryComponentToUpdate: UBallTrajectoryComponent_TA; // 0x0ba8 (0x0008) [UBallTrajectoryComponent_TA*]
+  AccurateTrajectoryPoints: FVector[]; // 0x0b28 (0x0010) [TArray<FVector>]
+  AllPoints: FVector[]; // 0x0b38 (0x0010) [TArray<FVector>]
+  LastCalculateTime: number; // 0x0b48 (0x0004) [float]
+  FixedDeltaTime: number; // 0x0b4c (0x0004) [float]
+  TotalPathDistance: number; // 0x0b50 (0x0004) [float]
+  FrameCount: number; // 0x0b54 (0x0004) [int32]
+  TotalStepCount: number; // 0x0b58 (0x0004) [int32]
+  TotalFrameCount: number; // 0x0b5c (0x0004) [int32]
+  CurrentStepCount: number; // 0x0b60 (0x0004) [int32]
+  StepToPutAPointAt: number; // 0x0b64 (0x0004) [int32]
+  LastLocation: FVector; // 0x0b68 (0x000c) [FVector]
+  LastVelocity: FVector; // 0x0b74 (0x000c) [FVector]
+  LastAngularVelocity: FVector; // 0x0b80 (0x000c) [FVector]
+  LastRotation: FRotator; // 0x0b8c (0x000c) [FRotator]
+  TrajectorySettings: FTrajectorySetup; // 0x0b98 (0x0014) [FTrajectorySetup]
+  TrajectoryComponentToUpdate: UBallTrajectoryComponent_TA; // 0x0bb0 (0x0008) [UBallTrajectoryComponent_TA*]
 };
 
 // Ball_Trajectory_TA Functions
@@ -10357,7 +10538,7 @@ export type UBall_Trajectory_TA = UBall_TA & {
 
 /**
  * Class TAGame.Ball_Tutorial_TA
- * Size: 0x0B20
+ * Size: 0x0B28
  * Extends: UBall_TA
  */
 export type UBall_Tutorial_TA = UBall_TA & {};
@@ -12050,7 +12231,7 @@ export type UCachedUnlockedProducts_TA = UObject & {
 
 /**
  * Class TAGame.Camera_TA
- * Size: 0x07D0
+ * Size: 0x07E0
  * Extends: UCamera_X
  */
 export type UCamera_TA = UCamera_X & {
@@ -12066,22 +12247,23 @@ export type UCamera_TA = UCamera_X & {
   SwivelSpeedLimits: FProfileSliderLimits; // 0x0724 (0x000c) [FProfileSliderLimits]
   TransitionSpeedLimits: FProfileSliderLimits; // 0x0730 (0x000c) [FProfileSliderLimits]
   PrespawnLerpLimits: FProfileSliderLimits; // 0x073c (0x000c) [FProfileSliderLimits]
-  CameraPresetSettings: FProfileCameraSettings[]; // 0x0748 (0x0010) [TArray<FProfileCameraSettings>]
-  HorizontalSplitscreenHeightOffset: number; // 0x0758 (0x0004) [float]
-  HorizontalSplitscreenFOVOffset: number; // 0x075c (0x0004) [float]
-  VerticalSplitscreenFOVOffset: number; // 0x0760 (0x0004) [float]
-  ClipRate: number; // 0x0764 (0x0004) [float]
-  CurrentSwivel: FRotator; // 0x0768 (0x000c) [FRotator]
-  Shell: UGFxShell_TA; // 0x0778 (0x0008) [UGFxShell_TA*]
-  CurrentInputType: EInputPlatformType; // 0x0780 (0x0001) [EInputPlatformType]
-  Demolisher: URBActor_TA; // 0x0788 (0x0008) [URBActor_TA*]
-  bDemolished: boolean; // 0x0790 (0x0004) [bool : 0x1]
-  bGroundClampTrace: boolean; // 0x0790 (0x0004) [bool : 0x2]
-  DemolishedPawn: UPawn; // 0x0798 (0x0008) [UPawn*]
-  CameraSettings: UCameraSettingsActor_TA; // 0x07a0 (0x0008) [UCameraSettingsActor_TA*]
-  GroundClampZOffset: number; // 0x07a8 (0x0004) [float]
-  CameraConfig: UCameraConfig_TA; // 0x07b0 (0x0008) [UCameraConfig_TA*]
-  __EventCameraTargetChanged__Delegate: FScriptDelegate; // 0x07b8 (0x0018) [FScriptDelegate]
+  DemoSelectLerpLimits: FProfileSliderLimits; // 0x0748 (0x000c) [FProfileSliderLimits]
+  CameraPresetSettings: FProfileCameraSettings[]; // 0x0758 (0x0010) [TArray<FProfileCameraSettings>]
+  HorizontalSplitscreenHeightOffset: number; // 0x0768 (0x0004) [float]
+  HorizontalSplitscreenFOVOffset: number; // 0x076c (0x0004) [float]
+  VerticalSplitscreenFOVOffset: number; // 0x0770 (0x0004) [float]
+  ClipRate: number; // 0x0774 (0x0004) [float]
+  CurrentSwivel: FRotator; // 0x0778 (0x000c) [FRotator]
+  Shell: UGFxShell_TA; // 0x0788 (0x0008) [UGFxShell_TA*]
+  CurrentInputType: EInputPlatformType; // 0x0790 (0x0001) [EInputPlatformType]
+  Demolisher: URBActor_TA; // 0x0798 (0x0008) [URBActor_TA*]
+  bDemolished: boolean; // 0x07a0 (0x0004) [bool : 0x1]
+  bGroundClampTrace: boolean; // 0x07a0 (0x0004) [bool : 0x2]
+  DemolishedPawn: UPawn; // 0x07a8 (0x0008) [UPawn*]
+  CameraSettings: UCameraSettingsActor_TA; // 0x07b0 (0x0008) [UCameraSettingsActor_TA*]
+  GroundClampZOffset: number; // 0x07b8 (0x0004) [float]
+  CameraConfig: UCameraConfig_TA; // 0x07c0 (0x0008) [UCameraConfig_TA*]
+  __EventCameraTargetChanged__Delegate: FScriptDelegate; // 0x07c8 (0x0018) [FScriptDelegate]
 };
 
 // Camera_TA Functions
@@ -12109,12 +12291,12 @@ export type UCamera_TA = UCamera_X & {
 
 /**
  * Class TAGame.Camera_Edit_TA
- * Size: 0x07E0
+ * Size: 0x07F0
  * Extends: UCamera_TA
  */
 export type UCamera_Edit_TA = UCamera_TA & {
-  CameraMode: FName; // 0x07d0 (0x0008) [FName]
-  CurrentCameraState: UCameraState_Edit_TA; // 0x07d8 (0x0008) [UCameraState_Edit_TA*]
+  CameraMode: FName; // 0x07e0 (0x0008) [FName]
+  CurrentCameraState: UCameraState_Edit_TA; // 0x07e8 (0x0008) [UCameraState_Edit_TA*]
 };
 
 // Camera_Edit_TA Functions
@@ -12124,12 +12306,12 @@ export type UCamera_Edit_TA = UCamera_TA & {
 
 /**
  * Class TAGame.Camera_GameEditor_TA
- * Size: 0x07E0
+ * Size: 0x07F0
  * Extends: UCamera_TA
  */
 export type UCamera_GameEditor_TA = UCamera_TA & {
-  CameraMode: FName; // 0x07d0 (0x0008) [FName]
-  CurrentCameraState: UCameraState_GameEditor_TA; // 0x07d8 (0x0008) [UCameraState_GameEditor_TA*]
+  CameraMode: FName; // 0x07e0 (0x0008) [FName]
+  CurrentCameraState: UCameraState_GameEditor_TA; // 0x07e8 (0x0008) [UCameraState_GameEditor_TA*]
 };
 
 // Camera_GameEditor_TA Functions
@@ -12159,27 +12341,27 @@ export type UCamera_MainMenu_TA = UCamera_X & {
 
 /**
  * Class TAGame.Camera_Replay_TA
- * Size: 0x0890
+ * Size: 0x08A0
  * Extends: UCamera_TA
  */
 export type UCamera_Replay_TA = UCamera_TA & {
-  OverrideStates: UCameraState_X[]; // 0x07d0 (0x0010) [TArray<UCameraState_X*>]
-  FocusActorString: string; // 0x07e0 (0x0010) [FString]
-  CameraMode: FName; // 0x07f0 (0x0008) [FName]
-  DefaultCameraMode: FName; // 0x07f8 (0x0008) [FName]
-  DOFDistanceLimits: FProfileSliderLimits; // 0x0800 (0x000c) [FProfileSliderLimits]
-  DOFInfLimits: FProfileSliderLimits; // 0x080c (0x000c) [FProfileSliderLimits]
-  DOFKernelLimits: FProfileSliderLimits; // 0x0818 (0x000c) [FProfileSliderLimits]
-  GreenScreenLimits: FProfileSliderLimits; // 0x0824 (0x000c) [FProfileSliderLimits]
-  BloomScaleLimits: FProfileSliderLimits; // 0x0830 (0x000c) [FProfileSliderLimits]
-  FilterOverlayLimits: FProfileSliderLimits; // 0x083c (0x000c) [FProfileSliderLimits]
-  bReplayTranslucency: boolean; // 0x0848 (0x0004) [bool : 0x1]
-  bGreenScreen: boolean; // 0x0848 (0x0004) [bool : 0x2]
-  GreenScreenColorIndex: number; // 0x084c (0x0004) [float]
-  CurrentCameraState: UCameraState_Replay_TA; // 0x0850 (0x0008) [UCameraState_Replay_TA*]
-  PreviousCameraProxyState: UCameraState_X; // 0x0858 (0x0008) [UCameraState_X*]
-  __EventCameraProxyStateChanged__Delegate: FScriptDelegate; // 0x0860 (0x0018) [FScriptDelegate]
-  __CameraMode__ChangeNotify: FScriptDelegate; // 0x0878 (0x0018) [FScriptDelegate]
+  OverrideStates: UCameraState_X[]; // 0x07e0 (0x0010) [TArray<UCameraState_X*>]
+  FocusActorString: string; // 0x07f0 (0x0010) [FString]
+  CameraMode: FName; // 0x0800 (0x0008) [FName]
+  DefaultCameraMode: FName; // 0x0808 (0x0008) [FName]
+  DOFDistanceLimits: FProfileSliderLimits; // 0x0810 (0x000c) [FProfileSliderLimits]
+  DOFInfLimits: FProfileSliderLimits; // 0x081c (0x000c) [FProfileSliderLimits]
+  DOFKernelLimits: FProfileSliderLimits; // 0x0828 (0x000c) [FProfileSliderLimits]
+  GreenScreenLimits: FProfileSliderLimits; // 0x0834 (0x000c) [FProfileSliderLimits]
+  BloomScaleLimits: FProfileSliderLimits; // 0x0840 (0x000c) [FProfileSliderLimits]
+  FilterOverlayLimits: FProfileSliderLimits; // 0x084c (0x000c) [FProfileSliderLimits]
+  bReplayTranslucency: boolean; // 0x0858 (0x0004) [bool : 0x1]
+  bGreenScreen: boolean; // 0x0858 (0x0004) [bool : 0x2]
+  GreenScreenColorIndex: number; // 0x085c (0x0004) [float]
+  CurrentCameraState: UCameraState_Replay_TA; // 0x0860 (0x0008) [UCameraState_Replay_TA*]
+  PreviousCameraProxyState: UCameraState_X; // 0x0868 (0x0008) [UCameraState_X*]
+  __EventCameraProxyStateChanged__Delegate: FScriptDelegate; // 0x0870 (0x0018) [FScriptDelegate]
+  __CameraMode__ChangeNotify: FScriptDelegate; // 0x0888 (0x0018) [FScriptDelegate]
 };
 
 // Camera_Replay_TA Functions
@@ -12224,8 +12406,10 @@ export type UCameraSettingsActor_TA = UReplicationInfo & {
   bUsingSecondaryCamera: boolean; // 0x0298 (0x0004) [bool : 0x1]
   bUsingBehindView: boolean; // 0x0298 (0x0004) [bool : 0x2]
   bUsingFreecam: boolean; // 0x0298 (0x0004) [bool : 0x4]
-  bDirtySecondaryCamera: boolean; // 0x0298 (0x0004) [bool : 0x8]
-  bDirtyBehindView: boolean; // 0x0298 (0x0004) [bool : 0x10]
+  bLookingAtBall: boolean; // 0x0298 (0x0004) [bool : 0x8]
+  bDirtySecondaryCamera: boolean; // 0x0298 (0x0004) [bool : 0x10]
+  bDirtyBehindView: boolean; // 0x0298 (0x0004) [bool : 0x20]
+  bDirtyLookingAtBall: boolean; // 0x0298 (0x0004) [bool : 0x40]
   CameraPitch: number; // 0x029c (0x0001) [uint8]
   CameraYaw: number; // 0x029d (0x0001) [uint8]
   MaxProximityDistance: number; // 0x02a0 (0x0004) [float]
@@ -12270,27 +12454,30 @@ export type UCameraSettingsActorCopy_TA = UCameraSettingsActor_TA & {};
 
 /**
  * Class TAGame.CameraState_TA
- * Size: 0x0098
+ * Size: 0x00C4
  * Extends: UCameraState_X
  */
 export type UCameraState_TA = UCameraState_X & {
   bShowCarHUD: boolean; // 0x0090 (0x0004) [bool : 0x1]
   bAllowRearCamera: boolean; // 0x0090 (0x0004) [bool : 0x2]
-  StateStartTime: number; // 0x0094 (0x0004) [float]
+  LastCalculatedPOV: FCameraOrientation; // 0x0094 (0x002c) [FCameraOrientation]
+  StateStartTime: number; // 0x00c0 (0x0004) [float]
 };
 
 // CameraState_TA Functions
+// GetLastCalculatedPOV(): FCameraOrientation
+// UpdatePOV(DeltaTime: number, OutPOV: FCameraOrientation): void
 // GetCameraTA(): UCamera_TA
-// BeginCameraState(): void
+// BeginCameraState(PreviousState: UCameraState_X): void
 
 /**
  * Class TAGame.CameraState_CarRef_TA
- * Size: 0x00A8
+ * Size: 0x00D8
  * Extends: UCameraState_TA
  */
 export type UCameraState_CarRef_TA = UCameraState_TA & {
-  Car: UCar_TA; // 0x0098 (0x0008) [UCar_TA*]
-  CameraSettings: UCameraSettingsActor_TA; // 0x00a0 (0x0008) [UCameraSettingsActor_TA*]
+  Car: UCar_TA; // 0x00c8 (0x0008) [UCar_TA*]
+  CameraSettings: UCameraSettingsActor_TA; // 0x00d0 (0x0008) [UCameraSettingsActor_TA*]
 };
 
 // CameraState_CarRef_TA Functions
@@ -12304,45 +12491,48 @@ export type UCameraState_CarRef_TA = UCameraState_TA & {
 
 /**
  * Class TAGame.CameraState_Car_TA
- * Size: 0x01D4
+ * Size: 0x021C
  * Extends: UCameraState_CarRef_TA
  */
 export type UCameraState_Car_TA = UCameraState_CarRef_TA & {
-  InterpToAirRate: number; // 0x00a8 (0x0004) [float]
-  InterpToGroundRate: number; // 0x00ac (0x0004) [float]
-  FocusInterp: FInterpVector; // 0x00b0 (0x0028) [FInterpVector]
-  FocusOffsetInterp: FInterpVector; // 0x00d8 (0x0028) [FInterpVector]
-  DistanceInterp: FInterpVector; // 0x0100 (0x0028) [FInterpVector]
-  GroundRotationInterpRate: number; // 0x0128 (0x0004) [float]
-  GroundRotationInterpRateWall: number; // 0x012c (0x0004) [float]
-  AirVelocityInfluence: number; // 0x0130 (0x0004) [float]
-  AirVelocityInfluenceMaxSpeed: number; // 0x0134 (0x0004) [float]
-  DistanceSpeedScale: number; // 0x0138 (0x0004) [float]
-  DistanceOffsetMin: number; // 0x013c (0x0004) [float]
-  MaxSpeedFOV: number; // 0x0140 (0x0004) [float]
-  FOVInterpSpeed: number; // 0x0144 (0x0004) [float]
-  SupersonicFOV: number; // 0x0148 (0x0004) [float]
-  SupersonicFOVInterpSpeed: number; // 0x014c (0x0004) [float]
-  BouncyChassisScale: number; // 0x0150 (0x0004) [float]
-  RollScale: number; // 0x0154 (0x0004) [float]
-  GroundNormalInterpRate: number; // 0x0158 (0x0004) [float]
-  AirGroundBlend: number; // 0x015c (0x0004) [float]
-  ViewOffset: FCameraOrientation; // 0x0160 (0x002c) [FCameraOrientation]
-  bFirstExecution: boolean; // 0x018c (0x0004) [bool : 0x1]
-  bOnGround: boolean; // 0x018c (0x0004) [bool : 0x2]
-  bFreeLookActive: boolean; // 0x018c (0x0004) [bool : 0x4]
-  bRecenterActive: boolean; // 0x018c (0x0004) [bool : 0x8]
-  GroundNormal: FVector; // 0x0190 (0x000c) [FVector]
-  CameraStartDistance: number; // 0x019c (0x0004) [float]
-  Config: UCameraConfig_TA; // 0x01a0 (0x0008) [UCameraConfig_TA*]
-  ProximityDistance: number; // 0x01a8 (0x0004) [float]
-  ProximityDetectionSpeedCap: number; // 0x01ac (0x0004) [float]
-  ProximityDistanceMultiplier: number; // 0x01b0 (0x0004) [float]
-  ProximityDetectionMultiplier: number; // 0x01b4 (0x0004) [float]
-  ProximityDistanceBlendInSpeed: number; // 0x01b8 (0x0004) [float]
-  ProximityDistanceBlendOutSpeed: number; // 0x01bc (0x0004) [float]
-  ProximityTargetClass: UTarget_TA; // 0x01c0 (0x0008) [UTarget_TA*]
-  ProximityDistanceLimits: FProfileSliderLimits; // 0x01c8 (0x000c) [FProfileSliderLimits]
+  InterpToAirRate: number; // 0x00d8 (0x0004) [float]
+  InterpToGroundRate: number; // 0x00dc (0x0004) [float]
+  FocusInterp: FInterpVector; // 0x00e0 (0x0028) [FInterpVector]
+  FocusOffsetInterp: FInterpVector; // 0x0108 (0x0028) [FInterpVector]
+  DistanceInterp: FInterpVector; // 0x0130 (0x0028) [FInterpVector]
+  GroundRotationInterpRate: number; // 0x0158 (0x0004) [float]
+  GroundRotationInterpRateWall: number; // 0x015c (0x0004) [float]
+  AirVelocityInfluence: number; // 0x0160 (0x0004) [float]
+  AirVelocityInfluenceMaxSpeed: number; // 0x0164 (0x0004) [float]
+  DistanceSpeedScale: number; // 0x0168 (0x0004) [float]
+  DistanceOffsetMin: number; // 0x016c (0x0004) [float]
+  MaxSpeedFOV: number; // 0x0170 (0x0004) [float]
+  FOVInterpSpeed: number; // 0x0174 (0x0004) [float]
+  SupersonicFOV: number; // 0x0178 (0x0004) [float]
+  SupersonicFOVInterpSpeed: number; // 0x017c (0x0004) [float]
+  BouncyChassisScale: number; // 0x0180 (0x0004) [float]
+  RollScale: number; // 0x0184 (0x0004) [float]
+  GroundNormalInterpRate: number; // 0x0188 (0x0004) [float]
+  AirGroundBlend: number; // 0x018c (0x0004) [float]
+  ViewOffset: FCameraOrientation; // 0x0190 (0x002c) [FCameraOrientation]
+  bFirstExecution: boolean; // 0x01bc (0x0004) [bool : 0x1]
+  bOnGround: boolean; // 0x01bc (0x0004) [bool : 0x2]
+  bFreeLookActive: boolean; // 0x01bc (0x0004) [bool : 0x4]
+  bShowDebug: boolean; // 0x01bc (0x0004) [bool : 0x8]
+  bLastStateWasLookAtBall: boolean; // 0x01bc (0x0004) [bool : 0x10]
+  GroundNormal: FVector; // 0x01c0 (0x000c) [FVector]
+  CameraStartDistance: number; // 0x01cc (0x0004) [float]
+  Config: UCameraConfig_TA; // 0x01d0 (0x0008) [UCameraConfig_TA*]
+  ProximityDistance: number; // 0x01d8 (0x0004) [float]
+  ProximityDetectionSpeedCap: number; // 0x01dc (0x0004) [float]
+  ProximityDistanceMultiplier: number; // 0x01e0 (0x0004) [float]
+  ProximityDetectionMultiplier: number; // 0x01e4 (0x0004) [float]
+  ProximityDistanceBlendInSpeed: number; // 0x01e8 (0x0004) [float]
+  ProximityDistanceBlendOutSpeed: number; // 0x01ec (0x0004) [float]
+  ProximityTargetClass: UTarget_TA; // 0x01f0 (0x0008) [UTarget_TA*]
+  ProximityDistanceLimits: FProfileSliderLimits; // 0x01f8 (0x000c) [FProfileSliderLimits]
+  InterpRotationGround: FRotator; // 0x0204 (0x000c) [FRotator]
+  InterpRotationWall: FRotator; // 0x0210 (0x000c) [FRotator]
 };
 
 // CameraState_Car_TA Functions
@@ -12369,28 +12559,30 @@ export type UCameraState_Car_TA = UCameraState_CarRef_TA & {
 // UpdateValidPOV(DeltaTime: number, OutPOV: FCameraOrientation): void
 // UpdatePOV(DeltaTime: number, OutPOV: FCameraOrientation): void
 // ResetView(): void
-// BeginCameraState(): void
+// BeginCameraState(PreviousState: UCameraState_X): void
 
 /**
  * Class TAGame.CameraState_BallCam_TA
- * Size: 0x0278
+ * Size: 0x02D8
  * Extends: UCameraState_Car_TA
  */
 export type UCameraState_BallCam_TA = UCameraState_Car_TA & {
-  RotationRate: number; // 0x01d8 (0x0004) [float]
-  PitchScale: number; // 0x01dc (0x0004) [float]
-  PitchFocusZFactor: number; // 0x01e0 (0x0004) [float]
-  PitchExtentMin: number; // 0x01e4 (0x0004) [float]
-  PitchExtentMax: number; // 0x01e8 (0x0004) [float]
-  Target: UTarget_TA; // 0x01f0 (0x0008) [UTarget_TA*]
-  BasePOV: FCameraOrientation; // 0x01f8 (0x002c) [FCameraOrientation]
-  OldTargetLocation: FVector; // 0x0224 (0x000c) [FVector]
-  bWasReverseCam: boolean; // 0x0230 (0x0004) [bool : 0x1]
-  bActive: boolean; // 0x0230 (0x0004) [bool : 0x2]
-  TargetClasses: UTarget_TA[]; // 0x0238 (0x0010) [TArray<UTarget_TA*>]
-  PlaneSelectSettings: FPlaneSelectData[]; // 0x0248 (0x0010) [TArray<FPlaneSelectData>]
-  AngleSelectSettings: FAngleSelectData[]; // 0x0258 (0x0010) [TArray<FAngleSelectData>]
-  AvailableTargets: UTarget_TA[]; // 0x0268 (0x0010) [TArray<UTarget_TA*>]
+  RotationRate: number; // 0x0220 (0x0004) [float]
+  PitchScale: number; // 0x0224 (0x0004) [float]
+  PitchFocusZFactor: number; // 0x0228 (0x0004) [float]
+  PitchExtentMin: number; // 0x022c (0x0004) [float]
+  PitchExtentMax: number; // 0x0230 (0x0004) [float]
+  Target: UTarget_TA; // 0x0238 (0x0008) [UTarget_TA*]
+  BasePOV: FCameraOrientation; // 0x0240 (0x002c) [FCameraOrientation]
+  CurrBallLocation: FVector; // 0x026c (0x000c) [FVector]
+  OldBallLocation: FVector; // 0x0278 (0x000c) [FVector]
+  CurrRotToBall: FRotator; // 0x0284 (0x000c) [FRotator]
+  bWasReverseCam: boolean; // 0x0290 (0x0004) [bool : 0x1]
+  bActive: boolean; // 0x0290 (0x0004) [bool : 0x2]
+  TargetClasses: UTarget_TA[]; // 0x0298 (0x0010) [TArray<UTarget_TA*>]
+  PlaneSelectSettings: FPlaneSelectData[]; // 0x02a8 (0x0010) [TArray<FPlaneSelectData>]
+  AngleSelectSettings: FAngleSelectData[]; // 0x02b8 (0x0010) [TArray<FAngleSelectData>]
+  AvailableTargets: UTarget_TA[]; // 0x02c8 (0x0010) [TArray<UTarget_TA*>]
 };
 
 // CameraState_BallCam_TA Functions
@@ -12412,13 +12604,13 @@ export type UCameraState_BallCam_TA = UCameraState_Car_TA & {
 // TargetSelect(PC: UPlayerController_TA, Direction: number): void
 // NextPotentialTarget(PC: UPlayerController_TA, Direction: number): UTarget_TA
 // EndCameraState(): void
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 // ShutDown(): void
 // Init(InCamera: UCamera_X): void
 
 /**
  * Class TAGame.CameraState_BallCam_KnockOut_TA
- * Size: 0x0278
+ * Size: 0x02D8
  * Extends: UCameraState_BallCam_TA
  */
 export type UCameraState_BallCam_KnockOut_TA = UCameraState_BallCam_TA & {};
@@ -12431,13 +12623,13 @@ export type UCameraState_BallCam_KnockOut_TA = UCameraState_BallCam_TA & {};
 
 /**
  * Class TAGame.CameraState_BallCamInverted_TA
- * Size: 0x0290
+ * Size: 0x02F0
  * Extends: UCameraState_BallCam_TA
  */
 export type UCameraState_BallCamInverted_TA = UCameraState_BallCam_TA & {
-  StartBlendParams: FViewTargetTransitionParams; // 0x0278 (0x0010) [FViewTargetTransitionParams]
-  bAllowBlendTimeOverride: boolean; // 0x0288 (0x0004) [bool : 0x1]
-  DelayFromSpawn: number; // 0x028c (0x0004) [float]
+  StartBlendParams: FViewTargetTransitionParams; // 0x02d8 (0x0010) [FViewTargetTransitionParams]
+  bAllowBlendTimeOverride: boolean; // 0x02e8 (0x0004) [bool : 0x1]
+  DelayFromSpawn: number; // 0x02ec (0x0004) [float]
 };
 
 // CameraState_BallCamInverted_TA Functions
@@ -12447,7 +12639,7 @@ export type UCameraState_BallCamInverted_TA = UCameraState_BallCam_TA & {
 // UpdateValidPOV(DeltaTime: number, OutPOV: FCameraOrientation): void
 // ShouldExecute(): boolean
 // EndCameraState(): void
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 
 /**
  * Class TAGame.CameraState_LiveReplay_TA
@@ -12487,7 +12679,7 @@ export type UCameraState_LiveReplay_TA = UCameraState_X & {
 // Tick(DeltaTime: number): void
 // UpdateSlomo(DeltaTime: number): void
 // EndCameraState(): void
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 // GetEndBlendParams(NewState: UCameraState_X): FViewTargetTransitionParams
 // ShouldExecute(): boolean
 
@@ -12515,15 +12707,15 @@ export type UCameraState_BreakoutLiveReplay_TA = UCameraState_LiveReplay_TA & {
 
 /**
  * Class TAGame.CameraState_Replay_TA
- * Size: 0x00B4
+ * Size: 0x00E4
  * Extends: UCameraState_TA
  */
 export type UCameraState_Replay_TA = UCameraState_TA & {
-  bLocalMovement: boolean; // 0x0098 (0x0004) [bool : 0x1]
-  bClipToField: boolean; // 0x0098 (0x0004) [bool : 0x2]
-  bUIHighlightFocus: boolean; // 0x0098 (0x0004) [bool : 0x4]
-  OldFocusActor: UActor; // 0x00a0 (0x0008) [UActor*]
-  OldFocusActorLocation: FVector; // 0x00a8 (0x000c) [FVector]
+  bLocalMovement: boolean; // 0x00c8 (0x0004) [bool : 0x1]
+  bClipToField: boolean; // 0x00c8 (0x0004) [bool : 0x2]
+  bUIHighlightFocus: boolean; // 0x00c8 (0x0004) [bool : 0x4]
+  OldFocusActor: UActor; // 0x00d0 (0x0008) [UActor*]
+  OldFocusActorLocation: FVector; // 0x00d8 (0x000c) [FVector]
 };
 
 // CameraState_Replay_TA Functions
@@ -12532,7 +12724,7 @@ export type UCameraState_Replay_TA = UCameraState_TA & {
 // UpdateFocusActorPOV(FocusActor: UActor, DeltaTime: number, OutPOV: FCameraOrientation): void
 // ShouldUpdateAspectRatio(): boolean
 // UpdatePOV(DeltaTime: number, OutPOV: FCameraOrientation): void
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 // GetProxyCameraState(): UCameraState_X
 // ShouldClipToField(): boolean
 // AllowSwivel(): boolean
@@ -12540,17 +12732,17 @@ export type UCameraState_Replay_TA = UCameraState_TA & {
 
 /**
  * Class TAGame.CameraState_CameraTrack_TA
- * Size: 0x00E8
+ * Size: 0x0118
  * Extends: UCameraState_Replay_TA
  */
 export type UCameraState_CameraTrack_TA = UCameraState_Replay_TA & {
-  Replay: UReplay_TA; // 0x00b8 (0x0008) [UReplay_TA*]
-  FlyType: ECameraTrackFlyType; // 0x00c0 (0x0001) [ECameraTrackFlyType]
-  bFlying: boolean; // 0x00c4 (0x0004) [bool : 0x1]
-  LastReplayTime: number; // 0x00c8 (0x0004) [float]
-  AccumulatedLook: FRotator; // 0x00cc (0x000c) [FRotator]
-  AccumulatedMove: FVector; // 0x00d8 (0x000c) [FVector]
-  LastFOV: number; // 0x00e4 (0x0004) [float]
+  Replay: UReplay_TA; // 0x00e8 (0x0008) [UReplay_TA*]
+  FlyType: ECameraTrackFlyType; // 0x00f0 (0x0001) [ECameraTrackFlyType]
+  bFlying: boolean; // 0x00f4 (0x0004) [bool : 0x1]
+  LastReplayTime: number; // 0x00f8 (0x0004) [float]
+  AccumulatedLook: FRotator; // 0x00fc (0x000c) [FRotator]
+  AccumulatedMove: FVector; // 0x0108 (0x000c) [FVector]
+  LastFOV: number; // 0x0114 (0x0004) [float]
 };
 
 // CameraState_CameraTrack_TA Functions
@@ -12559,15 +12751,15 @@ export type UCameraState_CameraTrack_TA = UCameraState_Replay_TA & {
 // AllowFlyingWhenMoving(): boolean
 // AllowFlying(): boolean
 // UpdatePOV(DeltaTime: number, OutPOV: FCameraOrientation): void
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 
 /**
  * Class TAGame.CameraState_Car_KnockOut_TA
- * Size: 0x0280
+ * Size: 0x02E0
  * Extends: UCameraState_BallCam_TA
  */
 export type UCameraState_Car_KnockOut_TA = UCameraState_BallCam_TA & {
-  PotentialTarget: UTarget_TA; // 0x0278 (0x0008) [UTarget_TA*]
+  PotentialTarget: UTarget_TA; // 0x02d8 (0x0008) [UTarget_TA*]
 };
 
 // CameraState_Car_KnockOut_TA Functions
@@ -12583,13 +12775,13 @@ export type UCameraState_Car_KnockOut_TA = UCameraState_BallCam_TA & {
 
 /**
  * Class TAGame.CameraState_CarInverted_TA
- * Size: 0x01F0
+ * Size: 0x0238
  * Extends: UCameraState_Car_TA
  */
 export type UCameraState_CarInverted_TA = UCameraState_Car_TA & {
-  StartBlendParams: FViewTargetTransitionParams; // 0x01d8 (0x0010) [FViewTargetTransitionParams]
-  bAllowBlendTimeOverride: boolean; // 0x01e8 (0x0004) [bool : 0x1]
-  DelayFromSpawn: number; // 0x01ec (0x0004) [float]
+  StartBlendParams: FViewTargetTransitionParams; // 0x0220 (0x0010) [FViewTargetTransitionParams]
+  bAllowBlendTimeOverride: boolean; // 0x0230 (0x0004) [bool : 0x1]
+  DelayFromSpawn: number; // 0x0234 (0x0004) [float]
 };
 
 // CameraState_CarInverted_TA Functions
@@ -12625,7 +12817,7 @@ export type UCameraState_CarPreview_TA = UCameraState_X & {
 // OnSnap(): void
 // PreviewFadeIn(): void
 // PreviewFadeOut(InPrevState: UCameraState_CarPreview_TA): void
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 // GetAccumulatedOrientation(out_Location: FVector, out_Rotation: FRotator, NumPreviewActors: number): void
 // GetActorOrientation(OutPOV: FCameraOrientation, OutSideOffset: number): void
 // GetSingleActorOrientation(ViewTarget: UCarPreviewActor_TA, OutLoc: FVector, OutRot: FRotator): void
@@ -12635,25 +12827,25 @@ export type UCameraState_CarPreview_TA = UCameraState_X & {
 
 /**
  * Class TAGame.CameraState_DirectorProxy_TA
- * Size: 0x0180
+ * Size: 0x01B0
  * Extends: UCameraState_Replay_TA
  */
 export type UCameraState_DirectorProxy_TA = UCameraState_Replay_TA & {
-  GameEvent: UGameEvent_Soccar_TA; // 0x00b8 (0x0008) [UGameEvent_Soccar_TA*]
-  GameObserver: UGameObserver_TA; // 0x00c0 (0x0008) [UGameObserver_TA*]
-  MinimumStateTime: number; // 0x00c8 (0x0004) [float]
-  DistToBallWeight: FInterpCurveFloat; // 0x00d0 (0x0018) [FInterpCurveFloat]
-  PlayersInViewWeight: FInterpCurveFloat; // 0x00e8 (0x0018) [FInterpCurveFloat]
-  ViewPitchWeight: FInterpCurveFloat; // 0x0100 (0x0018) [FInterpCurveFloat]
-  GoalInViewWeight: number; // 0x0118 (0x0004) [float]
-  CanSeeNewViewContinuity: number; // 0x011c (0x0004) [float]
-  SimilarOrientationContinuity: FInterpCurveFloat; // 0x0120 (0x0018) [FInterpCurveFloat]
-  SimilarCarVelocityContinuity: FInterpCurveFloat; // 0x0138 (0x0018) [FInterpCurveFloat]
-  FieldForward: FVector; // 0x0150 (0x000c) [FVector]
-  FieldSide: FVector; // 0x015c (0x000c) [FVector]
-  bActive: boolean; // 0x0168 (0x0004) [bool : 0x1]
-  Director: UCameraState_Director_TA; // 0x0170 (0x0008) [UCameraState_Director_TA*]
-  CameraSave: UProfileCameraSave_TA; // 0x0178 (0x0008) [UProfileCameraSave_TA*]
+  GameEvent: UGameEvent_Soccar_TA; // 0x00e8 (0x0008) [UGameEvent_Soccar_TA*]
+  GameObserver: UGameObserver_TA; // 0x00f0 (0x0008) [UGameObserver_TA*]
+  MinimumStateTime: number; // 0x00f8 (0x0004) [float]
+  DistToBallWeight: FInterpCurveFloat; // 0x0100 (0x0018) [FInterpCurveFloat]
+  PlayersInViewWeight: FInterpCurveFloat; // 0x0118 (0x0018) [FInterpCurveFloat]
+  ViewPitchWeight: FInterpCurveFloat; // 0x0130 (0x0018) [FInterpCurveFloat]
+  GoalInViewWeight: number; // 0x0148 (0x0004) [float]
+  CanSeeNewViewContinuity: number; // 0x014c (0x0004) [float]
+  SimilarOrientationContinuity: FInterpCurveFloat; // 0x0150 (0x0018) [FInterpCurveFloat]
+  SimilarCarVelocityContinuity: FInterpCurveFloat; // 0x0168 (0x0018) [FInterpCurveFloat]
+  FieldForward: FVector; // 0x0180 (0x000c) [FVector]
+  FieldSide: FVector; // 0x018c (0x000c) [FVector]
+  bActive: boolean; // 0x0198 (0x0004) [bool : 0x1]
+  Director: UCameraState_Director_TA; // 0x01a0 (0x0008) [UCameraState_Director_TA*]
+  CameraSave: UProfileCameraSave_TA; // 0x01a8 (0x0008) [UProfileCameraSave_TA*]
 };
 
 // CameraState_DirectorProxy_TA Functions
@@ -12669,22 +12861,22 @@ export type UCameraState_DirectorProxy_TA = UCameraState_Replay_TA & {
 // Init(InCamera: UCamera_X): void
 // OnSetGameObserver(): void
 // EndCameraState(): void
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 
 /**
  * Class TAGame.CameraState_Countdown_TA
- * Size: 0x01B8
+ * Size: 0x01E8
  * Extends: UCameraState_DirectorProxy_TA
  */
 export type UCameraState_Countdown_TA = UCameraState_DirectorProxy_TA & {
-  MaxCarsShown: number; // 0x0180 (0x0004) [int32]
-  TimePerCar: number; // 0x0184 (0x0004) [float]
-  bSwitchTeamsEveryCar: boolean; // 0x0188 (0x0004) [bool : 0x1]
-  ShownCars: UCar_TA[]; // 0x0190 (0x0010) [TArray<UCar_TA*>]
-  CurrentCar: UCar_TA; // 0x01a0 (0x0008) [UCar_TA*]
-  NextCar: UCar_TA; // 0x01a8 (0x0008) [UCar_TA*]
-  LastTeam: number; // 0x01b0 (0x0004) [int32]
-  LastChangeCarTime: number; // 0x01b4 (0x0004) [float]
+  MaxCarsShown: number; // 0x01b0 (0x0004) [int32]
+  TimePerCar: number; // 0x01b4 (0x0004) [float]
+  bSwitchTeamsEveryCar: boolean; // 0x01b8 (0x0004) [bool : 0x1]
+  ShownCars: UCar_TA[]; // 0x01c0 (0x0010) [TArray<UCar_TA*>]
+  CurrentCar: UCar_TA; // 0x01d0 (0x0008) [UCar_TA*]
+  NextCar: UCar_TA; // 0x01d8 (0x0008) [UCar_TA*]
+  LastTeam: number; // 0x01e0 (0x0004) [int32]
+  LastChangeCarTime: number; // 0x01e4 (0x0004) [float]
 };
 
 // CameraState_Countdown_TA Functions
@@ -12696,20 +12888,20 @@ export type UCameraState_Countdown_TA = UCameraState_DirectorProxy_TA & {
 // ShouldKeepExecuting(): boolean
 // ShouldExecute(): boolean
 // EndCameraState(): void
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 
 /**
  * Class TAGame.CameraState_CustomFocus_TA
- * Size: 0x01F8
+ * Size: 0x0240
  * Extends: UCameraState_Car_TA
  */
 export type UCameraState_CustomFocus_TA = UCameraState_Car_TA & {
-  RotationRate: number; // 0x01d8 (0x0004) [float]
-  PitchScale: number; // 0x01dc (0x0004) [float]
-  PitchFocusZFactor: number; // 0x01e0 (0x0004) [float]
-  PitchExtentMin: number; // 0x01e4 (0x0004) [float]
-  PitchExtentMax: number; // 0x01e8 (0x0004) [float]
-  FocusTarget: UCustomFocusTarget_TA; // 0x01f0 (0x0008) [UCustomFocusTarget_TA*]
+  RotationRate: number; // 0x0220 (0x0004) [float]
+  PitchScale: number; // 0x0224 (0x0004) [float]
+  PitchFocusZFactor: number; // 0x0228 (0x0004) [float]
+  PitchExtentMin: number; // 0x022c (0x0004) [float]
+  PitchExtentMax: number; // 0x0230 (0x0004) [float]
+  FocusTarget: UCustomFocusTarget_TA; // 0x0238 (0x0008) [UCustomFocusTarget_TA*]
 };
 
 // CameraState_CustomFocus_TA Functions
@@ -12722,45 +12914,74 @@ export type UCameraState_CustomFocus_TA = UCameraState_Car_TA & {
 
 /**
  * Class TAGame.CameraState_Demolished_TA
- * Size: 0x00C4
+ * Size: 0x00F4
  * Extends: UCameraState_TA
  */
 export type UCameraState_Demolished_TA = UCameraState_TA & {
-  RotationInterpRate: number; // 0x0098 (0x0004) [float]
-  DemolishedPawn: UPawn; // 0x00a0 (0x0008) [UPawn*]
-  StateTime: number; // 0x00a8 (0x0004) [float]
-  InitialFOV: number; // 0x00ac (0x0004) [float]
-  FOVBlendTime: number; // 0x00b0 (0x0004) [float]
-  bInterp: boolean; // 0x00b4 (0x0004) [bool : 0x1]
-  bTrackDemolisher: boolean; // 0x00b4 (0x0004) [bool : 0x2]
-  MaxZoomInFOV: number; // 0x00b8 (0x0004) [float]
-  MaxFOVBlendDistance: number; // 0x00bc (0x0004) [float]
-  Distance: number; // 0x00c0 (0x0004) [float]
+  RotationInterpRate: number; // 0x00c8 (0x0004) [float]
+  DemolishedPawn: UPawn; // 0x00d0 (0x0008) [UPawn*]
+  StateTime: number; // 0x00d8 (0x0004) [float]
+  InitialFOV: number; // 0x00dc (0x0004) [float]
+  FOVBlendTime: number; // 0x00e0 (0x0004) [float]
+  bInterp: boolean; // 0x00e4 (0x0004) [bool : 0x1]
+  bTrackDemolisher: boolean; // 0x00e4 (0x0004) [bool : 0x2]
+  MaxZoomInFOV: number; // 0x00e8 (0x0004) [float]
+  MaxFOVBlendDistance: number; // 0x00ec (0x0004) [float]
+  Distance: number; // 0x00f0 (0x0004) [float]
 };
 
 // CameraState_Demolished_TA Functions
 // UpdatePOV(DeltaTime: number, OutPOV: FCameraOrientation): void
 // EndCameraState(): void
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 // ShouldKeepExecuting(): boolean
 // ShouldExecute(): boolean
 // GetEndBlendParams(NewState: UCameraState_X): FViewTargetTransitionParams
 
 /**
+ * Class TAGame.CameraState_DemoSpawnSelect_TA
+ * Size: 0x011C
+ * Extends: UCameraState_TA
+ */
+export type UCameraState_DemoSpawnSelect_TA = UCameraState_TA & {
+  CameraSave: UProfileCameraSave_TA; // 0x00c8 (0x0008) [UProfileCameraSave_TA*]
+  SecondsSinceTransition: number; // 0x00d0 (0x0004) [float]
+  SpawnLocation: FVector; // 0x00d4 (0x000c) [FVector]
+  SpawnRotation: FRotator; // 0x00e0 (0x000c) [FRotator]
+  PrevSpawnLocation: FVector; // 0x00ec (0x000c) [FVector]
+  PrevSpawnRotation: FRotator; // 0x00f8 (0x000c) [FRotator]
+  PrevLocation: FVector; // 0x0104 (0x000c) [FVector]
+  PrevRotation: FRotator; // 0x0110 (0x000c) [FRotator]
+};
+
+// CameraState_DemoSpawnSelect_TA Functions
+// __CameraState_DemoSpawnSelect_TA__Init_0x1(SO: UProfileCameraSave_TA): void
+// GetEndBlendParams(NewState: UCameraState_X): FViewTargetTransitionParams
+// GetStartBlendParams(PreviousState: UCameraState_X): FViewTargetTransitionParams
+// UpdatePOV(DeltaTime: number, OutPOV: FCameraOrientation): void
+// ShouldKeepExecuting(): boolean
+// static HasDemoSelection(Data: FDemoSpawnSelectionData): boolean
+// ShouldExecute(): boolean
+// Init(InCamera: UCamera_X): void
+// HandleDemoDataChanged(PRI: UPRI_TA): void
+// EndCameraState(): void
+// BeginCameraState(PreviousState: UCameraState_X): void
+
+/**
  * Class TAGame.CameraState_Director_TA
- * Size: 0x0104
+ * Size: 0x0134
  * Extends: UCameraState_Replay_TA
  */
 export type UCameraState_Director_TA = UCameraState_Replay_TA & {
-  GameEvent: UGameEvent_Soccar_TA; // 0x00b8 (0x0008) [UGameEvent_Soccar_TA*]
-  IdleSelector: UCameraStateSelector_TA; // 0x00c0 (0x0008) [UCameraStateSelector_TA*]
-  CountdownSelector: UCameraStateSelector_TA; // 0x00c8 (0x0008) [UCameraStateSelector_TA*]
-  KickoffSelector: UCameraStateSelector_TA; // 0x00d0 (0x0008) [UCameraStateSelector_TA*]
-  DefaultSelector: UCameraStateSelector_TA; // 0x00d8 (0x0008) [UCameraStateSelector_TA*]
-  MinTransitionTimeLimits: FProfileSliderLimits; // 0x00e0 (0x000c) [FProfileSliderLimits]
-  CurrentSelector: UCameraStateSelector_TA; // 0x00f0 (0x0008) [UCameraStateSelector_TA*]
-  CurrentState: UCameraState_X; // 0x00f8 (0x0008) [UCameraState_X*]
-  bInitialized: boolean; // 0x0100 (0x0004) [bool : 0x1]
+  GameEvent: UGameEvent_Soccar_TA; // 0x00e8 (0x0008) [UGameEvent_Soccar_TA*]
+  IdleSelector: UCameraStateSelector_TA; // 0x00f0 (0x0008) [UCameraStateSelector_TA*]
+  CountdownSelector: UCameraStateSelector_TA; // 0x00f8 (0x0008) [UCameraStateSelector_TA*]
+  KickoffSelector: UCameraStateSelector_TA; // 0x0100 (0x0008) [UCameraStateSelector_TA*]
+  DefaultSelector: UCameraStateSelector_TA; // 0x0108 (0x0008) [UCameraStateSelector_TA*]
+  MinTransitionTimeLimits: FProfileSliderLimits; // 0x0110 (0x000c) [FProfileSliderLimits]
+  CurrentSelector: UCameraStateSelector_TA; // 0x0120 (0x0008) [UCameraStateSelector_TA*]
+  CurrentState: UCameraState_X; // 0x0128 (0x0008) [UCameraState_X*]
+  bInitialized: boolean; // 0x0130 (0x0004) [bool : 0x1]
 };
 
 // CameraState_Director_TA Functions
@@ -12777,11 +12998,11 @@ export type UCameraState_Director_TA = UCameraState_Replay_TA & {
 
 /**
  * Class TAGame.CameraState_DirectorBallCam_TA
- * Size: 0x0298
+ * Size: 0x02F8
  * Extends: UCameraState_BallCam_TA
  */
 export type UCameraState_DirectorBallCam_TA = UCameraState_BallCam_TA & {
-  ForcedCameraSettings: FProfileCameraSettings; // 0x0278 (0x0020) [FProfileCameraSettings]
+  ForcedCameraSettings: FProfileCameraSettings; // 0x02d8 (0x0020) [FProfileCameraSettings]
 };
 
 // CameraState_DirectorBallCam_TA Functions
@@ -12789,14 +13010,14 @@ export type UCameraState_DirectorBallCam_TA = UCameraState_BallCam_TA & {
 
 /**
  * Class TAGame.CameraState_DirectorCountdownRotate_TA
- * Size: 0x01D8
+ * Size: 0x0208
  * Extends: UCameraState_Countdown_TA
  */
 export type UCameraState_DirectorCountdownRotate_TA = UCameraState_Countdown_TA & {
-  FOV: number; // 0x01b8 (0x0004) [float]
-  Distance: number; // 0x01bc (0x0004) [float]
-  InitialRotation: FRotator; // 0x01c0 (0x000c) [FRotator]
-  RotationSpeed: FRotator; // 0x01cc (0x000c) [FRotator]
+  FOV: number; // 0x01e8 (0x0004) [float]
+  Distance: number; // 0x01ec (0x0004) [float]
+  InitialRotation: FRotator; // 0x01f0 (0x000c) [FRotator]
+  RotationSpeed: FRotator; // 0x01fc (0x000c) [FRotator]
 };
 
 // CameraState_DirectorCountdownRotate_TA Functions
@@ -12804,14 +13025,14 @@ export type UCameraState_DirectorCountdownRotate_TA = UCameraState_Countdown_TA 
 
 /**
  * Class TAGame.CameraState_DirectorCountdownTailPass_TA
- * Size: 0x01D8
+ * Size: 0x0208
  * Extends: UCameraState_Countdown_TA
  */
 export type UCameraState_DirectorCountdownTailPass_TA = UCameraState_Countdown_TA & {
-  DistanceFromCar: number; // 0x01b8 (0x0004) [float]
-  InitialRotation: FRotator; // 0x01bc (0x000c) [FRotator]
-  RotationSpeed: FRotator; // 0x01c8 (0x000c) [FRotator]
-  FOV: number; // 0x01d4 (0x0004) [float]
+  DistanceFromCar: number; // 0x01e8 (0x0004) [float]
+  InitialRotation: FRotator; // 0x01ec (0x000c) [FRotator]
+  RotationSpeed: FRotator; // 0x01f8 (0x000c) [FRotator]
+  FOV: number; // 0x0204 (0x0004) [float]
 };
 
 // CameraState_DirectorCountdownTailPass_TA Functions
@@ -12819,13 +13040,13 @@ export type UCameraState_DirectorCountdownTailPass_TA = UCameraState_Countdown_T
 
 /**
  * Class TAGame.CameraState_DirectorGoalScorer_TA
- * Size: 0x0190
+ * Size: 0x01C0
  * Extends: UCameraState_DirectorProxy_TA
  */
 export type UCameraState_DirectorGoalScorer_TA = UCameraState_DirectorProxy_TA & {
-  Distance: number; // 0x0180 (0x0004) [float]
-  FOV: number; // 0x0184 (0x0004) [float]
-  FocusCar: UCar_TA; // 0x0188 (0x0008) [UCar_TA*]
+  Distance: number; // 0x01b0 (0x0004) [float]
+  FOV: number; // 0x01b4 (0x0004) [float]
+  FocusCar: UCar_TA; // 0x01b8 (0x0008) [UCar_TA*]
 };
 
 // CameraState_DirectorGoalScorer_TA Functions
@@ -12834,20 +13055,20 @@ export type UCameraState_DirectorGoalScorer_TA = UCameraState_DirectorProxy_TA &
 // ShouldExecute(): boolean
 // HandlePlayerScored(InGameEvent: UGameEvent_Soccar_TA, Scorer: UPRI_TA): void
 // EndCameraState(): void
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 // ShutDown(): void
 // Init(InCamera: UCamera_X): void
 
 /**
  * Class TAGame.CameraState_DirectorKickoff_TA
- * Size: 0x01A4
+ * Size: 0x01D4
  * Extends: UCameraState_DirectorProxy_TA
  */
 export type UCameraState_DirectorKickoff_TA = UCameraState_DirectorProxy_TA & {
-  Distance: number; // 0x0180 (0x0004) [float]
-  RotationOffset: FRotator; // 0x0184 (0x000c) [FRotator]
-  FOV: number; // 0x0190 (0x0004) [float]
-  BlendToParams: FViewTargetTransitionParams; // 0x0194 (0x0010) [FViewTargetTransitionParams]
+  Distance: number; // 0x01b0 (0x0004) [float]
+  RotationOffset: FRotator; // 0x01b4 (0x000c) [FRotator]
+  FOV: number; // 0x01c0 (0x0004) [float]
+  BlendToParams: FViewTargetTransitionParams; // 0x01c4 (0x0010) [FViewTargetTransitionParams]
 };
 
 // CameraState_DirectorKickoff_TA Functions
@@ -12857,20 +13078,20 @@ export type UCameraState_DirectorKickoff_TA = UCameraState_DirectorProxy_TA & {
 
 /**
  * Class TAGame.CameraState_DirectorMoving_TA
- * Size: 0x01E4
+ * Size: 0x0214
  * Extends: UCameraState_DirectorProxy_TA
  */
 export type UCameraState_DirectorMoving_TA = UCameraState_DirectorProxy_TA & {
-  StartOffset: FVector; // 0x0180 (0x000c) [FVector]
-  EndOffset: FVector; // 0x018c (0x000c) [FVector]
-  StartRotation: FRotator; // 0x0198 (0x000c) [FRotator]
-  EndRotation: FRotator; // 0x01a4 (0x000c) [FRotator]
-  PanBlend: FViewTargetTransitionParams; // 0x01b0 (0x0010) [FViewTargetTransitionParams]
-  StartFOV: number; // 0x01c0 (0x0004) [float]
-  EndFOV: number; // 0x01c4 (0x0004) [float]
-  LoopType: ECameraLoopType; // 0x01c8 (0x0001) [ECameraLoopType]
-  CachedStart: FVector; // 0x01cc (0x000c) [FVector]
-  CachedEnd: FVector; // 0x01d8 (0x000c) [FVector]
+  StartOffset: FVector; // 0x01b0 (0x000c) [FVector]
+  EndOffset: FVector; // 0x01bc (0x000c) [FVector]
+  StartRotation: FRotator; // 0x01c8 (0x000c) [FRotator]
+  EndRotation: FRotator; // 0x01d4 (0x000c) [FRotator]
+  PanBlend: FViewTargetTransitionParams; // 0x01e0 (0x0010) [FViewTargetTransitionParams]
+  StartFOV: number; // 0x01f0 (0x0004) [float]
+  EndFOV: number; // 0x01f4 (0x0004) [float]
+  LoopType: ECameraLoopType; // 0x01f8 (0x0001) [ECameraLoopType]
+  CachedStart: FVector; // 0x01fc (0x000c) [FVector]
+  CachedEnd: FVector; // 0x0208 (0x000c) [FVector]
 };
 
 // CameraState_DirectorMoving_TA Functions
@@ -12880,40 +13101,40 @@ export type UCameraState_DirectorMoving_TA = UCameraState_DirectorProxy_TA & {
 
 /**
  * Class TAGame.CameraState_DirectorPlayerView_TA
- * Size: 0x0254
+ * Size: 0x0284
  * Extends: UCameraState_DirectorProxy_TA
  */
 export type UCameraState_DirectorPlayerView_TA = UCameraState_DirectorProxy_TA & {
-  BallCameraState: UCameraState_CarRef_TA; // 0x0180 (0x0008) [UCameraState_CarRef_TA*]
-  MinimumHit: number; // 0x0188 (0x0004) [float]
-  MinimumHitSeparation: number; // 0x018c (0x0004) [float]
-  StaleDistance: number; // 0x0190 (0x0004) [float]
-  MinimumTimeToBall: number; // 0x0194 (0x0004) [float]
-  CarChangeTimePadding: number; // 0x0198 (0x0004) [float]
-  CarChangeBlendParams: FViewTargetTransitionParams; // 0x019c (0x0010) [FViewTargetTransitionParams]
-  CarChangeBlendTimeForDistance: FInterpCurveFloat; // 0x01b0 (0x0018) [FInterpCurveFloat]
-  MinBlendContinuity: number; // 0x01c8 (0x0004) [float]
-  MaxBlendDistance: number; // 0x01cc (0x0004) [float]
-  MaintainCurrentDistance: number; // 0x01d0 (0x0004) [float]
-  MaintainCurrentHitBias: number; // 0x01d4 (0x0004) [float]
-  MaintainBallScorability: number; // 0x01d8 (0x0004) [float]
-  MaintainBallScorabilityViewRating: number; // 0x01dc (0x0004) [float]
-  ContinuityBias: FInterpCurveFloat; // 0x01e0 (0x0018) [FInterpCurveFloat]
-  MinimumViewRating: number; // 0x01f8 (0x0004) [float]
-  AttackerBias: number; // 0x01fc (0x0004) [float]
-  AttackingGoalDistance: number; // 0x0200 (0x0004) [float]
-  BadFocusDistance: number; // 0x0204 (0x0004) [float]
-  BadFocusViewRating: number; // 0x0208 (0x0004) [float]
-  BadFocusViewRatingDuration: number; // 0x020c (0x0004) [float]
-  FocusCar: UCar_TA; // 0x0210 (0x0008) [UCar_TA*]
-  LastCarChangeTime: number; // 0x0218 (0x0004) [float]
-  bIsRelevant: boolean; // 0x021c (0x0004) [bool : 0x1]
-  bBlending: boolean; // 0x021c (0x0004) [bool : 0x2]
-  bExceptionallyBadFocus: boolean; // 0x021c (0x0004) [bool : 0x4]
-  bBadViewRating: boolean; // 0x021c (0x0004) [bool : 0x8]
-  BlendTime: number; // 0x0220 (0x0004) [float]
-  SnapshotPOV: FCameraOrientation; // 0x0224 (0x002c) [FCameraOrientation]
-  BadViewRatingStart: number; // 0x0250 (0x0004) [float]
+  BallCameraState: UCameraState_CarRef_TA; // 0x01b0 (0x0008) [UCameraState_CarRef_TA*]
+  MinimumHit: number; // 0x01b8 (0x0004) [float]
+  MinimumHitSeparation: number; // 0x01bc (0x0004) [float]
+  StaleDistance: number; // 0x01c0 (0x0004) [float]
+  MinimumTimeToBall: number; // 0x01c4 (0x0004) [float]
+  CarChangeTimePadding: number; // 0x01c8 (0x0004) [float]
+  CarChangeBlendParams: FViewTargetTransitionParams; // 0x01cc (0x0010) [FViewTargetTransitionParams]
+  CarChangeBlendTimeForDistance: FInterpCurveFloat; // 0x01e0 (0x0018) [FInterpCurveFloat]
+  MinBlendContinuity: number; // 0x01f8 (0x0004) [float]
+  MaxBlendDistance: number; // 0x01fc (0x0004) [float]
+  MaintainCurrentDistance: number; // 0x0200 (0x0004) [float]
+  MaintainCurrentHitBias: number; // 0x0204 (0x0004) [float]
+  MaintainBallScorability: number; // 0x0208 (0x0004) [float]
+  MaintainBallScorabilityViewRating: number; // 0x020c (0x0004) [float]
+  ContinuityBias: FInterpCurveFloat; // 0x0210 (0x0018) [FInterpCurveFloat]
+  MinimumViewRating: number; // 0x0228 (0x0004) [float]
+  AttackerBias: number; // 0x022c (0x0004) [float]
+  AttackingGoalDistance: number; // 0x0230 (0x0004) [float]
+  BadFocusDistance: number; // 0x0234 (0x0004) [float]
+  BadFocusViewRating: number; // 0x0238 (0x0004) [float]
+  BadFocusViewRatingDuration: number; // 0x023c (0x0004) [float]
+  FocusCar: UCar_TA; // 0x0240 (0x0008) [UCar_TA*]
+  LastCarChangeTime: number; // 0x0248 (0x0004) [float]
+  bIsRelevant: boolean; // 0x024c (0x0004) [bool : 0x1]
+  bBlending: boolean; // 0x024c (0x0004) [bool : 0x2]
+  bExceptionallyBadFocus: boolean; // 0x024c (0x0004) [bool : 0x4]
+  bBadViewRating: boolean; // 0x024c (0x0004) [bool : 0x8]
+  BlendTime: number; // 0x0250 (0x0004) [float]
+  SnapshotPOV: FCameraOrientation; // 0x0254 (0x002c) [FCameraOrientation]
+  BadViewRatingStart: number; // 0x0280 (0x0004) [float]
 };
 
 // CameraState_DirectorPlayerView_TA Functions
@@ -12927,34 +13148,34 @@ export type UCameraState_DirectorPlayerView_TA = UCameraState_DirectorProxy_TA &
 // FindFocusCar(): void
 // SetFocusCar(InCar: UCar_TA): void
 // EndCameraState(): void
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 // Init(InCamera: UCamera_X): void
 
 /**
  * Class TAGame.CameraState_Edit_TA
- * Size: 0x009C
+ * Size: 0x00CC
  * Extends: UCameraState_TA
  */
 export type UCameraState_Edit_TA = UCameraState_TA & {
-  bLocalMovement: boolean; // 0x0098 (0x0004) [bool : 0x1]
+  bLocalMovement: boolean; // 0x00c8 (0x0004) [bool : 0x1]
 };
 
 // CameraState_Edit_TA Functions
 // UpdateFlyPOV(DeltaTime: number, OutPOV: FCameraOrientation): void
 // UpdatePOV(DeltaTime: number, OutPOV: FCameraOrientation): void
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 // GetProxyCameraState(): UCameraState_X
 // AllowSwivel(): boolean
 
 /**
  * Class TAGame.CameraState_Freecam_TA
- * Size: 0x012C
+ * Size: 0x015C
  * Extends: UCameraState_CarRef_TA
  */
 export type UCameraState_Freecam_TA = UCameraState_CarRef_TA & {
-  ViewOffset_Near: FCameraOrientation; // 0x00a8 (0x002c) [FCameraOrientation]
-  ViewOffset_Far: FCameraOrientation; // 0x00d4 (0x002c) [FCameraOrientation]
-  ViewOffset: FCameraOrientation; // 0x0100 (0x002c) [FCameraOrientation]
+  ViewOffset_Near: FCameraOrientation; // 0x00d8 (0x002c) [FCameraOrientation]
+  ViewOffset_Far: FCameraOrientation; // 0x0104 (0x002c) [FCameraOrientation]
+  ViewOffset: FCameraOrientation; // 0x0130 (0x002c) [FCameraOrientation]
 };
 
 // CameraState_Freecam_TA Functions
@@ -12963,7 +13184,7 @@ export type UCameraState_Freecam_TA = UCameraState_CarRef_TA & {
 
 /**
  * Class TAGame.CameraState_GameEditor_TA
- * Size: 0x0098
+ * Size: 0x00C8
  * Extends: UCameraState_TA
  */
 export type UCameraState_GameEditor_TA = UCameraState_TA & {};
@@ -12971,7 +13192,7 @@ export type UCameraState_GameEditor_TA = UCameraState_TA & {};
 // CameraState_GameEditor_TA Functions
 // UpdateFlyPOV(DeltaTime: number, OutPOV: FCameraOrientation): void
 // UpdatePOV(DeltaTime: number, OutPOV: FCameraOrientation): void
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 // GetProxyCameraState(): UCameraState_X
 // AllowSwivel(): boolean
 
@@ -12998,7 +13219,7 @@ export type UCameraState_IntroMenu_TA = UCameraState_X & {
 // ShiftLeftFocus(): void
 // ShiftRightFocus(): void
 // UpdatePOV(DeltaTime: number, OutPOV: FCameraOrientation): void
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 // EventFocusChanged(CameraState: UCameraState_IntroMenu_TA): void
 
 /**
@@ -13040,7 +13261,7 @@ export type UCameraState_LobbyFocus_TA = UCameraState_X & {
 // SetupTargetCamera(): void
 // ShouldKeepExecuting(): boolean
 // GetEndBlendParams(NewState: UCameraState_X): FViewTargetTransitionParams
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 // ShouldExecute(): boolean
 // Init(InCamera: UCamera_X): void
 
@@ -13083,7 +13304,7 @@ export type UCameraState_PodiumSpotlight_TA = UCameraState_X & {
 // UpdateCachedCarInfo(GameEvent: UGameEvent_TA): void
 // GetFocusCenter(FieldCenter: FVector, PodiumSpotlightZ: number): FVector
 // UpdatePOV(DeltaTime: number, OutPOV: FCameraOrientation): void
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 // ShouldExecute(): boolean
 
 /**
@@ -13124,7 +13345,7 @@ export type UCameraState_PremiumGarage_TA = UCameraState_CarPreview_TA & {
 // AdjustOutPOVCameraRotation(AddedRotator: FRotator, OutPOV: FCameraOrientation): void
 // GetCameraCurveSpeed(): number
 // ManuallyAdjustCar(bEnable: boolean): void
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 // SetTurntableActor(): void
 // GetEndBlendParams(NewState: UCameraState_X): FViewTargetTransitionParams
 // GetActorOrientation(OutPOV: FCameraOrientation, OutSideOffset: number): void
@@ -13148,12 +13369,12 @@ export type UCameraState_PrePodiumSpotlight_TA = UCameraState_X & {
 
 /**
  * Class TAGame.CameraState_Prespawn_TA
- * Size: 0x00A8
+ * Size: 0x00D8
  * Extends: UCameraState_TA
  */
 export type UCameraState_Prespawn_TA = UCameraState_TA & {
-  CameraConfig: UCameraConfig_TA; // 0x0098 (0x0008) [UCameraConfig_TA*]
-  CameraSave: UProfileCameraSave_TA; // 0x00a0 (0x0008) [UProfileCameraSave_TA*]
+  CameraConfig: UCameraConfig_TA; // 0x00c8 (0x0008) [UCameraConfig_TA*]
+  CameraSave: UProfileCameraSave_TA; // 0x00d0 (0x0008) [UProfileCameraSave_TA*]
 };
 
 // CameraState_Prespawn_TA Functions
@@ -13167,88 +13388,88 @@ export type UCameraState_Prespawn_TA = UCameraState_TA & {
 
 /**
  * Class TAGame.CameraState_ReplayAutoCam_TA
- * Size: 0x02C0
+ * Size: 0x02F0
  * Extends: UCameraState_Replay_TA
  */
 export type UCameraState_ReplayAutoCam_TA = UCameraState_Replay_TA & {
-  FOVInterpSpeed: number; // 0x00b8 (0x0004) [float]
-  StartViewFocusTime: number; // 0x00bc (0x0004) [float]
-  FocusPitchInterpSpeed: number; // 0x00c0 (0x0004) [float]
-  FocusYawInterpSpeed: number; // 0x00c4 (0x0004) [float]
-  AerialFOV: number; // 0x00c8 (0x0004) [float]
-  CountDownFOV: number; // 0x00cc (0x0004) [float]
-  CountDownPanSpeed: number; // 0x00d0 (0x0004) [float]
-  CountDownRotateSpeed: number; // 0x00d4 (0x0004) [float]
-  CountDownPanBlendAmount: number; // 0x00d8 (0x0004) [float]
-  CountDownFocusActorStartTime: number; // 0x00dc (0x0004) [float]
-  LocationBlendSpeed: number; // 0x00e0 (0x0004) [float]
-  BallAerialZStartTime: number; // 0x00e4 (0x0004) [float]
-  MinBallAerialZHeight: number; // 0x00e8 (0x0004) [float]
-  MinPlayerAerialZHeight: number; // 0x00ec (0x0004) [float]
-  MinFocusActorViewTime: number; // 0x00f0 (0x0004) [float]
-  BallFloorFocusPercent: number; // 0x00f4 (0x0004) [float]
-  LocationAngleInterpSpeed: number; // 0x00f8 (0x0004) [float]
-  LastLocationAngleUpdateTime: number; // 0x00fc (0x0004) [float]
-  MinStartRadiusForPlayerAerial: number; // 0x0100 (0x0004) [float]
-  MaxStartRadiusForPlayerAerial: number; // 0x0104 (0x0004) [float]
-  DesiredCameraDistance: number; // 0x0108 (0x0004) [float]
-  ResetToMapDefaultTime: number; // 0x010c (0x0004) [float]
-  MaxWaitTimeTillBallHit: number; // 0x0110 (0x0004) [float]
-  FocusActorZViewOffset: number; // 0x0114 (0x0004) [float]
-  FloorTraceDistance: number; // 0x0118 (0x0004) [float]
-  BackAwayFromWallDistance: number; // 0x011c (0x0004) [float]
-  NoCarsNearBallDistance: number; // 0x0120 (0x0004) [float]
-  MinPlayerCameraFloorHeight: number; // 0x0124 (0x0004) [float]
-  FocusPointInterpSpeed: number; // 0x0128 (0x0004) [float]
-  MinMaxPitch: number; // 0x012c (0x0004) [float]
-  LastDesiredLocationBlendSpeed: number; // 0x0130 (0x0004) [float]
-  AdditionalFocusZ: number; // 0x0134 (0x0004) [float]
-  TimeSinceIgnoredGoalFocusExtent: number; // 0x0138 (0x0004) [float]
-  LastTimeAPlayerWasNearBall: number; // 0x013c (0x0004) [float]
-  AdditionalBackAwayFromBallSpeed: number; // 0x0140 (0x0004) [float]
-  GoalScorerFocusDistance: number; // 0x0144 (0x0004) [float]
-  MapResetStartDistance: number; // 0x0148 (0x0004) [float]
-  MapResetStartHeight: number; // 0x014c (0x0004) [float]
-  GoalScoredDistance: number; // 0x0150 (0x0004) [float]
-  MaxGoalYZoomOutDistance: number; // 0x0154 (0x0004) [float]
-  MaxGoalXZoomOutDistance: number; // 0x0158 (0x0004) [float]
-  MinCameraDistanceToBall: number; // 0x015c (0x0004) [float]
-  bSnapFOV: boolean; // 0x0160 (0x0004) [bool : 0x1]
-  bSnapToFocus: boolean; // 0x0160 (0x0004) [bool : 0x2]
-  bBallHasBeenHit: boolean; // 0x0160 (0x0004) [bool : 0x4]
-  bHasGoalScorerFocus: boolean; // 0x0160 (0x0004) [bool : 0x8]
-  bHitWallLastFrame: boolean; // 0x0160 (0x0004) [bool : 0x10]
-  BallFloorLocation: FVector; // 0x0164 (0x000c) [FVector]
-  BallFloorNormal: FVector; // 0x0170 (0x000c) [FVector]
-  LastCarFocusOffset: FVector; // 0x017c (0x000c) [FVector]
-  CountDownPanDirection: FVector; // 0x0188 (0x000c) [FVector]
-  CountDownPanStartOffset: FVector; // 0x0194 (0x000c) [FVector]
-  CountDownRotateOffset: FVector; // 0x01a0 (0x000c) [FVector]
-  LastFocusOffset: FVector; // 0x01ac (0x000c) [FVector]
-  LastFocusLocation: FVector; // 0x01b8 (0x000c) [FVector]
-  LastDesiredLocation: FVector; // 0x01c4 (0x000c) [FVector]
-  LocationAngle: FRotator; // 0x01d0 (0x000c) [FRotator]
-  DesiredLocationAngle: FRotator; // 0x01dc (0x000c) [FRotator]
-  DesiredRotation: FRotator; // 0x01e8 (0x000c) [FRotator]
-  MapResetStartRotation: FRotator; // 0x01f4 (0x000c) [FRotator]
-  FocusActor: UPRI_TA; // 0x0200 (0x0008) [UPRI_TA*]
-  LastScorer: UPRI_TA; // 0x0208 (0x0008) [UPRI_TA*]
-  AerialPRIs: UPRI_TA[]; // 0x0210 (0x0010) [TArray<UPRI_TA*>]
-  CountDownPRIs: UPRI_TA[]; // 0x0220 (0x0010) [TArray<UPRI_TA*>]
-  GoalFocus: UGoal_TA; // 0x0230 (0x0008) [UGoal_TA*]
-  CountDownFocusType: ECountDownFocus; // 0x0238 (0x0001) [ECountDownFocus]
-  Ball: UBall_TA; // 0x0240 (0x0008) [UBall_TA*]
-  SoccarGame: UGameEvent_Soccar_TA; // 0x0248 (0x0008) [UGameEvent_Soccar_TA*]
-  ReplayCameraState: UCameraState_X; // 0x0250 (0x0008) [UCameraState_X*]
-  CameraDistanceLimits: FProfileSliderLimits; // 0x0258 (0x000c) [FProfileSliderLimits]
-  CameraZLimits: FProfileSliderLimits; // 0x0264 (0x000c) [FProfileSliderLimits]
-  CameraMoveSpeedLimits: FProfileSliderLimits; // 0x0270 (0x000c) [FProfileSliderLimits]
-  CameraMoveSpeedZLimits: FProfileSliderLimits; // 0x027c (0x000c) [FProfileSliderLimits]
-  PlayerCameraDistanceLimits: FProfileSliderLimits; // 0x0288 (0x000c) [FProfileSliderLimits]
-  RotateSpeedLimits: FProfileSliderLimits; // 0x0294 (0x000c) [FProfileSliderLimits]
-  PlayerFocusBlendSpeedLimits: FProfileSliderLimits; // 0x02a0 (0x000c) [FProfileSliderLimits]
-  AerialPredictionLimits: FProfileSliderLimits; // 0x02ac (0x000c) [FProfileSliderLimits]
-  CameraSave: UProfileCameraSave_TA; // 0x02b8 (0x0008) [UProfileCameraSave_TA*]
+  FOVInterpSpeed: number; // 0x00e8 (0x0004) [float]
+  StartViewFocusTime: number; // 0x00ec (0x0004) [float]
+  FocusPitchInterpSpeed: number; // 0x00f0 (0x0004) [float]
+  FocusYawInterpSpeed: number; // 0x00f4 (0x0004) [float]
+  AerialFOV: number; // 0x00f8 (0x0004) [float]
+  CountDownFOV: number; // 0x00fc (0x0004) [float]
+  CountDownPanSpeed: number; // 0x0100 (0x0004) [float]
+  CountDownRotateSpeed: number; // 0x0104 (0x0004) [float]
+  CountDownPanBlendAmount: number; // 0x0108 (0x0004) [float]
+  CountDownFocusActorStartTime: number; // 0x010c (0x0004) [float]
+  LocationBlendSpeed: number; // 0x0110 (0x0004) [float]
+  BallAerialZStartTime: number; // 0x0114 (0x0004) [float]
+  MinBallAerialZHeight: number; // 0x0118 (0x0004) [float]
+  MinPlayerAerialZHeight: number; // 0x011c (0x0004) [float]
+  MinFocusActorViewTime: number; // 0x0120 (0x0004) [float]
+  BallFloorFocusPercent: number; // 0x0124 (0x0004) [float]
+  LocationAngleInterpSpeed: number; // 0x0128 (0x0004) [float]
+  LastLocationAngleUpdateTime: number; // 0x012c (0x0004) [float]
+  MinStartRadiusForPlayerAerial: number; // 0x0130 (0x0004) [float]
+  MaxStartRadiusForPlayerAerial: number; // 0x0134 (0x0004) [float]
+  DesiredCameraDistance: number; // 0x0138 (0x0004) [float]
+  ResetToMapDefaultTime: number; // 0x013c (0x0004) [float]
+  MaxWaitTimeTillBallHit: number; // 0x0140 (0x0004) [float]
+  FocusActorZViewOffset: number; // 0x0144 (0x0004) [float]
+  FloorTraceDistance: number; // 0x0148 (0x0004) [float]
+  BackAwayFromWallDistance: number; // 0x014c (0x0004) [float]
+  NoCarsNearBallDistance: number; // 0x0150 (0x0004) [float]
+  MinPlayerCameraFloorHeight: number; // 0x0154 (0x0004) [float]
+  FocusPointInterpSpeed: number; // 0x0158 (0x0004) [float]
+  MinMaxPitch: number; // 0x015c (0x0004) [float]
+  LastDesiredLocationBlendSpeed: number; // 0x0160 (0x0004) [float]
+  AdditionalFocusZ: number; // 0x0164 (0x0004) [float]
+  TimeSinceIgnoredGoalFocusExtent: number; // 0x0168 (0x0004) [float]
+  LastTimeAPlayerWasNearBall: number; // 0x016c (0x0004) [float]
+  AdditionalBackAwayFromBallSpeed: number; // 0x0170 (0x0004) [float]
+  GoalScorerFocusDistance: number; // 0x0174 (0x0004) [float]
+  MapResetStartDistance: number; // 0x0178 (0x0004) [float]
+  MapResetStartHeight: number; // 0x017c (0x0004) [float]
+  GoalScoredDistance: number; // 0x0180 (0x0004) [float]
+  MaxGoalYZoomOutDistance: number; // 0x0184 (0x0004) [float]
+  MaxGoalXZoomOutDistance: number; // 0x0188 (0x0004) [float]
+  MinCameraDistanceToBall: number; // 0x018c (0x0004) [float]
+  bSnapFOV: boolean; // 0x0190 (0x0004) [bool : 0x1]
+  bSnapToFocus: boolean; // 0x0190 (0x0004) [bool : 0x2]
+  bBallHasBeenHit: boolean; // 0x0190 (0x0004) [bool : 0x4]
+  bHasGoalScorerFocus: boolean; // 0x0190 (0x0004) [bool : 0x8]
+  bHitWallLastFrame: boolean; // 0x0190 (0x0004) [bool : 0x10]
+  BallFloorLocation: FVector; // 0x0194 (0x000c) [FVector]
+  BallFloorNormal: FVector; // 0x01a0 (0x000c) [FVector]
+  LastCarFocusOffset: FVector; // 0x01ac (0x000c) [FVector]
+  CountDownPanDirection: FVector; // 0x01b8 (0x000c) [FVector]
+  CountDownPanStartOffset: FVector; // 0x01c4 (0x000c) [FVector]
+  CountDownRotateOffset: FVector; // 0x01d0 (0x000c) [FVector]
+  LastFocusOffset: FVector; // 0x01dc (0x000c) [FVector]
+  LastFocusLocation: FVector; // 0x01e8 (0x000c) [FVector]
+  LastDesiredLocation: FVector; // 0x01f4 (0x000c) [FVector]
+  LocationAngle: FRotator; // 0x0200 (0x000c) [FRotator]
+  DesiredLocationAngle: FRotator; // 0x020c (0x000c) [FRotator]
+  DesiredRotation: FRotator; // 0x0218 (0x000c) [FRotator]
+  MapResetStartRotation: FRotator; // 0x0224 (0x000c) [FRotator]
+  FocusActor: UPRI_TA; // 0x0230 (0x0008) [UPRI_TA*]
+  LastScorer: UPRI_TA; // 0x0238 (0x0008) [UPRI_TA*]
+  AerialPRIs: UPRI_TA[]; // 0x0240 (0x0010) [TArray<UPRI_TA*>]
+  CountDownPRIs: UPRI_TA[]; // 0x0250 (0x0010) [TArray<UPRI_TA*>]
+  GoalFocus: UGoal_TA; // 0x0260 (0x0008) [UGoal_TA*]
+  CountDownFocusType: ECountDownFocus; // 0x0268 (0x0001) [ECountDownFocus]
+  Ball: UBall_TA; // 0x0270 (0x0008) [UBall_TA*]
+  SoccarGame: UGameEvent_Soccar_TA; // 0x0278 (0x0008) [UGameEvent_Soccar_TA*]
+  ReplayCameraState: UCameraState_X; // 0x0280 (0x0008) [UCameraState_X*]
+  CameraDistanceLimits: FProfileSliderLimits; // 0x0288 (0x000c) [FProfileSliderLimits]
+  CameraZLimits: FProfileSliderLimits; // 0x0294 (0x000c) [FProfileSliderLimits]
+  CameraMoveSpeedLimits: FProfileSliderLimits; // 0x02a0 (0x000c) [FProfileSliderLimits]
+  CameraMoveSpeedZLimits: FProfileSliderLimits; // 0x02ac (0x000c) [FProfileSliderLimits]
+  PlayerCameraDistanceLimits: FProfileSliderLimits; // 0x02b8 (0x000c) [FProfileSliderLimits]
+  RotateSpeedLimits: FProfileSliderLimits; // 0x02c4 (0x000c) [FProfileSliderLimits]
+  PlayerFocusBlendSpeedLimits: FProfileSliderLimits; // 0x02d0 (0x000c) [FProfileSliderLimits]
+  AerialPredictionLimits: FProfileSliderLimits; // 0x02dc (0x000c) [FProfileSliderLimits]
+  CameraSave: UProfileCameraSave_TA; // 0x02e8 (0x0008) [UProfileCameraSave_TA*]
 };
 
 // CameraState_ReplayAutoCam_TA Functions
@@ -13323,43 +13544,43 @@ export type UCameraState_ReplayAutoCam_TA = UCameraState_Replay_TA & {
 // UpdatePOV(DeltaTime: number, OutPOV: FCameraOrientation): void
 // SetFromMapInfo(): void
 // EndCameraState(): void
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 // Init(InCamera: UCamera_X): void
 
 /**
  * Class TAGame.CameraState_ReplayFly_TA
- * Size: 0x00B8
+ * Size: 0x00E8
  * Extends: UCameraState_Replay_TA
  */
 export type UCameraState_ReplayFly_TA = UCameraState_Replay_TA & {};
 
 /**
  * Class TAGame.CameraState_ReplayFollow_TA
- * Size: 0x00E4
+ * Size: 0x0114
  * Extends: UCameraState_Replay_TA
  */
 export type UCameraState_ReplayFollow_TA = UCameraState_Replay_TA & {
-  FollowDistance: number; // 0x00b8 (0x0004) [float]
-  MinFollowDistance: number; // 0x00bc (0x0004) [float]
-  MaxFollowDistance: number; // 0x00c0 (0x0004) [float]
-  FollowRotationRateCurve: FInterpCurveFloat; // 0x00c8 (0x0018) [FInterpCurveFloat]
-  bFirstExecution: boolean; // 0x00e0 (0x0004) [bool : 0x1]
+  FollowDistance: number; // 0x00e8 (0x0004) [float]
+  MinFollowDistance: number; // 0x00ec (0x0004) [float]
+  MaxFollowDistance: number; // 0x00f0 (0x0004) [float]
+  FollowRotationRateCurve: FInterpCurveFloat; // 0x00f8 (0x0018) [FInterpCurveFloat]
+  bFirstExecution: boolean; // 0x0110 (0x0004) [bool : 0x1]
 };
 
 // CameraState_ReplayFollow_TA Functions
 // UpdateFocusActorPOV(FocusActor: UActor, DeltaTime: number, OutPOV: FCameraOrientation): void
 // IsDisabled(CameraMode: FName, InFocusActorString: string): boolean
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 
 /**
  * Class TAGame.CameraState_ReplaySoftAttach_TA
- * Size: 0x00D4
+ * Size: 0x0104
  * Extends: UCameraState_Replay_TA
  */
 export type UCameraState_ReplaySoftAttach_TA = UCameraState_Replay_TA & {
-  AttachRotation: FRotator; // 0x00b8 (0x000c) [FRotator]
-  AttachOffset: FVector; // 0x00c4 (0x000c) [FVector]
-  MaxDistance: number; // 0x00d0 (0x0004) [float]
+  AttachRotation: FRotator; // 0x00e8 (0x000c) [FRotator]
+  AttachOffset: FVector; // 0x00f4 (0x000c) [FVector]
+  MaxDistance: number; // 0x0100 (0x0004) [float]
 };
 
 // CameraState_ReplaySoftAttach_TA Functions
@@ -13369,7 +13590,7 @@ export type UCameraState_ReplaySoftAttach_TA = UCameraState_Replay_TA & {
 
 /**
  * Class TAGame.CameraState_ReplayHardAttach_TA
- * Size: 0x00D8
+ * Size: 0x0108
  * Extends: UCameraState_ReplaySoftAttach_TA
  */
 export type UCameraState_ReplayHardAttach_TA = UCameraState_ReplaySoftAttach_TA & {};
@@ -13380,14 +13601,14 @@ export type UCameraState_ReplayHardAttach_TA = UCameraState_ReplaySoftAttach_TA 
 
 /**
  * Class TAGame.CameraState_ReplayPlayerView_TA
- * Size: 0x00D8
+ * Size: 0x0108
  * Extends: UCameraState_Replay_TA
  */
 export type UCameraState_ReplayPlayerView_TA = UCameraState_Replay_TA & {
-  CarCameraState: UCameraState_X; // 0x00b8 (0x0008) [UCameraState_X*]
-  BallCameraState: UCameraState_X; // 0x00c0 (0x0008) [UCameraState_X*]
-  CurrentCameraState: UCameraState_X; // 0x00c8 (0x0008) [UCameraState_X*]
-  CameraSave: UProfileCameraSave_TA; // 0x00d0 (0x0008) [UProfileCameraSave_TA*]
+  CarCameraState: UCameraState_X; // 0x00e8 (0x0008) [UCameraState_X*]
+  BallCameraState: UCameraState_X; // 0x00f0 (0x0008) [UCameraState_X*]
+  CurrentCameraState: UCameraState_X; // 0x00f8 (0x0008) [UCameraState_X*]
+  CameraSave: UProfileCameraSave_TA; // 0x0100 (0x0008) [UProfileCameraSave_TA*]
 };
 
 // CameraState_ReplayPlayerView_TA Functions
@@ -13398,6 +13619,26 @@ export type UCameraState_ReplayPlayerView_TA = UCameraState_Replay_TA & {
 // Init(InCamera: UCamera_X): void
 // AllowSwivel(): boolean
 // IsDisabled(CameraMode: FName, InFocusActorString: string): boolean
+
+/**
+ * Class TAGame.CameraState_ScorerLiveReplay_TA
+ * Size: 0x0300
+ * Extends: UCameraState_BallCam_TA
+ */
+export type UCameraState_ScorerLiveReplay_TA = UCameraState_BallCam_TA & {
+  SoccarGame: UGameEvent_Soccar_TA; // 0x02d8 (0x0008) [UGameEvent_Soccar_TA*]
+  FixedCameraSettings: FProfileCameraSettings; // 0x02e0 (0x0020) [FProfileCameraSettings]
+};
+
+// CameraState_ScorerLiveReplay_TA Functions
+// GetProfileCameraSettings(): FProfileCameraSettings
+// Tick(DeltaTime: number): void
+// EndCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
+// OverrideBlendParams(Params: FViewTargetTransitionParams): void
+// GetEndBlendParams(NewState: UCameraState_X): FViewTargetTransitionParams
+// GetStartBlendParams(NewState: UCameraState_X): FViewTargetTransitionParams
+// ShouldExecute(): boolean
 
 /**
  * Class TAGame.CameraState_SeasonIntro_TA
@@ -13418,41 +13659,41 @@ export type UCameraState_SeasonIntro_TA = UCameraState_X & {
 
 /**
  * Class TAGame.CameraState_StadiumSide_TA
- * Size: 0x02B8
+ * Size: 0x02E8
  * Extends: UCameraState_DirectorProxy_TA
  */
 export type UCameraState_StadiumSide_TA = UCameraState_DirectorProxy_TA & {
-  TrackOffset: FVector; // 0x0180 (0x000c) [FVector]
-  TrackSize: FVector; // 0x018c (0x000c) [FVector]
-  TrackProximityOffsetSide: FInterpCurveFloat; // 0x0198 (0x0018) [FInterpCurveFloat]
-  TrackProximityOffsetLerp: number; // 0x01b0 (0x0004) [float]
-  FocusLerp: FInterpCurveFloat; // 0x01b8 (0x0018) [FInterpCurveFloat]
-  TrackLerpSide: FInterpCurveFloat; // 0x01d0 (0x0018) [FInterpCurveFloat]
-  TrackLerpForward: FInterpCurveFloat; // 0x01e8 (0x0018) [FInterpCurveFloat]
-  CarDistWeight: FInterpCurveFloat; // 0x0200 (0x0018) [FInterpCurveFloat]
-  GoalDistWeight: FInterpCurveFloat; // 0x0218 (0x0018) [FInterpCurveFloat]
-  BallPredictionTime: number; // 0x0230 (0x0004) [float]
-  MinFOV: number; // 0x0234 (0x0004) [float]
-  MaxFOV: number; // 0x0238 (0x0004) [float]
-  SmoothFOVLerp: number; // 0x023c (0x0004) [float]
-  TrackCenter: FVector; // 0x0240 (0x000c) [FVector]
-  TrackRight: FVector; // 0x024c (0x000c) [FVector]
-  TrackForward: FVector; // 0x0258 (0x000c) [FVector]
-  TrackStart: FVector; // 0x0264 (0x000c) [FVector]
-  TrackEnd: FVector; // 0x0270 (0x000c) [FVector]
-  FieldStart: FVector; // 0x027c (0x000c) [FVector]
-  FieldEnd: FVector; // 0x0288 (0x000c) [FVector]
-  SmoothedFocus: FVector; // 0x0294 (0x000c) [FVector]
-  SmoothedFieldPct: FVector; // 0x02a0 (0x000c) [FVector]
-  SmoothedFOV: number; // 0x02ac (0x0004) [float]
-  SmoothedProximityOffsetSide: number; // 0x02b0 (0x0004) [float]
-  bCut: boolean; // 0x02b4 (0x0004) [bool : 0x1]
+  TrackOffset: FVector; // 0x01b0 (0x000c) [FVector]
+  TrackSize: FVector; // 0x01bc (0x000c) [FVector]
+  TrackProximityOffsetSide: FInterpCurveFloat; // 0x01c8 (0x0018) [FInterpCurveFloat]
+  TrackProximityOffsetLerp: number; // 0x01e0 (0x0004) [float]
+  FocusLerp: FInterpCurveFloat; // 0x01e8 (0x0018) [FInterpCurveFloat]
+  TrackLerpSide: FInterpCurveFloat; // 0x0200 (0x0018) [FInterpCurveFloat]
+  TrackLerpForward: FInterpCurveFloat; // 0x0218 (0x0018) [FInterpCurveFloat]
+  CarDistWeight: FInterpCurveFloat; // 0x0230 (0x0018) [FInterpCurveFloat]
+  GoalDistWeight: FInterpCurveFloat; // 0x0248 (0x0018) [FInterpCurveFloat]
+  BallPredictionTime: number; // 0x0260 (0x0004) [float]
+  MinFOV: number; // 0x0264 (0x0004) [float]
+  MaxFOV: number; // 0x0268 (0x0004) [float]
+  SmoothFOVLerp: number; // 0x026c (0x0004) [float]
+  TrackCenter: FVector; // 0x0270 (0x000c) [FVector]
+  TrackRight: FVector; // 0x027c (0x000c) [FVector]
+  TrackForward: FVector; // 0x0288 (0x000c) [FVector]
+  TrackStart: FVector; // 0x0294 (0x000c) [FVector]
+  TrackEnd: FVector; // 0x02a0 (0x000c) [FVector]
+  FieldStart: FVector; // 0x02ac (0x000c) [FVector]
+  FieldEnd: FVector; // 0x02b8 (0x000c) [FVector]
+  SmoothedFocus: FVector; // 0x02c4 (0x000c) [FVector]
+  SmoothedFieldPct: FVector; // 0x02d0 (0x000c) [FVector]
+  SmoothedFOV: number; // 0x02dc (0x0004) [float]
+  SmoothedProximityOffsetSide: number; // 0x02e0 (0x0004) [float]
+  bCut: boolean; // 0x02e4 (0x0004) [bool : 0x1]
 };
 
 // CameraState_StadiumSide_TA Functions
 // UpdatePOV(DeltaTime: number, OutPOV: FCameraOrientation): void
 // InitFieldTrackValues(): void
-// BeginCameraState(): void
+// BeginCameraState(InPrevState: UCameraState_X): void
 // Init(InCamera: UCamera_X): void
 
 /**
@@ -13603,48 +13844,48 @@ export type UCannon_TA = UActor & {
 
 /**
  * Class TAGame.Vehicle_TA
- * Size: 0x08C0
+ * Size: 0x08C8
  * Extends: URBActor_TA
  */
 export type UVehicle_TA = URBActor_TA & {
-  CarMesh: UCarMeshComponent_TA; // 0x07b8 (0x0008) [UCarMeshComponent_TA*]
-  VehicleSim: UVehicleSim_TA; // 0x07c0 (0x0008) [UVehicleSim_TA*]
-  StickyForce: FStickyForceData; // 0x07c8 (0x0008) [FStickyForceData]
-  AutoFlip: FAutoFlipData; // 0x07d0 (0x0008) [FAutoFlipData]
-  bDriving: boolean; // 0x07d8 (0x0004) [bool : 0x1]
-  bReplicatedHandbrake: boolean; // 0x07d8 (0x0004) [bool : 0x2]
-  bJumped: boolean; // 0x07d8 (0x0004) [bool : 0x4]
-  bDoubleJumped: boolean; // 0x07d8 (0x0004) [bool : 0x8]
-  bOnGround: boolean; // 0x07d8 (0x0004) [bool : 0x10]
-  bSupersonic: boolean; // 0x07d8 (0x0004) [bool : 0x20]
-  bPodiumMode: boolean; // 0x07d8 (0x0004) [bool : 0x40]
-  bHasPostMatchCelebration: boolean; // 0x07d8 (0x0004) [bool : 0x80]
-  Input: FVehicleInputs; // 0x07dc (0x0020) [FVehicleInputs]
-  ReplicatedThrottle: number; // 0x07fc (0x0001) [uint8]
-  ReplicatedSteer: number; // 0x07fd (0x0001) [uint8]
-  InputRestriction: EInputRestriction; // 0x07fe (0x0001) [EInputRestriction]
-  AIController: UAIController_TA; // 0x0800 (0x0008) [UAIController_TA*]
-  PlayerController: UPlayerController_TA; // 0x0808 (0x0008) [UPlayerController_TA*]
-  PRI: UPRI_TA; // 0x0810 (0x0008) [UPRI_TA*]
-  VehicleUpdateTag: number; // 0x0818 (0x0004) [int32]
-  CarInteraction: FCarInteractionData; // 0x0820 (0x0010) [FCarInteractionData]
-  LocalCollisionOffset: FVector; // 0x0830 (0x000c) [FVector]
-  LocalCollisionExtent: FVector; // 0x083c (0x000c) [FVector]
-  LastBallTouchFrame: number; // 0x0848 (0x0004) [int32]
-  LastBallImpactFrame: number; // 0x084c (0x0004) [int32]
-  BoostComponent: UCarComponent_Boost_TA; // 0x0850 (0x0008) [UCarComponent_Boost_TA*]
-  DodgeComponent: UCarComponent_Dodge_TA; // 0x0858 (0x0008) [UCarComponent_Dodge_TA*]
-  AirControlComponent: UCarComponent_AirControl_TA; // 0x0860 (0x0008) [UCarComponent_AirControl_TA*]
-  JumpComponent: UCarComponent_Jump_TA; // 0x0868 (0x0008) [UCarComponent_Jump_TA*]
-  DoubleJumpComponent: UCarComponent_DoubleJump_TA; // 0x0870 (0x0008) [UCarComponent_DoubleJump_TA*]
-  PodiumSpot: number; // 0x0878 (0x0004) [int32]
-  PMCAnimIdx: number; // 0x087c (0x0004) [int32]
-  PitchTekComponent: UPitchTekDrawingComponent_TA; // 0x0880 (0x0008) [UPitchTekDrawingComponent_TA*]
-  NumWheelsForGrounded: number; // 0x0888 (0x0004) [int32]
-  LocalPlayerAudioParamsComponent: ULocalPlayerAudioParamsComponent_TA; // 0x0890 (0x0008) [ULocalPlayerAudioParamsComponent_TA*]
-  TimeBelowSupersonicSpeed: number; // 0x0898 (0x0004) [float]
-  NetworkConfig: UNetworkConfig_TA; // 0x08a0 (0x0008) [UNetworkConfig_TA*]
-  __EventPRIChanged__Delegate: FScriptDelegate; // 0x08a8 (0x0018) [FScriptDelegate]
+  CarMesh: UCarMeshComponent_TA; // 0x07c0 (0x0008) [UCarMeshComponent_TA*]
+  VehicleSim: UVehicleSim_TA; // 0x07c8 (0x0008) [UVehicleSim_TA*]
+  StickyForce: FStickyForceData; // 0x07d0 (0x0008) [FStickyForceData]
+  AutoFlip: FAutoFlipData; // 0x07d8 (0x0008) [FAutoFlipData]
+  bDriving: boolean; // 0x07e0 (0x0004) [bool : 0x1]
+  bReplicatedHandbrake: boolean; // 0x07e0 (0x0004) [bool : 0x2]
+  bJumped: boolean; // 0x07e0 (0x0004) [bool : 0x4]
+  bDoubleJumped: boolean; // 0x07e0 (0x0004) [bool : 0x8]
+  bOnGround: boolean; // 0x07e0 (0x0004) [bool : 0x10]
+  bSupersonic: boolean; // 0x07e0 (0x0004) [bool : 0x20]
+  bPodiumMode: boolean; // 0x07e0 (0x0004) [bool : 0x40]
+  bHasPostMatchCelebration: boolean; // 0x07e0 (0x0004) [bool : 0x80]
+  Input: FVehicleInputs; // 0x07e4 (0x0020) [FVehicleInputs]
+  ReplicatedThrottle: number; // 0x0804 (0x0001) [uint8]
+  ReplicatedSteer: number; // 0x0805 (0x0001) [uint8]
+  InputRestriction: EInputRestriction; // 0x0806 (0x0001) [EInputRestriction]
+  AIController: UAIController_TA; // 0x0808 (0x0008) [UAIController_TA*]
+  PlayerController: UPlayerController_TA; // 0x0810 (0x0008) [UPlayerController_TA*]
+  PRI: UPRI_TA; // 0x0818 (0x0008) [UPRI_TA*]
+  VehicleUpdateTag: number; // 0x0820 (0x0004) [int32]
+  CarInteraction: FCarInteractionData; // 0x0828 (0x0010) [FCarInteractionData]
+  LocalCollisionOffset: FVector; // 0x0838 (0x000c) [FVector]
+  LocalCollisionExtent: FVector; // 0x0844 (0x000c) [FVector]
+  LastBallTouchFrame: number; // 0x0850 (0x0004) [int32]
+  LastBallImpactFrame: number; // 0x0854 (0x0004) [int32]
+  BoostComponent: UCarComponent_Boost_TA; // 0x0858 (0x0008) [UCarComponent_Boost_TA*]
+  DodgeComponent: UCarComponent_Dodge_TA; // 0x0860 (0x0008) [UCarComponent_Dodge_TA*]
+  AirControlComponent: UCarComponent_AirControl_TA; // 0x0868 (0x0008) [UCarComponent_AirControl_TA*]
+  JumpComponent: UCarComponent_Jump_TA; // 0x0870 (0x0008) [UCarComponent_Jump_TA*]
+  DoubleJumpComponent: UCarComponent_DoubleJump_TA; // 0x0878 (0x0008) [UCarComponent_DoubleJump_TA*]
+  PodiumSpot: number; // 0x0880 (0x0004) [int32]
+  PMCAnimIdx: number; // 0x0884 (0x0004) [int32]
+  PitchTekComponent: UPitchTekDrawingComponent_TA; // 0x0888 (0x0008) [UPitchTekDrawingComponent_TA*]
+  NumWheelsForGrounded: number; // 0x0890 (0x0004) [int32]
+  LocalPlayerAudioParamsComponent: ULocalPlayerAudioParamsComponent_TA; // 0x0898 (0x0008) [ULocalPlayerAudioParamsComponent_TA*]
+  TimeBelowSupersonicSpeed: number; // 0x08a0 (0x0004) [float]
+  NetworkConfig: UNetworkConfig_TA; // 0x08a8 (0x0008) [UNetworkConfig_TA*]
+  __EventPRIChanged__Delegate: FScriptDelegate; // 0x08b0 (0x0018) [FScriptDelegate]
 };
 
 // Vehicle_TA Functions
@@ -13691,84 +13932,88 @@ export type UVehicle_TA = URBActor_TA & {
 
 /**
  * Class TAGame.Car_TA
- * Size: 0x0C38
+ * Size: 0x0C68
  * Extends: UVehicle_TA
  */
 export type UCar_TA = UVehicle_TA & {
-  DefaultCarComponents: UCarComponent_TA[]; // 0x08c0 (0x0010) [TArray<UCarComponent_TA*>]
-  EngineAudio: UEngineAudioComponent_TA; // 0x08d0 (0x0008) [UEngineAudioComponent_TA*]
-  EngineAudioRev: UEngineAudioREVComponent_TA; // 0x08d8 (0x0008) [UEngineAudioREVComponent_TA*]
-  ThrottleShake: UThrottleShakeComponent_TA; // 0x08e0 (0x0008) [UThrottleShakeComponent_TA*]
-  FlipComponent: UCarComponent_FlipCar_TA; // 0x08e8 (0x0008) [UCarComponent_FlipCar_TA*]
-  DemolishTarget: EDemolishTarget; // 0x08f0 (0x0001) [EDemolishTarget]
-  DemolishSpeed: EDemolishSpeed; // 0x08f1 (0x0001) [EDemolishSpeed]
-  DemolishSource: EDemolishSource; // 0x08f2 (0x0001) [EDemolishSource]
-  Loadout: UProductLoader_TA; // 0x08f8 (0x0008) [UProductLoader_TA*]
-  bLoadoutSet: boolean; // 0x0900 (0x0004) [bool : 0x1]
-  bUnlimitedTimeForDodge: boolean; // 0x0900 (0x0004) [bool : 0x2]
-  bUnlimitedJumps: boolean; // 0x0900 (0x0004) [bool : 0x4]
-  bDemolishOnOpposingGround: boolean; // 0x0900 (0x0004) [bool : 0x8]
-  bWasOnOpposingGround: boolean; // 0x0900 (0x0004) [bool : 0x10]
-  bDemolishOnGoalZone: boolean; // 0x0900 (0x0004) [bool : 0x20]
-  bWasInGoalZone: boolean; // 0x0900 (0x0004) [bool : 0x40]
-  bOverrideHandbrakeOn: boolean; // 0x0900 (0x0004) [bool : 0x80]
-  bTeamBumpsUseCarForceMultiplier: boolean; // 0x0900 (0x0004) [bool : 0x100]
-  bOverrideBoostOn: boolean; // 0x0900 (0x0004) [bool : 0x200]
-  bUseDefaultLoadout: boolean; // 0x0900 (0x0004) [bool : 0x400]
-  bDodgesRefreshed: boolean; // 0x0900 (0x0004) [bool : 0x800]
-  bDodgeCounterReplicated: boolean; // 0x0900 (0x0004) [bool : 0x1000]
-  ExitFXArchetype: UFXActor_X; // 0x0908 (0x0008) [UFXActor_X*]
-  DemolishExplosionArchetype: UExplosion_X; // 0x0910 (0x0008) [UExplosion_X*]
-  DemolishExplosion: UExplosion_X; // 0x0918 (0x0008) [UExplosion_X*]
-  TargetClass: UTarget_TA; // 0x0920 (0x0008) [UTarget_TA*]
-  TargetIndicatorArchetype: UTargetIndicator_TA; // 0x0928 (0x0008) [UTargetIndicator_TA*]
-  TargetIndicators: UTargetIndicator_TA[]; // 0x0930 (0x0010) [TArray<UTargetIndicator_TA*>]
-  MaxTimeForDodge: number; // 0x0940 (0x0004) [float]
-  MaxNumJumps: number; // 0x0944 (0x0004) [int32]
-  GroundedJumpFailedSFX: UAkSoundCue; // 0x0948 (0x0008) [UAkSoundCue*]
-  LastWheelsHitBallTime: number; // 0x0950 (0x0004) [float]
-  TeamPaint: FLoadoutTeamPaint; // 0x0954 (0x0010) [FLoadoutTeamPaint]
-  ClubColors: FClubColorSet; // 0x0964 (0x0008) [FClubColorSet]
-  ReplicatedCarScale: number; // 0x096c (0x0004) [float]
-  ReplicatedDemolishExtended: FDemolishDataExtended; // 0x0970 (0x0048) [FDemolishDataExtended]
-  ReplicatedDemolish: FDemolishData; // 0x09b8 (0x0028) [FDemolishData]
-  ReplicatedDemolish_CustomFX: FDemolishData2; // 0x09e0 (0x0030) [FDemolishData2]
-  ReplicatedDemolishGoalExplosion: FDemolishDataGoalExplosion; // 0x0a10 (0x0030) [FDemolishDataGoalExplosion]
-  BodyFXActor: UFXActor_X; // 0x0a40 (0x0008) [UFXActor_X*]
-  AttackerPRI: UPRI_TA; // 0x0a48 (0x0008) [UPRI_TA*]
-  MouseAccel: FVector; // 0x0a50 (0x000c) [FVector]
-  MouseAirAccel: FVector; // 0x0a5c (0x000c) [FVector]
-  AttachedPickup: USpecialPickup_TA; // 0x0a68 (0x0008) [USpecialPickup_TA*]
-  RumblePickups: URumblePickups_TA; // 0x0a70 (0x0008) [URumblePickups_TA*]
-  ReplayFocusOffset: FVector; // 0x0a78 (0x000c) [FVector]
-  AddedBallForceMultiplier: number; // 0x0a84 (0x0004) [float]
-  AddedCarForceMultiplier: number; // 0x0a88 (0x0004) [float]
-  CarTrajectoryComponent: UCarTrajectoryComponent_TA; // 0x0a90 (0x0008) [UCarTrajectoryComponent_TA*]
-  GameEvent: UGameEvent_TA; // 0x0a98 (0x0008) [UGameEvent_TA*]
-  NameplateComponentCar: UNameplateComponentCar_TA; // 0x0aa0 (0x0008) [UNameplateComponentCar_TA*]
-  ExplosionHitHandler: UExplosionHitHandler_TA; // 0x0aa8 (0x0008) [UExplosionHitHandler_TA*]
-  ReplicatedCarMaxLinearSpeedScale: number; // 0x0ab0 (0x0004) [float]
-  PostMatchAnim: FName; // 0x0ab4 (0x0008) [FName]
-  DoubleJumps: number; // 0x0abc (0x0004) [int32]
-  DoubleJumpKey: FName; // 0x0ac0 (0x0008) [FName]
-  DodgesRefreshedCounter: number; // 0x0ac8 (0x0004) [int32]
-  FlipResetFXActorArchetype: UFXActor_X; // 0x0ad0 (0x0008) [UFXActor_X*]
-  FlipResetFXActor: UFXActor_X; // 0x0ad8 (0x0008) [UFXActor_X*]
-  ViralItemFXComponent: UViralItemFXComponent_TA; // 0x0ae0 (0x0008) [UViralItemFXComponent_TA*]
-  __EventVehicleSetup__Delegate: FScriptDelegate; // 0x0ae8 (0x0018) [FScriptDelegate]
-  __EventBumpedCar__Delegate: FScriptDelegate; // 0x0b00 (0x0018) [FScriptDelegate]
-  __EventDemolished__Delegate: FScriptDelegate; // 0x0b18 (0x0018) [FScriptDelegate]
-  __EventDemolishedExtended__Delegate: FScriptDelegate; // 0x0b30 (0x0018) [FScriptDelegate]
-  __EventTeamSet__Delegate: FScriptDelegate; // 0x0b48 (0x0018) [FScriptDelegate]
-  __EventTeamPaintChanged__Delegate: FScriptDelegate; // 0x0b60 (0x0018) [FScriptDelegate]
-  __EventHitBall__Delegate: FScriptDelegate; // 0x0b78 (0x0018) [FScriptDelegate]
-  __EventHitCar__Delegate: FScriptDelegate; // 0x0b90 (0x0018) [FScriptDelegate]
-  __EventLanded__Delegate: FScriptDelegate; // 0x0ba8 (0x0018) [FScriptDelegate]
-  __EventSuperSonicChanged__Delegate: FScriptDelegate; // 0x0bc0 (0x0018) [FScriptDelegate]
-  __EventHitWorld__Delegate: FScriptDelegate; // 0x0bd8 (0x0018) [FScriptDelegate]
-  __EventPreparingDemoFX__Delegate: FScriptDelegate; // 0x0bf0 (0x0018) [FScriptDelegate]
-  __EventPerformedFlipReset__Delegate: FScriptDelegate; // 0x0c08 (0x0018) [FScriptDelegate]
-  __RumblePickups__ChangeNotify: FScriptDelegate; // 0x0c20 (0x0018) [FScriptDelegate]
+  DefaultCarComponents: UCarComponent_TA[]; // 0x08c8 (0x0010) [TArray<UCarComponent_TA*>]
+  EngineAudio: UEngineAudioComponent_TA; // 0x08d8 (0x0008) [UEngineAudioComponent_TA*]
+  EngineAudioRev: UEngineAudioREVComponent_TA; // 0x08e0 (0x0008) [UEngineAudioREVComponent_TA*]
+  ThrottleShake: UThrottleShakeComponent_TA; // 0x08e8 (0x0008) [UThrottleShakeComponent_TA*]
+  FlipComponent: UCarComponent_FlipCar_TA; // 0x08f0 (0x0008) [UCarComponent_FlipCar_TA*]
+  DemolishTarget: EDemolishTarget; // 0x08f8 (0x0001) [EDemolishTarget]
+  DemolishSpeed: EDemolishSpeed; // 0x08f9 (0x0001) [EDemolishSpeed]
+  DemolishSource: EDemolishSource; // 0x08fa (0x0001) [EDemolishSource]
+  Loadout: UProductLoader_TA; // 0x0900 (0x0008) [UProductLoader_TA*]
+  bLoadoutSet: boolean; // 0x0908 (0x0004) [bool : 0x1]
+  bUnlimitedTimeForDodge: boolean; // 0x0908 (0x0004) [bool : 0x2]
+  bUnlimitedJumps: boolean; // 0x0908 (0x0004) [bool : 0x4]
+  bDemolishOnOpposingGround: boolean; // 0x0908 (0x0004) [bool : 0x8]
+  bWasOnOpposingGround: boolean; // 0x0908 (0x0004) [bool : 0x10]
+  bDemolishOnGoalZone: boolean; // 0x0908 (0x0004) [bool : 0x20]
+  bWasInGoalZone: boolean; // 0x0908 (0x0004) [bool : 0x40]
+  bOverrideHandbrakeOn: boolean; // 0x0908 (0x0004) [bool : 0x80]
+  bTeamBumpsUseCarForceMultiplier: boolean; // 0x0908 (0x0004) [bool : 0x100]
+  bOverrideBoostOn: boolean; // 0x0908 (0x0004) [bool : 0x200]
+  bUseDefaultLoadout: boolean; // 0x0908 (0x0004) [bool : 0x400]
+  bDodgesRefreshed: boolean; // 0x0908 (0x0004) [bool : 0x800]
+  bDodgeCounterReplicated: boolean; // 0x0908 (0x0004) [bool : 0x1000]
+  bConstrained3D: boolean; // 0x0908 (0x0004) [bool : 0x2000]
+  ExitFXArchetype: UFXActor_X; // 0x0910 (0x0008) [UFXActor_X*]
+  DemolishExplosionArchetype: UExplosion_X; // 0x0918 (0x0008) [UExplosion_X*]
+  DemolishExplosion: UExplosion_X; // 0x0920 (0x0008) [UExplosion_X*]
+  TargetClass: UTarget_TA; // 0x0928 (0x0008) [UTarget_TA*]
+  TargetIndicatorArchetype: UTargetIndicator_TA; // 0x0930 (0x0008) [UTargetIndicator_TA*]
+  TargetIndicators: UTargetIndicator_TA[]; // 0x0938 (0x0010) [TArray<UTargetIndicator_TA*>]
+  MaxTimeForDodge: number; // 0x0948 (0x0004) [float]
+  MaxNumJumps: number; // 0x094c (0x0004) [int32]
+  GroundedJumpFailedSFX: UAkSoundCue; // 0x0950 (0x0008) [UAkSoundCue*]
+  LastWheelsHitBallTime: number; // 0x0958 (0x0004) [float]
+  TeamPaint: FLoadoutTeamPaint; // 0x095c (0x0010) [FLoadoutTeamPaint]
+  ClubColors: FClubColorSet; // 0x096c (0x0008) [FClubColorSet]
+  ReplicatedCarScale: number; // 0x0974 (0x0004) [float]
+  ReplicatedDemolishExtended: FDemolishDataExtended; // 0x0978 (0x0048) [FDemolishDataExtended]
+  ReplicatedDemolish: FDemolishData; // 0x09c0 (0x0028) [FDemolishData]
+  ReplicatedDemolish_CustomFX: FDemolishData2; // 0x09e8 (0x0030) [FDemolishData2]
+  ReplicatedDemolishGoalExplosion: FDemolishDataGoalExplosion; // 0x0a18 (0x0030) [FDemolishDataGoalExplosion]
+  BodyFXActor: UFXActor_X; // 0x0a48 (0x0008) [UFXActor_X*]
+  AttackerPRI: UPRI_TA; // 0x0a50 (0x0008) [UPRI_TA*]
+  MouseAccel: FVector; // 0x0a58 (0x000c) [FVector]
+  MouseAirAccel: FVector; // 0x0a64 (0x000c) [FVector]
+  AttachedPickup: USpecialPickup_TA; // 0x0a70 (0x0008) [USpecialPickup_TA*]
+  RumblePickups: URumblePickups_TA; // 0x0a78 (0x0008) [URumblePickups_TA*]
+  ReplayFocusOffset: FVector; // 0x0a80 (0x000c) [FVector]
+  AddedBallForceMultiplier: number; // 0x0a8c (0x0004) [float]
+  AddedCarForceMultiplier: number; // 0x0a90 (0x0004) [float]
+  CarTrajectoryComponent: UCarTrajectoryComponent_TA; // 0x0a98 (0x0008) [UCarTrajectoryComponent_TA*]
+  GameEvent: UGameEvent_TA; // 0x0aa0 (0x0008) [UGameEvent_TA*]
+  NameplateComponentCar: UNameplateComponentCar_TA; // 0x0aa8 (0x0008) [UNameplateComponentCar_TA*]
+  ExplosionHitHandler: UExplosionHitHandler_TA; // 0x0ab0 (0x0008) [UExplosionHitHandler_TA*]
+  ReplicatedCarMaxLinearSpeedScale: number; // 0x0ab8 (0x0004) [float]
+  PostMatchAnim: FName; // 0x0abc (0x0008) [FName]
+  DoubleJumps: number; // 0x0ac4 (0x0004) [int32]
+  DoubleJumpKey: FName; // 0x0ac8 (0x0008) [FName]
+  DodgesRefreshedCounter: number; // 0x0ad0 (0x0004) [int32]
+  FlipResetFXActorArchetype: UFXActor_X; // 0x0ad8 (0x0008) [UFXActor_X*]
+  FlipResetFXActor: UFXActor_X; // 0x0ae0 (0x0008) [UFXActor_X*]
+  DemolishInvulnerabilities: FDemolishInvulnerability[]; // 0x0ae8 (0x0010) [TArray<FDemolishInvulnerability>]
+  ViralItemFXComponent: UViralItemFXComponent_TA; // 0x0af8 (0x0008) [UViralItemFXComponent_TA*]
+  HitboxDrawComponent: UDrawBoxComponent; // 0x0b00 (0x0008) [UDrawBoxComponent*]
+  HitboxWheelComponents: UDrawCylinderComponent[]; // 0x0b08 (0x0010) [TArray<UDrawCylinderComponent*>]
+  __EventVehicleSetup__Delegate: FScriptDelegate; // 0x0b18 (0x0018) [FScriptDelegate]
+  __EventBumpedCar__Delegate: FScriptDelegate; // 0x0b30 (0x0018) [FScriptDelegate]
+  __EventDemolished__Delegate: FScriptDelegate; // 0x0b48 (0x0018) [FScriptDelegate]
+  __EventDemolishedExtended__Delegate: FScriptDelegate; // 0x0b60 (0x0018) [FScriptDelegate]
+  __EventTeamSet__Delegate: FScriptDelegate; // 0x0b78 (0x0018) [FScriptDelegate]
+  __EventTeamPaintChanged__Delegate: FScriptDelegate; // 0x0b90 (0x0018) [FScriptDelegate]
+  __EventHitBall__Delegate: FScriptDelegate; // 0x0ba8 (0x0018) [FScriptDelegate]
+  __EventHitCar__Delegate: FScriptDelegate; // 0x0bc0 (0x0018) [FScriptDelegate]
+  __EventLanded__Delegate: FScriptDelegate; // 0x0bd8 (0x0018) [FScriptDelegate]
+  __EventSuperSonicChanged__Delegate: FScriptDelegate; // 0x0bf0 (0x0018) [FScriptDelegate]
+  __EventHitWorld__Delegate: FScriptDelegate; // 0x0c08 (0x0018) [FScriptDelegate]
+  __EventPreparingDemoFX__Delegate: FScriptDelegate; // 0x0c20 (0x0018) [FScriptDelegate]
+  __EventPerformedFlipReset__Delegate: FScriptDelegate; // 0x0c38 (0x0018) [FScriptDelegate]
+  __RumblePickups__ChangeNotify: FScriptDelegate; // 0x0c50 (0x0018) [FScriptDelegate]
 };
 
 // Car_TA Functions
@@ -13828,6 +14073,8 @@ export type UCar_TA = UVehicle_TA & {
 // OnJumpPressed(): void
 // SetVehicleInput(NewInput: FVehicleInputs): void
 // IsInvulnerableToDemolishSource(DemoSource: EDemolishSource): boolean
+// RemoveDemolishInvulnerability(ObjectSource: UObject, DemoSource: EDemolishSource): void
+// AddDemolishInvulnerability(ObjectSource: UObject, DemoSource: EDemolishSource): void
 // CanDemolish(HitCar: UCar_TA): boolean
 // ShouldDemolish(HitCar: UCar_TA, HitLocation: FVector, HitNormal: FVector, Result: ECarImpactResult): boolean
 // InitTimeOfImpactFromOldRBState(HitCar: UCar_TA, HitLocation: FVector, HitNormal: FVector, Impact: FTimeOfImpactData): void
@@ -13854,6 +14101,11 @@ export type UCar_TA = UVehicle_TA & {
 // HandleVisualAssetLoaded(Asset: UProductAsset_TA): void
 // DetachPrimitiveComponent(Component: UPrimitiveComponent): void
 // HandleWheelContactChanged(Wheel: UWheel_TA): void
+// UpdateWheelHitboxLocations(DeltaTime: number): void
+// ClearDrawnHitbox(): void
+// DrawHitbox(): void
+// OnConstrained3DChanged(): void
+// Set3DConstraint(bEnabled: boolean): void
 // OnVehicleSetup(): void
 // HandleAllAssetsLoaded(Loader: UProductLoader_TA): void
 // HandlePostMatchCelebration(PostMatchCelebration: UAssetAttribute_PostMatchCelebration_TA): void
@@ -13902,11 +14154,11 @@ export type UCar_TA = UVehicle_TA & {
 
 /**
  * Class TAGame.Car_Freeplay_TA
- * Size: 0x0C48
+ * Size: 0x0C78
  * Extends: UCar_TA
  */
 export type UCar_Freeplay_TA = UCar_TA & {
-  CarColors: FLinearColor[]; // 0x0c38 (0x0010) [TArray<FLinearColor>]
+  CarColors: FLinearColor[]; // 0x0c68 (0x0010) [TArray<FLinearColor>]
 };
 
 // Car_Freeplay_TA Functions
@@ -13919,88 +14171,88 @@ export type UCar_Freeplay_TA = UCar_TA & {
 
 /**
  * Class TAGame.Car_KnockOut_TA
- * Size: 0x0E78
+ * Size: 0x0EA8
  * Extends: UCar_TA
  */
 export type UCar_KnockOut_TA = UCar_TA & {
-  PRI_KO: UPRI_KnockOut_TA; // 0x0c38 (0x0008) [UPRI_KnockOut_TA*]
-  ReplicatedStateName: FName; // 0x0c40 (0x0008) [FName]
-  ReplicatedStateChanged: number; // 0x0c48 (0x0001) [uint8]
-  ReplicatedImpulse: FImpulseData; // 0x0c4c (0x0008) [FImpulseData]
-  HitImpulse: FVector; // 0x0c54 (0x000c) [FVector]
-  RespawnImmunityTime: number; // 0x0c60 (0x0004) [float]
-  StunTimeHitScale: number; // 0x0c64 (0x0004) [float]
-  AttackRadius: number; // 0x0c68 (0x0004) [float]
-  AttackYExtent: number; // 0x0c6c (0x0004) [float]
-  AttackZExtent: number; // 0x0c70 (0x0004) [float]
-  MaxAttackDegrees: number; // 0x0c74 (0x0004) [float]
-  DefaultAttackDamage: number; // 0x0c78 (0x0004) [float]
-  AttackLingerTime: number; // 0x0c7c (0x0004) [float]
-  GrabbingLingerTime: number; // 0x0c80 (0x0004) [float]
-  MinGrabTimeBeforeThrow: number; // 0x0c84 (0x0004) [float]
-  BlockTime: number; // 0x0c88 (0x0004) [float]
-  GrabThrowTime: number; // 0x0c8c (0x0004) [float]
-  GrabStunTime: number; // 0x0c90 (0x0004) [float]
-  DodgeThrowImpulse: number; // 0x0c94 (0x0004) [float]
-  DoubleJumpThrowImpulse: number; // 0x0c98 (0x0004) [float]
-  LightGrabTime: number; // 0x0c9c (0x0004) [float]
-  HeavyGrabTime: number; // 0x0ca0 (0x0004) [float]
-  AttackHitKnockbackScale: number; // 0x0ca4 (0x0004) [float]
-  MinHitImpulseSpeed: number; // 0x0ca8 (0x0004) [float]
-  LightHitImpulseScale: number; // 0x0cac (0x0004) [float]
-  HeavyHitImpulseScale: number; // 0x0cb0 (0x0004) [float]
-  SuddenKOImpulse: number; // 0x0cb4 (0x0004) [float]
-  SuddenKOThrowTime: number; // 0x0cb8 (0x0004) [float]
-  LightHitPitchDegrees: number; // 0x0cbc (0x0004) [float]
-  HeavyHitPitchDegrees: number; // 0x0cc0 (0x0004) [float]
-  SuddenKOHitPitchDegrees: number; // 0x0cc4 (0x0004) [float]
-  AttackBeginDelay: number; // 0x0cc8 (0x0004) [float]
-  HitTime: number; // 0x0ccc (0x0004) [float]
-  AttackStunTorqueScale: number; // 0x0cd0 (0x0004) [float]
-  TradeStunTorqueScale: number; // 0x0cd4 (0x0004) [float]
-  TradeStunTime: number; // 0x0cd8 (0x0004) [float]
-  TradeStunImpulseScale: number; // 0x0cdc (0x0004) [float]
-  TradeStunPitchDegrees: number; // 0x0ce0 (0x0004) [float]
-  ThrowPitchOffset: number; // 0x0ce4 (0x0004) [float]
-  GrabAttachOffset: FVector; // 0x0ce8 (0x000c) [FVector]
-  ThrowBackwardVelocityScale: number; // 0x0cf4 (0x0004) [float]
-  TradeImpulseSpeed: number; // 0x0cf8 (0x0004) [float]
-  TorqueStunBeginDelay: number; // 0x0cfc (0x0004) [float]
-  DamagePointsPerImpulseSpeed: number; // 0x0d00 (0x0004) [float]
-  ThrowVelocityTransferScale: number; // 0x0d04 (0x0004) [float]
-  GrabFixJumpVelocity: number; // 0x0d08 (0x0004) [float]
-  AttachedTarget: UTarget_TA; // 0x0d10 (0x0008) [UTarget_TA*]
-  AttackComponents: UCarComponent_TA[]; // 0x0d18 (0x0010) [TArray<UCarComponent_TA*>]
-  TorqueComponent: UCarComponent_Torque_TA; // 0x0d28 (0x0008) [UCarComponent_Torque_TA*]
-  TakenHits: FPendingHit[]; // 0x0d30 (0x0010) [TArray<FPendingHit>]
-  PendingGrabber: UCar_KnockOut_TA; // 0x0d40 (0x0008) [UCar_KnockOut_TA*]
-  UsedAttackComponent: UCarComponent_TA; // 0x0d48 (0x0008) [UCarComponent_TA*]
-  SuperSonicStartTime: number; // 0x0d50 (0x0004) [float]
-  SuperSonicTimeForHeavyAttack: number; // 0x0d54 (0x0004) [float]
-  ReturnToSafezoneTime: number; // 0x0d58 (0x0004) [float]
-  ThrowMashAlpha: number; // 0x0d5c (0x0004) [float]
-  AttackerPRIs: UPRI_TA[]; // 0x0d60 (0x0010) [TArray<UPRI_TA*>]
-  ResetAttackPRIDelay: number; // 0x0d70 (0x0004) [float]
-  FX_AttackArchetype: UFXActor_Knockout_Attack_TA; // 0x0d78 (0x0008) [UFXActor_Knockout_Attack_TA*]
-  FX_GrabAttackArchetype: UFXActor_Knockout_Attack_TA; // 0x0d80 (0x0008) [UFXActor_Knockout_Attack_TA*]
-  FX_HitAttackLightArchetype: UFXActor_TA; // 0x0d88 (0x0008) [UFXActor_TA*]
-  FX_HitAttackHeavyArchetype: UFXActor_TA; // 0x0d90 (0x0008) [UFXActor_TA*]
-  FX_HitBlockArchetype: UFXActor_TA; // 0x0d98 (0x0008) [UFXActor_TA*]
-  FX_GrabHitArchetype: UFXActor_TA; // 0x0da0 (0x0008) [UFXActor_TA*]
-  DemoSoundAttachmentName: FName; // 0x0da8 (0x0008) [FName]
-  DemoSoundOverride: UAkSoundCue; // 0x0db0 (0x0008) [UAkSoundCue*]
-  StunlockArchetype: UStunlock_TA; // 0x0db8 (0x0008) [UStunlock_TA*]
-  Stunlock: UStunlock_TA; // 0x0dc0 (0x0008) [UStunlock_TA*]
-  bDrawDebug: boolean; // 0x0dc8 (0x0004) [bool : 0x1]
-  FX_Attack: UFXActor_Knockout_Attack_TA; // 0x0dd0 (0x0008) [UFXActor_Knockout_Attack_TA*]
-  PendingCarToGrab: UCar_KnockOut_TA; // 0x0dd8 (0x0008) [UCar_KnockOut_TA*]
-  CarPendingThrow: UCar_KnockOut_TA; // 0x0de0 (0x0008) [UCar_KnockOut_TA*]
-  __EventReplicatedStateChanged__Delegate: FScriptDelegate; // 0x0de8 (0x0018) [FScriptDelegate]
-  __EventDamageTaken__Delegate: FScriptDelegate; // 0x0e00 (0x0018) [FScriptDelegate]
-  __EventBlockTaken__Delegate: FScriptDelegate; // 0x0e18 (0x0018) [FScriptDelegate]
-  __EventGrabbedCarChanged__Delegate: FScriptDelegate; // 0x0e30 (0x0018) [FScriptDelegate]
-  __EventGrabbed__Delegate: FScriptDelegate; // 0x0e48 (0x0018) [FScriptDelegate]
-  __EventThrown__Delegate: FScriptDelegate; // 0x0e60 (0x0018) [FScriptDelegate]
+  PRI_KO: UPRI_KnockOut_TA; // 0x0c68 (0x0008) [UPRI_KnockOut_TA*]
+  ReplicatedStateName: FName; // 0x0c70 (0x0008) [FName]
+  ReplicatedStateChanged: number; // 0x0c78 (0x0001) [uint8]
+  ReplicatedImpulse: FImpulseData; // 0x0c7c (0x0008) [FImpulseData]
+  HitImpulse: FVector; // 0x0c84 (0x000c) [FVector]
+  RespawnImmunityTime: number; // 0x0c90 (0x0004) [float]
+  StunTimeHitScale: number; // 0x0c94 (0x0004) [float]
+  AttackRadius: number; // 0x0c98 (0x0004) [float]
+  AttackYExtent: number; // 0x0c9c (0x0004) [float]
+  AttackZExtent: number; // 0x0ca0 (0x0004) [float]
+  MaxAttackDegrees: number; // 0x0ca4 (0x0004) [float]
+  DefaultAttackDamage: number; // 0x0ca8 (0x0004) [float]
+  AttackLingerTime: number; // 0x0cac (0x0004) [float]
+  GrabbingLingerTime: number; // 0x0cb0 (0x0004) [float]
+  MinGrabTimeBeforeThrow: number; // 0x0cb4 (0x0004) [float]
+  BlockTime: number; // 0x0cb8 (0x0004) [float]
+  GrabThrowTime: number; // 0x0cbc (0x0004) [float]
+  GrabStunTime: number; // 0x0cc0 (0x0004) [float]
+  DodgeThrowImpulse: number; // 0x0cc4 (0x0004) [float]
+  DoubleJumpThrowImpulse: number; // 0x0cc8 (0x0004) [float]
+  LightGrabTime: number; // 0x0ccc (0x0004) [float]
+  HeavyGrabTime: number; // 0x0cd0 (0x0004) [float]
+  AttackHitKnockbackScale: number; // 0x0cd4 (0x0004) [float]
+  MinHitImpulseSpeed: number; // 0x0cd8 (0x0004) [float]
+  LightHitImpulseScale: number; // 0x0cdc (0x0004) [float]
+  HeavyHitImpulseScale: number; // 0x0ce0 (0x0004) [float]
+  SuddenKOImpulse: number; // 0x0ce4 (0x0004) [float]
+  SuddenKOThrowTime: number; // 0x0ce8 (0x0004) [float]
+  LightHitPitchDegrees: number; // 0x0cec (0x0004) [float]
+  HeavyHitPitchDegrees: number; // 0x0cf0 (0x0004) [float]
+  SuddenKOHitPitchDegrees: number; // 0x0cf4 (0x0004) [float]
+  AttackBeginDelay: number; // 0x0cf8 (0x0004) [float]
+  HitTime: number; // 0x0cfc (0x0004) [float]
+  AttackStunTorqueScale: number; // 0x0d00 (0x0004) [float]
+  TradeStunTorqueScale: number; // 0x0d04 (0x0004) [float]
+  TradeStunTime: number; // 0x0d08 (0x0004) [float]
+  TradeStunImpulseScale: number; // 0x0d0c (0x0004) [float]
+  TradeStunPitchDegrees: number; // 0x0d10 (0x0004) [float]
+  ThrowPitchOffset: number; // 0x0d14 (0x0004) [float]
+  GrabAttachOffset: FVector; // 0x0d18 (0x000c) [FVector]
+  ThrowBackwardVelocityScale: number; // 0x0d24 (0x0004) [float]
+  TradeImpulseSpeed: number; // 0x0d28 (0x0004) [float]
+  TorqueStunBeginDelay: number; // 0x0d2c (0x0004) [float]
+  DamagePointsPerImpulseSpeed: number; // 0x0d30 (0x0004) [float]
+  ThrowVelocityTransferScale: number; // 0x0d34 (0x0004) [float]
+  GrabFixJumpVelocity: number; // 0x0d38 (0x0004) [float]
+  AttachedTarget: UTarget_TA; // 0x0d40 (0x0008) [UTarget_TA*]
+  AttackComponents: UCarComponent_TA[]; // 0x0d48 (0x0010) [TArray<UCarComponent_TA*>]
+  TorqueComponent: UCarComponent_Torque_TA; // 0x0d58 (0x0008) [UCarComponent_Torque_TA*]
+  TakenHits: FPendingHit[]; // 0x0d60 (0x0010) [TArray<FPendingHit>]
+  PendingGrabber: UCar_KnockOut_TA; // 0x0d70 (0x0008) [UCar_KnockOut_TA*]
+  UsedAttackComponent: UCarComponent_TA; // 0x0d78 (0x0008) [UCarComponent_TA*]
+  SuperSonicStartTime: number; // 0x0d80 (0x0004) [float]
+  SuperSonicTimeForHeavyAttack: number; // 0x0d84 (0x0004) [float]
+  ReturnToSafezoneTime: number; // 0x0d88 (0x0004) [float]
+  ThrowMashAlpha: number; // 0x0d8c (0x0004) [float]
+  AttackerPRIs: UPRI_TA[]; // 0x0d90 (0x0010) [TArray<UPRI_TA*>]
+  ResetAttackPRIDelay: number; // 0x0da0 (0x0004) [float]
+  FX_AttackArchetype: UFXActor_Knockout_Attack_TA; // 0x0da8 (0x0008) [UFXActor_Knockout_Attack_TA*]
+  FX_GrabAttackArchetype: UFXActor_Knockout_Attack_TA; // 0x0db0 (0x0008) [UFXActor_Knockout_Attack_TA*]
+  FX_HitAttackLightArchetype: UFXActor_TA; // 0x0db8 (0x0008) [UFXActor_TA*]
+  FX_HitAttackHeavyArchetype: UFXActor_TA; // 0x0dc0 (0x0008) [UFXActor_TA*]
+  FX_HitBlockArchetype: UFXActor_TA; // 0x0dc8 (0x0008) [UFXActor_TA*]
+  FX_GrabHitArchetype: UFXActor_TA; // 0x0dd0 (0x0008) [UFXActor_TA*]
+  DemoSoundAttachmentName: FName; // 0x0dd8 (0x0008) [FName]
+  DemoSoundOverride: UAkSoundCue; // 0x0de0 (0x0008) [UAkSoundCue*]
+  StunlockArchetype: UStunlock_TA; // 0x0de8 (0x0008) [UStunlock_TA*]
+  Stunlock: UStunlock_TA; // 0x0df0 (0x0008) [UStunlock_TA*]
+  bDrawDebug: boolean; // 0x0df8 (0x0004) [bool : 0x1]
+  FX_Attack: UFXActor_Knockout_Attack_TA; // 0x0e00 (0x0008) [UFXActor_Knockout_Attack_TA*]
+  PendingCarToGrab: UCar_KnockOut_TA; // 0x0e08 (0x0008) [UCar_KnockOut_TA*]
+  CarPendingThrow: UCar_KnockOut_TA; // 0x0e10 (0x0008) [UCar_KnockOut_TA*]
+  __EventReplicatedStateChanged__Delegate: FScriptDelegate; // 0x0e18 (0x0018) [FScriptDelegate]
+  __EventDamageTaken__Delegate: FScriptDelegate; // 0x0e30 (0x0018) [FScriptDelegate]
+  __EventBlockTaken__Delegate: FScriptDelegate; // 0x0e48 (0x0018) [FScriptDelegate]
+  __EventGrabbedCarChanged__Delegate: FScriptDelegate; // 0x0e60 (0x0018) [FScriptDelegate]
+  __EventGrabbed__Delegate: FScriptDelegate; // 0x0e78 (0x0018) [FScriptDelegate]
+  __EventThrown__Delegate: FScriptDelegate; // 0x0e90 (0x0018) [FScriptDelegate]
 };
 
 // Car_KnockOut_TA Functions
@@ -14086,7 +14338,7 @@ export type UCar_KnockOut_TA = UCar_TA & {
 
 /**
  * Class TAGame.Car_Season_TA
- * Size: 0x0C38
+ * Size: 0x0C68
  * Extends: UCar_TA
  */
 export type UCar_Season_TA = UCar_TA & {};
@@ -14652,7 +14904,7 @@ export type USkeletalMeshComponent_TA = USkeletalMeshComponent & {
 
 /**
  * Class TAGame.CarMeshComponentBase_TA
- * Size: 0x08D8
+ * Size: 0x08E0
  * Extends: USkeletalMeshComponent_TA
  */
 export type UCarMeshComponentBase_TA = USkeletalMeshComponent_TA & {
@@ -14671,20 +14923,21 @@ export type UCarMeshComponentBase_TA = USkeletalMeshComponent_TA & {
   TeamFinish: UProductAsset_PaintFinish_TA; // 0x0810 (0x0008) [UProductAsset_PaintFinish_TA*]
   CustomFinish: UProductAsset_PaintFinish_TA; // 0x0818 (0x0008) [UProductAsset_PaintFinish_TA*]
   ClubColors: FClubColorSet; // 0x0820 (0x0008) [FClubColorSet]
-  Antennas: UAntennaComponent_TA[]; // 0x0828 (0x0010) [TArray<UAntennaComponent_TA*>]
-  WheelMeshes: UMeshComponent[]; // 0x0838 (0x0010) [TArray<UMeshComponent*>]
-  BodyFX: UFXActor_X; // 0x0848 (0x0008) [UFXActor_X*]
-  FXActors: UFXActor_X[]; // 0x0850 (0x0010) [TArray<UFXActor_X*>]
-  Behaviors: UAttachmentBehavior_TA[]; // 0x0860 (0x0010) [TArray<UAttachmentBehavior_TA*>]
-  BodyFXActor: UFXActor_X; // 0x0870 (0x0008) [UFXActor_X*]
-  ProductAttributes: FClientLoadoutOnlineData; // 0x0878 (0x0010) [FClientLoadoutOnlineData]
-  ProductAttachmentSockets: FName[]; // 0x0888 (0x0010) [TArray<FName>]
-  QueuedTeamFinishID: number; // 0x0898 (0x0004) [int32]
-  QueuedCustomFinishID: number; // 0x089c (0x0004) [int32]
-  PMCSplitBodyMesh: USkeletalMeshComponent_SplitBody_TA; // 0x08a0 (0x0008) [USkeletalMeshComponent_SplitBody_TA*]
-  ColorPrefs: UTeamColorPreferences_TA; // 0x08a8 (0x0008) [UTeamColorPreferences_TA*]
-  ObjectsWithInheritedSettings: FInheritedObjects[]; // 0x08b0 (0x0010) [TArray<FInheritedObjects>]
-  __EventPaintSettingsUpdated__Delegate: FScriptDelegate; // 0x08c0 (0x0018) [FScriptDelegate]
+  LocalAnonymizationSettingsHelper: UStreamerSafeAnonymizationUtils_TA; // 0x0828 (0x0008) [UStreamerSafeAnonymizationUtils_TA*]
+  Antennas: UAntennaComponent_TA[]; // 0x0830 (0x0010) [TArray<UAntennaComponent_TA*>]
+  WheelMeshes: UMeshComponent[]; // 0x0840 (0x0010) [TArray<UMeshComponent*>]
+  BodyFX: UFXActor_X; // 0x0850 (0x0008) [UFXActor_X*]
+  FXActors: UFXActor_X[]; // 0x0858 (0x0010) [TArray<UFXActor_X*>]
+  Behaviors: UAttachmentBehavior_TA[]; // 0x0868 (0x0010) [TArray<UAttachmentBehavior_TA*>]
+  BodyFXActor: UFXActor_X; // 0x0878 (0x0008) [UFXActor_X*]
+  ProductAttributes: FClientLoadoutOnlineData; // 0x0880 (0x0010) [FClientLoadoutOnlineData]
+  ProductAttachmentSockets: FName[]; // 0x0890 (0x0010) [TArray<FName>]
+  QueuedTeamFinishID: number; // 0x08a0 (0x0004) [int32]
+  QueuedCustomFinishID: number; // 0x08a4 (0x0004) [int32]
+  PMCSplitBodyMesh: USkeletalMeshComponent_SplitBody_TA; // 0x08a8 (0x0008) [USkeletalMeshComponent_SplitBody_TA*]
+  ColorPrefs: UTeamColorPreferences_TA; // 0x08b0 (0x0008) [UTeamColorPreferences_TA*]
+  ObjectsWithInheritedSettings: FInheritedObjects[]; // 0x08b8 (0x0010) [TArray<FInheritedObjects>]
+  __EventPaintSettingsUpdated__Delegate: FScriptDelegate; // 0x08c8 (0x0018) [FScriptDelegate]
 };
 
 // CarMeshComponentBase_TA Functions
@@ -14727,6 +14980,10 @@ export type UCarMeshComponentBase_TA = USkeletalMeshComponent_TA & {
 // GetCustomColor(): FLinearColor
 // AllowColorOverride(): boolean
 // GetTeamColor(): FLinearColor
+// ShouldAnonymizeClubColorsForLocalViewer(): boolean
+// FindOwnerTeam(): UTeam_TA
+// HandleAnyPRIAnonymizationChanged(PRI: UPRI_TA): void
+// HandleAnyPRITeamChanged(PRI: UPlayerReplicationInfo): void
 // SetLogo(InLogo: UProductAsset_Logo_TA, bSwapColors: boolean): void
 // SetCustomFinish(Finish: UProductAsset_PaintFinish_TA): void
 // HandleCustomFinishLoaded(Result: FAssetLoadResult): void
@@ -14742,6 +14999,7 @@ export type UCarMeshComponentBase_TA = USkeletalMeshComponent_TA & {
 // ClearColorOverrides(): void
 // SetTeamPaint(Paint: FLoadoutTeamPaint): void
 // CreateWheelAttachment(Asset: UProductAsset_Wheel_TA, WheelMesh: UMeshComponent, InAttachment: FWheelAttachment): UPrimitiveComponent
+// CreateWheelFXActor(Asset: UProductAsset_Wheel_TA, Wheel: UWheelAssetSettings_TA, WheelMesh: UMeshComponent): void
 // CreateWheelMesh(Asset: UProductAsset_Wheel_TA, WheelPos: EWheelPosition, Axle: FVehicleAxleSettings, BoneName: FName): void
 // CreateWheelMeshes(): void
 // GetAxleWheelAsset(ForceWheelAxle: UAssetAttribute_ForceWheelAxle_TA, InWheelAsset: UProductAsset_Wheel_TA, Axle: EWheelPosition): UProductAsset_Wheel_TA
@@ -14757,27 +15015,27 @@ export type UCarMeshComponentBase_TA = USkeletalMeshComponent_TA & {
 
 /**
  * Class TAGame.CarMeshComponent_TA
- * Size: 0x0958
+ * Size: 0x0960
  * Extends: UCarMeshComponentBase_TA
  */
 export type UCarMeshComponent_TA = UCarMeshComponentBase_TA & {
-  BoostBlendInTime: number; // 0x08d8 (0x0004) [float]
-  BoostBlendOutTime: number; // 0x08dc (0x0004) [float]
-  BoostDriveFlapScale: number; // 0x08e0 (0x0004) [float]
-  WheelSuspensionBlendRate: number; // 0x08e4 (0x0004) [float]
-  WheelSteerBlendRate: number; // 0x08e8 (0x0004) [float]
-  WheelControls: FWheelSkelControlSet[]; // 0x08f0 (0x0010) [TArray<FWheelSkelControlSet>]
-  BoostFlyHeight: number; // 0x0900 (0x0004) [float]
-  BoostFlyControls: USkelControlBase[]; // 0x0908 (0x0010) [TArray<USkelControlBase*>]
-  ChassisSpringComponent: USimpleSpringComponent_TA; // 0x0918 (0x0008) [USimpleSpringComponent_TA*]
-  ChassisSpringControl: USkelControlSingleBone; // 0x0920 (0x0008) [USkelControlSingleBone*]
-  BoostControls: USkelControlBase[]; // 0x0928 (0x0010) [TArray<USkelControlBase*>]
-  bInAir: boolean; // 0x0938 (0x0004) [bool : 0x1]
-  bBoostFlying: boolean; // 0x0938 (0x0004) [bool : 0x2]
-  bPreviewSupersonic: boolean; // 0x0938 (0x0004) [bool : 0x4]
-  bWantsBoostCameraAdjustment: boolean; // 0x0938 (0x0004) [bool : 0x8]
-  Throttle: number; // 0x093c (0x0004) [float]
-  __EventAttached__Delegate: FScriptDelegate; // 0x0940 (0x0018) [FScriptDelegate]
+  BoostBlendInTime: number; // 0x08e0 (0x0004) [float]
+  BoostBlendOutTime: number; // 0x08e4 (0x0004) [float]
+  BoostDriveFlapScale: number; // 0x08e8 (0x0004) [float]
+  WheelSuspensionBlendRate: number; // 0x08ec (0x0004) [float]
+  WheelSteerBlendRate: number; // 0x08f0 (0x0004) [float]
+  WheelControls: FWheelSkelControlSet[]; // 0x08f8 (0x0010) [TArray<FWheelSkelControlSet>]
+  BoostFlyHeight: number; // 0x0908 (0x0004) [float]
+  BoostFlyControls: USkelControlBase[]; // 0x0910 (0x0010) [TArray<USkelControlBase*>]
+  ChassisSpringComponent: USimpleSpringComponent_TA; // 0x0920 (0x0008) [USimpleSpringComponent_TA*]
+  ChassisSpringControl: USkelControlSingleBone; // 0x0928 (0x0008) [USkelControlSingleBone*]
+  BoostControls: USkelControlBase[]; // 0x0930 (0x0010) [TArray<USkelControlBase*>]
+  bInAir: boolean; // 0x0940 (0x0004) [bool : 0x1]
+  bBoostFlying: boolean; // 0x0940 (0x0004) [bool : 0x2]
+  bPreviewSupersonic: boolean; // 0x0940 (0x0004) [bool : 0x4]
+  bWantsBoostCameraAdjustment: boolean; // 0x0940 (0x0004) [bool : 0x8]
+  Throttle: number; // 0x0944 (0x0004) [float]
+  __EventAttached__Delegate: FScriptDelegate; // 0x0948 (0x0018) [FScriptDelegate]
 };
 
 // CarMeshComponent_TA Functions
@@ -14949,14 +15207,14 @@ export type UCarPreviewAnim_TA = UActorComponent_X & {
 
 /**
  * Class TAGame.CarPreviewMeshComponent_TA
- * Size: 0x08F8
+ * Size: 0x0900
  * Extends: UCarMeshComponentBase_TA
  */
 export type UCarPreviewMeshComponent_TA = UCarMeshComponentBase_TA & {
-  BoostAsset: UProductAsset_Boost_TA; // 0x08d8 (0x0008) [UProductAsset_Boost_TA*]
-  BoostFX: UFXActor_Boost_TA; // 0x08e0 (0x0008) [UFXActor_Boost_TA*]
-  AntennaAsset: UProductAsset_Attachment_TA; // 0x08e8 (0x0008) [UProductAsset_Attachment_TA*]
-  HatAsset: UProductAsset_Attachment_TA; // 0x08f0 (0x0008) [UProductAsset_Attachment_TA*]
+  BoostAsset: UProductAsset_Boost_TA; // 0x08e0 (0x0008) [UProductAsset_Boost_TA*]
+  BoostFX: UFXActor_Boost_TA; // 0x08e8 (0x0008) [UFXActor_Boost_TA*]
+  AntennaAsset: UProductAsset_Attachment_TA; // 0x08f0 (0x0008) [UProductAsset_Attachment_TA*]
+  HatAsset: UProductAsset_Attachment_TA; // 0x08f8 (0x0008) [UProductAsset_Attachment_TA*]
 };
 
 // CarPreviewMeshComponent_TA Functions
@@ -15035,6 +15293,26 @@ export type UCarTrajectoryComponent_TA = UActorComponent_X & {
 // Tick(DeltaTime: number): void
 // Attached(): void
 // SetEnabled(bEnable: boolean): void
+
+/**
+ * Class TAGame.CarVelocityPreviewComponent_TA
+ * Size: 0x00D0
+ * Extends: UActorComponent_X
+ */
+export type UCarVelocityPreviewComponent_TA = UActorComponent_X & {
+  CurrentVelocity: number; // 0x00a8 (0x0004) [float]
+  MaxVelocity: number; // 0x00ac (0x0004) [float]
+  MinScale: number; // 0x00b0 (0x0004) [float]
+  MaxScale: number; // 0x00b4 (0x0004) [float]
+  CarOffset: number; // 0x00b8 (0x0004) [float]
+  PreviewOffset: number; // 0x00bc (0x0004) [float]
+  MeshComponent: UStaticMeshComponent; // 0x00c0 (0x0008) [UStaticMeshComponent*]
+  StaticMesh: UStaticMesh; // 0x00c8 (0x0008) [UStaticMesh*]
+};
+
+// CarVelocityPreviewComponent_TA Functions
+// SetVelocity(Velocity: number): void
+// Detached(): void
 
 /**
  * Class TAGame.CertifiedStat_TA
@@ -15329,6 +15607,7 @@ export type UChallengeDefaultManager_TA = UObject & {
 // __ChallengeDefaultManager_TA__ProcessChallengesPushedNotifications_0x1(C: UChallengeDefault_TA): number
 // __ChallengeDefaultManager_TA__AddDefaultChallenges_0x1(F: UChallengeFolder_TA): void
 // __ChallengeDefaultManager_TA__Cheat_SetFolders_0x1(F: UChallengeFolder_TA): void
+// Cheat_AddFolder(InFolder: UChallengeFolder_TA): void
 // Cheat_SetFolders(InFolders: UChallengeFolder_TA[]): void
 // GetSubFolders(CodeName: string): UChallengeFolder_TA[]
 // FindFolder(FindCodeName: string): UChallengeFolder_TA
@@ -15538,6 +15817,7 @@ export type UChallengeManager_TA = UObject & {
 // HandlePreLoadMap(MapName: string): void
 // SendSavedTrainingData(): void
 // HandleTrainingCompleted(Training: UGameEvent_Training_TA): void
+// SetTutorialComplete(TutorialType: string): void
 // HandleTutorialCompleted(Tutorial: UTutorial_TA): void
 // TriggerChallengeCompleteNotification(Challenge: UChallenge_TA): void
 // NotifyChallengeCompleted(Challenge: UChallenge_TA): void
@@ -15768,7 +16048,7 @@ export type UCinematicIntroSequence_TA = UObject & {
 
 /**
  * Class TAGame.CinematicsCar_TA
- * Size: 0x0C38
+ * Size: 0x0C68
  * Extends: UCar_TA
  */
 export type UCinematicsCar_TA = UCar_TA & {};
@@ -16911,7 +17191,7 @@ export type UCustomMatchSettingsSave_TA = UJsonSaveObject_TA & {
 
 /**
  * Class TAGame.CustomTrainingSave_TA
- * Size: 0x00EC
+ * Size: 0x00F0
  * Extends: UJsonSaveObject_TA
  */
 export type UCustomTrainingSave_TA = UJsonSaveObject_TA & {
@@ -16922,7 +17202,9 @@ export type UCustomTrainingSave_TA = UJsonSaveObject_TA & {
   VehicleRotationModifier: number; // 0x00e0 (0x0004) [float]
   bForceSpawnVehicleOnGround: boolean; // 0x00e4 (0x0004) [bool : 0x1]
   bSkipGoalReplay: boolean; // 0x00e4 (0x0004) [bool : 0x2]
+  bUnlimitedBoost: boolean; // 0x00e4 (0x0004) [bool : 0x4]
   RestartRoundInputDelay: number; // 0x00e8 (0x0004) [float]
+  StartingBoost: number; // 0x00ec (0x0004) [float]
 };
 
 // CustomTrainingSave_TA Functions
@@ -17086,6 +17368,23 @@ export type UDemolishedCar_TA = UObject & {
 };
 
 /**
+ * Class TAGame.DemoSpawnSelectMetrics_TA
+ * Size: 0x00A0
+ * Extends: UMetricsGroup_X
+ */
+export type UDemoSpawnSelectMetrics_TA = UMetricsGroup_X & {
+  MatchDemoSpawnEvents: FDemoSpawnEvent[]; // 0x0080 (0x0010) [TArray<FDemoSpawnEvent>]
+  CurrentMatchGUID: string; // 0x0090 (0x0010) [FString]
+};
+
+// DemoSpawnSelectMetrics_TA Functions
+// DemoSpawnSummary(MatchGUID: string, MapName: string, DemoSpawnEvents: FDemoSpawnEvent[]): void
+// RecordDemoSpawnEvent(PlayerID: FUniqueNetId, Preference: EDemoSpawnPreference, TeamNum: number, SecondsRemaining: number, bOverTime: boolean): void
+// HandleMatchGUIDChanged(GRI: UGRI_X): void
+// HandleMatchEnded(SoccarEvent: UGameEvent_Soccar_TA): void
+// Construct(): void
+
+/**
  * Class TAGame.DeprecatedProperty
  * Size: 0x0070
  * Extends: UField
@@ -17239,6 +17538,8 @@ export type UGameEditor_Actor_TA = UActor & {
 };
 
 // GameEditor_Actor_TA Functions
+// DeserializeClassSpecific(Data: UJsonObject): void
+// SerializeClassSpecific(Data: UJsonObject): void
 // EditingEnd(): void
 // EditingBegin(): void
 // NotifyOnSelectionChange(Callback: FScriptDelegate): void
@@ -17266,10 +17567,20 @@ export type UGameEditor_Actor_TA = UActor & {
 
 /**
  * Class TAGame.DynamicSpawnPointMesh_TA
- * Size: 0x02B0
+ * Size: 0x02C0
  * Extends: UGameEditor_Actor_TA
  */
-export type UDynamicSpawnPointMesh_TA = UGameEditor_Actor_TA & {};
+export type UDynamicSpawnPointMesh_TA = UGameEditor_Actor_TA & {
+  VelocityStartSpeed: number; // 0x02b0 (0x0004) [float]
+  MaxStartSpeed: number; // 0x02b4 (0x0004) [float]
+  VelocityPreviewComponent: UCarVelocityPreviewComponent_TA; // 0x02b8 (0x0008) [UCarVelocityPreviewComponent_TA*]
+};
+
+// DynamicSpawnPointMesh_TA Functions
+// OnVelocityStartSpeedChanged(): void
+// AddVelocityStartSpeed(Amount: number): void
+// DeserializeClassSpecific(Data: UJsonObject): void
+// SerializeClassSpecific(Data: UJsonObject): void
 
 /**
  * Class TAGame.EmptyResponse
@@ -17762,6 +18073,7 @@ export type UEngineShare_TA = UEngineShare_X & {
 // SetTickNotify(Obj: UITickNotify_TA, bNotify: boolean): void
 // static LoadStandaloneObject(ExpectedClass: UObject, ObjectName: FName, LoadFlags: number): UObject
 // InitOnlineGame(NewOnlineSubsystem: UOnlineSubsystem): void
+// static GetPlatformName(): string
 // RecordAppStart(): void
 // Init(): void
 // static GetVersionString(): string
@@ -19300,6 +19612,8 @@ export type UFunctionTemplates = UObject & {};
 // static ArrayFuncs__ShuffleArray__Int(ArrayToShuffle: number[]): void
 // static Object__SwapArrayItems__Int(A: number[], Idx1: number, Idx2: number): void
 // static Object__Swap__Int(A: number, B: number): void
+// static ArrayFuncs__ShuffleArray__PRI_TA(): void
+// static Object__SwapArrayItems__PRI_TA(Idx1: number, Idx2: number): void
 // static Object__SwapArrayItems__TourTeam(A: FTourTeam[], Idx1: number, Idx2: number): void
 // static ArrayFuncs__ShuffleArray__MusicTrack_TA(ArrayToShuffle: UMusicTrack_TA[]): void
 // static Object__SwapArrayItems__MusicTrack_TA(A: UMusicTrack_TA[], Idx1: number, Idx2: number): void
@@ -19938,6 +20252,7 @@ export type UGameData_TA = UObject & {
 };
 
 // GameData_TA Functions
+// static GetCarCustomColorSet(): UCarColorSet_TA
 // static GetClubColorSet(): UCarColorSet_TA
 // static GetCurrentMapData(): UMapData_TA
 // static GetMapName(bLocalize: boolean): string
@@ -20025,7 +20340,7 @@ export type UGameEngine_TA = UGameEngine_X & {
 
 /**
  * Class TAGame.GameEvent_TA
- * Size: 0x0758
+ * Size: 0x0768
  * Extends: UActor
  */
 export type UGameEvent_TA = UActor & {
@@ -20106,28 +20421,29 @@ export type UGameEvent_TA = UActor & {
   MatchStartEpoch: bigint; // 0x0530 (0x0008) [uint64]
   MatchTotalSecondsPlayed: number; // 0x0538 (0x0004) [float]
   DemoFXOverride: UFXActor_TA; // 0x0540 (0x0008) [UFXActor_TA*]
-  __EventMatchStarted__Delegate: FScriptDelegate; // 0x0548 (0x0018) [FScriptDelegate]
-  __EventGameStateChanged__Delegate: FScriptDelegate; // 0x0560 (0x0018) [FScriptDelegate]
-  __EventGameStateTimeUpdated__Delegate: FScriptDelegate; // 0x0578 (0x0018) [FScriptDelegate]
-  __EventFinished__Delegate: FScriptDelegate; // 0x0590 (0x0018) [FScriptDelegate]
-  __EventDestroyed__Delegate: FScriptDelegate; // 0x05a8 (0x0018) [FScriptDelegate]
-  __EventPlayerRestarted__Delegate: FScriptDelegate; // 0x05c0 (0x0018) [FScriptDelegate]
-  __EventPlayerAdded__Delegate: FScriptDelegate; // 0x05d8 (0x0018) [FScriptDelegate]
-  __EventPlayerRemoved__Delegate: FScriptDelegate; // 0x05f0 (0x0018) [FScriptDelegate]
-  __EventCarAdded__Delegate: FScriptDelegate; // 0x0608 (0x0018) [FScriptDelegate]
-  __EventCarRemoved__Delegate: FScriptDelegate; // 0x0620 (0x0018) [FScriptDelegate]
-  __EventReplicatedDemolish__Delegate: FScriptDelegate; // 0x0638 (0x0018) [FScriptDelegate]
-  __EventPenaltyChanged__Delegate: FScriptDelegate; // 0x0650 (0x0018) [FScriptDelegate]
-  __EventCanVoteForfeitChanged__Delegate: FScriptDelegate; // 0x0668 (0x0018) [FScriptDelegate]
-  __EventCountDownTimeUpdated__Delegate: FScriptDelegate; // 0x0680 (0x0018) [FScriptDelegate]
-  __EventGameOwnerUpdated__Delegate: FScriptDelegate; // 0x0698 (0x0018) [FScriptDelegate]
-  __EventMatchTypeSet__Delegate: FScriptDelegate; // 0x06b0 (0x0018) [FScriptDelegate]
-  __EventLocalPlayersChanged__Delegate: FScriptDelegate; // 0x06c8 (0x0018) [FScriptDelegate]
-  __EventMatchSettingsChanged__Delegate: FScriptDelegate; // 0x06e0 (0x0018) [FScriptDelegate]
-  __EventPlayerResetTraining__Delegate: FScriptDelegate; // 0x06f8 (0x0018) [FScriptDelegate]
-  __EventGameEventCommand__Delegate: FScriptDelegate; // 0x0710 (0x0018) [FScriptDelegate]
-  __EventRestartPlayer__Delegate: FScriptDelegate; // 0x0728 (0x0018) [FScriptDelegate]
-  __Pylon__ChangeNotify: FScriptDelegate; // 0x0740 (0x0018) [FScriptDelegate]
+  AnonymizedIndex: FUniqueNetId[]; // 0x0548 (0x0010) [TArray<FUniqueNetId>]
+  __EventMatchStarted__Delegate: FScriptDelegate; // 0x0558 (0x0018) [FScriptDelegate]
+  __EventGameStateChanged__Delegate: FScriptDelegate; // 0x0570 (0x0018) [FScriptDelegate]
+  __EventGameStateTimeUpdated__Delegate: FScriptDelegate; // 0x0588 (0x0018) [FScriptDelegate]
+  __EventFinished__Delegate: FScriptDelegate; // 0x05a0 (0x0018) [FScriptDelegate]
+  __EventDestroyed__Delegate: FScriptDelegate; // 0x05b8 (0x0018) [FScriptDelegate]
+  __EventPlayerRestarted__Delegate: FScriptDelegate; // 0x05d0 (0x0018) [FScriptDelegate]
+  __EventPlayerAdded__Delegate: FScriptDelegate; // 0x05e8 (0x0018) [FScriptDelegate]
+  __EventPlayerRemoved__Delegate: FScriptDelegate; // 0x0600 (0x0018) [FScriptDelegate]
+  __EventCarAdded__Delegate: FScriptDelegate; // 0x0618 (0x0018) [FScriptDelegate]
+  __EventCarRemoved__Delegate: FScriptDelegate; // 0x0630 (0x0018) [FScriptDelegate]
+  __EventReplicatedDemolish__Delegate: FScriptDelegate; // 0x0648 (0x0018) [FScriptDelegate]
+  __EventPenaltyChanged__Delegate: FScriptDelegate; // 0x0660 (0x0018) [FScriptDelegate]
+  __EventCanVoteForfeitChanged__Delegate: FScriptDelegate; // 0x0678 (0x0018) [FScriptDelegate]
+  __EventCountDownTimeUpdated__Delegate: FScriptDelegate; // 0x0690 (0x0018) [FScriptDelegate]
+  __EventGameOwnerUpdated__Delegate: FScriptDelegate; // 0x06a8 (0x0018) [FScriptDelegate]
+  __EventMatchTypeSet__Delegate: FScriptDelegate; // 0x06c0 (0x0018) [FScriptDelegate]
+  __EventLocalPlayersChanged__Delegate: FScriptDelegate; // 0x06d8 (0x0018) [FScriptDelegate]
+  __EventMatchSettingsChanged__Delegate: FScriptDelegate; // 0x06f0 (0x0018) [FScriptDelegate]
+  __EventPlayerResetTraining__Delegate: FScriptDelegate; // 0x0708 (0x0018) [FScriptDelegate]
+  __EventGameEventCommand__Delegate: FScriptDelegate; // 0x0720 (0x0018) [FScriptDelegate]
+  __EventRestartPlayer__Delegate: FScriptDelegate; // 0x0738 (0x0018) [FScriptDelegate]
+  __Pylon__ChangeNotify: FScriptDelegate; // 0x0750 (0x0018) [FScriptDelegate]
 };
 
 // GameEvent_TA Functions
@@ -20146,7 +20462,10 @@ export type UGameEvent_TA = UActor & {
 // __GameEvent_TA__CheckForBannedPlayers_0x2(PRI: UPRI_TA): FUniqueNetId
 // __GameEvent_TA__CheckForBannedPlayers_0x1(PRI: UPRI_TA): boolean
 // __Pylon__ChangeNotifyFunc(): void
+// ShouldUpdatePresence(): boolean
 // FindPlayerPRI(UniqueId: FUniqueNetId): UPRI_TA
+// CanPlaylistAnonymize(): boolean
+// CanShowViralItemVisuals(): boolean
 // IsPlaylistViral(): boolean
 // IsActive(): boolean
 // ShouldClipCameraToField(): boolean
@@ -20359,27 +20678,27 @@ export type UGameEvent_TA = UActor & {
 
 /**
  * Class TAGame.GameEvent_Team_TA
- * Size: 0x0800
+ * Size: 0x0810
  * Extends: UGameEvent_TA
  */
 export type UGameEvent_Team_TA = UGameEvent_TA & {
-  TeamArchetypes: UTeam_TA[]; // 0x0758 (0x0010) [TArray<UTeam_TA*>]
-  Teams: UTeam_TA[]; // 0x0768 (0x0010) [TArray<UTeam_TA*>]
-  MaxTeamSize: number; // 0x0778 (0x0004) [int32]
-  NumBots: number; // 0x077c (0x0004) [int32]
-  bMuteOppositeTeams: boolean; // 0x0780 (0x0004) [bool : 0x1]
-  bDisableMutingOtherTeam: boolean; // 0x0780 (0x0004) [bool : 0x2]
-  bForfeit: boolean; // 0x0780 (0x0004) [bool : 0x4]
-  bUnfairTeams: boolean; // 0x0780 (0x0004) [bool : 0x8]
-  bAlwaysAutoSelectTeam: boolean; // 0x0780 (0x0004) [bool : 0x10]
-  bDisableQuickChat: boolean; // 0x0780 (0x0004) [bool : 0x20]
-  RematchVoteArchetype: UVoteActor_TA; // 0x0788 (0x0008) [UVoteActor_TA*]
-  RematchVote: UVoteActor_TA; // 0x0790 (0x0008) [UVoteActor_TA*]
-  PreloadedBotAssets: UProductAsset_TA[]; // 0x0798 (0x0010) [TArray<UProductAsset_TA*>]
-  PlayersRemovedThisFrame: FPlayerLeavingData[]; // 0x07a8 (0x0010) [TArray<FPlayerLeavingData>]
-  __EventTeamsCreated__Delegate: FScriptDelegate; // 0x07b8 (0x0018) [FScriptDelegate]
-  __EventTeamsInitialized__Delegate: FScriptDelegate; // 0x07d0 (0x0018) [FScriptDelegate]
-  __MaxTeamSize__ChangeNotify: FScriptDelegate; // 0x07e8 (0x0018) [FScriptDelegate]
+  TeamArchetypes: UTeam_TA[]; // 0x0768 (0x0010) [TArray<UTeam_TA*>]
+  Teams: UTeam_TA[]; // 0x0778 (0x0010) [TArray<UTeam_TA*>]
+  MaxTeamSize: number; // 0x0788 (0x0004) [int32]
+  NumBots: number; // 0x078c (0x0004) [int32]
+  bMuteOppositeTeams: boolean; // 0x0790 (0x0004) [bool : 0x1]
+  bDisableMutingOtherTeam: boolean; // 0x0790 (0x0004) [bool : 0x2]
+  bForfeit: boolean; // 0x0790 (0x0004) [bool : 0x4]
+  bUnfairTeams: boolean; // 0x0790 (0x0004) [bool : 0x8]
+  bAlwaysAutoSelectTeam: boolean; // 0x0790 (0x0004) [bool : 0x10]
+  bDisableQuickChat: boolean; // 0x0790 (0x0004) [bool : 0x20]
+  RematchVoteArchetype: UVoteActor_TA; // 0x0798 (0x0008) [UVoteActor_TA*]
+  RematchVote: UVoteActor_TA; // 0x07a0 (0x0008) [UVoteActor_TA*]
+  PreloadedBotAssets: UProductAsset_TA[]; // 0x07a8 (0x0010) [TArray<UProductAsset_TA*>]
+  PlayersRemovedThisFrame: FPlayerLeavingData[]; // 0x07b8 (0x0010) [TArray<FPlayerLeavingData>]
+  __EventTeamsCreated__Delegate: FScriptDelegate; // 0x07c8 (0x0018) [FScriptDelegate]
+  __EventTeamsInitialized__Delegate: FScriptDelegate; // 0x07e0 (0x0018) [FScriptDelegate]
+  __MaxTeamSize__ChangeNotify: FScriptDelegate; // 0x07f8 (0x0018) [FScriptDelegate]
 };
 
 // GameEvent_Team_TA Functions
@@ -20441,164 +20760,167 @@ export type UGameEvent_Team_TA = UGameEvent_TA & {
 
 /**
  * Class TAGame.GameEvent_Soccar_TA
- * Size: 0x0E60
+ * Size: 0x0E98
  * Extends: UGameEvent_Team_TA
  */
 export type UGameEvent_Soccar_TA = UGameEvent_Team_TA & {
-  TestCarArchetype: UCar_TA; // 0x0800 (0x0008) [UCar_TA*]
-  BallArchetype: UBall_TA; // 0x0808 (0x0008) [UBall_TA*]
-  GoalIndicatorArchetype: UGoalIndicator_TA; // 0x0810 (0x0008) [UGoalIndicator_TA*]
-  bShouldSpawnGoalIndicators: boolean; // 0x0818 (0x0004) [bool : 0x1]
-  bRandomBallSpawnPoint: boolean; // 0x0818 (0x0004) [bool : 0x2]
-  bRoundActive: boolean; // 0x0818 (0x0004) [bool : 0x4]
-  bPlayReplays: boolean; // 0x0818 (0x0004) [bool : 0x8]
-  bBallHasBeenHit: boolean; // 0x0818 (0x0004) [bool : 0x10]
-  bOverTime: boolean; // 0x0818 (0x0004) [bool : 0x20]
-  bUnlimitedTime: boolean; // 0x0818 (0x0004) [bool : 0x40]
-  bGoalsEnabled: boolean; // 0x0818 (0x0004) [bool : 0x80]
-  bNoContest: boolean; // 0x0818 (0x0004) [bool : 0x100]
-  bAntiCheatTerminated: boolean; // 0x0818 (0x0004) [bool : 0x200]
-  bDisableGoalDelay: boolean; // 0x0818 (0x0004) [bool : 0x400]
-  bShowNoScorerGoalMessage: boolean; // 0x0818 (0x0004) [bool : 0x800]
-  bSkipMatchCompleteNoContest: boolean; // 0x0818 (0x0004) [bool : 0x1000]
-  bMatchEnded: boolean; // 0x0818 (0x0004) [bool : 0x2000]
-  bFullMatchWinnerDecided: boolean; // 0x0818 (0x0004) [bool : 0x4000]
-  bDisableCrowdSound: boolean; // 0x0818 (0x0004) [bool : 0x8000]
-  bShowIntroScene: boolean; // 0x0818 (0x0004) [bool : 0x10000]
-  bReadyToStartGame: boolean; // 0x0818 (0x0004) [bool : 0x20000]
-  bClubMatch: boolean; // 0x0818 (0x0004) [bool : 0x40000]
-  bFullClubMatch: boolean; // 0x0818 (0x0004) [bool : 0x80000]
-  bMatchCreatorAdminEnabled: boolean; // 0x0818 (0x0004) [bool : 0x100000]
-  bCanDropOnlineRewards: boolean; // 0x0818 (0x0004) [bool : 0x200000]
-  bAllowHonorDuels: boolean; // 0x0818 (0x0004) [bool : 0x400000]
-  bThistleMatch: boolean; // 0x0818 (0x0004) [bool : 0x800000]
-  bAllowDemoSpawnSelection: boolean; // 0x0818 (0x0004) [bool : 0x1000000]
-  BallSpawnPoints: UActor[]; // 0x0820 (0x0010) [TArray<UActor*>]
-  BallSpawnPointIndex: number; // 0x0830 (0x0004) [int32]
-  StatFactoryArchetype: UStatFactory_TA; // 0x0838 (0x0008) [UStatFactory_TA*]
-  InitialEventState: FName; // 0x0840 (0x0008) [FName]
-  SeriesLength: number; // 0x0848 (0x0004) [int32]
-  GameTime: number; // 0x084c (0x0004) [int32]
-  WarmupTime: number; // 0x0850 (0x0004) [int32]
-  MaxScore: number; // 0x0854 (0x0004) [int32]
-  AutoBalanceDifference: number; // 0x0858 (0x0004) [int32]
-  OvertimeComponent: UOvertimeComponent_TA; // 0x0860 (0x0008) [UOvertimeComponent_TA*]
-  ScoreSlomoCurve: FInterpCurveFloat; // 0x0868 (0x0018) [FInterpCurveFloat]
-  ScoreSlomoTime: number; // 0x0880 (0x0004) [float]
-  GameTimeRemaining: number; // 0x0884 (0x0004) [float]
-  SecondsRemaining: number; // 0x0888 (0x0004) [int32]
-  WaitTimeRemaining: number; // 0x088c (0x0004) [int32]
-  TotalGameTimePlayed: number; // 0x0890 (0x0004) [float]
-  OvertimeTimePlayed: number; // 0x0894 (0x0004) [float]
-  GoalScoredMessage: UMessage_TA; // 0x0898 (0x0008) [UMessage_TA*]
-  OvertimeMessage: UMessage_TA; // 0x08a0 (0x0008) [UMessage_TA*]
-  TwoMinRemainingMessage: UMessage_TA; // 0x08a8 (0x0008) [UMessage_TA*]
-  OneMinRemainingMessage: UMessage_TA; // 0x08b0 (0x0008) [UMessage_TA*]
-  ThirtySecondsRemainingMessage: UMessage_TA; // 0x08b8 (0x0008) [UMessage_TA*]
-  StopMessage: UMessage_TA; // 0x08c0 (0x0008) [UMessage_TA*]
-  GamePausedMessage: UMessage_TA; // 0x08c8 (0x0008) [UMessage_TA*]
-  GameUnPausedMessage: UMessage_TA; // 0x08d0 (0x0008) [UMessage_TA*]
-  OutOfBoundsMessage: UMessage_TA; // 0x08d8 (0x0008) [UMessage_TA*]
-  NextSpawnIndex: number; // 0x08e0 (0x0004) [int32]
-  ReplayDirectorArchetype: UReplayDirector_TA; // 0x08e8 (0x0008) [UReplayDirector_TA*]
-  ReplayDirector: UReplayDirector_TA; // 0x08f0 (0x0008) [UReplayDirector_TA*]
-  GameBalls: UBall_TA[]; // 0x08f8 (0x0010) [TArray<UBall_TA*>]
-  TotalGameBalls: number; // 0x0908 (0x0004) [int32]
-  PostGoalTime: number; // 0x090c (0x0004) [float]
-  StatFactory: UStatFactory_TA; // 0x0910 (0x0008) [UStatFactory_TA*]
-  Goals: UGoal_TA[]; // 0x0918 (0x0010) [TArray<UGoal_TA*>]
-  SecondsRemainingCountdown: number; // 0x0928 (0x0004) [int32]
-  SecondsRemainingMessage: UMessage_TA; // 0x0930 (0x0008) [UMessage_TA*]
-  FieldCenter: FVector; // 0x0938 (0x000c) [FVector]
-  GameWinner: UTeam_TA; // 0x0948 (0x0008) [UTeam_TA*]
-  MatchWinner: UTeam_TA; // 0x0950 (0x0008) [UTeam_TA*]
-  TeamLastScored: UTeam_TA; // 0x0958 (0x0008) [UTeam_TA*]
-  TieBreakDecision: ETieBreakDecision; // 0x0960 (0x0001) [ETieBreakDecision]
-  ReplicatedScoredOnTeam: number; // 0x0961 (0x0001) [uint8]
-  ReplicatedServerPerformanceState: EConnectionQualityState; // 0x0962 (0x0001) [EConnectionQualityState]
-  MVP: UPRI_TA; // 0x0968 (0x0008) [UPRI_TA*]
-  FastestGoalPlayer: UPRI_TA; // 0x0970 (0x0008) [UPRI_TA*]
-  SlowestGoalPlayer: UPRI_TA; // 0x0978 (0x0008) [UPRI_TA*]
-  FurthestGoalPlayer: UPRI_TA; // 0x0980 (0x0008) [UPRI_TA*]
-  FastestGoalSpeed: number; // 0x0988 (0x0004) [float]
-  SlowestGoalSpeed: number; // 0x098c (0x0004) [float]
-  FurthestGoal: number; // 0x0990 (0x0004) [float]
-  ScoringPlayer: UPRI_TA; // 0x0998 (0x0008) [UPRI_TA*]
-  RoundNum: number; // 0x09a0 (0x0004) [int32]
-  AssistMaxTime: number; // 0x09a4 (0x0004) [float]
-  BallHasBeenHitStartDelay: number; // 0x09a8 (0x0004) [float]
-  BallRespawnTime: number; // 0x09ac (0x0004) [float]
-  DefaultSubRules: UGameEvent_Soccar_SubRules_TA; // 0x09b0 (0x0008) [UGameEvent_Soccar_SubRules_TA*]
-  SubRulesArchetype: UGameEvent_Soccar_SubRules_TA; // 0x09b8 (0x0008) [UGameEvent_Soccar_SubRules_TA*]
-  SubRules: UGameEvent_Soccar_SubRules_TA; // 0x09c0 (0x0008) [UGameEvent_Soccar_SubRules_TA*]
-  SpawnPointsPodiumAnim: USpawnPointCluster_TA; // 0x09c8 (0x0008) [USpawnPointCluster_TA*]
-  SpawnPointsPodium: USpawnPointCluster_TA; // 0x09d0 (0x0008) [USpawnPointCluster_TA*]
-  PodiumDelay: number; // 0x09d8 (0x0004) [float]
-  PodiumTime: number; // 0x09dc (0x0004) [float]
-  SpawnPointLobbyTeams: USpawnPointCluster_TA[]; // 0x09e0 (0x0010) [TArray<USpawnPointCluster_TA*>]
-  StatCategories: UStatCategory_TA[]; // 0x09f0 (0x0010) [TArray<UStatCategory_TA*>]
-  BallTrajectory: UBall_Trajectory_TA; // 0x0a00 (0x0008) [UBall_Trajectory_TA*]
-  BallTrajectoryArchetype: UBall_Trajectory_TA; // 0x0a08 (0x0008) [UBall_Trajectory_TA*]
-  UnpauseCountdown: UCountdownObject_TA; // 0x0a10 (0x0008) [UCountdownObject_TA*]
-  Pauser: UPlayerController_TA; // 0x0a18 (0x0008) [UPlayerController_TA*]
-  PlayerMatchData: FOnlinePlayerMatchData[]; // 0x0a20 (0x0010) [TArray<FOnlinePlayerMatchData>]
-  EndRoundComponentArchetype: UEndRoundComponent_TA; // 0x0a30 (0x0008) [UEndRoundComponent_TA*]
-  EndRoundComponent: UEndRoundComponent_TA; // 0x0a38 (0x0008) [UEndRoundComponent_TA*]
-  MatchBroadcast: UMatchBroadcastComponent_TA; // 0x0a40 (0x0008) [UMatchBroadcastComponent_TA*]
-  ReplicatedStatEvent: UStatEvent_TA; // 0x0a48 (0x0008) [UStatEvent_TA*]
-  ImportantStatEvents: UStatEvent_TA[]; // 0x0a50 (0x0010) [TArray<UStatEvent_TA*>]
-  GameObserver: UGameObserver_TA; // 0x0a60 (0x0008) [UGameObserver_TA*]
-  ActiveFpsRecorder: UFpsBucketRecorder_TA; // 0x0a68 (0x0008) [UFpsBucketRecorder_TA*]
-  InactiveFpsRecorder: UFpsBucketRecorder_TA; // 0x0a70 (0x0008) [UFpsBucketRecorder_TA*]
-  ServerPerformanceTracker: UServerPerformanceTracker_TA; // 0x0a78 (0x0008) [UServerPerformanceTracker_TA*]
-  MatchSeries: UMatchSeries_TA; // 0x0a80 (0x0008) [UMatchSeries_TA*]
-  CrowdSound: UCrowdSoundManagerBase_TA; // 0x0a88 (0x0008) [UCrowdSoundManagerBase_TA*]
-  ClubInformation: FClubReplicationInfo[]; // 0x0a90 (0x0010) [TArray<FClubReplicationInfo>]
-  SilencedStatEventSounds: UStatEvent_TA[]; // 0x0aa0 (0x0010) [TArray<UStatEvent_TA*>]
-  PendingClubStatRecords: FPendingClubStatRecord[]; // 0x0ab0 (0x0010) [TArray<FPendingClubStatRecord>]
-  LobbyTagOffsetZ: number; // 0x0ac0 (0x0004) [float]
-  PodiumTagOffsetZ: number; // 0x0ac4 (0x0004) [float]
-  BallSpacing: number; // 0x0ac8 (0x0004) [float]
-  PreMatchPlayersReadyStartDelay: number; // 0x0acc (0x0004) [float]
-  RemovedPRIs: UPRI_TA[]; // 0x0ad0 (0x0010) [TArray<UPRI_TA*>]
-  ThistleConfig: UThistleConfig_TA; // 0x0ae0 (0x0008) [UThistleConfig_TA*]
-  __EventActiveRoundChanged__Delegate: FScriptDelegate; // 0x0ae8 (0x0018) [FScriptDelegate]
-  __EventStartNewRound__Delegate: FScriptDelegate; // 0x0b00 (0x0018) [FScriptDelegate]
-  __EventBallAdded__Delegate: FScriptDelegate; // 0x0b18 (0x0018) [FScriptDelegate]
-  __EventBallRemoved__Delegate: FScriptDelegate; // 0x0b30 (0x0018) [FScriptDelegate]
-  __EventFirstBallHit__Delegate: FScriptDelegate; // 0x0b48 (0x0018) [FScriptDelegate]
-  __EventGoalScored__Delegate: FScriptDelegate; // 0x0b60 (0x0018) [FScriptDelegate]
-  __EventGameTimeUpdated__Delegate: FScriptDelegate; // 0x0b78 (0x0018) [FScriptDelegate]
-  __EventOvertimeUpdated__Delegate: FScriptDelegate; // 0x0b90 (0x0018) [FScriptDelegate]
-  __EventGameEnded__Delegate: FScriptDelegate; // 0x0ba8 (0x0018) [FScriptDelegate]
-  __EventMatchEnded__Delegate: FScriptDelegate; // 0x0bc0 (0x0018) [FScriptDelegate]
-  __EventFullMatchWinnerDecided__Delegate: FScriptDelegate; // 0x0bd8 (0x0018) [FScriptDelegate]
-  __EventEndGameCountDown__Delegate: FScriptDelegate; // 0x0bf0 (0x0018) [FScriptDelegate]
-  __EventReplayDirectorSet__Delegate: FScriptDelegate; // 0x0c08 (0x0018) [FScriptDelegate]
-  __EventGameWinnerSet__Delegate: FScriptDelegate; // 0x0c20 (0x0018) [FScriptDelegate]
-  __EventMatchWinnerSet__Delegate: FScriptDelegate; // 0x0c38 (0x0018) [FScriptDelegate]
-  __EventPlayerScored__Delegate: FScriptDelegate; // 0x0c50 (0x0018) [FScriptDelegate]
-  __EventReplicatedGoalScored__Delegate: FScriptDelegate; // 0x0c68 (0x0018) [FScriptDelegate]
-  __EventStatFactoryInitialized__Delegate: FScriptDelegate; // 0x0c80 (0x0018) [FScriptDelegate]
-  __EventReplicatedStatEvent__Delegate: FScriptDelegate; // 0x0c98 (0x0018) [FScriptDelegate]
-  __EventMaxScoreChanged__Delegate: FScriptDelegate; // 0x0cb0 (0x0018) [FScriptDelegate]
-  __EventReplayFinished__Delegate: FScriptDelegate; // 0x0cc8 (0x0018) [FScriptDelegate]
-  __EventDisableGoalDelayUpdated__Delegate: FScriptDelegate; // 0x0ce0 (0x0018) [FScriptDelegate]
-  __EventBallSpawned__Delegate: FScriptDelegate; // 0x0cf8 (0x0018) [FScriptDelegate]
-  __EventBallReset__Delegate: FScriptDelegate; // 0x0d10 (0x0018) [FScriptDelegate]
-  __EventCountdownStarted__Delegate: FScriptDelegate; // 0x0d28 (0x0018) [FScriptDelegate]
-  __EventReplayPlaybackStateChanged__Delegate: FScriptDelegate; // 0x0d40 (0x0018) [FScriptDelegate]
-  __EventPodiumSpotlightStarted__Delegate: FScriptDelegate; // 0x0d58 (0x0018) [FScriptDelegate]
-  __bShowIntroScene__ChangeNotify: FScriptDelegate; // 0x0d70 (0x0018) [FScriptDelegate]
-  __bReadyToStartGame__ChangeNotify: FScriptDelegate; // 0x0d88 (0x0018) [FScriptDelegate]
-  __bClubMatch__ChangeNotify: FScriptDelegate; // 0x0da0 (0x0018) [FScriptDelegate]
-  __bFullClubMatch__ChangeNotify: FScriptDelegate; // 0x0db8 (0x0018) [FScriptDelegate]
-  __bMatchCreatorAdminEnabled__ChangeNotify: FScriptDelegate; // 0x0dd0 (0x0018) [FScriptDelegate]
-  __bCanDropOnlineRewards__ChangeNotify: FScriptDelegate; // 0x0de8 (0x0018) [FScriptDelegate]
-  __bThistleMatch__ChangeNotify: FScriptDelegate; // 0x0e00 (0x0018) [FScriptDelegate]
-  __WaitTimeRemaining__ChangeNotify: FScriptDelegate; // 0x0e18 (0x0018) [FScriptDelegate]
-  __TieBreakDecision__ChangeNotify: FScriptDelegate; // 0x0e30 (0x0018) [FScriptDelegate]
-  __ReplicatedServerPerformanceState__ChangeNotify: FScriptDelegate; // 0x0e48 (0x0018) [FScriptDelegate]
+  TestCarArchetype: UCar_TA; // 0x0810 (0x0008) [UCar_TA*]
+  BallArchetype: UBall_TA; // 0x0818 (0x0008) [UBall_TA*]
+  GoalIndicatorArchetype: UGoalIndicator_TA; // 0x0820 (0x0008) [UGoalIndicator_TA*]
+  bShouldSpawnGoalIndicators: boolean; // 0x0828 (0x0004) [bool : 0x1]
+  bRandomBallSpawnPoint: boolean; // 0x0828 (0x0004) [bool : 0x2]
+  bRoundActive: boolean; // 0x0828 (0x0004) [bool : 0x4]
+  bPlayReplays: boolean; // 0x0828 (0x0004) [bool : 0x8]
+  bBallHasBeenHit: boolean; // 0x0828 (0x0004) [bool : 0x10]
+  bOverTime: boolean; // 0x0828 (0x0004) [bool : 0x20]
+  bUnlimitedTime: boolean; // 0x0828 (0x0004) [bool : 0x40]
+  bGoalsEnabled: boolean; // 0x0828 (0x0004) [bool : 0x80]
+  bNoContest: boolean; // 0x0828 (0x0004) [bool : 0x100]
+  bAntiCheatTerminated: boolean; // 0x0828 (0x0004) [bool : 0x200]
+  bDisableGoalDelay: boolean; // 0x0828 (0x0004) [bool : 0x400]
+  bShowNoScorerGoalMessage: boolean; // 0x0828 (0x0004) [bool : 0x800]
+  bSkipMatchCompleteNoContest: boolean; // 0x0828 (0x0004) [bool : 0x1000]
+  bMatchEnded: boolean; // 0x0828 (0x0004) [bool : 0x2000]
+  bFullMatchWinnerDecided: boolean; // 0x0828 (0x0004) [bool : 0x4000]
+  bDisableCrowdSound: boolean; // 0x0828 (0x0004) [bool : 0x8000]
+  bShowIntroScene: boolean; // 0x0828 (0x0004) [bool : 0x10000]
+  bReadyToStartGame: boolean; // 0x0828 (0x0004) [bool : 0x20000]
+  bClubMatch: boolean; // 0x0828 (0x0004) [bool : 0x40000]
+  bFullClubMatch: boolean; // 0x0828 (0x0004) [bool : 0x80000]
+  bMatchCreatorAdminEnabled: boolean; // 0x0828 (0x0004) [bool : 0x100000]
+  bCanDropOnlineRewards: boolean; // 0x0828 (0x0004) [bool : 0x200000]
+  bAllowHonorDuels: boolean; // 0x0828 (0x0004) [bool : 0x400000]
+  bThistleMatch: boolean; // 0x0828 (0x0004) [bool : 0x800000]
+  bAllowDemoSpawnSelection: boolean; // 0x0828 (0x0004) [bool : 0x1000000]
+  BallSpawnPoints: UActor[]; // 0x0830 (0x0010) [TArray<UActor*>]
+  BallSpawnPointIndex: number; // 0x0840 (0x0004) [int32]
+  StatFactoryArchetype: UStatFactory_TA; // 0x0848 (0x0008) [UStatFactory_TA*]
+  InitialEventState: FName; // 0x0850 (0x0008) [FName]
+  SeriesLength: number; // 0x0858 (0x0004) [int32]
+  GameTime: number; // 0x085c (0x0004) [int32]
+  WarmupTime: number; // 0x0860 (0x0004) [int32]
+  MaxScore: number; // 0x0864 (0x0004) [int32]
+  AutoBalanceDifference: number; // 0x0868 (0x0004) [int32]
+  OvertimeComponent: UOvertimeComponent_TA; // 0x0870 (0x0008) [UOvertimeComponent_TA*]
+  ScoreSlomoCurve: FInterpCurveFloat; // 0x0878 (0x0018) [FInterpCurveFloat]
+  ScoreSlomoTime: number; // 0x0890 (0x0004) [float]
+  GameTimeRemaining: number; // 0x0894 (0x0004) [float]
+  SecondsRemaining: number; // 0x0898 (0x0004) [int32]
+  WaitTimeRemaining: number; // 0x089c (0x0004) [int32]
+  TotalGameTimePlayed: number; // 0x08a0 (0x0004) [float]
+  OvertimeTimePlayed: number; // 0x08a4 (0x0004) [float]
+  GoalScoredMessage: UMessage_TA; // 0x08a8 (0x0008) [UMessage_TA*]
+  OvertimeMessage: UMessage_TA; // 0x08b0 (0x0008) [UMessage_TA*]
+  TwoMinRemainingMessage: UMessage_TA; // 0x08b8 (0x0008) [UMessage_TA*]
+  OneMinRemainingMessage: UMessage_TA; // 0x08c0 (0x0008) [UMessage_TA*]
+  ThirtySecondsRemainingMessage: UMessage_TA; // 0x08c8 (0x0008) [UMessage_TA*]
+  StopMessage: UMessage_TA; // 0x08d0 (0x0008) [UMessage_TA*]
+  GamePausedMessage: UMessage_TA; // 0x08d8 (0x0008) [UMessage_TA*]
+  GameUnPausedMessage: UMessage_TA; // 0x08e0 (0x0008) [UMessage_TA*]
+  OutOfBoundsMessage: UMessage_TA; // 0x08e8 (0x0008) [UMessage_TA*]
+  NextSpawnIndex: number; // 0x08f0 (0x0004) [int32]
+  ReplayDirectorArchetype: UReplayDirector_TA; // 0x08f8 (0x0008) [UReplayDirector_TA*]
+  ReplayDirector: UReplayDirector_TA; // 0x0900 (0x0008) [UReplayDirector_TA*]
+  GameBalls: UBall_TA[]; // 0x0908 (0x0010) [TArray<UBall_TA*>]
+  TotalGameBalls: number; // 0x0918 (0x0004) [int32]
+  PostGoalTime: number; // 0x091c (0x0004) [float]
+  StatFactory: UStatFactory_TA; // 0x0920 (0x0008) [UStatFactory_TA*]
+  Goals: UGoal_TA[]; // 0x0928 (0x0010) [TArray<UGoal_TA*>]
+  SecondsRemainingCountdown: number; // 0x0938 (0x0004) [int32]
+  SecondsRemainingMessage: UMessage_TA; // 0x0940 (0x0008) [UMessage_TA*]
+  FieldCenter: FVector; // 0x0948 (0x000c) [FVector]
+  GameWinner: UTeam_TA; // 0x0958 (0x0008) [UTeam_TA*]
+  MatchWinner: UTeam_TA; // 0x0960 (0x0008) [UTeam_TA*]
+  TeamLastScored: UTeam_TA; // 0x0968 (0x0008) [UTeam_TA*]
+  TieBreakDecision: ETieBreakDecision; // 0x0970 (0x0001) [ETieBreakDecision]
+  ReplicatedScoredOnTeam: number; // 0x0971 (0x0001) [uint8]
+  ReplicatedServerPerformanceState: EConnectionQualityState; // 0x0972 (0x0001) [EConnectionQualityState]
+  MVP: UPRI_TA; // 0x0978 (0x0008) [UPRI_TA*]
+  FastestGoalPlayer: UPRI_TA; // 0x0980 (0x0008) [UPRI_TA*]
+  SlowestGoalPlayer: UPRI_TA; // 0x0988 (0x0008) [UPRI_TA*]
+  FurthestGoalPlayer: UPRI_TA; // 0x0990 (0x0008) [UPRI_TA*]
+  FastestGoalSpeed: number; // 0x0998 (0x0004) [float]
+  SlowestGoalSpeed: number; // 0x099c (0x0004) [float]
+  FurthestGoal: number; // 0x09a0 (0x0004) [float]
+  ScoringPlayer: UPRI_TA; // 0x09a8 (0x0008) [UPRI_TA*]
+  RoundNum: number; // 0x09b0 (0x0004) [int32]
+  AssistMaxTime: number; // 0x09b4 (0x0004) [float]
+  BallHasBeenHitStartDelay: number; // 0x09b8 (0x0004) [float]
+  BallRespawnTime: number; // 0x09bc (0x0004) [float]
+  DefaultSubRules: UGameEvent_Soccar_SubRules_TA; // 0x09c0 (0x0008) [UGameEvent_Soccar_SubRules_TA*]
+  SubRulesArchetype: UGameEvent_Soccar_SubRules_TA; // 0x09c8 (0x0008) [UGameEvent_Soccar_SubRules_TA*]
+  SubRules: UGameEvent_Soccar_SubRules_TA; // 0x09d0 (0x0008) [UGameEvent_Soccar_SubRules_TA*]
+  SpawnPointsPodiumAnim: USpawnPointCluster_TA; // 0x09d8 (0x0008) [USpawnPointCluster_TA*]
+  SpawnPointsPodium: USpawnPointCluster_TA; // 0x09e0 (0x0008) [USpawnPointCluster_TA*]
+  PodiumDelay: number; // 0x09e8 (0x0004) [float]
+  PodiumTime: number; // 0x09ec (0x0004) [float]
+  SpawnPointLobbyTeams: USpawnPointCluster_TA[]; // 0x09f0 (0x0010) [TArray<USpawnPointCluster_TA*>]
+  StatCategories: UStatCategory_TA[]; // 0x0a00 (0x0010) [TArray<UStatCategory_TA*>]
+  BallTrajectory: UBall_Trajectory_TA; // 0x0a10 (0x0008) [UBall_Trajectory_TA*]
+  BallTrajectoryArchetype: UBall_Trajectory_TA; // 0x0a18 (0x0008) [UBall_Trajectory_TA*]
+  UnpauseCountdown: UCountdownObject_TA; // 0x0a20 (0x0008) [UCountdownObject_TA*]
+  Pauser: UPlayerController_TA; // 0x0a28 (0x0008) [UPlayerController_TA*]
+  PlayerMatchData: FOnlinePlayerMatchData[]; // 0x0a30 (0x0010) [TArray<FOnlinePlayerMatchData>]
+  EndRoundComponentArchetype: UEndRoundComponent_TA; // 0x0a40 (0x0008) [UEndRoundComponent_TA*]
+  EndRoundComponent: UEndRoundComponent_TA; // 0x0a48 (0x0008) [UEndRoundComponent_TA*]
+  MatchBroadcast: UMatchBroadcastComponent_TA; // 0x0a50 (0x0008) [UMatchBroadcastComponent_TA*]
+  ReplicatedStatEvent: UStatEvent_TA; // 0x0a58 (0x0008) [UStatEvent_TA*]
+  ImportantStatEvents: UStatEvent_TA[]; // 0x0a60 (0x0010) [TArray<UStatEvent_TA*>]
+  GameObserver: UGameObserver_TA; // 0x0a70 (0x0008) [UGameObserver_TA*]
+  ActiveFpsRecorder: UFpsBucketRecorder_TA; // 0x0a78 (0x0008) [UFpsBucketRecorder_TA*]
+  InactiveFpsRecorder: UFpsBucketRecorder_TA; // 0x0a80 (0x0008) [UFpsBucketRecorder_TA*]
+  ServerPerformanceTracker: UServerPerformanceTracker_TA; // 0x0a88 (0x0008) [UServerPerformanceTracker_TA*]
+  MatchSeries: UMatchSeries_TA; // 0x0a90 (0x0008) [UMatchSeries_TA*]
+  CrowdSound: UCrowdSoundManagerBase_TA; // 0x0a98 (0x0008) [UCrowdSoundManagerBase_TA*]
+  ClubInformation: FClubReplicationInfo[]; // 0x0aa0 (0x0010) [TArray<FClubReplicationInfo>]
+  SilencedStatEventSounds: UStatEvent_TA[]; // 0x0ab0 (0x0010) [TArray<UStatEvent_TA*>]
+  PendingClubStatRecords: FPendingClubStatRecord[]; // 0x0ac0 (0x0010) [TArray<FPendingClubStatRecord>]
+  LobbyTagOffsetZ: number; // 0x0ad0 (0x0004) [float]
+  PodiumTagOffsetZ: number; // 0x0ad4 (0x0004) [float]
+  BallSpacing: number; // 0x0ad8 (0x0004) [float]
+  PreMatchPlayersReadyStartDelay: number; // 0x0adc (0x0004) [float]
+  RemovedPRIs: UPRI_TA[]; // 0x0ae0 (0x0010) [TArray<UPRI_TA*>]
+  ThistleConfig: UThistleConfig_TA; // 0x0af0 (0x0008) [UThistleConfig_TA*]
+  WorldCupConfig: UWorldCupConfig_TA; // 0x0af8 (0x0008) [UWorldCupConfig_TA*]
+  TimeFormatString: string; // 0x0b00 (0x0010) [FString]
+  ScoreFormatString: string; // 0x0b10 (0x0010) [FString]
+  __EventActiveRoundChanged__Delegate: FScriptDelegate; // 0x0b20 (0x0018) [FScriptDelegate]
+  __EventStartNewRound__Delegate: FScriptDelegate; // 0x0b38 (0x0018) [FScriptDelegate]
+  __EventBallAdded__Delegate: FScriptDelegate; // 0x0b50 (0x0018) [FScriptDelegate]
+  __EventBallRemoved__Delegate: FScriptDelegate; // 0x0b68 (0x0018) [FScriptDelegate]
+  __EventFirstBallHit__Delegate: FScriptDelegate; // 0x0b80 (0x0018) [FScriptDelegate]
+  __EventGoalScored__Delegate: FScriptDelegate; // 0x0b98 (0x0018) [FScriptDelegate]
+  __EventGameTimeUpdated__Delegate: FScriptDelegate; // 0x0bb0 (0x0018) [FScriptDelegate]
+  __EventOvertimeUpdated__Delegate: FScriptDelegate; // 0x0bc8 (0x0018) [FScriptDelegate]
+  __EventGameEnded__Delegate: FScriptDelegate; // 0x0be0 (0x0018) [FScriptDelegate]
+  __EventMatchEnded__Delegate: FScriptDelegate; // 0x0bf8 (0x0018) [FScriptDelegate]
+  __EventFullMatchWinnerDecided__Delegate: FScriptDelegate; // 0x0c10 (0x0018) [FScriptDelegate]
+  __EventEndGameCountDown__Delegate: FScriptDelegate; // 0x0c28 (0x0018) [FScriptDelegate]
+  __EventReplayDirectorSet__Delegate: FScriptDelegate; // 0x0c40 (0x0018) [FScriptDelegate]
+  __EventGameWinnerSet__Delegate: FScriptDelegate; // 0x0c58 (0x0018) [FScriptDelegate]
+  __EventMatchWinnerSet__Delegate: FScriptDelegate; // 0x0c70 (0x0018) [FScriptDelegate]
+  __EventPlayerScored__Delegate: FScriptDelegate; // 0x0c88 (0x0018) [FScriptDelegate]
+  __EventReplicatedGoalScored__Delegate: FScriptDelegate; // 0x0ca0 (0x0018) [FScriptDelegate]
+  __EventStatFactoryInitialized__Delegate: FScriptDelegate; // 0x0cb8 (0x0018) [FScriptDelegate]
+  __EventReplicatedStatEvent__Delegate: FScriptDelegate; // 0x0cd0 (0x0018) [FScriptDelegate]
+  __EventMaxScoreChanged__Delegate: FScriptDelegate; // 0x0ce8 (0x0018) [FScriptDelegate]
+  __EventReplayFinished__Delegate: FScriptDelegate; // 0x0d00 (0x0018) [FScriptDelegate]
+  __EventDisableGoalDelayUpdated__Delegate: FScriptDelegate; // 0x0d18 (0x0018) [FScriptDelegate]
+  __EventBallSpawned__Delegate: FScriptDelegate; // 0x0d30 (0x0018) [FScriptDelegate]
+  __EventBallReset__Delegate: FScriptDelegate; // 0x0d48 (0x0018) [FScriptDelegate]
+  __EventCountdownStarted__Delegate: FScriptDelegate; // 0x0d60 (0x0018) [FScriptDelegate]
+  __EventReplayPlaybackStateChanged__Delegate: FScriptDelegate; // 0x0d78 (0x0018) [FScriptDelegate]
+  __EventPodiumSpotlightStarted__Delegate: FScriptDelegate; // 0x0d90 (0x0018) [FScriptDelegate]
+  __bShowIntroScene__ChangeNotify: FScriptDelegate; // 0x0da8 (0x0018) [FScriptDelegate]
+  __bReadyToStartGame__ChangeNotify: FScriptDelegate; // 0x0dc0 (0x0018) [FScriptDelegate]
+  __bClubMatch__ChangeNotify: FScriptDelegate; // 0x0dd8 (0x0018) [FScriptDelegate]
+  __bFullClubMatch__ChangeNotify: FScriptDelegate; // 0x0df0 (0x0018) [FScriptDelegate]
+  __bMatchCreatorAdminEnabled__ChangeNotify: FScriptDelegate; // 0x0e08 (0x0018) [FScriptDelegate]
+  __bCanDropOnlineRewards__ChangeNotify: FScriptDelegate; // 0x0e20 (0x0018) [FScriptDelegate]
+  __bThistleMatch__ChangeNotify: FScriptDelegate; // 0x0e38 (0x0018) [FScriptDelegate]
+  __WaitTimeRemaining__ChangeNotify: FScriptDelegate; // 0x0e50 (0x0018) [FScriptDelegate]
+  __TieBreakDecision__ChangeNotify: FScriptDelegate; // 0x0e68 (0x0018) [FScriptDelegate]
+  __ReplicatedServerPerformanceState__ChangeNotify: FScriptDelegate; // 0x0e80 (0x0018) [FScriptDelegate]
 };
 
 // GameEvent_Soccar_TA Functions
@@ -20606,7 +20928,6 @@ export type UGameEvent_Soccar_TA = UGameEvent_Team_TA & {
 // GetPlayerCarCount(): number
 // GetShouldStart(): boolean
 // ReplicateSkillTiers(): void
-// HandleAuthStatusComplete(Messenger: UAntiCheatMessenger_TA): void
 // StartIntroScene(): boolean
 // StopIntroScene(): void
 // DisableGameBall(Ball: UBall_TA, bDisable: boolean): void
@@ -20646,10 +20967,14 @@ export type UGameEvent_Soccar_TA = UGameEvent_Team_TA & {
 // __GameEvent_Soccar_TA__GetClubIDsRecordingCandidates_0x2(C: FClubMemberCount): bigint
 // __GameEvent_Soccar_TA__InitClubMatchV2_0x2(P: FReservationData): boolean
 // __GameEvent_Soccar_TA__InitClubMatchV2_0x1(P: FReservationData): boolean
+// __GameEvent_Soccar_TA__InitWorldCupEvent_0x1(P: FReservationData): FUniqueNetId
+// __GameEvent_Soccar_TA__GetSpawnOrientation_0x1(P: UActor): boolean
 // __GameEvent_Soccar_TA__UpdateTeamScores_0x1(T: UTeam_TA): boolean
+// __GameEvent_Soccar_TA__OnMatchEnded_0x1(P: FReservationData): boolean
 // __GameEvent_Soccar_TA__SubmitMatchComplete_0x1(PRI: UPRI_TA): void
 // __GameEvent_Soccar_TA__CommitPlayerMatchData_0x3(R: FReservationData): FUniqueNetId
 // __GameEvent_Soccar_TA__OnGoalsActivationChanged_0x1(Goal: UGoal_TA): void
+// __GameEvent_Soccar_TA__ShouldPlayReplayPlayback_0x1(P: UPRI_TA): boolean
 // __GameEvent_Soccar_TA__CheckStart_0x4(TitleId: FName): boolean
 // __GameEvent_Soccar_TA__CheckStart_0x3(Data: FThistleData): FName
 // __GameEvent_Soccar_TA__CheckStart_0x2(Data: FThistleData): number
@@ -20678,7 +21003,9 @@ export type UGameEvent_Soccar_TA = UGameEvent_Team_TA & {
 // HandleTrajectoryEnabledChanged(InBall: UBall_TA): void
 // DestroyBallTrajectory(): void
 // AddBallTrajectory(InBall: UBall_TA): void
-// static GetInGamePresence(PlaylistName: string, MapName: string, bLocalize: boolean): string
+// GetExtraMatchDataString(): string
+// GetInGameString(bLocalize: boolean): string
+// GetInGamePresence(PlaylistName: string, MapName: string, bLocalize: boolean): string
 // GetPresenceStatus(Out_PresenceString: string, Out_GameDataString: string, bLocalize: boolean): void
 // ShowScorerGoalMessage(): boolean
 // CanUseBallCam(): boolean
@@ -20694,7 +21021,7 @@ export type UGameEvent_Soccar_TA = UGameEvent_Team_TA & {
 // HandleMatchCompleteDataReceived(RPC: URPC_MatchComplete_TA): void
 // BeginHighlightsReplay(): void
 // IsWaitingForPlayers(): boolean
-// AllPlayersAntiCheatAuthComplete(): boolean
+// CanSelectDemoSpawn(PRI: UPRI_TA): boolean
 // ShouldPlayReplayPlayback(): boolean
 // IsInReplayPlayback(): boolean
 // AntiCheatTerminateMatch(): void
@@ -20808,6 +21135,9 @@ export type UGameEvent_Soccar_TA = UGameEvent_Team_TA & {
 // InitGameObserver(): void
 // OnInit(): void
 // InitMutators(): void
+// IsTeamFullCodeName(TeamMembers: FReservationData[], PlayersSelectedCodeNames: URPC_GetWorldCupPlayerCountries_TA, TeamCodeName: string): boolean
+// HandleGetPlayerCountriesDataReceived(InRPC: URPC_GetWorldCupPlayerCountries_TA): void
+// InitWorldCupEvent(): void
 // SetTeamEventColorsAndName(Team: UTeam_TA, TeamColor: FLinearColor, TeamColorSecondary: FLinearColor, TeamName: string, SwapColors: boolean): void
 // IsTeamFullTitle(TeamMembers: FReservationData[], TitleIDs: FName[], Reservations: UOnlineGameReservations_TA, TeamTitleID: FName): boolean
 // IsTeamFullCosmetic(TeamMembers: FReservationData[], CosmeticIDs: number[], Reservations: UOnlineGameReservations_TA, TeamIndex: number): boolean
@@ -20856,14 +21186,14 @@ export type UGameEvent_Soccar_TA = UGameEvent_Team_TA & {
 
 /**
  * Class TAGame.GameEvent_Breakout_TA
- * Size: 0x0E78
+ * Size: 0x0EB0
  * Extends: UGameEvent_Soccar_TA
  */
 export type UGameEvent_Breakout_TA = UGameEvent_Soccar_TA & {
-  bOnlyResetScoredOnTeam: boolean; // 0x0e60 (0x0004) [bool : 0x1]
-  bResetOvertime: boolean; // 0x0e60 (0x0004) [bool : 0x2]
-  LastScoredOnTeam: number; // 0x0e64 (0x0001) [uint8]
-  Platforms: UBreakOutActor_Platform_TA[]; // 0x0e68 (0x0010) [TArray<UBreakOutActor_Platform_TA*>]
+  bOnlyResetScoredOnTeam: boolean; // 0x0e98 (0x0004) [bool : 0x1]
+  bResetOvertime: boolean; // 0x0e98 (0x0004) [bool : 0x2]
+  LastScoredOnTeam: number; // 0x0e9c (0x0001) [uint8]
+  Platforms: UBreakOutActor_Platform_TA[]; // 0x0ea0 (0x0010) [TArray<UBreakOutActor_Platform_TA*>]
 };
 
 // GameEvent_Breakout_TA Functions
@@ -20876,17 +21206,17 @@ export type UGameEvent_Breakout_TA = UGameEvent_Soccar_TA & {
 
 /**
  * Class TAGame.GameEvent_Football_TA
- * Size: 0x0E94
+ * Size: 0x0ECC
  * Extends: UGameEvent_Soccar_TA
  */
 export type UGameEvent_Football_TA = UGameEvent_Soccar_TA & {
-  LastScoredTeamIndex: number; // 0x0e60 (0x0004) [int32]
-  GoalPlayerSpawnOffset: FVector; // 0x0e64 (0x000c) [FVector]
-  BallKickOffDirection: FVector; // 0x0e70 (0x000c) [FVector]
-  BallKickOffTorque: FVector; // 0x0e7c (0x000c) [FVector]
-  BallKickOffScale: number; // 0x0e88 (0x0004) [float]
-  SpawnRadiusCheck: number; // 0x0e8c (0x0004) [float]
-  KickoffDelay: number; // 0x0e90 (0x0004) [float]
+  LastScoredTeamIndex: number; // 0x0e98 (0x0004) [int32]
+  GoalPlayerSpawnOffset: FVector; // 0x0e9c (0x000c) [FVector]
+  BallKickOffDirection: FVector; // 0x0ea8 (0x000c) [FVector]
+  BallKickOffTorque: FVector; // 0x0eb4 (0x000c) [FVector]
+  BallKickOffScale: number; // 0x0ec0 (0x0004) [float]
+  SpawnRadiusCheck: number; // 0x0ec4 (0x0004) [float]
+  KickoffDelay: number; // 0x0ec8 (0x0004) [float]
 };
 
 // GameEvent_Football_TA Functions
@@ -20904,12 +21234,12 @@ export type UGameEvent_Football_TA = UGameEvent_Soccar_TA & {
 
 /**
  * Class TAGame.GameEvent_FTE_TA
- * Size: 0x0E68
+ * Size: 0x0EA0
  * Extends: UGameEvent_Soccar_TA
  */
 export type UGameEvent_FTE_TA = UGameEvent_Soccar_TA & {
-  MaxTimeToShowInstructions: number; // 0x0e60 (0x0004) [int32]
-  InvalidTeamNum: number; // 0x0e64 (0x0004) [int32]
+  MaxTimeToShowInstructions: number; // 0x0e98 (0x0004) [int32]
+  InvalidTeamNum: number; // 0x0e9c (0x0004) [int32]
 };
 
 // GameEvent_FTE_TA Functions
@@ -20919,22 +21249,23 @@ export type UGameEvent_FTE_TA = UGameEvent_Soccar_TA & {
 
 /**
  * Class TAGame.GameEvent_GameEditor_TA
- * Size: 0x0ED0
+ * Size: 0x0F10
  * Extends: UGameEvent_Soccar_TA
  */
 export type UGameEvent_GameEditor_TA = UGameEvent_Soccar_TA & {
-  SaveDataClass: USaveData_GameEditor_TA; // 0x0e60 (0x0008) [USaveData_GameEditor_TA*]
-  SaveData: USaveData_GameEditor_TA; // 0x0e68 (0x0008) [USaveData_GameEditor_TA*]
-  ActiveRoundNumber: number; // 0x0e70 (0x0004) [int32]
-  SpawnableArchetypes: FSpawnArchetypeData[]; // 0x0e78 (0x0010) [TArray<FSpawnArchetypeData>]
-  CarSpawnPoints: UDynamicSpawnPointMesh_TA[]; // 0x0e88 (0x0010) [TArray<UDynamicSpawnPointMesh_TA*>]
-  EditorPawnArchetype: UGameEditor_Pawn_TA; // 0x0e98 (0x0008) [UGameEditor_Pawn_TA*]
-  MaxRounds: number; // 0x0ea0 (0x0004) [int32]
-  UndoHistory: FActorHistory[]; // 0x0ea8 (0x0010) [TArray<FActorHistory>]
-  HistoryPosition: number; // 0x0eb8 (0x0004) [int32]
-  MaxUndoHistory: number; // 0x0ebc (0x0004) [int32]
-  FXActorArchetype: UFXActor_X; // 0x0ec0 (0x0008) [UFXActor_X*]
-  FXActor: UFXActor_X; // 0x0ec8 (0x0008) [UFXActor_X*]
+  SaveDataClass: USaveData_GameEditor_TA; // 0x0e98 (0x0008) [USaveData_GameEditor_TA*]
+  SaveData: USaveData_GameEditor_TA; // 0x0ea0 (0x0008) [USaveData_GameEditor_TA*]
+  ActiveRoundNumber: number; // 0x0ea8 (0x0004) [int32]
+  SpawnableArchetypes: FSpawnArchetypeData[]; // 0x0eb0 (0x0010) [TArray<FSpawnArchetypeData>]
+  CarSpawnPoints: UDynamicSpawnPointMesh_TA[]; // 0x0ec0 (0x0010) [TArray<UDynamicSpawnPointMesh_TA*>]
+  LastUsedSpawnPoint: UDynamicSpawnPointMesh_TA; // 0x0ed0 (0x0008) [UDynamicSpawnPointMesh_TA*]
+  EditorPawnArchetype: UGameEditor_Pawn_TA; // 0x0ed8 (0x0008) [UGameEditor_Pawn_TA*]
+  MaxRounds: number; // 0x0ee0 (0x0004) [int32]
+  UndoHistory: FActorHistory[]; // 0x0ee8 (0x0010) [TArray<FActorHistory>]
+  HistoryPosition: number; // 0x0ef8 (0x0004) [int32]
+  MaxUndoHistory: number; // 0x0efc (0x0004) [int32]
+  FXActorArchetype: UFXActor_X; // 0x0f00 (0x0008) [UFXActor_X*]
+  FXActor: UFXActor_X; // 0x0f08 (0x0008) [UFXActor_X*]
 };
 
 // GameEvent_GameEditor_TA Functions
@@ -21014,16 +21345,16 @@ export type UGameEvent_GameEditor_TA = UGameEvent_Soccar_TA & {
 
 /**
  * Class TAGame.GameEvent_GodBall_TA
- * Size: 0x0E90
+ * Size: 0x0EC8
  * Extends: UGameEvent_Soccar_TA
  */
 export type UGameEvent_GodBall_TA = UGameEvent_Soccar_TA & {
-  LastScoredTeamIndex: number; // 0x0e60 (0x0004) [int32]
-  GoalBallSpawnOffset: FVector; // 0x0e64 (0x000c) [FVector]
-  GoalPlayerSpawnOffset: FVector; // 0x0e70 (0x000c) [FVector]
-  BallKickOffDirection: FVector; // 0x0e7c (0x000c) [FVector]
-  BallKickOffScale: number; // 0x0e88 (0x0004) [float]
-  SpawnRadiusCheck: number; // 0x0e8c (0x0004) [float]
+  LastScoredTeamIndex: number; // 0x0e98 (0x0004) [int32]
+  GoalBallSpawnOffset: FVector; // 0x0e9c (0x000c) [FVector]
+  GoalPlayerSpawnOffset: FVector; // 0x0ea8 (0x000c) [FVector]
+  BallKickOffDirection: FVector; // 0x0eb4 (0x000c) [FVector]
+  BallKickOffScale: number; // 0x0ec0 (0x0004) [float]
+  SpawnRadiusCheck: number; // 0x0ec4 (0x0004) [float]
 };
 
 // GameEvent_GodBall_TA Functions
@@ -21041,26 +21372,26 @@ export type UGameEvent_GodBall_TA = UGameEvent_Soccar_TA & {
 
 /**
  * Class TAGame.GameEvent_KnockOut_TA
- * Size: 0x0F00
+ * Size: 0x0F38
  * Extends: UGameEvent_Soccar_TA
  */
 export type UGameEvent_KnockOut_TA = UGameEvent_Soccar_TA & {
-  bFreeForAll: boolean; // 0x0e60 (0x0004) [bool : 0x1]
-  PlayerLives: number; // 0x0e64 (0x0004) [int32]
-  PlayersEliminated: number; // 0x0e68 (0x0004) [int32]
-  PickupArchetypes: USpecialPickup_TA[]; // 0x0e70 (0x0010) [TArray<USpecialPickup_TA*>]
-  PickupFXActor: UFXActor_X; // 0x0e80 (0x0008) [UFXActor_X*]
-  PickupRespawnDelay: number; // 0x0e88 (0x0004) [float]
-  SafeZone: UFXActor_SafeZone_Knockout_TA; // 0x0e90 (0x0008) [UFXActor_SafeZone_Knockout_TA*]
-  SafeZoneArchetype: UFXActor_SafeZone_Knockout_TA; // 0x0e98 (0x0008) [UFXActor_SafeZone_Knockout_TA*]
-  ReturnToSafezoneMessage: UMessage_TA; // 0x0ea0 (0x0008) [UMessage_TA*]
-  ReturnedToSafezoneMessage: UMessage_TA; // 0x0ea8 (0x0008) [UMessage_TA*]
-  SafeZoneShrinkingMessage: UMessage_TA; // 0x0eb0 (0x0008) [UMessage_TA*]
-  SafeZoneFinalZoneMessage: UMessage_TA; // 0x0eb8 (0x0008) [UMessage_TA*]
-  OutOfWorldMessage: UMessage_TA; // 0x0ec0 (0x0008) [UMessage_TA*]
-  PodiumSpawnLocationZ: number; // 0x0ec8 (0x0004) [float]
-  __EventPlayerStatEvent__Delegate: FScriptDelegate; // 0x0ed0 (0x0018) [FScriptDelegate]
-  __EventEliminationModeChanged__Delegate: FScriptDelegate; // 0x0ee8 (0x0018) [FScriptDelegate]
+  bFreeForAll: boolean; // 0x0e98 (0x0004) [bool : 0x1]
+  PlayerLives: number; // 0x0e9c (0x0004) [int32]
+  PlayersEliminated: number; // 0x0ea0 (0x0004) [int32]
+  PickupArchetypes: USpecialPickup_TA[]; // 0x0ea8 (0x0010) [TArray<USpecialPickup_TA*>]
+  PickupFXActor: UFXActor_X; // 0x0eb8 (0x0008) [UFXActor_X*]
+  PickupRespawnDelay: number; // 0x0ec0 (0x0004) [float]
+  SafeZone: UFXActor_SafeZone_Knockout_TA; // 0x0ec8 (0x0008) [UFXActor_SafeZone_Knockout_TA*]
+  SafeZoneArchetype: UFXActor_SafeZone_Knockout_TA; // 0x0ed0 (0x0008) [UFXActor_SafeZone_Knockout_TA*]
+  ReturnToSafezoneMessage: UMessage_TA; // 0x0ed8 (0x0008) [UMessage_TA*]
+  ReturnedToSafezoneMessage: UMessage_TA; // 0x0ee0 (0x0008) [UMessage_TA*]
+  SafeZoneShrinkingMessage: UMessage_TA; // 0x0ee8 (0x0008) [UMessage_TA*]
+  SafeZoneFinalZoneMessage: UMessage_TA; // 0x0ef0 (0x0008) [UMessage_TA*]
+  OutOfWorldMessage: UMessage_TA; // 0x0ef8 (0x0008) [UMessage_TA*]
+  PodiumSpawnLocationZ: number; // 0x0f00 (0x0004) [float]
+  __EventPlayerStatEvent__Delegate: FScriptDelegate; // 0x0f08 (0x0018) [FScriptDelegate]
+  __EventEliminationModeChanged__Delegate: FScriptDelegate; // 0x0f20 (0x0018) [FScriptDelegate]
 };
 
 // GameEvent_KnockOut_TA Functions
@@ -21068,6 +21399,7 @@ export type UGameEvent_KnockOut_TA = UGameEvent_Soccar_TA & {
 // static __GameEvent_KnockOut_TA__GetPRIsWithLivesLeft_0x1(PRI: UPRI_TA): boolean
 // __GameEvent_KnockOut_TA__GetMVP_0x1(P: UPRI_KnockOut_TA): boolean
 // __GameEvent_KnockOut_TA__GetPodiumHeight_0x1(PRI: UPRI_TA): boolean
+// GetInGameString(bLocalize: boolean): string
 // AddAdditionalViewableActors(Actors: string[]): void
 // UpdateBotCount(): void
 // CanSpectate(): boolean
@@ -21111,12 +21443,12 @@ export type UGameEvent_KnockOut_TA = UGameEvent_Soccar_TA & {
 
 /**
  * Class TAGame.GameEvent_Lobby_TA
- * Size: 0x0768
+ * Size: 0x0778
  * Extends: UGameEvent_TA
  */
 export type UGameEvent_Lobby_TA = UGameEvent_TA & {
-  BallArchetype: UBall_TA; // 0x0758 (0x0008) [UBall_TA*]
-  Ball: UBall_TA; // 0x0760 (0x0008) [UBall_TA*]
+  BallArchetype: UBall_TA; // 0x0768 (0x0008) [UBall_TA*]
+  Ball: UBall_TA; // 0x0770 (0x0008) [UBall_TA*]
 };
 
 // GameEvent_Lobby_TA Functions
@@ -21124,6 +21456,7 @@ export type UGameEvent_Lobby_TA = UGameEvent_TA & {
 // ShouldShowDisconnectedPlayersOnScoreboard(): boolean
 // AllowShutdown(): boolean
 // Destroyed(): void
+// CanSpawnWithoutAntiCheatAuthComplete(): boolean
 // CarFitsAtLocation(DesiredLocation: FVector, RadiusCheck: number): boolean
 // GetSpawnOrientation(ForPlayer: UController, out_Location: FVector, out_Rotation: FRotator): boolean
 // HandleBallAtGoal(ParticularBall: UBall_TA, Goal: UGoal_TA): void
@@ -21135,7 +21468,7 @@ export type UGameEvent_Lobby_TA = UGameEvent_TA & {
 
 /**
  * Class TAGame.GameEvent_PostGameLobby_TA
- * Size: 0x0768
+ * Size: 0x0778
  * Extends: UGameEvent_Lobby_TA
  */
 export type UGameEvent_PostGameLobby_TA = UGameEvent_Lobby_TA & {};
@@ -21147,25 +21480,25 @@ export type UGameEvent_PostGameLobby_TA = UGameEvent_Lobby_TA & {};
 
 /**
  * Class TAGame.GameEvent_Season_TA
- * Size: 0x0EF8
+ * Size: 0x0F30
  * Extends: UGameEvent_Soccar_TA
  */
 export type UGameEvent_Season_TA = UGameEvent_Soccar_TA & {
-  PreMatchTime: number; // 0x0e60 (0x0004) [int32]
-  Season: USeason_TA; // 0x0e68 (0x0008) [USeason_TA*]
-  Match: FSeasonMatch; // 0x0e70 (0x001c) [FSeasonMatch]
-  Profile: UProfile_TA; // 0x0e90 (0x0008) [UProfile_TA*]
-  HumanTeam: UTeam_TA; // 0x0e98 (0x0008) [UTeam_TA*]
-  BotTeam: UTeam_TA; // 0x0ea0 (0x0008) [UTeam_TA*]
-  HumanMatchTeam: number; // 0x0ea8 (0x0004) [int32]
-  BotMatchTeam: number; // 0x0eac (0x0004) [int32]
-  SeasonIntroTime: number; // 0x0eb0 (0x0004) [float]
-  bIsChampionShipGame: boolean; // 0x0eb4 (0x0004) [bool : 0x1]
-  bIsFirstGameOfSeason: boolean; // 0x0eb4 (0x0004) [bool : 0x2]
-  bLastGameOfRegularSeason: boolean; // 0x0eb4 (0x0004) [bool : 0x4]
-  SimilarLogoGroups: USimilarSeasonLogos_TA; // 0x0eb8 (0x0008) [USimilarSeasonLogos_TA*]
-  TeamOverrides: string; // 0x0ec0 (0x0020) [FString]
-  __EventWonChampionShip__Delegate: FScriptDelegate; // 0x0ee0 (0x0018) [FScriptDelegate]
+  PreMatchTime: number; // 0x0e98 (0x0004) [int32]
+  Season: USeason_TA; // 0x0ea0 (0x0008) [USeason_TA*]
+  Match: FSeasonMatch; // 0x0ea8 (0x001c) [FSeasonMatch]
+  Profile: UProfile_TA; // 0x0ec8 (0x0008) [UProfile_TA*]
+  HumanTeam: UTeam_TA; // 0x0ed0 (0x0008) [UTeam_TA*]
+  BotTeam: UTeam_TA; // 0x0ed8 (0x0008) [UTeam_TA*]
+  HumanMatchTeam: number; // 0x0ee0 (0x0004) [int32]
+  BotMatchTeam: number; // 0x0ee4 (0x0004) [int32]
+  SeasonIntroTime: number; // 0x0ee8 (0x0004) [float]
+  bIsChampionShipGame: boolean; // 0x0eec (0x0004) [bool : 0x1]
+  bIsFirstGameOfSeason: boolean; // 0x0eec (0x0004) [bool : 0x2]
+  bLastGameOfRegularSeason: boolean; // 0x0eec (0x0004) [bool : 0x4]
+  SimilarLogoGroups: USimilarSeasonLogos_TA; // 0x0ef0 (0x0008) [USimilarSeasonLogos_TA*]
+  TeamOverrides: string; // 0x0ef8 (0x0020) [FString]
+  __EventWonChampionShip__Delegate: FScriptDelegate; // 0x0f18 (0x0018) [FScriptDelegate]
 };
 
 // GameEvent_Season_TA Functions
@@ -21260,61 +21593,61 @@ export type UGameEvent_Soccar_SubRules_Items_TA = UGameEvent_Soccar_SubRules_TA 
 
 /**
  * Class TAGame.GameEvent_Territory_TA
- * Size: 0x0E60
+ * Size: 0x0E98
  * Extends: UGameEvent_Soccar_TA
  */
 export type UGameEvent_Territory_TA = UGameEvent_Soccar_TA & {};
 
 /**
  * Class TAGame.GameEvent_Tutorial_TA
- * Size: 0x10A0
+ * Size: 0x10D8
  * Extends: UGameEvent_Soccar_TA
  */
 export type UGameEvent_Tutorial_TA = UGameEvent_Soccar_TA & {
-  TotalFieldExtent: FVector; // 0x0e60 (0x000c) [FVector]
-  TeamNum: number; // 0x0e6c (0x0004) [int32]
-  BallGoalNum: number; // 0x0e70 (0x0004) [int32]
-  bOnlyScoreInBallGoalNum: boolean; // 0x0e74 (0x0004) [bool : 0x1]
-  bRedoRound: boolean; // 0x0e74 (0x0004) [bool : 0x2]
-  bAllowSuperBoost: boolean; // 0x0e74 (0x0004) [bool : 0x4]
-  bDisplayedRedoPenaltyMessage: boolean; // 0x0e74 (0x0004) [bool : 0x8]
-  bShowBoostMeter: boolean; // 0x0e74 (0x0004) [bool : 0x10]
-  Difficulty: EDifficulty; // 0x0e78 (0x0001) [EDifficulty]
-  DebugRotationType: ERotationType; // 0x0e79 (0x0001) [ERotationType]
-  DifficultyList: FDifficultyInfo; // 0x0e80 (0x0078) [FDifficultyInfo]
-  WaveIndexesLeft: number[]; // 0x0ef8 (0x0010) [TArray<int32>]
-  GoalDepth: number; // 0x0f08 (0x0004) [float]
-  GameEventRounds: number; // 0x0f0c (0x0004) [int32]
-  EventStartTime: number; // 0x0f10 (0x0004) [float]
-  BallInitialVelocity: FVector; // 0x0f14 (0x000c) [FVector]
-  SpawnIndexTypeOverride: number; // 0x0f20 (0x0004) [int32]
-  Cannon: UCannon_TA; // 0x0f28 (0x0008) [UCannon_TA*]
-  WaveIndex: number; // 0x0f30 (0x0004) [int32]
-  WaveSpawnCount: number; // 0x0f34 (0x0004) [int32]
-  RandomSpawnIndex: number; // 0x0f38 (0x0004) [int32]
-  Tutorial: UTutorial_TA; // 0x0f40 (0x0008) [UTutorial_TA*]
-  StartMessageArchetype: string; // 0x0f48 (0x0010) [FString]
-  BallSpawnLocation: FVector; // 0x0f58 (0x000c) [FVector]
-  CarSpawns: FCarSpawnData[]; // 0x0f68 (0x0010) [TArray<FCarSpawnData>]
-  PointsScoredThisRound: number; // 0x0f78 (0x0004) [int32]
-  BallSpawnCount: number; // 0x0f7c (0x0004) [int32]
-  BallBounceScale: number; // 0x0f80 (0x0004) [float]
-  CannonArchetype: UCannon_TA; // 0x0f88 (0x0008) [UCannon_TA*]
-  DynamicSpawnPoint: UDynamicSpawnPoint_TA; // 0x0f90 (0x0008) [UDynamicSpawnPoint_TA*]
-  CurrentDebugStepX: number; // 0x0f98 (0x0004) [int32]
-  CurrentDebugStepY: number; // 0x0f9c (0x0004) [int32]
-  CurrentDebugStepZ: number; // 0x0fa0 (0x0004) [int32]
-  RedoCount: number; // 0x0fa4 (0x0004) [int32]
-  RedoTotal: number; // 0x0fa8 (0x0004) [int32]
-  ResetModal: UGFxModal_X; // 0x0fb0 (0x0008) [UGFxModal_X*]
-  BallSpawnInfo: FFieldSpawnInfo; // 0x0fb8 (0x003c) [FFieldSpawnInfo]
-  __EventRoundFinished__Delegate: FScriptDelegate; // 0x0ff8 (0x0018) [FScriptDelegate]
-  __EventVehicleSetup__Delegate: FScriptDelegate; // 0x1010 (0x0018) [FScriptDelegate]
-  __EventScoreUpdated__Delegate: FScriptDelegate; // 0x1028 (0x0018) [FScriptDelegate]
-  __EventDifficultyUpdated__Delegate: FScriptDelegate; // 0x1040 (0x0018) [FScriptDelegate]
-  __EventShowBoostMeterChanged__Delegate: FScriptDelegate; // 0x1058 (0x0018) [FScriptDelegate]
-  __EventUseActionsChanged__Delegate: FScriptDelegate; // 0x1070 (0x0018) [FScriptDelegate]
-  __EventTutorialTipChanged__Delegate: FScriptDelegate; // 0x1088 (0x0018) [FScriptDelegate]
+  TotalFieldExtent: FVector; // 0x0e98 (0x000c) [FVector]
+  TeamNum: number; // 0x0ea4 (0x0004) [int32]
+  BallGoalNum: number; // 0x0ea8 (0x0004) [int32]
+  bOnlyScoreInBallGoalNum: boolean; // 0x0eac (0x0004) [bool : 0x1]
+  bRedoRound: boolean; // 0x0eac (0x0004) [bool : 0x2]
+  bAllowSuperBoost: boolean; // 0x0eac (0x0004) [bool : 0x4]
+  bDisplayedRedoPenaltyMessage: boolean; // 0x0eac (0x0004) [bool : 0x8]
+  bShowBoostMeter: boolean; // 0x0eac (0x0004) [bool : 0x10]
+  Difficulty: EDifficulty; // 0x0eb0 (0x0001) [EDifficulty]
+  DebugRotationType: ERotationType; // 0x0eb1 (0x0001) [ERotationType]
+  DifficultyList: FDifficultyInfo; // 0x0eb8 (0x0078) [FDifficultyInfo]
+  WaveIndexesLeft: number[]; // 0x0f30 (0x0010) [TArray<int32>]
+  GoalDepth: number; // 0x0f40 (0x0004) [float]
+  GameEventRounds: number; // 0x0f44 (0x0004) [int32]
+  EventStartTime: number; // 0x0f48 (0x0004) [float]
+  BallInitialVelocity: FVector; // 0x0f4c (0x000c) [FVector]
+  SpawnIndexTypeOverride: number; // 0x0f58 (0x0004) [int32]
+  Cannon: UCannon_TA; // 0x0f60 (0x0008) [UCannon_TA*]
+  WaveIndex: number; // 0x0f68 (0x0004) [int32]
+  WaveSpawnCount: number; // 0x0f6c (0x0004) [int32]
+  RandomSpawnIndex: number; // 0x0f70 (0x0004) [int32]
+  Tutorial: UTutorial_TA; // 0x0f78 (0x0008) [UTutorial_TA*]
+  StartMessageArchetype: string; // 0x0f80 (0x0010) [FString]
+  BallSpawnLocation: FVector; // 0x0f90 (0x000c) [FVector]
+  CarSpawns: FCarSpawnData[]; // 0x0fa0 (0x0010) [TArray<FCarSpawnData>]
+  PointsScoredThisRound: number; // 0x0fb0 (0x0004) [int32]
+  BallSpawnCount: number; // 0x0fb4 (0x0004) [int32]
+  BallBounceScale: number; // 0x0fb8 (0x0004) [float]
+  CannonArchetype: UCannon_TA; // 0x0fc0 (0x0008) [UCannon_TA*]
+  DynamicSpawnPoint: UDynamicSpawnPoint_TA; // 0x0fc8 (0x0008) [UDynamicSpawnPoint_TA*]
+  CurrentDebugStepX: number; // 0x0fd0 (0x0004) [int32]
+  CurrentDebugStepY: number; // 0x0fd4 (0x0004) [int32]
+  CurrentDebugStepZ: number; // 0x0fd8 (0x0004) [int32]
+  RedoCount: number; // 0x0fdc (0x0004) [int32]
+  RedoTotal: number; // 0x0fe0 (0x0004) [int32]
+  ResetModal: UGFxModal_X; // 0x0fe8 (0x0008) [UGFxModal_X*]
+  BallSpawnInfo: FFieldSpawnInfo; // 0x0ff0 (0x003c) [FFieldSpawnInfo]
+  __EventRoundFinished__Delegate: FScriptDelegate; // 0x1030 (0x0018) [FScriptDelegate]
+  __EventVehicleSetup__Delegate: FScriptDelegate; // 0x1048 (0x0018) [FScriptDelegate]
+  __EventScoreUpdated__Delegate: FScriptDelegate; // 0x1060 (0x0018) [FScriptDelegate]
+  __EventDifficultyUpdated__Delegate: FScriptDelegate; // 0x1078 (0x0018) [FScriptDelegate]
+  __EventShowBoostMeterChanged__Delegate: FScriptDelegate; // 0x1090 (0x0018) [FScriptDelegate]
+  __EventUseActionsChanged__Delegate: FScriptDelegate; // 0x10a8 (0x0018) [FScriptDelegate]
+  __EventTutorialTipChanged__Delegate: FScriptDelegate; // 0x10c0 (0x0018) [FScriptDelegate]
 };
 
 // GameEvent_Tutorial_TA Functions
@@ -21419,11 +21752,11 @@ export type UGameEvent_Tutorial_TA = UGameEvent_Soccar_TA & {
 
 /**
  * Class TAGame.GameEvent_Training_TA
- * Size: 0x10B8
+ * Size: 0x10F0
  * Extends: UGameEvent_Tutorial_TA
  */
 export type UGameEvent_Training_TA = UGameEvent_Tutorial_TA & {
-  __EventTrainingCompleted__Delegate: FScriptDelegate; // 0x10a0 (0x0018) [FScriptDelegate]
+  __EventTrainingCompleted__Delegate: FScriptDelegate; // 0x10d8 (0x0018) [FScriptDelegate]
 };
 
 // GameEvent_Training_TA Functions
@@ -21434,7 +21767,7 @@ export type UGameEvent_Training_TA = UGameEvent_Tutorial_TA & {
 
 /**
  * Class TAGame.GameEvent_Training_Aerial_TA
- * Size: 0x10B8
+ * Size: 0x10F0
  * Extends: UGameEvent_Training_TA
  */
 export type UGameEvent_Training_Aerial_TA = UGameEvent_Training_TA & {};
@@ -21445,11 +21778,11 @@ export type UGameEvent_Training_Aerial_TA = UGameEvent_Training_TA & {};
 
 /**
  * Class TAGame.GameEvent_Training_Goalie_TA
- * Size: 0x10BC
+ * Size: 0x10F4
  * Extends: UGameEvent_Training_TA
  */
 export type UGameEvent_Training_Goalie_TA = UGameEvent_Training_TA & {
-  Score: number; // 0x10b8 (0x0004) [int32]
+  Score: number; // 0x10f0 (0x0004) [int32]
 };
 
 // GameEvent_Training_Goalie_TA Functions
@@ -21466,7 +21799,7 @@ export type UGameEvent_Training_Goalie_TA = UGameEvent_Training_TA & {
 
 /**
  * Class TAGame.GameEvent_Training_Striker_TA
- * Size: 0x10B8
+ * Size: 0x10F0
  * Extends: UGameEvent_Training_TA
  */
 export type UGameEvent_Training_Striker_TA = UGameEvent_Training_TA & {};
@@ -21478,52 +21811,57 @@ export type UGameEvent_Training_Striker_TA = UGameEvent_Training_TA & {};
 
 /**
  * Class TAGame.GameEvent_TrainingEditor_TA
- * Size: 0x1098
+ * Size: 0x10F8
  * Extends: UGameEvent_GameEditor_TA
  */
 export type UGameEvent_TrainingEditor_TA = UGameEvent_GameEditor_TA & {
-  MinRoundTime: number; // 0x0ed0 (0x0004) [float]
-  MaxRoundTime: number; // 0x0ed4 (0x0004) [float]
-  bNoEditor: boolean; // 0x0ed8 (0x0004) [bool : 0x1]
-  bDisplayedRedoPenaltyMessage: boolean; // 0x0ed8 (0x0004) [bool : 0x2]
-  bUnsavedChanges: boolean; // 0x0ed8 (0x0004) [bool : 0x4]
-  bShouldEndTraining: boolean; // 0x0ed8 (0x0004) [bool : 0x8]
-  bCanRandomizeShot: boolean; // 0x0ed8 (0x0004) [bool : 0x10]
-  bModifiersUsed: boolean; // 0x0ed8 (0x0004) [bool : 0x20]
-  PointsScoredThisRound: number; // 0x0edc (0x0004) [int32]
-  ResetModal: UGFxModal_X; // 0x0ee0 (0x0008) [UGFxModal_X*]
-  ShotAttempt: number; // 0x0ee8 (0x0004) [int32]
-  RedoTotal: number; // 0x0eec (0x0004) [int32]
-  GoalieScore: number; // 0x0ef0 (0x0004) [int32]
-  PlayTestType: EPlayTestType; // 0x0ef4 (0x0001) [EPlayTestType]
-  GoalMeshBlockers: UActor[]; // 0x0ef8 (0x0010) [TArray<UActor*>]
-  GoalMeshBlockerArchetype: UActor; // 0x0f08 (0x0008) [UActor*]
-  TrainingData: USaveData_GameEditor_Training_TA; // 0x0f10 (0x0008) [USaveData_GameEditor_Training_TA*]
-  PrePlaytestState: FName; // 0x0f18 (0x0008) [FName]
-  SaveDelayTime: number; // 0x0f20 (0x0004) [float]
-  SaveCooldown: number; // 0x0f24 (0x0004) [float]
-  TrainingFileName: string; // 0x0f28 (0x0010) [FString]
-  TrainingNavigationConfig: UTrainingEditorNavigationConfig_TA; // 0x0f38 (0x0008) [UTrainingEditorNavigationConfig_TA*]
-  TrainingManipulationConfig: UTrainingEditorManipulationConfig_TA; // 0x0f40 (0x0008) [UTrainingEditorManipulationConfig_TA*]
-  TrainingNavigator: UTrainingEditorNavigation_TA; // 0x0f48 (0x0008) [UTrainingEditorNavigation_TA*]
-  TrainingMirror: UTrainingEditorMirror_TA; // 0x0f50 (0x0008) [UTrainingEditorMirror_TA*]
-  RestartRoundCooldown: number; // 0x0f58 (0x0004) [float]
-  CustomTrainingSave: UCustomTrainingSave_TA; // 0x0f60 (0x0008) [UCustomTrainingSave_TA*]
-  CachedLocationModifiers: FCachedLocationModifier[]; // 0x0f68 (0x0010) [TArray<FCachedLocationModifier>]
-  CachedSpeedModifiers: FCachedSpeedModifier[]; // 0x0f78 (0x0010) [TArray<FCachedSpeedModifier>]
-  CachedActiveRound: number; // 0x0f88 (0x0004) [int32]
-  MaxOffsetAttempts: number; // 0x0f8c (0x0004) [int32]
-  __EventRoundStarted__Delegate: FScriptDelegate; // 0x0f90 (0x0018) [FScriptDelegate]
-  __EventRoundTimeChanged__Delegate: FScriptDelegate; // 0x0fa8 (0x0018) [FScriptDelegate]
-  __EventRoundChanged__Delegate: FScriptDelegate; // 0x0fc0 (0x0018) [FScriptDelegate]
-  __EventRoundFinished__Delegate: FScriptDelegate; // 0x0fd8 (0x0018) [FScriptDelegate]
-  __EventPlaytestStarted__Delegate: FScriptDelegate; // 0x0ff0 (0x0018) [FScriptDelegate]
-  __EventUnsavedChanges__Delegate: FScriptDelegate; // 0x1008 (0x0018) [FScriptDelegate]
-  __EventSaveResult__Delegate: FScriptDelegate; // 0x1020 (0x0018) [FScriptDelegate]
-  __EventRoundAttempted__Delegate: FScriptDelegate; // 0x1038 (0x0018) [FScriptDelegate]
-  __FindObjectForTraining__Delegate: FScriptDelegate; // 0x1050 (0x0018) [FScriptDelegate]
-  __EventCanRandomizeShotChanged__Delegate: FScriptDelegate; // 0x1068 (0x0018) [FScriptDelegate]
-  __EventResetTrainingRound__Delegate: FScriptDelegate; // 0x1080 (0x0018) [FScriptDelegate]
+  MinRoundTime: number; // 0x0f10 (0x0004) [float]
+  MaxRoundTime: number; // 0x0f14 (0x0004) [float]
+  bNoEditor: boolean; // 0x0f18 (0x0004) [bool : 0x1]
+  bDisplayedRedoPenaltyMessage: boolean; // 0x0f18 (0x0004) [bool : 0x2]
+  bUnsavedChanges: boolean; // 0x0f18 (0x0004) [bool : 0x4]
+  bShouldEndTraining: boolean; // 0x0f18 (0x0004) [bool : 0x8]
+  bCanRandomizeShot: boolean; // 0x0f18 (0x0004) [bool : 0x10]
+  bModifiersUsed: boolean; // 0x0f18 (0x0004) [bool : 0x20]
+  bRotationOrVelocityChanged: boolean; // 0x0f18 (0x0004) [bool : 0x40]
+  PointsScoredThisRound: number; // 0x0f1c (0x0004) [int32]
+  ResetModal: UGFxModal_X; // 0x0f20 (0x0008) [UGFxModal_X*]
+  ShotAttempt: number; // 0x0f28 (0x0004) [int32]
+  RedoTotal: number; // 0x0f2c (0x0004) [int32]
+  GoalieScore: number; // 0x0f30 (0x0004) [int32]
+  PlayTestType: EPlayTestType; // 0x0f34 (0x0001) [EPlayTestType]
+  GoalMeshBlockers: UActor[]; // 0x0f38 (0x0010) [TArray<UActor*>]
+  GoalMeshBlockerArchetype: UActor; // 0x0f48 (0x0008) [UActor*]
+  TrainingData: USaveData_GameEditor_Training_TA; // 0x0f50 (0x0008) [USaveData_GameEditor_Training_TA*]
+  PrePlaytestState: FName; // 0x0f58 (0x0008) [FName]
+  SaveDelayTime: number; // 0x0f60 (0x0004) [float]
+  SaveCooldown: number; // 0x0f64 (0x0004) [float]
+  TrainingFileName: string; // 0x0f68 (0x0010) [FString]
+  TrainingNavigationConfig: UTrainingEditorNavigationConfig_TA; // 0x0f78 (0x0008) [UTrainingEditorNavigationConfig_TA*]
+  TrainingManipulationConfig: UTrainingEditorManipulationConfig_TA; // 0x0f80 (0x0008) [UTrainingEditorManipulationConfig_TA*]
+  PrimaryPC: UPlayerController_TA; // 0x0f88 (0x0008) [UPlayerController_TA*]
+  TrainingNavigator: UTrainingEditorNavigation_TA; // 0x0f90 (0x0008) [UTrainingEditorNavigation_TA*]
+  TrainingMirror: UTrainingEditorMirror_TA; // 0x0f98 (0x0008) [UTrainingEditorMirror_TA*]
+  RestartRoundCooldown: number; // 0x0fa0 (0x0004) [float]
+  CustomTrainingSave: UCustomTrainingSave_TA; // 0x0fa8 (0x0008) [UCustomTrainingSave_TA*]
+  CachedLocationModifiers: FCachedLocationModifier[]; // 0x0fb0 (0x0010) [TArray<FCachedLocationModifier>]
+  CachedSpeedModifiers: FCachedSpeedModifier[]; // 0x0fc0 (0x0010) [TArray<FCachedSpeedModifier>]
+  CachedActiveRound: number; // 0x0fd0 (0x0004) [int32]
+  MaxOffsetAttempts: number; // 0x0fd4 (0x0004) [int32]
+  DefaultStartingBoostInt: number; // 0x0fd8 (0x0004) [int32]
+  DefaultStartingBoost: number; // 0x0fdc (0x0004) [float]
+  RotationAndVelocityTutorialName: string; // 0x0fe0 (0x0010) [FString]
+  __EventRoundStarted__Delegate: FScriptDelegate; // 0x0ff0 (0x0018) [FScriptDelegate]
+  __EventRoundTimeChanged__Delegate: FScriptDelegate; // 0x1008 (0x0018) [FScriptDelegate]
+  __EventRoundChanged__Delegate: FScriptDelegate; // 0x1020 (0x0018) [FScriptDelegate]
+  __EventRoundFinished__Delegate: FScriptDelegate; // 0x1038 (0x0018) [FScriptDelegate]
+  __EventPlaytestStarted__Delegate: FScriptDelegate; // 0x1050 (0x0018) [FScriptDelegate]
+  __EventUnsavedChanges__Delegate: FScriptDelegate; // 0x1068 (0x0018) [FScriptDelegate]
+  __EventSaveResult__Delegate: FScriptDelegate; // 0x1080 (0x0018) [FScriptDelegate]
+  __EventRoundAttempted__Delegate: FScriptDelegate; // 0x1098 (0x0018) [FScriptDelegate]
+  __FindObjectForTraining__Delegate: FScriptDelegate; // 0x10b0 (0x0018) [FScriptDelegate]
+  __EventCanRandomizeShotChanged__Delegate: FScriptDelegate; // 0x10c8 (0x0018) [FScriptDelegate]
+  __EventResetTrainingRound__Delegate: FScriptDelegate; // 0x10e0 (0x0018) [FScriptDelegate]
 };
 
 // GameEvent_TrainingEditor_TA Functions
@@ -21533,8 +21871,10 @@ export type UGameEvent_TrainingEditor_TA = UGameEvent_GameEditor_TA & {
 // MarkAsDirty(): void
 // ForceTagHistoryChanges(): void
 // SetTracedCrosshairActor(PC: UPlayerController_TA, NewActor: UActor): void
+// NudgeCarOutOfGround(Car: UCar_TA): void
 // ModifyActorSpawn(RBActor: URBActor_TA, LocationModifier: number, HeightModifier: number, RotationModifier: number, bForceSpawnOnGround: boolean): boolean
 // GetCappedMovement(InActor: UActor, OriginalLocation: FVector, Movement: FVector, MoverExtent: FVector): FVector
+// ApplyStartingImpulse(Car: UCar_TA): void
 // HandleBallWentThruRing(Ball: UBall_GameEditor_TA): void
 // __GameEvent_TrainingEditor_TA__OnInit_0x2(Settings: UCustomTrainingSave_TA): void
 // __GameEvent_TrainingEditor_TA__OnInit_0x1(Settings: UGameplaySettingsSave_TA): void
@@ -21545,6 +21885,7 @@ export type UGameEvent_TrainingEditor_TA = UGameEvent_GameEditor_TA & {
 // GetTotalRounds(): number
 // GetDifficulty(): EDifficulty
 // GetTrainingType(): ETrainingType
+// OnVehicleSetup(Car: UCar_TA): void
 // OnMirroredCar(Car: UCar_TA): void
 // ShowScorerGoalMessage(): boolean
 // ResetModifiers(): void
@@ -21625,15 +21966,15 @@ export type UGameEvent_TrainingEditor_TA = UGameEvent_GameEditor_TA & {
 
 /**
  * Class TAGame.GameEvent_Tutorial_Basic_TA
- * Size: 0x10C4
+ * Size: 0x10FC
  * Extends: UGameEvent_Tutorial_TA
  */
 export type UGameEvent_Tutorial_Basic_TA = UGameEvent_Tutorial_TA & {
-  CurrentScore: number; // 0x10a0 (0x0004) [int32]
-  TotalRounds: number; // 0x10a4 (0x0004) [int32]
-  CurrentRounds: number; // 0x10a8 (0x0004) [int32]
-  InitialLocation: FVector; // 0x10ac (0x000c) [FVector]
-  InitialRotation: FRotator; // 0x10b8 (0x000c) [FRotator]
+  CurrentScore: number; // 0x10d8 (0x0004) [int32]
+  TotalRounds: number; // 0x10dc (0x0004) [int32]
+  CurrentRounds: number; // 0x10e0 (0x0004) [int32]
+  InitialLocation: FVector; // 0x10e4 (0x000c) [FVector]
+  InitialRotation: FRotator; // 0x10f0 (0x000c) [FRotator]
 };
 
 // GameEvent_Tutorial_Basic_TA Functions
@@ -21653,14 +21994,14 @@ export type UGameEvent_Tutorial_Basic_TA = UGameEvent_Tutorial_TA & {
 
 /**
  * Class TAGame.GameEvent_Tutorial_Advanced_TA
- * Size: 0x10C8
+ * Size: 0x1100
  * Extends: UGameEvent_Tutorial_Basic_TA
  */
 export type UGameEvent_Tutorial_Advanced_TA = UGameEvent_Tutorial_Basic_TA & {};
 
 /**
  * Class TAGame.GameEvent_Tutorial_FreePlay_TA
- * Size: 0x10A0
+ * Size: 0x10D8
  * Extends: UGameEvent_Tutorial_TA
  */
 export type UGameEvent_Tutorial_FreePlay_TA = UGameEvent_Tutorial_TA & {};
@@ -22446,7 +22787,7 @@ export type UGameplayMusicPlayer_TA = UObject & {
 
 /**
  * Class TAGame.GameplaySettingsSave_TA
- * Size: 0x0288
+ * Size: 0x02A0
  * Extends: UJsonSaveObject_TA
  */
 export type UGameplaySettingsSave_TA = UJsonSaveObject_TA & {
@@ -22469,6 +22810,7 @@ export type UGameplaySettingsSave_TA = UJsonSaveObject_TA & {
   bEnableHighContrastMode: boolean; // 0x00d0 (0x0004) [bool : 0x10000]
   bFreeplayDefaultTeamColors: boolean; // 0x00d0 (0x0004) [bool : 0x20000]
   bDrawVehicleHitbox: boolean; // 0x00d0 (0x0004) [bool : 0x40000]
+  bShowSpecialEventVisuals: boolean; // 0x00d0 (0x0004) [bool : 0x80000]
   QuickChatFilter: EChatFilter; // 0x00d4 (0x0001) [EChatFilter]
   MatchChatFilter: EChatFilter; // 0x00d5 (0x0001) [EChatFilter]
   PartyChatFilter: EChatFilter; // 0x00d6 (0x0001) [EChatFilter]
@@ -22493,17 +22835,18 @@ export type UGameplaySettingsSave_TA = UJsonSaveObject_TA & {
   __bUseSteamInput__ChangeNotify: FScriptDelegate; // 0x0138 (0x0018) [FScriptDelegate]
   __bDisableFreeplayGoals__ChangeNotify: FScriptDelegate; // 0x0150 (0x0018) [FScriptDelegate]
   __bDisplayPartyLeaderLeftModal__ChangeNotify: FScriptDelegate; // 0x0168 (0x0018) [FScriptDelegate]
-  __QuickChatFilter__ChangeNotify: FScriptDelegate; // 0x0180 (0x0018) [FScriptDelegate]
-  __MatchChatFilter__ChangeNotify: FScriptDelegate; // 0x0198 (0x0018) [FScriptDelegate]
-  __PartyChatFilter__ChangeNotify: FScriptDelegate; // 0x01b0 (0x0018) [FScriptDelegate]
-  __DeprecatedVoiceFilter__ChangeNotify: FScriptDelegate; // 0x01c8 (0x0018) [FScriptDelegate]
-  __ChatFilter__ChangeNotify: FScriptDelegate; // 0x01e0 (0x0018) [FScriptDelegate]
-  __FreeplayBoostFillType__ChangeNotify: FScriptDelegate; // 0x01f8 (0x0018) [FScriptDelegate]
-  __TrainingControlsVisibility__ChangeNotify: FScriptDelegate; // 0x0210 (0x0018) [FScriptDelegate]
-  __TextReportingLevel__ChangeNotify: FScriptDelegate; // 0x0228 (0x0018) [FScriptDelegate]
-  __TrainingGameSpeed__ChangeNotify: FScriptDelegate; // 0x0240 (0x0018) [FScriptDelegate]
-  __FreeplayBoostFillDelay__ChangeNotify: FScriptDelegate; // 0x0258 (0x0018) [FScriptDelegate]
-  __PickupActivationBuffer__ChangeNotify: FScriptDelegate; // 0x0270 (0x0018) [FScriptDelegate]
+  __bShowSpecialEventVisuals__ChangeNotify: FScriptDelegate; // 0x0180 (0x0018) [FScriptDelegate]
+  __QuickChatFilter__ChangeNotify: FScriptDelegate; // 0x0198 (0x0018) [FScriptDelegate]
+  __MatchChatFilter__ChangeNotify: FScriptDelegate; // 0x01b0 (0x0018) [FScriptDelegate]
+  __PartyChatFilter__ChangeNotify: FScriptDelegate; // 0x01c8 (0x0018) [FScriptDelegate]
+  __DeprecatedVoiceFilter__ChangeNotify: FScriptDelegate; // 0x01e0 (0x0018) [FScriptDelegate]
+  __ChatFilter__ChangeNotify: FScriptDelegate; // 0x01f8 (0x0018) [FScriptDelegate]
+  __FreeplayBoostFillType__ChangeNotify: FScriptDelegate; // 0x0210 (0x0018) [FScriptDelegate]
+  __TrainingControlsVisibility__ChangeNotify: FScriptDelegate; // 0x0228 (0x0018) [FScriptDelegate]
+  __TextReportingLevel__ChangeNotify: FScriptDelegate; // 0x0240 (0x0018) [FScriptDelegate]
+  __TrainingGameSpeed__ChangeNotify: FScriptDelegate; // 0x0258 (0x0018) [FScriptDelegate]
+  __FreeplayBoostFillDelay__ChangeNotify: FScriptDelegate; // 0x0270 (0x0018) [FScriptDelegate]
+  __PickupActivationBuffer__ChangeNotify: FScriptDelegate; // 0x0288 (0x0018) [FScriptDelegate]
 };
 
 // GameplaySettingsSave_TA Functions
@@ -22520,6 +22863,7 @@ export type UGameplaySettingsSave_TA = UJsonSaveObject_TA & {
 // __PartyChatFilter__ChangeNotifyFunc(): void
 // __MatchChatFilter__ChangeNotifyFunc(): void
 // __QuickChatFilter__ChangeNotifyFunc(): void
+// __bShowSpecialEventVisuals__ChangeNotifyFunc(): void
 // __bIsTradingEnabled__ChangeNotifyFunc(): void
 // __bDisplayPartyLeaderLeftModal__ChangeNotifyFunc(): void
 // __bDisableFreeplayGoals__ChangeNotifyFunc(): void
@@ -22559,6 +22903,7 @@ export type UGameSettingPlaylist_TA = UGameSettingPlaylist_X & {
   bAllowHonorDuelChallenges: boolean; // 0x0178 (0x0004) [bool : 0x1]
   bAllowVoiceChat: boolean; // 0x0178 (0x0004) [bool : 0x2]
   bAllowViralItems: boolean; // 0x0178 (0x0004) [bool : 0x4]
+  bAllowAnonymize: boolean; // 0x0178 (0x0004) [bool : 0x8]
   DetailsGroup: number; // 0x017c (0x0004) [int32]
   TeamColors: FTeamColor[]; // 0x0180 (0x0010) [TArray<FTeamColor>]
   BallSuperSonicColor: FColorOverride; // 0x0190 (0x0014) [FColorOverride]
@@ -23119,7 +23464,7 @@ export type UGFxData_BlueprintGarage_TA = UGFxDataSingleton_X & {
 
 /**
  * Class TAGame.GFxData_CarColors_TA
- * Size: 0x00F8
+ * Size: 0x0108
  * Extends: UGFxDataSingleton_X
  */
 export type UGFxData_CarColors_TA = UGFxDataSingleton_X & {
@@ -23127,8 +23472,9 @@ export type UGFxData_CarColors_TA = UGFxDataSingleton_X & {
   Team0: FGFxTeamColor[]; // 0x00a8 (0x0010) [TArray<FGFxTeamColor>]
   Team1: FGFxTeamColor[]; // 0x00b8 (0x0010) [TArray<FGFxTeamColor>]
   Clubs: FGFxTeamColor[]; // 0x00c8 (0x0010) [TArray<FGFxTeamColor>]
-  PlayerBanners: FGFxTeamColor[]; // 0x00d8 (0x0010) [TArray<FGFxTeamColor>]
-  PlayerVanity: FGFxTeamColor[]; // 0x00e8 (0x0010) [TArray<FGFxTeamColor>]
+  CarCustom: FGFxTeamColor[]; // 0x00d8 (0x0010) [TArray<FGFxTeamColor>]
+  PlayerBanners: FGFxTeamColor[]; // 0x00e8 (0x0010) [TArray<FGFxTeamColor>]
+  PlayerVanity: FGFxTeamColor[]; // 0x00f8 (0x0010) [TArray<FGFxTeamColor>]
 };
 
 // GFxData_CarColors_TA Functions
@@ -23355,6 +23701,8 @@ export type UGFxData_ChallengeFolder_TA = UGFxDataRow_X & {
 // GetChallengeManager(): UChallengeManager_TA
 // RefreshNotifies(Challenges: UChallenge_TA[]): void
 // GetSortedChallenges(Filter: UChallengeFilter_TA): UChallenge_TA[]
+// ReplaceDescriptionToProxy(Match: string, With: string): void
+// AddExtraDescriptionToProxy(ExtraDescription: string): void
 // GetFolderProxy(): UChallengeFolder_TA
 // CreateSubFolders(): void
 // RemoveSubFolders(): void
@@ -23378,7 +23726,7 @@ export type UGFxData_ChallengeFolder_TA = UGFxDataRow_X & {
 
 /**
  * Class TAGame.GFxData_ChallengeManager_TA
- * Size: 0x0178
+ * Size: 0x0180
  * Extends: UGFxDataSingleton_X
  */
 export type UGFxData_ChallengeManager_TA = UGFxDataSingleton_X & {
@@ -23401,6 +23749,7 @@ export type UGFxData_ChallengeManager_TA = UGFxDataSingleton_X & {
   ThistleIntroSubTitle: string; // 0x0148 (0x0010) [FString]
   ThistleIntroDescription: string; // 0x0158 (0x0010) [FString]
   ThistleIntroSubText: string; // 0x0168 (0x0010) [FString]
+  WorldCupConfig: UWorldCupConfig_TA; // 0x0178 (0x0008) [UWorldCupConfig_TA*]
 };
 
 // GFxData_ChallengeManager_TA Functions
@@ -23418,6 +23767,7 @@ export type UGFxData_ChallengeManager_TA = UGFxDataSingleton_X & {
 // ShowIntroModal(bForce: boolean): boolean
 // OnShowIntroModal(Title: string, Description: string, ShowcaseImage: string, SubText: string, SubTitle: string): void
 // ShouldTriggerIntroModal(): boolean
+// HasTargetedChallengeEvent(): boolean
 // HasEventChallenges(): boolean
 // HasNewDriverChallenges(): boolean
 // HasSeasonChallenges(): boolean
@@ -24210,6 +24560,28 @@ export type UGFxData_DateTime_TA = UGFxDataSingleton_X & {};
 // UtcSecondsUntil(UtcSeconds: bigint): number
 // UtcNow(): FDateTimeStruct
 // Now(): FDateTimeStruct
+
+/**
+ * Class TAGame.GFxData_DemoSpawnSelection_TA
+ * Size: 0x00BC
+ * Extends: UGFxDataSingleton_X
+ */
+export type UGFxData_DemoSpawnSelection_TA = UGFxDataSingleton_X & {
+  DemoSelectionState: EDemoSelectionState; // 0x0098 (0x0001) [EDemoSelectionState]
+  DemoSpawnPreference: EDemoSpawnPreference; // 0x0099 (0x0001) [EDemoSpawnPreference]
+  PrevSpawnPreference: EDemoSpawnPreference; // 0x009a (0x0001) [EDemoSpawnPreference]
+  PrevSelectionState: EDemoSelectionState; // 0x009b (0x0001) [EDemoSelectionState]
+  PercentageTimeLeft: number; // 0x009c (0x0004) [float]
+  SpawnIndex: number; // 0x00a0 (0x0004) [int32]
+  TimerExpiredSFX: UAkSoundCue; // 0x00a8 (0x0008) [UAkSoundCue*]
+  IndexChangedSFX: UAkSoundCue; // 0x00b0 (0x0008) [UAkSoundCue*]
+  PrevSpawnIndex: number; // 0x00b8 (0x0004) [int32]
+};
+
+// GFxData_DemoSpawnSelection_TA Functions
+// HandleDemoSpawnDataChanged(PRI: UPRI_TA): void
+// OnRemoved(): void
+// OnShellSet(): void
 
 /**
  * Class TAGame.GFxData_DevUtil_TA
@@ -25044,6 +25416,7 @@ export type UGFxData_Friends_TA = UGFxDataSingleton_X & {
 // UnblockPlayer(PlayerID: FUniqueNetId): void
 // HandlePlayerBlocked(PlayerID: FUniqueNetId, RequestError: UError): void
 // BlockPlayer(PlayerID: FUniqueNetId): void
+// GetAnonymizedName(InPersona: UPersona_TA): string
 // HandleClearAllClubInvites(): void
 // CheckNotificationLimits(): void
 // AddBlockedPlayerData(Persona: UPersona_TA): void
@@ -25648,7 +26021,7 @@ export type UGFxData_LocalCar_TA = UGFxDataSingleton_X & {
 
 /**
  * Class TAGame.GFxData_LocalPlayer_TA
- * Size: 0x0180
+ * Size: 0x0190
  * Extends: UGFxDataSingleton_X
  */
 export type UGFxData_LocalPlayer_TA = UGFxDataSingleton_X & {
@@ -25674,11 +26047,12 @@ export type UGFxData_LocalPlayer_TA = UGFxDataSingleton_X & {
   bDisableCrossPlay: boolean; // 0x0098 (0x0004) [bool : 0x80000]
   bReplacingBot: boolean; // 0x0098 (0x0004) [bool : 0x100000]
   bDisableDivisions: boolean; // 0x0098 (0x0004) [bool : 0x200000]
-  bCheckedBootMessage: boolean; // 0x0098 (0x0004) [bool : 0x400000]
-  bUseSteamInput: boolean; // 0x0098 (0x0004) [bool : 0x800000]
-  bCompletedChallengesForCompetitive: boolean; // 0x0098 (0x0004) [bool : 0x1000000]
-  bLegacyPlayer: boolean; // 0x0098 (0x0004) [bool : 0x2000000]
-  bGuestAccount: boolean; // 0x0098 (0x0004) [bool : 0x4000000]
+  bShowViralAvatarVisuals: boolean; // 0x0098 (0x0004) [bool : 0x400000]
+  bCheckedBootMessage: boolean; // 0x0098 (0x0004) [bool : 0x800000]
+  bUseSteamInput: boolean; // 0x0098 (0x0004) [bool : 0x1000000]
+  bCompletedChallengesForCompetitive: boolean; // 0x0098 (0x0004) [bool : 0x2000000]
+  bLegacyPlayer: boolean; // 0x0098 (0x0004) [bool : 0x4000000]
+  bGuestAccount: boolean; // 0x0098 (0x0004) [bool : 0x8000000]
   SaveDataError: string; // 0x00a0 (0x0010) [FString]
   OnlineError: string; // 0x00b0 (0x0010) [FString]
   PlayerName: string; // 0x00c0 (0x0010) [FString]
@@ -25700,12 +26074,15 @@ export type UGFxData_LocalPlayer_TA = UGFxDataSingleton_X & {
   VisibleMMRPreference: EVisibleMMRPreference; // 0x0121 (0x0001) [EVisibleMMRPreference]
   InfectedStatus: EInfectedType; // 0x0122 (0x0001) [EInfectedType]
   ChallengeState: EChallengeManagerState; // 0x0123 (0x0001) [EChallengeManagerState]
-  PersonaSave: UPersonaSave_TA; // 0x0128 (0x0008) [UPersonaSave_TA*]
-  PlayerID: FUniqueNetId; // 0x0130 (0x0048) [FUniqueNetId]
-  Player: ULocalPlayer_TA; // 0x0178 (0x0008) [ULocalPlayer_TA*]
+  ViralItemConfig: UViralItemConfig_TA; // 0x0128 (0x0008) [UViralItemConfig_TA*]
+  GameplaySettingsSave: UGameplaySettingsSave_TA; // 0x0130 (0x0008) [UGameplaySettingsSave_TA*]
+  PersonaSave: UPersonaSave_TA; // 0x0138 (0x0008) [UPersonaSave_TA*]
+  PlayerID: FUniqueNetId; // 0x0140 (0x0048) [FUniqueNetId]
+  Player: ULocalPlayer_TA; // 0x0188 (0x0008) [ULocalPlayer_TA*]
 };
 
 // GFxData_LocalPlayer_TA Functions
+// __GFxData_LocalPlayer_TA__HandleProfileSet_0x1(SettingsSave: UGameplaySettingsSave_TA): void
 // __GFxData_LocalPlayer_TA__HandleReceivedController_0x2(LegacySave: UPlayerLegacyStatusSave_TA): void
 // __GFxData_LocalPlayer_TA__HandleReceivedController_0x1(LegacySave: UPlayerLegacyStatusSave_TA): void
 // CanShowRankInfoForPlaylist(InPlaylist: UGameSettingPlaylist_X): boolean
@@ -25759,6 +26136,8 @@ export type UGFxData_LocalPlayer_TA = UGFxDataSingleton_X & {
 // HandleLoginStatusChanged(OnlinePlayer: UOnlinePlayer_X): void
 // HandleSyncSuccess(OnlineStorageSyncManager: UOnlineStorageSyncManager_TA): void
 // HandleGamepadInputAPIChanged(InGVC: UGameViewportClient, InControllerID: number, InInputAPI: EInputAPI): void
+// ShowSpecialEventVisualsChanged(): void
+// HandleViralItemConfig(): void
 // HandleProfileSet(InLocalPlayer: ULocalPlayer_TA): void
 // HandleSplitScreenTypeChanged(GVC: UGameViewportClient_TA): void
 // HandleDrawWorldFullScreenChanged(GVC: UGameViewportClient_TA): void
@@ -26804,7 +27183,7 @@ export type UGFxData_Mutators_TA = UGFxDataSingleton_X & {
 
 /**
  * Class TAGame.GFxData_Nameplate_TA
- * Size: 0x00F0
+ * Size: 0x00F8
  * Extends: UGFxDataRow_X
  */
 export type UGFxData_Nameplate_TA = UGFxDataRow_X & {
@@ -26819,7 +27198,8 @@ export type UGFxData_Nameplate_TA = UGFxDataRow_X & {
   bIsDistracted: boolean; // 0x00bc (0x0004) [bool : 0x8]
   bLocalPlayer: boolean; // 0x00bc (0x0004) [bool : 0x10]
   bRenderBoostAmount: boolean; // 0x00bc (0x0004) [bool : 0x20]
-  bShowShortcut: boolean; // 0x00bc (0x0004) [bool : 0x40]
+  bShowViralNameplateVisuals: boolean; // 0x00bc (0x0004) [bool : 0x40]
+  bShowShortcut: boolean; // 0x00bc (0x0004) [bool : 0x80]
   LivesVisibility: number; // 0x00c0 (0x0004) [float]
   RemainingLives: number; // 0x00c4 (0x0004) [int32]
   MaxLives: number; // 0x00c8 (0x0004) [int32]
@@ -26828,19 +27208,25 @@ export type UGFxData_Nameplate_TA = UGFxDataRow_X & {
   NameplateComponent: UNameplateComponent_TA; // 0x00d8 (0x0008) [UNameplateComponent_TA*]
   GameplaySettings: UProfileGameplaySave_TA; // 0x00e0 (0x0008) [UProfileGameplaySave_TA*]
   Persona: UPersona_TA; // 0x00e8 (0x0008) [UPersona_TA*]
+  GameplaySettingsSave: UGameplaySettingsSave_TA; // 0x00f0 (0x0008) [UGameplaySettingsSave_TA*]
 };
 
 // GFxData_Nameplate_TA Functions
 // __GFxData_Nameplate_TA__HandleProfileSet_0x1(Settings: UProfileGameplaySave_TA): void
+// __GFxData_Nameplate_TA__SetNameplateComponent_0x1(SettingsSave: UGameplaySettingsSave_TA): void
 // SetShowShortcut(bValue: boolean): void
 // CanRenderBoostNameplate(InPRI: UPRI_TA): boolean
 // Tick(): void
 // HandlePersonaUpdated(InPersona: UPersona_TA): void
+// HandleAnonymizationChanged(InPRI: UPRI_TA): void
+// OnGameStateChanged(InGameEvent: UGameEvent_TA): void
+// ShowSpecialEventVisualsChanged(): void
 // HandlePRIInfectedStatus(InPRI: UPRI_TA): void
 // HandlePlaylistsChanged(OGP: UOnlineGamePlaylists_X): void
+// UpdateInfectedStatus(): void
 // PlaylistAllowsViralItems(): boolean
 // HandlePRIDistracted(InPRI: UPRI_TA): void
-// SetPlayerName(InPRI: UPRI_TA): void
+// UpdatePlayerName(): void
 // GetOnlineGame(): UOnlineGame_X
 // HandlePlayerNameSet(InNameplateComponent: UNameplateComponent_TA): void
 // SetNameplateComponent(InNameplateComponent: UNameplateComponent_TA): void
@@ -27629,7 +28015,7 @@ export type UGFxData_PremiumGarage_TA = UGFxDataSingleton_X & {};
 
 /**
  * Class TAGame.GFxData_PRI_TA
- * Size: 0x0230
+ * Size: 0x0240
  * Extends: UGFxDataRow_X
  */
 export type UGFxData_PRI_TA = UGFxDataRow_X & {
@@ -27664,6 +28050,10 @@ export type UGFxData_PRI_TA = UGFxDataRow_X & {
   bWantsToHonorDuel: boolean; // 0x00f0 (0x0004) [bool : 0x10000]
   bChallengedToHonorDuel: boolean; // 0x00f0 (0x0004) [bool : 0x20000]
   bCanChallengeToHonorDuel: boolean; // 0x00f0 (0x0004) [bool : 0x40000]
+  bShowViralScoreboardVisuals: boolean; // 0x00f0 (0x0004) [bool : 0x80000]
+  bShowViralAvatarVisuals: boolean; // 0x00f0 (0x0004) [bool : 0x100000]
+  bIsAnonymized: boolean; // 0x00f0 (0x0004) [bool : 0x200000]
+  bNameReady: boolean; // 0x00f0 (0x0004) [bool : 0x400000]
   ConnectionStatus: string; // 0x00f8 (0x0010) [FString]
   PartyID: string; // 0x0108 (0x0010) [FString]
   XPTitle: string; // 0x0118 (0x0010) [FString]
@@ -27696,15 +28086,20 @@ export type UGFxData_PRI_TA = UGFxDataRow_X & {
   Personas: UPersonas_TA; // 0x0218 (0x0008) [UPersonas_TA*]
   ScoreboardStats: UGFxData_ScoreboardStat_TA; // 0x0220 (0x0008) [UGFxData_ScoreboardStat_TA*]
   SpectatorStats: UGFxData_SpectatorStat_TA; // 0x0228 (0x0008) [UGFxData_SpectatorStat_TA*]
+  GameplaySettingsSave: UGameplaySettingsSave_TA; // 0x0230 (0x0008) [UGameplaySettingsSave_TA*]
+  ProfileGameplaySettings: UProfileGameplaySave_TA; // 0x0238 (0x0008) [UProfileGameplaySave_TA*]
 };
 
 // GFxData_PRI_TA Functions
+// __GFxData_PRI_TA__SetPRI_0x2(SettingsSave: UGameplaySettingsSave_TA): void
 // __GFxData_PRI_TA__SetPRI_0x1(_: UOnlineGamePlaylists_X): void
+// __GFxData_PRI_TA__HandleProfileSet_0x1(Settings: UProfileGameplaySave_TA): void
 // __GFxData_PRI_TA__UpdatePRIData_0x4(): void
 // __GFxData_PRI_TA__UpdatePRIData_0x3(S: FScoreboardStat): number
 // __GFxData_PRI_TA__UpdatePRIData_0x2(S: FScoreboardStat): string
 // __GFxData_PRI_TA__UpdatePRIData_0x1(S: FScoreboardStat): number
 // IsActivePlayer(): boolean
+// ShowSpecialEventVisualsChanged(): void
 // HandleInfectedStatusChanged(InPRI: UPRI_TA): void
 // HandleQuitSeverityChanged(InPRI: UPRI_TA): void
 // HandleSpectatorShortcutChanged(InPRI: UPRI_TA): void
@@ -27743,14 +28138,19 @@ export type UGFxData_PRI_TA = UGFxDataRow_X & {
 // SetPlayerIDString(Id: string): void
 // HandleUniqueIdChanged(InPRI: UPRI_X): void
 // HandleReceivedLocalPRI(P: UPlayerController_X): void
+// UpdatePlayerName(): void
 // HandlePlayerNameChanged(InPRI: UPRI_X): void
 // OnRemoved(): void
 // HandleOwnerChanged(InPRI: UPRI_TA): void
+// HandleAnonymizationSettingsChanged(): void
+// HandleAnonymizationChanged(InPRI: UPRI_TA): void
+// HandleProfileSet(InLocalPlayer: ULocalPlayer_TA): void
 // SetPRI(InPRI: UPRI_TA): void
 // SamePlayer(InPRI: UPRI_TA): boolean
 // GetReservationStatusString(Status: EReservationStatus): string
 // SetReservation(Reservation: FReplicatedReservationData): void
 // GetOnlineGame(): UOnlineGame_X
+// OnShellSet(): void
 
 /**
  * Class TAGame.GFxData_PrivacyPolicy_TA
@@ -28035,6 +28435,8 @@ export type UGFxData_ProductAttribute_TeamEdition_TA = UGFxData_ProductAttribute
 };
 
 // GFxData_ProductAttribute_TeamEdition_TA Functions
+// static DropRedundantEsports(Suffix: string): string
+// static ExtractVariantSuffix(ProductLabel: string, TeamNameArg: string, ProductName: FName): string
 // GetRequiredProduct(Product: UProduct_TA): UProduct_TA
 // UpdateAdditionalLoadedData(GFxData_Products: UGFxData_Products_TA, ProductData: ULoadingProduct_TA, Product: UProduct_TA): void
 
@@ -28583,6 +28985,7 @@ export type UGFxData_ReplayViewer_TA = UGFxDataSingleton_X & {
 };
 
 // GFxData_ReplayViewer_TA Functions
+// OnAnonymizationChanged(): void
 // AddCameraTrackPoint(): void
 // HandleCameraTargetChanged(InCamera: UCamera_TA, InTarget: UActor): void
 // HandleReplayExported(Manager: UReplayManager_TA, Id: string, Error: UError): void
@@ -28996,7 +29399,7 @@ export type UGFxData_ServerPerformanceStats_TA = UGFxDataSingleton_X & {
 
 /**
  * Class TAGame.GFxData_Settings_TA
- * Size: 0x0378
+ * Size: 0x03B0
  * Extends: UGFxDataSingleton_X
  */
 export type UGFxData_Settings_TA = UGFxDataSingleton_X & {
@@ -29024,54 +29427,64 @@ export type UGFxData_Settings_TA = UGFxDataSingleton_X & {
   BallLocationModifierLimits: FProfileSliderLimits; // 0x0190 (0x000c) [FProfileSliderLimits]
   BallHeightModifierLimits: FProfileSliderLimits; // 0x019c (0x000c) [FProfileSliderLimits]
   RestartRoundInputDelayLimits: FProfileSliderLimits; // 0x01a8 (0x000c) [FProfileSliderLimits]
-  LoadingString: string; // 0x01b8 (0x0010) [FString]
-  SettingsConfig: USettingsMenuConfig_TA; // 0x01c8 (0x0008) [USettingsMenuConfig_TA*]
-  FreeplayConfig: UFreeplayConfig_TA; // 0x01d0 (0x0008) [UFreeplayConfig_TA*]
-  ItemShopNotificationsConfig: UItemShopNotificationsConfig_TA; // 0x01d8 (0x0008) [UItemShopNotificationsConfig_TA*]
-  ShowBindingsModal_ErrorMessage: string; // 0x01e0 (0x0010) [FString]
-  CrossplaySetting: UGFxData_UserSetting_TA; // 0x01f0 (0x0008) [UGFxData_UserSetting_TA*]
-  UserSettings: UGFxData_UserSetting_TA[]; // 0x01f8 (0x0010) [TArray<UGFxData_UserSetting_TA*>]
-  OldResolution: string; // 0x0208 (0x0010) [FString]
-  OldWindowMode: string; // 0x0218 (0x0010) [FString]
-  OldVSync: boolean; // 0x0228 (0x0004) [bool : 0x1]
-  bSettingRenderDetail: boolean; // 0x0228 (0x0004) [bool : 0x2]
-  bSettingCameraPreset: boolean; // 0x0228 (0x0004) [bool : 0x4]
-  IsCurrentResolutionNative: boolean; // 0x0228 (0x0004) [bool : 0x8]
-  Profile: UProfile_TA; // 0x0230 (0x0008) [UProfile_TA*]
-  SaveData: USaveData_TA; // 0x0238 (0x0008) [USaveData_TA*]
-  Viewport: UGameViewportClient_X; // 0x0240 (0x0008) [UGameViewportClient_X*]
-  SettingObserver: UUserSettingObserver_TA; // 0x0248 (0x0008) [UUserSettingObserver_TA*]
-  SoundSave: USoundSettingsSave_TA; // 0x0250 (0x0008) [USoundSettingsSave_TA*]
-  SoundSaveController: USoundSettingsControllerSave_TA; // 0x0258 (0x0008) [USoundSettingsControllerSave_TA*]
-  GameplaySave: UGameplaySettingsSave_TA; // 0x0260 (0x0008) [UGameplaySettingsSave_TA*]
-  ProfileGameplaySave: UProfileGameplaySave_TA; // 0x0268 (0x0008) [UProfileGameplaySave_TA*]
-  NetworkSave: UNetworkSave_TA; // 0x0270 (0x0008) [UNetworkSave_TA*]
-  ConnectionQualitySave: UConnectionQualitySave_TA; // 0x0278 (0x0008) [UConnectionQualitySave_TA*]
-  ProfileCameraSave: UProfileCameraSave_TA; // 0x0280 (0x0008) [UProfileCameraSave_TA*]
-  GamepadSave: UProfileGamepadSave_TA; // 0x0288 (0x0008) [UProfileGamepadSave_TA*]
-  VideoSave: UVideoSettingsSave_TA; // 0x0290 (0x0008) [UVideoSettingsSave_TA*]
-  MusicSave: UMusicPlayerSave_TA; // 0x0298 (0x0008) [UMusicPlayerSave_TA*]
-  ProfileControlsSave: UProfileControlsSave_TA; // 0x02a0 (0x0008) [UProfileControlsSave_TA*]
-  NotificationSave: UNotificationSave_TA; // 0x02a8 (0x0008) [UNotificationSave_TA*]
-  EpicAccountSave: UEpicAccountSave_TA; // 0x02b0 (0x0008) [UEpicAccountSave_TA*]
-  VoiceSettingsSave: UEOSVoiceSettingsSave_TA; // 0x02b8 (0x0008) [UEOSVoiceSettingsSave_TA*]
-  OnlineFreeplaySave: UOnlineFreeplaySettingsSave_TA; // 0x02c0 (0x0008) [UOnlineFreeplaySettingsSave_TA*]
-  CustomTrainingSave: UCustomTrainingSave_TA; // 0x02c8 (0x0008) [UCustomTrainingSave_TA*]
-  SteamInputSettings: UGFxData_UserSetting_TA; // 0x02d0 (0x0008) [UGFxData_UserSetting_TA*]
-  ControllerCount: number; // 0x02d8 (0x0004) [int32]
-  DefaultDeviceString: string; // 0x02e0 (0x0010) [FString]
-  PermissionLevelNotHighEnoughError: string; // 0x02f0 (0x0010) [FString]
-  TradePermissionNotHighEnoughError: string; // 0x0300 (0x0010) [FString]
-  WarnCrossPlatformTournament: string; // 0x0310 (0x0010) [FString]
-  WarnCrossPlatformTournamentAndParty: string; // 0x0320 (0x0010) [FString]
-  DisableAndLeave: string; // 0x0330 (0x0010) [FString]
-  WarnChangingScheduleRegion: string; // 0x0340 (0x0010) [FString]
-  ResolutionSetting: UGFxData_UserSetting_TA; // 0x0350 (0x0008) [UGFxData_UserSetting_TA*]
-  DraggedScreenResolutionLabel: string; // 0x0358 (0x0010) [FString]
-  DraggedScreenResolutionValue: string; // 0x0368 (0x0010) [FString]
+  TrainingStartingBoostLimits: FProfileSliderLimits; // 0x01b4 (0x000c) [FProfileSliderLimits]
+  MaxMatchmakingDelayLimits: FProfileSliderLimits; // 0x01c0 (0x000c) [FProfileSliderLimits]
+  LoadingString: string; // 0x01d0 (0x0010) [FString]
+  SettingsConfig: USettingsMenuConfig_TA; // 0x01e0 (0x0008) [USettingsMenuConfig_TA*]
+  FreeplayConfig: UFreeplayConfig_TA; // 0x01e8 (0x0008) [UFreeplayConfig_TA*]
+  ItemShopNotificationsConfig: UItemShopNotificationsConfig_TA; // 0x01f0 (0x0008) [UItemShopNotificationsConfig_TA*]
+  ShowBindingsModal_ErrorMessage: string; // 0x01f8 (0x0010) [FString]
+  CrossplaySetting: UGFxData_UserSetting_TA; // 0x0208 (0x0008) [UGFxData_UserSetting_TA*]
+  UserSettings: UGFxData_UserSetting_TA[]; // 0x0210 (0x0010) [TArray<UGFxData_UserSetting_TA*>]
+  OldResolution: string; // 0x0220 (0x0010) [FString]
+  OldWindowMode: string; // 0x0230 (0x0010) [FString]
+  OldVSync: boolean; // 0x0240 (0x0004) [bool : 0x1]
+  bSettingRenderDetail: boolean; // 0x0240 (0x0004) [bool : 0x2]
+  bSettingCameraPreset: boolean; // 0x0240 (0x0004) [bool : 0x4]
+  IsCurrentResolutionNative: boolean; // 0x0240 (0x0004) [bool : 0x8]
+  Profile: UProfile_TA; // 0x0248 (0x0008) [UProfile_TA*]
+  SaveData: USaveData_TA; // 0x0250 (0x0008) [USaveData_TA*]
+  Viewport: UGameViewportClient_X; // 0x0258 (0x0008) [UGameViewportClient_X*]
+  SettingObserver: UUserSettingObserver_TA; // 0x0260 (0x0008) [UUserSettingObserver_TA*]
+  SoundSave: USoundSettingsSave_TA; // 0x0268 (0x0008) [USoundSettingsSave_TA*]
+  SoundSaveController: USoundSettingsControllerSave_TA; // 0x0270 (0x0008) [USoundSettingsControllerSave_TA*]
+  GameplaySave: UGameplaySettingsSave_TA; // 0x0278 (0x0008) [UGameplaySettingsSave_TA*]
+  ProfileGameplaySave: UProfileGameplaySave_TA; // 0x0280 (0x0008) [UProfileGameplaySave_TA*]
+  NetworkSave: UNetworkSave_TA; // 0x0288 (0x0008) [UNetworkSave_TA*]
+  ConnectionQualitySave: UConnectionQualitySave_TA; // 0x0290 (0x0008) [UConnectionQualitySave_TA*]
+  ProfileCameraSave: UProfileCameraSave_TA; // 0x0298 (0x0008) [UProfileCameraSave_TA*]
+  GamepadSave: UProfileGamepadSave_TA; // 0x02a0 (0x0008) [UProfileGamepadSave_TA*]
+  VideoSave: UVideoSettingsSave_TA; // 0x02a8 (0x0008) [UVideoSettingsSave_TA*]
+  MusicSave: UMusicPlayerSave_TA; // 0x02b0 (0x0008) [UMusicPlayerSave_TA*]
+  ProfileControlsSave: UProfileControlsSave_TA; // 0x02b8 (0x0008) [UProfileControlsSave_TA*]
+  NotificationSave: UNotificationSave_TA; // 0x02c0 (0x0008) [UNotificationSave_TA*]
+  EpicAccountSave: UEpicAccountSave_TA; // 0x02c8 (0x0008) [UEpicAccountSave_TA*]
+  VoiceSettingsSave: UEOSVoiceSettingsSave_TA; // 0x02d0 (0x0008) [UEOSVoiceSettingsSave_TA*]
+  OnlineFreeplaySave: UOnlineFreeplaySettingsSave_TA; // 0x02d8 (0x0008) [UOnlineFreeplaySettingsSave_TA*]
+  CustomTrainingSave: UCustomTrainingSave_TA; // 0x02e0 (0x0008) [UCustomTrainingSave_TA*]
+  SteamInputSettings: UGFxData_UserSetting_TA; // 0x02e8 (0x0008) [UGFxData_UserSetting_TA*]
+  ControllerCount: number; // 0x02f0 (0x0004) [int32]
+  DefaultDeviceString: string; // 0x02f8 (0x0010) [FString]
+  PermissionLevelNotHighEnoughError: string; // 0x0308 (0x0010) [FString]
+  TradePermissionNotHighEnoughError: string; // 0x0318 (0x0010) [FString]
+  WarnCrossPlatformTournament: string; // 0x0328 (0x0010) [FString]
+  WarnCrossPlatformTournamentAndParty: string; // 0x0338 (0x0010) [FString]
+  DisableAndLeave: string; // 0x0348 (0x0010) [FString]
+  WarnChangingScheduleRegion: string; // 0x0358 (0x0010) [FString]
+  ResolutionSetting: UGFxData_UserSetting_TA; // 0x0368 (0x0008) [UGFxData_UserSetting_TA*]
+  DraggedScreenResolutionLabel: string; // 0x0370 (0x0010) [FString]
+  DraggedScreenResolutionValue: string; // 0x0380 (0x0010) [FString]
+  HitboxVisualTutorial: string; // 0x0390 (0x0010) [FString]
+  SpeedGraphTutorial: string; // 0x03a0 (0x0010) [FString]
 };
 
 // GFxData_Settings_TA Functions
+// __GFxData_Settings_TA__InitCameraSettings_0xe(Setting: UGFxData_UserSetting_TA, Value: number): void
+// __GFxData_Settings_TA__InitCameraSettings_0xd(_: UGFxData_UserSetting_TA): number
+// __GFxData_Settings_TA__InitCameraSettings_0xc(Setting: UGFxData_UserSetting_TA, Value: number): void
+// __GFxData_Settings_TA__InitCameraSettings_0xb(_: UGFxData_UserSetting_TA): number
+// __GFxData_Settings_TA__InitCameraSettings_0xa(Setting: UGFxData_UserSetting_TA, Value: boolean): void
+// __GFxData_Settings_TA__InitCameraSettings_0x9(_: UGFxData_UserSetting_TA): boolean
 // __GFxData_Settings_TA__InitCameraSettings_0x8(Setting: UGFxData_UserSetting_TA, Value: number): void
 // __GFxData_Settings_TA__InitCameraSettings_0x7(_: UGFxData_UserSetting_TA): number
 // __GFxData_Settings_TA__InitCameraSettings_0x6(Setting: UGFxData_UserSetting_TA, Value: number): void
@@ -29092,6 +29505,19 @@ export type UGFxData_Settings_TA = UGFxDataSingleton_X & {
 // __GFxData_Settings_TA__InitInterfaceSettings_0x1(UserSetting: UGFxData_UserSetting_TA): boolean
 // __GFxData_Settings_TA__SetTourScheduleRegion_0x2(_: UGFxModal_X): void
 // __GFxData_Settings_TA__SetDefaults_0x2(Setting: UGFxData_UserSetting_TA): void
+// SetMaxMatchmakingDelay(UserSetting: UGFxData_UserSetting_TA, Value: number): void
+// GetMaxMatchmakingDelay(UserSetting: UGFxData_UserSetting_TA): number
+// SetHideMatchmakingStatus(UserSetting: UGFxData_UserSetting_TA, Value: boolean): void
+// GetHideMatchmakingStatus(UserSetting: UGFxData_UserSetting_TA): boolean
+// SetStreamerSafeAudioEnabled(UserSetting: UGFxData_UserSetting_TA, bNewValue: boolean): void
+// GetStreamerSafeAudioEnabled(UserSetting: UGFxData_UserSetting_TA): boolean
+// SetAnonymizeOpponents(UserSetting: UGFxData_UserSetting_TA, Value: boolean): void
+// GetAnonymizeOpponents(UserSetting: UGFxData_UserSetting_TA): boolean
+// SetAnonymizeTeammates(UserSetting: UGFxData_UserSetting_TA, Value: boolean): void
+// GetAnonymizeTeammates(UserSetting: UGFxData_UserSetting_TA): boolean
+// SetAnonymizeOwnName(UserSetting: UGFxData_UserSetting_TA, Value: string): void
+// GetAnonymizeOwnName(UserSetting: UGFxData_UserSetting_TA): string
+// InitStreamSafeSettings(): void
 // TriggerSettingChangedEvent(SettingName: FName): void
 // InitReplayFXSettings(): void
 // UpdateBoostFillDelaySettingEnabled(UserSetting: UGFxData_UserSetting_TA): void
@@ -29199,6 +29625,10 @@ export type UGFxData_Settings_TA = UGFxDataSingleton_X & {
 // GetEnableSaving(UserSetting: UGFxData_UserSetting_TA): boolean
 // SetSplitscreenMode(UserSetting: UGFxData_UserSetting_TA, Value: string): void
 // GetSplitscreenMode(UserSetting: UGFxData_UserSetting_TA): string
+// SetTrainingStartingBoost(UserSetting: UGFxData_UserSetting_TA, Value: number): void
+// GetTrainingStartingBoost(UserSetting: UGFxData_UserSetting_TA): number
+// SetTrainingUnlimitedBoost(UserSetting: UGFxData_UserSetting_TA, bValue: boolean): void
+// GetTrainingUnlimitedBoost(UserSetting: UGFxData_UserSetting_TA): boolean
 // SetTrainingSkipGoalReplay(UserSetting: UGFxData_UserSetting_TA, Value: boolean): void
 // GetTrainingSkipGoalReplay(UserSetting: UGFxData_UserSetting_TA): boolean
 // SetForceSpawnVehicleOnGround(UserSetting: UGFxData_UserSetting_TA, Value: boolean): void
@@ -29336,8 +29766,6 @@ export type UGFxData_Settings_TA = UGFxDataSingleton_X & {
 // GetLockSpectatorBallCam(UserSetting: UGFxData_UserSetting_TA): boolean
 // SetInvertSpectatorPitch(UserSetting: UGFxData_UserSetting_TA, Value: boolean): void
 // GetInvertSpectatorPitch(UserSetting: UGFxData_UserSetting_TA): boolean
-// SetInvertSwivelPitch(UserSetting: UGFxData_UserSetting_TA, Value: boolean): void
-// GetInvertSwivelPitch(UserSetting: UGFxData_UserSetting_TA): boolean
 // SetCameraSettingsPreset(UserSetting: UGFxData_UserSetting_TA, Value: string): void
 // SaveCameraSettingsPreset(UserSetting: UGFxData_UserSetting_TA): void
 // GetCameraSettingsPreset(UserSetting: UGFxData_UserSetting_TA): string
@@ -29345,8 +29773,6 @@ export type UGFxData_Settings_TA = UGFxDataSingleton_X & {
 // InitCameraSettings(): void
 // SetPushToTalk(UserSetting: UGFxData_UserSetting_TA, Value: boolean): void
 // GetPushToTalk(UserSetting: UGFxData_UserSetting_TA): boolean
-// SetStreamerSafeAudioEnabled(UserSetting: UGFxData_UserSetting_TA, bNewValue: boolean): void
-// GetStreamerSafeAudioEnabled(UserSetting: UGFxData_UserSetting_TA): boolean
 // SetOverrideBoostSound(UserSetting: UGFxData_UserSetting_TA, Value: boolean): void
 // GetOverrideBoostSound(UserSetting: UGFxData_UserSetting_TA): boolean
 // SetMuteOnFocusLost(UserSetting: UGFxData_UserSetting_TA, Value: boolean): void
@@ -29439,14 +29865,20 @@ export type UGFxData_Settings_TA = UGFxDataSingleton_X & {
 // GetMaxFPS(UserSetting: UGFxData_UserSetting_TA): number
 // SetEnableHighContrastMode(UserSetting: UGFxData_UserSetting_TA, bValue: boolean): void
 // GetEnableHighContrastMode(UserSetting: UGFxData_UserSetting_TA): boolean
+// SetAutoSkipGoalReplay(UserSetting: UGFxData_UserSetting_TA, bValue: boolean): void
+// GetAutoSkipGoalReplay(UserSetting: UGFxData_UserSetting_TA): boolean
 // SetFlipResetFxPref(UserSetting: UGFxData_UserSetting_TA, Value: string): void
 // GetFlipResetFxPref(UserSetting: UGFxData_UserSetting_TA): string
 // SetQuickDropOpeningPref(UserSetting: UGFxData_UserSetting_TA, bValue: boolean): void
 // GetQuickDropOpeningPref(UserSetting: UGFxData_UserSetting_TA): boolean
 // SetDisplayPartyLeaderLeftModal(UserSetting: UGFxData_UserSetting_TA, bValue: boolean): void
 // GetDisplayPartyLeaderLeftModal(UserSetting: UGFxData_UserSetting_TA): boolean
+// SetDrawVehicleHitbox(UserSetting: UGFxData_UserSetting_TA, bValue: boolean): void
+// GetDrawVehicleHitbox(UserSetting: UGFxData_UserSetting_TA): boolean
 // SetFreeplayColors(UserSetting: UGFxData_UserSetting_TA, bValue: boolean): void
 // GetFreeplayColors(UserSetting: UGFxData_UserSetting_TA): boolean
+// SetSpecialEventVisualsState(UserSetting: UGFxData_UserSetting_TA, bValue: boolean): void
+// GetSpecialEventVisualsState(UserSetting: UGFxData_UserSetting_TA): boolean
 // SetForceDefaultColors(UserSetting: UGFxData_UserSetting_TA, bValue: boolean): void
 // GetForceDefaultColors(UserSetting: UGFxData_UserSetting_TA): boolean
 // SetEffectIntensity(UserSetting: UGFxData_UserSetting_TA, Value: string): void
@@ -29892,11 +30324,12 @@ export type UGFxData_TeamInfo_TA = UGFxDataRow_X & {
 // GFxData_TeamInfo_TA Functions
 // UpdateDifficulty(): void
 // HandleGameScoreUpdated(InTeam: UTeam_Soccar_TA): void
+// OnAnonymizationChanged(): void
 // HandleClubIDChanged(InTeam: UTeam_TA): void
 // HandleScoreUpdated(InTeam: UTeam_TA): void
 // HandleColorsChanged(InTeam: UTeam_TA): void
 // HandleLogoChanged(InTeam: UTeam_TA): void
-// HandleNameChanged(InTeamName: UTeamNameComponent_TA, NewName: string): void
+// HandleNameChanged(InTeamName: UTeamNameComponent_TA): void
 // SetTeam(InTeam: UTeam_TA): void
 
 /**
@@ -30859,7 +31292,7 @@ export type UGFxData_TrainingModeConstants_TA = UGFxDataSingleton_X & {
 
 /**
  * Class TAGame.GFxData_TrainingModeEditor_TA
- * Size: 0x00F8
+ * Size: 0x0100
  * Extends: UGFxDataSingleton_X
  */
 export type UGFxData_TrainingModeEditor_TA = UGFxDataSingleton_X & {
@@ -30872,10 +31305,13 @@ export type UGFxData_TrainingModeEditor_TA = UGFxDataSingleton_X & {
   BallStartSpeed: number; // 0x00dc (0x0004) [float]
   BallScreenPosX: number; // 0x00e0 (0x0004) [float]
   BallScreenPosY: number; // 0x00e4 (0x0004) [float]
-  bOwned: boolean; // 0x00e8 (0x0004) [bool : 0x1]
-  bNoEditor: boolean; // 0x00e8 (0x0004) [bool : 0x2]
-  bUnsavedChanges: boolean; // 0x00e8 (0x0004) [bool : 0x4]
-  ModalProcessing: UGFxModal_X; // 0x00f0 (0x0008) [UGFxModal_X*]
+  CarStartSpeed: number; // 0x00e8 (0x0004) [float]
+  CarScreenPosX: number; // 0x00ec (0x0004) [float]
+  CarScreenPosY: number; // 0x00f0 (0x0004) [float]
+  bOwned: boolean; // 0x00f4 (0x0004) [bool : 0x1]
+  bNoEditor: boolean; // 0x00f4 (0x0004) [bool : 0x2]
+  bUnsavedChanges: boolean; // 0x00f4 (0x0004) [bool : 0x4]
+  ModalProcessing: UGFxModal_X; // 0x00f8 (0x0008) [UGFxModal_X*]
 };
 
 // GFxData_TrainingModeEditor_TA Functions
@@ -31140,6 +31576,49 @@ export type UGFxData_Workshop_TA = UGFxDataSingleton_X & {
 // LoadAllWorkshopMapData(): void
 
 /**
+ * Class TAGame.GFxData_WorldCupManager_TA
+ * Size: 0x0150
+ * Extends: UGFxDataSingleton_X
+ */
+export type UGFxData_WorldCupManager_TA = UGFxDataSingleton_X & {
+  Config: UWorldCupConfig_TA; // 0x0098 (0x0008) [UWorldCupConfig_TA*]
+  WinningTeam: string; // 0x00a0 (0x0010) [FString]
+  PreviousWinningTeam: string; // 0x00b0 (0x0010) [FString]
+  bTeamSelected: boolean; // 0x00c0 (0x0004) [bool : 0x1]
+  bDebugUIEnabled: boolean; // 0x00c0 (0x0004) [bool : 0x2]
+  ChallengePageActionButtonText: string; // 0x00c8 (0x0010) [FString]
+  ChallengePageWinningTeamText: string; // 0x00d8 (0x0010) [FString]
+  ChallengePageSelectedTeamText: string; // 0x00e8 (0x0010) [FString]
+  ChallengePageNoWinningTeam: string; // 0x00f8 (0x0010) [FString]
+  ChallengePageExtraDetailText: string; // 0x0108 (0x0010) [FString]
+  ChallengePagePlayingForText: string; // 0x0118 (0x0010) [FString]
+  FlagsPrefix: string; // 0x0128 (0x0010) [FString]
+  EsportsConfig: UESportConfig_TA; // 0x0138 (0x0008) [UESportConfig_TA*]
+  EsportButtonTag: string; // 0x0140 (0x0010) [FString]
+};
+
+// GFxData_WorldCupManager_TA Functions
+// __GFxData_WorldCupManager_TA__InjectChallengeDescription_0x1(Page: UGFxData_ChallengePage_TA): boolean
+// __GFxData_WorldCupManager_TA__HandleGetWorldCupEventDataReceived_0x2(P: FWorldCupData): boolean
+// __GFxData_WorldCupManager_TA__RemoveSelectedTeam_0x1(_: URPC_X): void
+// RemoveSelectedTeam(): void
+// OnRemoved(): void
+// InjectEsportsButtonString(): void
+// HandleEsportsConfigChanged(): void
+// GetSelectionTimeLimitUTC(): bigint
+// GetSelectedCountryName(SelectionIndex: number): string
+// GetProductsIDs(): FProductHashID[]
+// HandleSelectedCountrySet(InSetWorldCupCountryRPC: URPC_SetWorldCupCountry_TA): void
+// SelectTeam(SelectedIndex: number): void
+// GetEventCodeName(): string
+// UpdateSelectedCountryText(CosmeticID: number, TeamCodeName: string): void
+// HandleGetWorldCupEventDataReceived(InGetWorldCupEventRPC: URPC_GetWorldCupEvent_TA): void
+// GetSelectedAndWinningCountries(): void
+// InjectChallengeDescription(): void
+// HandleWorldCupConfigChanged(): void
+// OnShellSet(): void
+
+/**
  * Class TAGame.GFxData_XP_TA
  * Size: 0x0098
  * Extends: UGFxDataSingleton_X
@@ -31223,7 +31702,7 @@ export type UHUDBase_TA = UHUD_X & {
 
 /**
  * Class TAGame.GFxHUD_TA
- * Size: 0x0530
+ * Size: 0x0538
  * Extends: UHUDBase_TA
  */
 export type UGFxHUD_TA = UHUDBase_TA & {
@@ -31265,7 +31744,8 @@ export type UGFxHUD_TA = UHUDBase_TA & {
   ServerMigrationTitle: string; // 0x04f0 (0x0010) [FString]
   ServerMigrationBody: string; // 0x0500 (0x0010) [FString]
   Scoreboard: UGFxData_Scoreboard_TA; // 0x0510 (0x0008) [UGFxData_Scoreboard_TA*]
-  __VoteLambda__Delegate: FScriptDelegate; // 0x0518 (0x0018) [FScriptDelegate]
+  DemoSpawnSelectionData: UGFxData_DemoSpawnSelection_TA; // 0x0518 (0x0008) [UGFxData_DemoSpawnSelection_TA*]
+  __VoteLambda__Delegate: FScriptDelegate; // 0x0520 (0x0018) [FScriptDelegate]
 };
 
 // GFxHUD_TA Functions
@@ -31332,6 +31812,7 @@ export type UGFxHUD_TA = UHUDBase_TA & {
 // HandlePawnChanged(PC: UPlayerController_X, OldPawn: UPawn, NewPawn: UPawn): void
 // OnAllTeamsCreated(): void
 // HandleAllTeamsCreated(G: UGameEvent_Team_TA): void
+// HandleAnyPRITeamChanged(PRI: UPlayerReplicationInfo): void
 // HandleGameStateChanged(G: UGameEvent_TA): void
 // HandlePlayerRemoved(G: UGameEvent_TA, InPRI: UPRI_TA): void
 // HandlePlayerNameChanged(InPRI: UPRI_X): void
@@ -31341,6 +31822,8 @@ export type UGFxHUD_TA = UHUDBase_TA & {
 // ToggleNameplates(): void
 // UpdatePendingAddMessagePlayers(): void
 // HandlePlayerAdded(G: UGameEvent_TA, InPRI: UPRI_TA): void
+// IsNameReady(InPRI: UPRI_TA): boolean
+// ResolvePlayerName(InPRI: UPRI_TA): string
 // GetPlayerName(PRI: UPRI_TA): string
 // UpdateGFxPlayerRecord(InPRI: UPRI_TA): void
 // UpdateSessionStatus(): void
@@ -31377,12 +31860,12 @@ export type UGFxHUD_TA = UHUDBase_TA & {
 
 /**
  * Class TAGame.GFxHUD_GameEditor_TA
- * Size: 0x0540
+ * Size: 0x0548
  * Extends: UGFxHUD_TA
  */
 export type UGFxHUD_GameEditor_TA = UGFxHUD_TA & {
-  EditorData: UGFxData_TrainingModeEditor_TA; // 0x0530 (0x0008) [UGFxData_TrainingModeEditor_TA*]
-  TrainingGameEvent: UGameEvent_TrainingEditor_TA; // 0x0538 (0x0008) [UGameEvent_TrainingEditor_TA*]
+  EditorData: UGFxData_TrainingModeEditor_TA; // 0x0538 (0x0008) [UGFxData_TrainingModeEditor_TA*]
+  TrainingGameEvent: UGameEvent_TrainingEditor_TA; // 0x0540 (0x0008) [UGameEvent_TrainingEditor_TA*]
 };
 
 // GFxHUD_GameEditor_TA Functions
@@ -31392,13 +31875,13 @@ export type UGFxHUD_GameEditor_TA = UGFxHUD_TA & {
 
 /**
  * Class TAGame.GFxHUD_Soccar_TA
- * Size: 0x0548
+ * Size: 0x0550
  * Extends: UGFxHUD_TA
  */
 export type UGFxHUD_Soccar_TA = UGFxHUD_TA & {
-  SoccarGame: UGameEvent_Soccar_TA; // 0x0530 (0x0008) [UGameEvent_Soccar_TA*]
-  GFxServerPerformanceStats: UGFxData_ServerPerformanceStats_TA; // 0x0538 (0x0008) [UGFxData_ServerPerformanceStats_TA*]
-  PreMatchLobby: UPreMatchLobby_TA; // 0x0540 (0x0008) [UPreMatchLobby_TA*]
+  SoccarGame: UGameEvent_Soccar_TA; // 0x0538 (0x0008) [UGameEvent_Soccar_TA*]
+  GFxServerPerformanceStats: UGFxData_ServerPerformanceStats_TA; // 0x0540 (0x0008) [UGFxData_ServerPerformanceStats_TA*]
+  PreMatchLobby: UPreMatchLobby_TA; // 0x0548 (0x0008) [UPreMatchLobby_TA*]
 };
 
 // GFxHUD_Soccar_TA Functions
@@ -31429,21 +31912,21 @@ export type UGFxHUD_Soccar_TA = UGFxHUD_TA & {
 
 /**
  * Class TAGame.GFxHUD_KnockOut_TA
- * Size: 0x0580
+ * Size: 0x0588
  * Extends: UGFxHUD_Soccar_TA
  */
 export type UGFxHUD_KnockOut_TA = UGFxHUD_Soccar_TA & {
-  KnockOutGame: UGameEvent_KnockOut_TA; // 0x0548 (0x0008) [UGameEvent_KnockOut_TA*]
-  KnockOutCarData: UGFxData_CarKnockOut_TA; // 0x0550 (0x0008) [UGFxData_CarKnockOut_TA*]
-  ViewportClient: UGameViewportClient_TA; // 0x0558 (0x0008) [UGameViewportClient_TA*]
-  DefaultMinZOffsetValue: number; // 0x0560 (0x0004) [int32]
-  DefaultMaxZOffsetValue: number; // 0x0564 (0x0004) [int32]
-  LowMinZOffsetClampValue: number; // 0x0568 (0x0004) [int32]
-  HighMinZOffsetClampValue: number; // 0x056c (0x0004) [int32]
-  LowMaxZOffsetClampValue: number; // 0x0570 (0x0004) [int32]
-  HighMaxZOffsetClampValue: number; // 0x0574 (0x0004) [int32]
-  MinSqDistance: number; // 0x0578 (0x0004) [int32]
-  MaxSqDistance: number; // 0x057c (0x0004) [int32]
+  KnockOutGame: UGameEvent_KnockOut_TA; // 0x0550 (0x0008) [UGameEvent_KnockOut_TA*]
+  KnockOutCarData: UGFxData_CarKnockOut_TA; // 0x0558 (0x0008) [UGFxData_CarKnockOut_TA*]
+  ViewportClient: UGameViewportClient_TA; // 0x0560 (0x0008) [UGameViewportClient_TA*]
+  DefaultMinZOffsetValue: number; // 0x0568 (0x0004) [int32]
+  DefaultMaxZOffsetValue: number; // 0x056c (0x0004) [int32]
+  LowMinZOffsetClampValue: number; // 0x0570 (0x0004) [int32]
+  HighMinZOffsetClampValue: number; // 0x0574 (0x0004) [int32]
+  LowMaxZOffsetClampValue: number; // 0x0578 (0x0004) [int32]
+  HighMaxZOffsetClampValue: number; // 0x057c (0x0004) [int32]
+  MinSqDistance: number; // 0x0580 (0x0004) [int32]
+  MaxSqDistance: number; // 0x0584 (0x0004) [int32]
 };
 
 // GFxHUD_KnockOut_TA Functions
@@ -31459,22 +31942,22 @@ export type UGFxHUD_KnockOut_TA = UGFxHUD_Soccar_TA & {
 
 /**
  * Class TAGame.GFxHUD_Spectator_TA
- * Size: 0x0590
+ * Size: 0x0598
  * Extends: UGFxHUD_TA
  */
 export type UGFxHUD_Spectator_TA = UGFxHUD_TA & {
-  ViewerData: UGFxData_ReplayViewer_TA; // 0x0530 (0x0008) [UGFxData_ReplayViewer_TA*]
-  ZoomSpeed: number; // 0x0538 (0x0004) [float]
-  ZoomClickTime: number; // 0x053c (0x0004) [float]
-  GameHUD: UGFxHUD_TA; // 0x0540 (0x0008) [UGFxHUD_TA*]
-  TargetPlayerPRI: UPRI_TA; // 0x0548 (0x0008) [UPRI_TA*]
-  bZoomIn: boolean; // 0x0550 (0x0004) [bool : 0x1]
-  bZoomOut: boolean; // 0x0550 (0x0004) [bool : 0x2]
-  bReplayTimeSkipped: boolean; // 0x0550 (0x0004) [bool : 0x4]
-  ZoomInTime: number; // 0x0554 (0x0004) [float]
-  ZoomOutTime: number; // 0x0558 (0x0004) [float]
-  __EventTargetPlayerPRIChanged__Delegate: FScriptDelegate; // 0x0560 (0x0018) [FScriptDelegate]
-  __OpenMenuWithKeycodeDelegate__Delegate: FScriptDelegate; // 0x0578 (0x0018) [FScriptDelegate]
+  ViewerData: UGFxData_ReplayViewer_TA; // 0x0538 (0x0008) [UGFxData_ReplayViewer_TA*]
+  ZoomSpeed: number; // 0x0540 (0x0004) [float]
+  ZoomClickTime: number; // 0x0544 (0x0004) [float]
+  GameHUD: UGFxHUD_TA; // 0x0548 (0x0008) [UGFxHUD_TA*]
+  TargetPlayerPRI: UPRI_TA; // 0x0550 (0x0008) [UPRI_TA*]
+  bZoomIn: boolean; // 0x0558 (0x0004) [bool : 0x1]
+  bZoomOut: boolean; // 0x0558 (0x0004) [bool : 0x2]
+  bReplayTimeSkipped: boolean; // 0x0558 (0x0004) [bool : 0x4]
+  ZoomInTime: number; // 0x055c (0x0004) [float]
+  ZoomOutTime: number; // 0x0560 (0x0004) [float]
+  __EventTargetPlayerPRIChanged__Delegate: FScriptDelegate; // 0x0568 (0x0018) [FScriptDelegate]
+  __OpenMenuWithKeycodeDelegate__Delegate: FScriptDelegate; // 0x0580 (0x0018) [FScriptDelegate]
 };
 
 // GFxHUD_Spectator_TA Functions
@@ -31527,15 +32010,15 @@ export type UGFxHUD_Spectator_TA = UGFxHUD_TA & {
 
 /**
  * Class TAGame.GFxHUD_Replay_TA
- * Size: 0x05B0
+ * Size: 0x05B8
  * Extends: UGFxHUD_Spectator_TA
  */
 export type UGFxHUD_Replay_TA = UGFxHUD_Spectator_TA & {
-  Game: UGameInfo_Replay_TA; // 0x0590 (0x0008) [UGameInfo_Replay_TA*]
-  PrevKeyframeBufferTime: number; // 0x0598 (0x0004) [float]
-  bUserPaused: boolean; // 0x059c (0x0004) [bool : 0x1]
-  bPausedForEndOfReplay: boolean; // 0x059c (0x0004) [bool : 0x2]
-  ReferencedProducts: UProductAsset_TA[]; // 0x05a0 (0x0010) [TArray<UProductAsset_TA*>]
+  Game: UGameInfo_Replay_TA; // 0x0598 (0x0008) [UGameInfo_Replay_TA*]
+  PrevKeyframeBufferTime: number; // 0x05a0 (0x0004) [float]
+  bUserPaused: boolean; // 0x05a4 (0x0004) [bool : 0x1]
+  bPausedForEndOfReplay: boolean; // 0x05a4 (0x0004) [bool : 0x2]
+  ReferencedProducts: UProductAsset_TA[]; // 0x05a8 (0x0010) [TArray<UProductAsset_TA*>]
 };
 
 // GFxHUD_Replay_TA Functions
@@ -31560,18 +32043,18 @@ export type UGFxHUD_Replay_TA = UGFxHUD_Spectator_TA & {
 
 /**
  * Class TAGame.GFxHUD_Season_TA
- * Size: 0x0548
+ * Size: 0x0550
  * Extends: UGFxHUD_Soccar_TA
  */
 export type UGFxHUD_Season_TA = UGFxHUD_Soccar_TA & {};
 
 /**
  * Class TAGame.GFxHUD_Training_TA
- * Size: 0x0550
+ * Size: 0x0558
  * Extends: UGFxHUD_Soccar_TA
  */
 export type UGFxHUD_Training_TA = UGFxHUD_Soccar_TA & {
-  TrainingData: UGFxData_Training_TA; // 0x0548 (0x0008) [UGFxData_Training_TA*]
+  TrainingData: UGFxData_Training_TA; // 0x0550 (0x0008) [UGFxData_Training_TA*]
 };
 
 // GFxHUD_Training_TA Functions
@@ -33537,6 +34020,7 @@ export type ULoadoutUtils_TA = UObject & {};
 // LoadoutUtils_TA Functions
 // static ConformRandomizedLoadoutData(Loadout: ULoadout_TA): void
 // static FixupDeprecatedTeamPaint(Loadout: ULoadout_TA): void
+// static ConvertFromOldPaint(OldId: number, OldSet: UCarColorSet_TA, NewSet: UCarColorSet_TA): number
 // static ConvertFromOldCustomPaint(Loadout: ULoadout_TA, OldSet: UCarColorSet_TA, NewSet: UCarColorSet_TA): void
 // static ConvertFromOldTeamPaint(Loadout: ULoadout_TA, OldSet: UCarColorSet_TA, NewSet: UCarColorSet_TA): void
 // static ConvertFromOldLoadout(OldLoadout: ULoadout_TA, NewLoadout: ULoadout_TA, TeamIndex: number): void
@@ -35263,7 +35747,7 @@ export type UMergePartyEvent_TA = UObject & {
 
 /**
  * Class TAGame.Message_TA
- * Size: 0x0100
+ * Size: 0x0108
  * Extends: UObject
  */
 export type UMessage_TA = UObject & {
@@ -35278,6 +35762,7 @@ export type UMessage_TA = UObject & {
   ParamTokens: string[]; // 0x00c0 (0x0010) [TArray<FString>]
   Packet: FMessagePacket; // 0x00d0 (0x0018) [FMessagePacket]
   DefaultPacket: FMessagePacket; // 0x00e8 (0x0018) [FMessagePacket]
+  MessageReceiver: UPlayerController_TA; // 0x0100 (0x0008) [UPlayerController_TA*]
 };
 
 // Message_TA Functions
@@ -36825,6 +37310,7 @@ export type UOnlineGame_TA = UOnlineGame_X & {
 // __OnlineGame_TA__GetSessionPlayerIds_0x3(P: UPlayerReplicationInfo): boolean
 // __OnlineGame_TA__GetSessionPlayerIds_0x2(P: FPartyMember): FUniqueNetId
 // __OnlineGame_TA__GetSessionPlayerIds_0x1(P: UOnlinePlayer_X): FUniqueNetId
+// ComputeMatchmakingDelay(): number
 // IsMatureLanguageFiltered(): boolean
 // GetSessionPlayerIds(): FUniqueNetId[]
 // CanChatWithPlayer(OnlinePlayer: UOnlinePlayer_X, OtherPlayer: FUniqueNetId, ChatFilter: EChatFilter): boolean
@@ -36853,11 +37339,11 @@ export type UOnlineGameDedicatedServer_TA = UOnlineGameDedicatedServer_X & {
 };
 
 // OnlineGameDedicatedServer_TA Functions
-// GetReservationPlayerCounts(NumPlayersTeam1: number, NumPlayersInGameTeam1: number, NumPlayersTeam2: number, NumPlayersInGameTeam2: number, MaxPlayers: number, BackfillAmount1: number, BackfillAmount2: number): void
 // __OnlineGameDedicatedServer_TA__AllowMigrationMessageReconcile_0x2(P: FTourPlayer): FUniqueNetId
 // __OnlineGameDedicatedServer_TA__AllowMigrationMessageReconcile_0x1(P: FMigrationReservationData): FUniqueNetId
 // HandleActiveRoundChanged(GameEvent: UGameEvent_Soccar_TA): void
 // GetTeamScore(TeamIdx: number): number
+// GetReservationPlayerCounts(NumPlayersTeam1: number, NumPlayersInGameTeam1: number, NumPlayersTeam2: number, NumPlayersInGameTeam2: number, MaxPlayers: number, BackfillAmount1: number, BackfillAmount2: number): void
 // ShutdownDDoSPreventionService(): void
 // StartDDoSPreventionService(): void
 // HandleVoiceTokenCacheError(Requests: FVoiceRoomTokenRequest[], RequestError: UError): void
@@ -37182,21 +37668,21 @@ export type UOnlineGameSkill_TA = UOnlineGameSkill_X & {
 
 /**
  * Class TAGame.OnlineGameTourMatchmaking_TA
- * Size: 0x01C0
+ * Size: 0x01D8
  * Extends: UOnlineGameMatchmakingBase_X
  */
 export type UOnlineGameTourMatchmaking_TA = UOnlineGameMatchmakingBase_X & {
-  Tournaments: UOnlineGameTournaments_TA; // 0x0130 (0x0008) [UOnlineGameTournaments_TA*]
-  Config: UTourConfig_TA; // 0x0138 (0x0008) [UTourConfig_TA*]
-  FoundServerString: string; // 0x0140 (0x0010) [FString]
-  StartSearchFailString: string; // 0x0150 (0x0010) [FString]
-  TourEvent: UTourEvent_TA; // 0x0160 (0x0008) [UTourEvent_TA*]
-  Error: UError; // 0x0168 (0x0008) [UError*]
-  bPlayerReadyForNextMatch: boolean; // 0x0170 (0x0004) [bool : 0x1]
-  JoinServerAttemptCounter: number; // 0x0174 (0x0001) [uint8]
-  __EventError__Delegate: FScriptDelegate; // 0x0178 (0x0018) [FScriptDelegate]
-  __EventJoinedGame__Delegate: FScriptDelegate; // 0x0190 (0x0018) [FScriptDelegate]
-  __EventFailedToJoinGame__Delegate: FScriptDelegate; // 0x01a8 (0x0018) [FScriptDelegate]
+  Tournaments: UOnlineGameTournaments_TA; // 0x0148 (0x0008) [UOnlineGameTournaments_TA*]
+  Config: UTourConfig_TA; // 0x0150 (0x0008) [UTourConfig_TA*]
+  FoundServerString: string; // 0x0158 (0x0010) [FString]
+  StartSearchFailString: string; // 0x0168 (0x0010) [FString]
+  TourEvent: UTourEvent_TA; // 0x0178 (0x0008) [UTourEvent_TA*]
+  Error: UError; // 0x0180 (0x0008) [UError*]
+  bPlayerReadyForNextMatch: boolean; // 0x0188 (0x0004) [bool : 0x1]
+  JoinServerAttemptCounter: number; // 0x018c (0x0001) [uint8]
+  __EventError__Delegate: FScriptDelegate; // 0x0190 (0x0018) [FScriptDelegate]
+  __EventJoinedGame__Delegate: FScriptDelegate; // 0x01a8 (0x0018) [FScriptDelegate]
+  __EventFailedToJoinGame__Delegate: FScriptDelegate; // 0x01c0 (0x0018) [FScriptDelegate]
 };
 
 // OnlineGameTourMatchmaking_TA Functions
@@ -38476,18 +38962,25 @@ export type UPhysicsConfig_TA = UOnlineConfig_X & {
 
 /**
  * Class TAGame.PhysicsMetrics_TA
- * Size: 0x0090
+ * Size: 0x00A8
  * Extends: UMetricsGroup_X
  */
 export type UPhysicsMetrics_TA = UMetricsGroup_X & {
   CorrectionEvents: FResimMetricData[]; // 0x0080 (0x0010) [TArray<FResimMetricData>]
+  TotalCorrectionEvents: number; // 0x0090 (0x0004) [int32]
+  TotalResimFrames: number; // 0x0094 (0x0004) [int32]
+  GlobalMinResimFrames: number; // 0x0098 (0x0004) [int32]
+  GlobalMaxResimFrames: number; // 0x009c (0x0004) [int32]
+  AverageCorrectionEventsPerSecond: number; // 0x00a0 (0x0004) [float]
+  AverageResimFramesPerSecond: number; // 0x00a4 (0x0004) [float]
 };
 
 // PhysicsMetrics_TA Functions
 // static ResimMetricDataToString(InData: FResimMetricData): string
-// ClientResimCorrectionEvents(ResimEvents: FResimMetricData[], MatchGUID: string): void
-// SendClientCorrectionMetrics(): void
+// ClientResimCorrectionEvents(ResimEvents: FResimMetricData[], MatchGUID: string, PlayerCount: number, TotalTimePlayed: number, MaxResimFrames: number, MinResimFrames: number, AvgCorrectionEventsPerSecond: number, AvgResimFramesPerSecond: number): void
+// SendClientCorrectionMetrics(MatchTotalSecondsPlayed: number, PlayerCount: number): void
 // AddCorrection(InGameStateName: FName, InNumResimFrames: number): void
+// Construct(): void
 
 /**
  * Class TAGame.PickupTimer_TA
@@ -38668,6 +39161,7 @@ export type UPlayerVanitySave_TA = UJsonSaveObject_TA & {
 
 // PlayerVanitySave_TA Functions
 // __SelectedColorValue__ChangeNotifyFunc(): void
+// GetProducts(): FProductInstanceID[]
 // GetAttributes(): UProductAttribute_TA[]
 // SetSelectedColorValue(InColor: number): void
 // SetProductInstance(InInstanceId: FProductInstanceID, InProductID: number): void
@@ -38747,7 +39241,7 @@ export type UPlayerController_Cinematic_TA = UPlayerController_X & {
 
 /**
  * Class TAGame.PlayerControllerBase_TA
- * Size: 0x0998
+ * Size: 0x09A0
  * Extends: UPlayerController_X
  */
 export type UPlayerControllerBase_TA = UPlayerController_X & {
@@ -38759,21 +39253,22 @@ export type UPlayerControllerBase_TA = UPlayerController_X & {
   SpectatorPitchDir: number; // 0x08b8 (0x0004) [int32]
   SwivelPitchDir: number; // 0x08bc (0x0004) [int32]
   SpectatorVolume: USpectatorVolume_TA; // 0x08c0 (0x0008) [USpectatorVolume_TA*]
-  FullRotationScalar: number; // 0x08c8 (0x0004) [float]
-  FullRotationMax: number; // 0x08cc (0x0004) [float]
-  VanityMgr: UVanitySetManager_TA; // 0x08d0 (0x0008) [UVanitySetManager_TA*]
-  bVanityInitialized: boolean; // 0x08d8 (0x0004) [bool : 0x1]
-  PlayerBanner: UPlayerBanner_TA; // 0x08e0 (0x0008) [UPlayerBanner_TA*]
-  PlayerAvatar: UPlayerAvatar_TA; // 0x08e8 (0x0008) [UPlayerAvatar_TA*]
-  PlayerBorder: UPlayerAvatarBorder_TA; // 0x08f0 (0x0008) [UPlayerAvatarBorder_TA*]
-  AudioSpectatorMixComponent: UAudioSpectatorMixComponent_TA; // 0x08f8 (0x0008) [UAudioSpectatorMixComponent_TA*]
-  AudioFieldSideComponent: UAudioFieldSideComponent_TA; // 0x0900 (0x0008) [UAudioFieldSideComponent_TA*]
-  __EventLoadingUnfairMatch__Delegate: FScriptDelegate; // 0x0908 (0x0018) [FScriptDelegate]
-  __EventRemoveSSPlayer__Delegate: FScriptDelegate; // 0x0920 (0x0018) [FScriptDelegate]
-  __EventReceivedCurrencyDrop__Delegate: FScriptDelegate; // 0x0938 (0x0018) [FScriptDelegate]
-  __EventPlayerInputSet__Delegate: FScriptDelegate; // 0x0950 (0x0018) [FScriptDelegate]
-  __PlayerBanner__ChangeNotify: FScriptDelegate; // 0x0968 (0x0018) [FScriptDelegate]
-  __PlayerBorder__ChangeNotify: FScriptDelegate; // 0x0980 (0x0018) [FScriptDelegate]
+  LastInputType: EInputPlatformType; // 0x08c8 (0x0001) [EInputPlatformType]
+  FullRotationScalar: number; // 0x08cc (0x0004) [float]
+  FullRotationMax: number; // 0x08d0 (0x0004) [float]
+  VanityMgr: UVanitySetManager_TA; // 0x08d8 (0x0008) [UVanitySetManager_TA*]
+  bVanityInitialized: boolean; // 0x08e0 (0x0004) [bool : 0x1]
+  PlayerBanner: UPlayerBanner_TA; // 0x08e8 (0x0008) [UPlayerBanner_TA*]
+  PlayerAvatar: UPlayerAvatar_TA; // 0x08f0 (0x0008) [UPlayerAvatar_TA*]
+  PlayerBorder: UPlayerAvatarBorder_TA; // 0x08f8 (0x0008) [UPlayerAvatarBorder_TA*]
+  AudioSpectatorMixComponent: UAudioSpectatorMixComponent_TA; // 0x0900 (0x0008) [UAudioSpectatorMixComponent_TA*]
+  AudioFieldSideComponent: UAudioFieldSideComponent_TA; // 0x0908 (0x0008) [UAudioFieldSideComponent_TA*]
+  __EventLoadingUnfairMatch__Delegate: FScriptDelegate; // 0x0910 (0x0018) [FScriptDelegate]
+  __EventRemoveSSPlayer__Delegate: FScriptDelegate; // 0x0928 (0x0018) [FScriptDelegate]
+  __EventReceivedCurrencyDrop__Delegate: FScriptDelegate; // 0x0940 (0x0018) [FScriptDelegate]
+  __EventPlayerInputSet__Delegate: FScriptDelegate; // 0x0958 (0x0018) [FScriptDelegate]
+  __PlayerBanner__ChangeNotify: FScriptDelegate; // 0x0970 (0x0018) [FScriptDelegate]
+  __PlayerBorder__ChangeNotify: FScriptDelegate; // 0x0988 (0x0018) [FScriptDelegate]
 };
 
 // PlayerControllerBase_TA Functions
@@ -38838,6 +39333,7 @@ export type UPlayerControllerBase_TA = UPlayerController_X & {
 // HandleVideoSettingsSavePC(VideoSavePC: UVideoSettingsSavePC_TA): void
 // UpdateCameraShake(): void
 // HandleCamera(Camera: UCamera_X): void
+// HandleInputTypeChanged(InShell: UGFxShell_X): void
 // HandleCameraSave(CameraSettings: UProfileCameraSave_TA): void
 // OnReceivedPlayerAndPRI(): void
 // Destroyed(): void
@@ -38850,110 +39346,114 @@ export type UPlayerControllerBase_TA = UPlayerController_X & {
 
 /**
  * Class TAGame.PlayerController_TA
- * Size: 0x0D90
+ * Size: 0x0DC8
  * Extends: UPlayerControllerBase_TA
  */
 export type UPlayerController_TA = UPlayerControllerBase_TA & {
-  Car: UCar_TA; // 0x0998 (0x0008) [UCar_TA*]
-  PRI: UPRI_TA; // 0x09a0 (0x0008) [UPRI_TA*]
-  VehicleInput: FVehicleInputs; // 0x09a8 (0x0020) [FVehicleInputs]
-  bReceivedServerShutdownMessage: boolean; // 0x09c8 (0x0004) [bool : 0x1]
-  bFilterNonTacticalQuickChat: boolean; // 0x09c8 (0x0004) [bool : 0x2]
-  bOverrideInput: boolean; // 0x09c8 (0x0004) [bool : 0x4]
-  bJumpPressed: boolean; // 0x09c8 (0x0004) [bool : 0x8]
-  bBoostPressed: boolean; // 0x09c8 (0x0004) [bool : 0x10]
-  bHandbrakePressed: boolean; // 0x09c8 (0x0004) [bool : 0x20]
-  bHasPitchedOrRolled: boolean; // 0x09c8 (0x0004) [bool : 0x40]
-  bAirPitchSafetyEnabled: boolean; // 0x09c8 (0x0004) [bool : 0x80]
-  bAllowAsymmetricalMute: boolean; // 0x09c8 (0x0004) [bool : 0x100]
-  bReportedPlayer: boolean; // 0x09c8 (0x0004) [bool : 0x200]
-  bUsePickupPressed: boolean; // 0x09c8 (0x0004) [bool : 0x400]
-  LoginURL: string; // 0x09d0 (0x0010) [FString]
-  DeprecatedVoiceFilter: EVoiceFilter; // 0x09e0 (0x0001) [EVoiceFilter]
-  QuickChatFilter: EChatFilter; // 0x09e1 (0x0001) [EChatFilter]
-  MatchChatFilter: EChatFilter; // 0x09e2 (0x0001) [EChatFilter]
-  RequestedInputBufferType: ENetworkInputBuffer; // 0x09e3 (0x0001) [ENetworkInputBuffer]
-  ChatSpam: FChatSpamData; // 0x09e4 (0x0018) [FChatSpamData]
-  ChatSpamHarsh: FChatSpamData; // 0x09fc (0x0018) [FChatSpamData]
-  LightBar: ULightBarComponent_TA; // 0x0a18 (0x0008) [ULightBarComponent_TA*]
-  MusicComponent: UGameMusicComponent_TA; // 0x0a20 (0x0008) [UGameMusicComponent_TA*]
-  AudioPriorityComponent: UAudioPriorityComponent_TA; // 0x0a28 (0x0008) [UAudioPriorityComponent_TA*]
-  AudioMixStateComponent: UAudioMixStateComponent_TA; // 0x0a30 (0x0008) [UAudioMixStateComponent_TA*]
-  TeamDemoAudioComponent: UTeamDemoAudioComponent_TA; // 0x0a38 (0x0008) [UTeamDemoAudioComponent_TA*]
-  FollowTarget: UPRI_TA; // 0x0a40 (0x0008) [UPRI_TA*]
-  SpectatorCameraArchetype: UCamera; // 0x0a48 (0x0008) [UCamera*]
-  SpectatorHUDArchetype: UHUD; // 0x0a50 (0x0008) [UHUD*]
-  SpectatorInputClass: UPlayerInput; // 0x0a58 (0x0008) [UPlayerInput*]
-  EditorCameraArchetype: UCamera; // 0x0a60 (0x0008) [UCamera*]
-  EditorHUDArchetype: UHUD; // 0x0a68 (0x0008) [UHUD*]
-  EditorInputClass: UPlayerInput; // 0x0a70 (0x0008) [UPlayerInput*]
-  MoveActor: UInterface_GameEditor_TA; // 0x0a78 (0x0010) [UInterface_GameEditor_TA*]
-  MoveActorGrabOffset: FVector; // 0x0a88 (0x000c) [FVector]
-  MoveActorGrabIncrement: number; // 0x0a94 (0x0004) [float]
-  MinMoveActorGrabDistance: number; // 0x0a98 (0x0004) [float]
-  MouseIncrementSpeed: number; // 0x0a9c (0x0004) [float]
-  BallVelocityIncrementAmount: number; // 0x0aa0 (0x0004) [float]
-  BallVelocityIncrementFireCount: number; // 0x0aa4 (0x0004) [int32]
-  BallVelocityIncrementFireCountMax: number; // 0x0aa8 (0x0004) [float]
-  BallVelocityIncrementSpeedDefault: number; // 0x0aac (0x0004) [float]
-  BallVelocityIncrementSpeedMax: number; // 0x0ab0 (0x0004) [float]
-  CrosshairTraceDistance: number; // 0x0ab4 (0x0004) [float]
-  TracedCrosshairActor: UActor; // 0x0ab8 (0x0008) [UActor*]
-  CrosshairTraceExtents: FCrosshairExtentInfo[]; // 0x0ac0 (0x0010) [TArray<FCrosshairExtentInfo>]
-  RotatedActor: UInterface_GameEditor_TA; // 0x0ad0 (0x0010) [UInterface_GameEditor_TA*]
-  RotateActorCameraLocationOffset: FVector; // 0x0ae0 (0x000c) [FVector]
-  RotateActorCameraRotationOffset: FVector; // 0x0aec (0x000c) [FVector]
-  RotateActorCameraSide: number; // 0x0af8 (0x0004) [int32]
-  DesiredCameraSide: number; // 0x0afc (0x0004) [float]
-  PawnTypeChangedTime: number; // 0x0b00 (0x0004) [float]
-  SelectedSpawnArchetype: number; // 0x0b04 (0x0004) [int32]
-  OverrideInput: FVehicleInputs; // 0x0b08 (0x0020) [FVehicleInputs]
-  MinClientInputRate: number; // 0x0b28 (0x0004) [int32]
-  MedianClientInputRate: number; // 0x0b2c (0x0004) [int32]
-  MaxClientInputRate: number; // 0x0b30 (0x0004) [int32]
-  ConfiguredClientInputRate: number; // 0x0b34 (0x0004) [int32]
-  TimeSinceLastMovePacket: number; // 0x0b38 (0x0004) [float]
-  TimeLastReplicatedMovePacket: number; // 0x0b3c (0x0004) [float]
-  PlatformMetrics: UPlatformMetrics_TA; // 0x0b40 (0x0008) [UPlatformMetrics_TA*]
-  MouseXDeadZone: number; // 0x0b48 (0x0004) [float]
-  MouseYDeadZone: number; // 0x0b4c (0x0004) [float]
-  MouseXDeadZoneAir: number; // 0x0b50 (0x0004) [float]
-  MouseYDeadZoneAir: number; // 0x0b54 (0x0004) [float]
-  LastInputs: FVehicleInputs; // 0x0b58 (0x0020) [FVehicleInputs]
-  PendingViewPRI: UPRI_TA; // 0x0b78 (0x0008) [UPRI_TA*]
-  ConnectionTracker: UClientConnectionTracker_TA; // 0x0b80 (0x0008) [UClientConnectionTracker_TA*]
-  CameraSave: UProfileCameraSave_TA; // 0x0b88 (0x0008) [UProfileCameraSave_TA*]
-  EngineShare: UEngineShare_TA; // 0x0b90 (0x0008) [UEngineShare_TA*]
-  InputBuffer: UNetworkInputBuffer_TA; // 0x0b98 (0x0008) [UNetworkInputBuffer_TA*]
-  CrossplayConfig: UCrossplayConfig_X; // 0x0ba0 (0x0008) [UCrossplayConfig_X*]
-  PlayerReportedMessage: string; // 0x0ba8 (0x0010) [FString]
-  PlayerReportedPostGameMessage: string; // 0x0bb8 (0x0010) [FString]
-  CheckPlayerReportStatusMessage: string; // 0x0bc8 (0x0010) [FString]
-  RoomCredentials: FVoiceRoomCredentials; // 0x0bd8 (0x0030) [FVoiceRoomCredentials]
-  EOSGameClipsControllerArchetype: UEOSGameClipsController_TA; // 0x0c08 (0x0008) [UEOSGameClipsController_TA*]
-  EOSGameClipsController: UEOSGameClipsController_TA; // 0x0c10 (0x0008) [UEOSGameClipsController_TA*]
-  Prespawn: FPrespawnData; // 0x0c18 (0x001c) [FPrespawnData]
-  FreeplaySessionManager: UFreeplaySessionManager_TA; // 0x0c38 (0x0008) [UFreeplaySessionManager_TA*]
-  TargettedActor: UActor; // 0x0c40 (0x0008) [UActor*]
-  TextChatActor: UTextChatActor_TA; // 0x0c48 (0x0008) [UTextChatActor_TA*]
-  AntiCheatMessenger: UAntiCheatMessenger_TA; // 0x0c50 (0x0008) [UAntiCheatMessenger_TA*]
-  PickupButtonPressedSeconds: number; // 0x0c58 (0x0004) [float]
-  PickupActivationBuffer: number; // 0x0c5c (0x0004) [float]
-  GameplaySettingsSave: UGameplaySettingsSave_TA; // 0x0c60 (0x0008) [UGameplaySettingsSave_TA*]
-  CachedInputPitch: number; // 0x0c68 (0x0004) [float]
-  CachedInputYaw: number; // 0x0c6c (0x0004) [float]
-  __EventLaunchAccountPicker__Delegate: FScriptDelegate; // 0x0c70 (0x0018) [FScriptDelegate]
-  __EventLaunchControllerApplet__Delegate: FScriptDelegate; // 0x0c88 (0x0018) [FScriptDelegate]
-  __EventMuteChanged__Delegate: FScriptDelegate; // 0x0ca0 (0x0018) [FScriptDelegate]
-  __EventTrainingEditorActorModified__Delegate: FScriptDelegate; // 0x0cb8 (0x0018) [FScriptDelegate]
-  __EventSelectCameraTarget__Delegate: FScriptDelegate; // 0x0cd0 (0x0018) [FScriptDelegate]
-  __EventConnectionTrackerAttached__Delegate: FScriptDelegate; // 0x0ce8 (0x0018) [FScriptDelegate]
-  __EventChatMessage__Delegate: FScriptDelegate; // 0x0d00 (0x0018) [FScriptDelegate]
-  __EventOverrideInput__Delegate: FScriptDelegate; // 0x0d18 (0x0018) [FScriptDelegate]
-  __bReportedPlayer__ChangeNotify: FScriptDelegate; // 0x0d30 (0x0018) [FScriptDelegate]
-  __EOSGameClipsControllerArchetype__ChangeNotify: FScriptDelegate; // 0x0d48 (0x0018) [FScriptDelegate]
-  __EOSGameClipsController__ChangeNotify: FScriptDelegate; // 0x0d60 (0x0018) [FScriptDelegate]
-  __FreeplaySessionManager__ChangeNotify: FScriptDelegate; // 0x0d78 (0x0018) [FScriptDelegate]
+  Car: UCar_TA; // 0x09a0 (0x0008) [UCar_TA*]
+  PRI: UPRI_TA; // 0x09a8 (0x0008) [UPRI_TA*]
+  VehicleInput: FVehicleInputs; // 0x09b0 (0x0020) [FVehicleInputs]
+  bReceivedServerShutdownMessage: boolean; // 0x09d0 (0x0004) [bool : 0x1]
+  bFilterNonTacticalQuickChat: boolean; // 0x09d0 (0x0004) [bool : 0x2]
+  bOverrideInput: boolean; // 0x09d0 (0x0004) [bool : 0x4]
+  bJumpPressed: boolean; // 0x09d0 (0x0004) [bool : 0x8]
+  bBoostPressed: boolean; // 0x09d0 (0x0004) [bool : 0x10]
+  bHandbrakePressed: boolean; // 0x09d0 (0x0004) [bool : 0x20]
+  bHasPitchedOrRolled: boolean; // 0x09d0 (0x0004) [bool : 0x40]
+  bAirPitchSafetyEnabled: boolean; // 0x09d0 (0x0004) [bool : 0x80]
+  bAllowAsymmetricalMute: boolean; // 0x09d0 (0x0004) [bool : 0x100]
+  bReportedPlayer: boolean; // 0x09d0 (0x0004) [bool : 0x200]
+  bUsePickupPressed: boolean; // 0x09d0 (0x0004) [bool : 0x400]
+  LoginURL: string; // 0x09d8 (0x0010) [FString]
+  DeprecatedVoiceFilter: EVoiceFilter; // 0x09e8 (0x0001) [EVoiceFilter]
+  QuickChatFilter: EChatFilter; // 0x09e9 (0x0001) [EChatFilter]
+  MatchChatFilter: EChatFilter; // 0x09ea (0x0001) [EChatFilter]
+  RequestedInputBufferType: ENetworkInputBuffer; // 0x09eb (0x0001) [ENetworkInputBuffer]
+  ChatSpam: FChatSpamData; // 0x09ec (0x0018) [FChatSpamData]
+  ChatSpamHarsh: FChatSpamData; // 0x0a04 (0x0018) [FChatSpamData]
+  LightBar: ULightBarComponent_TA; // 0x0a20 (0x0008) [ULightBarComponent_TA*]
+  MusicComponent: UGameMusicComponent_TA; // 0x0a28 (0x0008) [UGameMusicComponent_TA*]
+  AudioPriorityComponent: UAudioPriorityComponent_TA; // 0x0a30 (0x0008) [UAudioPriorityComponent_TA*]
+  AudioMixStateComponent: UAudioMixStateComponent_TA; // 0x0a38 (0x0008) [UAudioMixStateComponent_TA*]
+  TeamDemoAudioComponent: UTeamDemoAudioComponent_TA; // 0x0a40 (0x0008) [UTeamDemoAudioComponent_TA*]
+  FollowTarget: UPRI_TA; // 0x0a48 (0x0008) [UPRI_TA*]
+  SpectatorCameraArchetype: UCamera; // 0x0a50 (0x0008) [UCamera*]
+  SpectatorHUDArchetype: UHUD; // 0x0a58 (0x0008) [UHUD*]
+  SpectatorInputClass: UPlayerInput; // 0x0a60 (0x0008) [UPlayerInput*]
+  EditorCameraArchetype: UCamera; // 0x0a68 (0x0008) [UCamera*]
+  EditorHUDArchetype: UHUD; // 0x0a70 (0x0008) [UHUD*]
+  EditorInputClass: UPlayerInput; // 0x0a78 (0x0008) [UPlayerInput*]
+  MoveActor: UInterface_GameEditor_TA; // 0x0a80 (0x0010) [UInterface_GameEditor_TA*]
+  MoveActorGrabOffset: FVector; // 0x0a90 (0x000c) [FVector]
+  MoveActorGrabIncrement: number; // 0x0a9c (0x0004) [float]
+  MinMoveActorGrabDistance: number; // 0x0aa0 (0x0004) [float]
+  MouseIncrementSpeed: number; // 0x0aa4 (0x0004) [float]
+  BallVelocityIncrementAmount: number; // 0x0aa8 (0x0004) [float]
+  BallVelocityIncrementFireCount: number; // 0x0aac (0x0004) [int32]
+  BallVelocityIncrementFireCountMax: number; // 0x0ab0 (0x0004) [float]
+  BallVelocityIncrementSpeedDefault: number; // 0x0ab4 (0x0004) [float]
+  BallVelocityIncrementSpeedMax: number; // 0x0ab8 (0x0004) [float]
+  VehicleVelocityIncrementAmount: number; // 0x0abc (0x0004) [float]
+  CrosshairTraceDistance: number; // 0x0ac0 (0x0004) [float]
+  TracedCrosshairActor: UActor; // 0x0ac8 (0x0008) [UActor*]
+  CrosshairTraceExtents: FCrosshairExtentInfo[]; // 0x0ad0 (0x0010) [TArray<FCrosshairExtentInfo>]
+  RotatedActor: UInterface_GameEditor_TA; // 0x0ae0 (0x0010) [UInterface_GameEditor_TA*]
+  RotateActorCameraLocationOffset: FVector; // 0x0af0 (0x000c) [FVector]
+  RotateActorCameraRotationOffset: FVector; // 0x0afc (0x000c) [FVector]
+  RotateActorCameraSide: number; // 0x0b08 (0x0004) [int32]
+  DesiredCameraSide: number; // 0x0b0c (0x0004) [float]
+  PawnTypeChangedTime: number; // 0x0b10 (0x0004) [float]
+  SelectedSpawnArchetype: number; // 0x0b14 (0x0004) [int32]
+  OverrideInput: FVehicleInputs; // 0x0b18 (0x0020) [FVehicleInputs]
+  MinClientInputRate: number; // 0x0b38 (0x0004) [int32]
+  MedianClientInputRate: number; // 0x0b3c (0x0004) [int32]
+  MaxClientInputRate: number; // 0x0b40 (0x0004) [int32]
+  ConfiguredClientInputRate: number; // 0x0b44 (0x0004) [int32]
+  TimeSinceLastMovePacket: number; // 0x0b48 (0x0004) [float]
+  TimeLastReplicatedMovePacket: number; // 0x0b4c (0x0004) [float]
+  PlatformMetrics: UPlatformMetrics_TA; // 0x0b50 (0x0008) [UPlatformMetrics_TA*]
+  MouseXDeadZone: number; // 0x0b58 (0x0004) [float]
+  MouseYDeadZone: number; // 0x0b5c (0x0004) [float]
+  MouseXDeadZoneAir: number; // 0x0b60 (0x0004) [float]
+  MouseYDeadZoneAir: number; // 0x0b64 (0x0004) [float]
+  LastInputs: FVehicleInputs; // 0x0b68 (0x0020) [FVehicleInputs]
+  PendingViewPRI: UPRI_TA; // 0x0b88 (0x0008) [UPRI_TA*]
+  ConnectionTracker: UClientConnectionTracker_TA; // 0x0b90 (0x0008) [UClientConnectionTracker_TA*]
+  CameraSave: UProfileCameraSave_TA; // 0x0b98 (0x0008) [UProfileCameraSave_TA*]
+  EngineShare: UEngineShare_TA; // 0x0ba0 (0x0008) [UEngineShare_TA*]
+  InputBuffer: UNetworkInputBuffer_TA; // 0x0ba8 (0x0008) [UNetworkInputBuffer_TA*]
+  CrossplayConfig: UCrossplayConfig_X; // 0x0bb0 (0x0008) [UCrossplayConfig_X*]
+  PlayerReportedMessage: string; // 0x0bb8 (0x0010) [FString]
+  PlayerReportedPostGameMessage: string; // 0x0bc8 (0x0010) [FString]
+  CheckPlayerReportStatusMessage: string; // 0x0bd8 (0x0010) [FString]
+  RoomCredentials: FVoiceRoomCredentials; // 0x0be8 (0x0030) [FVoiceRoomCredentials]
+  EOSGameClipsControllerArchetype: UEOSGameClipsController_TA; // 0x0c18 (0x0008) [UEOSGameClipsController_TA*]
+  EOSGameClipsController: UEOSGameClipsController_TA; // 0x0c20 (0x0008) [UEOSGameClipsController_TA*]
+  Prespawn: FPrespawnData; // 0x0c28 (0x001c) [FPrespawnData]
+  FreeplaySessionManager: UFreeplaySessionManager_TA; // 0x0c48 (0x0008) [UFreeplaySessionManager_TA*]
+  TargettedActor: UActor; // 0x0c50 (0x0008) [UActor*]
+  TextChatActor: UTextChatActor_TA; // 0x0c58 (0x0008) [UTextChatActor_TA*]
+  AntiCheatMessenger: UAntiCheatMessenger_TA; // 0x0c60 (0x0008) [UAntiCheatMessenger_TA*]
+  PickupButtonPressedSeconds: number; // 0x0c68 (0x0004) [float]
+  PickupActivationBuffer: number; // 0x0c6c (0x0004) [float]
+  GameplaySettingsSave: UGameplaySettingsSave_TA; // 0x0c70 (0x0008) [UGameplaySettingsSave_TA*]
+  CachedInputPitch: number; // 0x0c78 (0x0004) [float]
+  CachedInputYaw: number; // 0x0c7c (0x0004) [float]
+  SoccarGameEvent: UGameEvent_Soccar_TA; // 0x0c80 (0x0008) [UGameEvent_Soccar_TA*]
+  PresenceUpdateFrequency: number; // 0x0c88 (0x0004) [float]
+  __EventLaunchAccountPicker__Delegate: FScriptDelegate; // 0x0c90 (0x0018) [FScriptDelegate]
+  __EventLaunchControllerApplet__Delegate: FScriptDelegate; // 0x0ca8 (0x0018) [FScriptDelegate]
+  __EventMuteChanged__Delegate: FScriptDelegate; // 0x0cc0 (0x0018) [FScriptDelegate]
+  __EventTrainingEditorActorModified__Delegate: FScriptDelegate; // 0x0cd8 (0x0018) [FScriptDelegate]
+  __EventSelectCameraTarget__Delegate: FScriptDelegate; // 0x0cf0 (0x0018) [FScriptDelegate]
+  __EventConnectionTrackerAttached__Delegate: FScriptDelegate; // 0x0d08 (0x0018) [FScriptDelegate]
+  __EventChatMessage__Delegate: FScriptDelegate; // 0x0d20 (0x0018) [FScriptDelegate]
+  __EventOverrideInput__Delegate: FScriptDelegate; // 0x0d38 (0x0018) [FScriptDelegate]
+  __EventToggleScoreView__Delegate: FScriptDelegate; // 0x0d50 (0x0018) [FScriptDelegate]
+  __bReportedPlayer__ChangeNotify: FScriptDelegate; // 0x0d68 (0x0018) [FScriptDelegate]
+  __EOSGameClipsControllerArchetype__ChangeNotify: FScriptDelegate; // 0x0d80 (0x0018) [FScriptDelegate]
+  __EOSGameClipsController__ChangeNotify: FScriptDelegate; // 0x0d98 (0x0018) [FScriptDelegate]
+  __FreeplaySessionManager__ChangeNotify: FScriptDelegate; // 0x0db0 (0x0018) [FScriptDelegate]
 };
 
 // PlayerController_TA Functions
@@ -38968,6 +39468,8 @@ export type UPlayerController_TA = UPlayerControllerBase_TA & {
 // StopEditing(): void
 // EditorIncreasePower(): void
 // EditorDecreasePower(): void
+// EditorToggleRotatePitch(): void
+// EditorResetPitch(): void
 // EditorIncreasePowerToggleInterim(): void
 // EditorDecreasePowerToggleInterim(): void
 // EditorIncreasePowerToggle(bToggle: boolean): void
@@ -39015,6 +39517,8 @@ export type UPlayerController_TA = UPlayerControllerBase_TA & {
 // QueSaveReplay(): void
 // SetFollowTarget(InTarget: UPRI_TA): void
 // FollowPlayer(InPlayer: UPRI_TA): void
+// ApplySteamControllerCacheFromConfig(): void
+// ApplyWin64OptimizedKeyPollingFromConfig(): void
 // ClientSkillUpdated(Rating: FUpdatedPlayerSkillRating, Playlist: number): void
 // ServerReportPlayer(ReasonIDStaticArray: number, NumReasons: number, PlayerID: FUniqueNetId): void
 // ReportPlayer(ReasonIDs: number[], PlayerID: FUniqueNetId): void
@@ -39062,6 +39566,8 @@ export type UPlayerController_TA = UPlayerControllerBase_TA & {
 // ClientNotifyServerShutdown(ConnectionInfo: FServerConnectionInfo): void
 // ClientUnmutePlayer(PlayerNetId: FUniqueNetId): void
 // ClientMutePlayer(PlayerNetId: FUniqueNetId, bAddToMuteList: boolean): void
+// ServerSelectDemoSpawn(bLeft: boolean): void
+// SelectDemoSpawn(bLeft: boolean): void
 // GetOnlineStatus(PresenceString: string, GameDataString: string, bLocalize: boolean): void
 // ClientSetOnlineStatus(): void
 // HandleGameDataSelected(PlaylistId: number, MutatorIndex: number): void
@@ -39106,6 +39612,7 @@ export type UPlayerController_TA = UPlayerControllerBase_TA & {
 // PressSecondaryCamera(): void
 // CaptureClip(InGameClipInputType: string): void
 // ReadyUp(): void
+// ToggleScoreView(): void
 // Spectate(): void
 // ChangeTeam(TeamNum: number): void
 // SwitchTeam(): void
@@ -39127,6 +39634,7 @@ export type UPlayerController_TA = UPlayerControllerBase_TA & {
 // SendClientAdjustment(): void
 // GetPrimaryPlayerController(): UPlayerController_TA
 // HandleAddBoostComponent(Boost: UCarComponent_Boost_TA): void
+// HandleVehicleSetup(InCar: UCar_TA): void
 // OnPawnChange(OldPawn: UPawn, NewPawn: UPawn): void
 // HandleSetProfile(LocalPlayer: ULocalPlayer_TA): void
 // GetProductMetrics(): UProductMetrics_TA
@@ -39160,17 +39668,22 @@ export type UPlayerController_TA = UPlayerControllerBase_TA & {
 // HandleTeamChanged(InPRI: UPRI_X): void
 // HandleOvertimeUpdated(GameEvent: UGameEvent_Soccar_TA): void
 // HandleMatchEnded(GameEvent: UGameEvent_Soccar_TA): void
+// TriggerPresenceUpdate(): void
+// HandleGameStateChanged(GameEvent: UGameEvent_TA): void
 // HandleGameEventChanged(InPRI: UPRI_TA): void
 // SetupLightBar(): void
 // HandlePersistentCameraSet(InPRI: UPRI_TA): void
 // OnReceivedPlayerAndPRI(): void
 // OnSettingsAutoUpdated(Reason: ESettingsAutoUpdateReason): void
+// HandleProfileGameplaySave(GameplaySave: UProfileGameplaySave_TA): void
 // HandleProfileGamepadSave(GamepadSave: UProfileGamepadSave_TA): void
 // HandleProfilePCSave(ProfilePCSave: UProfilePCSave_TA): void
 // UpdateVoiceChatFilter(): void
 // HandleSoundSettingsSave(SoundSettings: USoundSettingsSave_TA): void
 // HandleMatchChatFilterChanged(): void
 // HandleGameplaySettingsSave(GameplaySettings: UGameplaySettingsSave_TA): void
+// HandleInputTypeChanged(InShell: UGFxShell_X): void
+// SetupCameraSave(CameraSettings: UProfileCameraSave_TA): void
 // HandleCameraSave(CameraSettings: UProfileCameraSave_TA): void
 // ClientSetLevelSessionID(Id: FGuid): void
 // ReplicateLevelSessionID(): void
@@ -39180,6 +39693,10 @@ export type UPlayerController_TA = UPlayerControllerBase_TA & {
 // ServerInitInputBuffer(Type: ENetworkInputBuffer): void
 // NetworkInputBufferChanged(NetworkSave: UNetworkSave_TA): void
 // InitNetworkSave(NetworkSave: UNetworkSave_TA): void
+// OnSoccarGameRemoved(Obj: UObject): void
+// BindToggleScoreViewToReplayDirector(InGameEvent: UGameEvent_Soccar_TA): void
+// HandleReplayDirectorSet(InGameEvent: UGameEvent_Soccar_TA): void
+// OnSoccarGameSet(InGameEvent: UGameEvent_Soccar_TA): void
 // ClientNotifyAntiCheatViolation(ViolationReason: EClientActionReason): void
 // AntiCheatAuthComplete(): boolean
 // AntiCheatPreventSpawnOnJoin(): boolean
@@ -39190,6 +39707,7 @@ export type UPlayerController_TA = UPlayerControllerBase_TA & {
 // HandleGRISpawned(GRI: UGRI_X): void
 // PostBeginPlay(): void
 // ReplicatedEvent(EventName: FName): void
+// EventToggleScoreView(ToggleToScorerViewState: boolean): void
 // EventOverrideInput(PC: UPlayerController_TA): void
 // EventChatMessage(PC: UPlayerController_TA, Message: string, bPreset: boolean): void
 // EventConnectionTrackerAttached(PC: UPlayerController_TA, Tracker: UClientConnectionTracker_TA): void
@@ -39201,21 +39719,21 @@ export type UPlayerController_TA = UPlayerControllerBase_TA & {
 
 /**
  * Class TAGame.PlayerController_KnockOut_TA
- * Size: 0x0D90
+ * Size: 0x0DC8
  * Extends: UPlayerController_TA
  */
 export type UPlayerController_KnockOut_TA = UPlayerController_TA & {};
 
 /**
  * Class TAGame.PlayerController_Menu_TA
- * Size: 0x09E0
+ * Size: 0x09E8
  * Extends: UPlayerControllerBase_TA
  */
 export type UPlayerController_Menu_TA = UPlayerControllerBase_TA & {
-  InputSequences: UPlayerInputSequence_TA[]; // 0x0998 (0x0010) [TArray<UPlayerInputSequence_TA*>]
-  bExecutedKonamiCode: boolean; // 0x09a8 (0x0004) [bool : 0x1]
-  __EventKonamiCode__Delegate: FScriptDelegate; // 0x09b0 (0x0018) [FScriptDelegate]
-  __EventBecomePrimaryPlayer__Delegate: FScriptDelegate; // 0x09c8 (0x0018) [FScriptDelegate]
+  InputSequences: UPlayerInputSequence_TA[]; // 0x09a0 (0x0010) [TArray<UPlayerInputSequence_TA*>]
+  bExecutedKonamiCode: boolean; // 0x09b0 (0x0004) [bool : 0x1]
+  __EventKonamiCode__Delegate: FScriptDelegate; // 0x09b8 (0x0018) [FScriptDelegate]
+  __EventBecomePrimaryPlayer__Delegate: FScriptDelegate; // 0x09d0 (0x0018) [FScriptDelegate]
 };
 
 // PlayerController_Menu_TA Functions
@@ -39237,12 +39755,12 @@ export type UPlayerController_Menu_TA = UPlayerControllerBase_TA & {
 
 /**
  * Class TAGame.PlayerController_Replay_TA
- * Size: 0x09A8
+ * Size: 0x09B0
  * Extends: UPlayerControllerBase_TA
  */
 export type UPlayerController_Replay_TA = UPlayerControllerBase_TA & {
-  SplitscreenHUDArchetype: UHUD; // 0x0998 (0x0008) [UHUD*]
-  GameEvent: UGameEvent_TA; // 0x09a0 (0x0008) [UGameEvent_TA*]
+  SplitscreenHUDArchetype: UHUD; // 0x09a0 (0x0008) [UHUD*]
+  GameEvent: UGameEvent_TA; // 0x09a8 (0x0008) [UGameEvent_TA*]
 };
 
 // PlayerController_Replay_TA Functions
@@ -39252,7 +39770,7 @@ export type UPlayerController_Replay_TA = UPlayerControllerBase_TA & {
 
 /**
  * Class TAGame.PlayerInput_TA
- * Size: 0x04C8
+ * Size: 0x04D0
  * Extends: UPlayerInput_X
  */
 export type UPlayerInput_TA = UPlayerInput_X & {
@@ -39260,14 +39778,15 @@ export type UPlayerInput_TA = UPlayerInput_X & {
   aTargetSelect: number; // 0x047c (0x0004) [float]
   TargetSelectDeadZone: number; // 0x0480 (0x0004) [float]
   bTargetSelected: boolean; // 0x0484 (0x0004) [bool : 0x1]
-  bIsUsingMouseSteer: boolean; // 0x0484 (0x0004) [bool : 0x2]
-  bIsUsingMouseThrottle: boolean; // 0x0484 (0x0004) [bool : 0x4]
-  bIsUsingPositiveMouseAirYaw: boolean; // 0x0484 (0x0004) [bool : 0x8]
-  bIsUsingNegativeMouseAirYaw: boolean; // 0x0484 (0x0004) [bool : 0x10]
-  bIsUsingPositiveMouseAirPitch: boolean; // 0x0484 (0x0004) [bool : 0x20]
-  bIsUsingNegativeMouseAirPitch: boolean; // 0x0484 (0x0004) [bool : 0x40]
-  bIsUsingPositiveMouseAirRoll: boolean; // 0x0484 (0x0004) [bool : 0x80]
-  bIsUsingNegativeMouseAirRoll: boolean; // 0x0484 (0x0004) [bool : 0x100]
+  bDemoSpawnSelectHeld: boolean; // 0x0484 (0x0004) [bool : 0x2]
+  bIsUsingMouseSteer: boolean; // 0x0484 (0x0004) [bool : 0x4]
+  bIsUsingMouseThrottle: boolean; // 0x0484 (0x0004) [bool : 0x8]
+  bIsUsingPositiveMouseAirYaw: boolean; // 0x0484 (0x0004) [bool : 0x10]
+  bIsUsingNegativeMouseAirYaw: boolean; // 0x0484 (0x0004) [bool : 0x20]
+  bIsUsingPositiveMouseAirPitch: boolean; // 0x0484 (0x0004) [bool : 0x40]
+  bIsUsingNegativeMouseAirPitch: boolean; // 0x0484 (0x0004) [bool : 0x80]
+  bIsUsingPositiveMouseAirRoll: boolean; // 0x0484 (0x0004) [bool : 0x100]
+  bIsUsingNegativeMouseAirRoll: boolean; // 0x0484 (0x0004) [bool : 0x200]
   aPositiveYaw: number; // 0x0488 (0x0004) [float]
   aNegativeYaw: number; // 0x048c (0x0004) [float]
   aPositivePitch: number; // 0x0490 (0x0004) [float]
@@ -39277,13 +39796,15 @@ export type UPlayerInput_TA = UPlayerInput_X & {
   aLookRoll: number; // 0x04a0 (0x0004) [float]
   bRoll: number; // 0x04a4 (0x0001) [uint8]
   bPitch: number; // 0x04a5 (0x0001) [uint8]
-  aLookDown: number; // 0x04a8 (0x0004) [float]
-  aTurnRight: number; // 0x04ac (0x0004) [float]
-  aTurnLeft: number; // 0x04b0 (0x0004) [float]
-  aMouseForward: number; // 0x04b4 (0x0004) [float]
-  aMouseStrafe: number; // 0x04b8 (0x0004) [float]
-  aDodgeForward: number; // 0x04bc (0x0004) [float]
-  Profile: UProfile_TA; // 0x04c0 (0x0008) [UProfile_TA*]
+  aDemoSpawnSelect: number; // 0x04a8 (0x0004) [float]
+  DemoSpawnSelectThreshold: number; // 0x04ac (0x0004) [float]
+  aLookDown: number; // 0x04b0 (0x0004) [float]
+  aTurnRight: number; // 0x04b4 (0x0004) [float]
+  aTurnLeft: number; // 0x04b8 (0x0004) [float]
+  aMouseForward: number; // 0x04bc (0x0004) [float]
+  aMouseStrafe: number; // 0x04c0 (0x0004) [float]
+  aDodgeForward: number; // 0x04c4 (0x0004) [float]
+  Profile: UProfile_TA; // 0x04c8 (0x0008) [UProfile_TA*]
 };
 
 // PlayerInput_TA Functions
@@ -39315,7 +39836,7 @@ export type UPlayerInput_TA = UPlayerInput_X & {
 
 /**
  * Class TAGame.PlayerInput_Edit_TA
- * Size: 0x04C8
+ * Size: 0x04D0
  * Extends: UPlayerInput_TA
  */
 export type UPlayerInput_Edit_TA = UPlayerInput_TA & {};
@@ -39325,7 +39846,7 @@ export type UPlayerInput_Edit_TA = UPlayerInput_TA & {};
 
 /**
  * Class TAGame.PlayerInput_Game_TA
- * Size: 0x04C8
+ * Size: 0x04D0
  * Extends: UPlayerInput_TA
  */
 export type UPlayerInput_Game_TA = UPlayerInput_TA & {};
@@ -39335,7 +39856,7 @@ export type UPlayerInput_Game_TA = UPlayerInput_TA & {};
 
 /**
  * Class TAGame.PlayerInput_GameEditor_TA
- * Size: 0x04C8
+ * Size: 0x04D0
  * Extends: UPlayerInput_TA
  */
 export type UPlayerInput_GameEditor_TA = UPlayerInput_TA & {};
@@ -39345,11 +39866,11 @@ export type UPlayerInput_GameEditor_TA = UPlayerInput_TA & {};
 
 /**
  * Class TAGame.PlayerInput_Menu_TA
- * Size: 0x04D8
+ * Size: 0x04E0
  * Extends: UPlayerInput_TA
  */
 export type UPlayerInput_Menu_TA = UPlayerInput_TA & {
-  AllowedActions: FName[]; // 0x04c8 (0x0010) [TArray<FName>]
+  AllowedActions: FName[]; // 0x04d0 (0x0010) [TArray<FName>]
 };
 
 // PlayerInput_Menu_TA Functions
@@ -39358,7 +39879,7 @@ export type UPlayerInput_Menu_TA = UPlayerInput_TA & {
 
 /**
  * Class TAGame.PlayerInput_Replay_TA
- * Size: 0x04C8
+ * Size: 0x04D0
  * Extends: UPlayerInput_TA
  */
 export type UPlayerInput_Replay_TA = UPlayerInput_TA & {};
@@ -39368,7 +39889,7 @@ export type UPlayerInput_Replay_TA = UPlayerInput_TA & {};
 
 /**
  * Class TAGame.PlayerInput_Spectator_TA
- * Size: 0x04C8
+ * Size: 0x04D0
  * Extends: UPlayerInput_TA
  */
 export type UPlayerInput_Spectator_TA = UPlayerInput_TA & {};
@@ -39566,7 +40087,7 @@ export type UPlayerSpawnSystem_TA = UObject & {};
 
 /**
  * Class TAGame.PlayerSpawnTicket_TA
- * Size: 0x00B0
+ * Size: 0x00B8
  * Extends: UObject
  */
 export type UPlayerSpawnTicket_TA = UObject & {
@@ -39575,8 +40096,10 @@ export type UPlayerSpawnTicket_TA = UObject & {
   SecondsRemaining: number; // 0x0070 (0x0004) [float]
   bWantsPrespawn: boolean; // 0x0074 (0x0004) [bool : 0x1]
   PrespawnSecondsRemaining: number; // 0x0078 (0x0004) [float]
-  __EventRestartPlayer__Delegate: FScriptDelegate; // 0x0080 (0x0018) [FScriptDelegate]
-  __EventPrespawn__Delegate: FScriptDelegate; // 0x0098 (0x0018) [FScriptDelegate]
+  PrespawnSeconds: number; // 0x007c (0x0004) [float]
+  InitialTeamNum: number; // 0x0080 (0x0004) [int32]
+  __EventRestartPlayer__Delegate: FScriptDelegate; // 0x0088 (0x0018) [FScriptDelegate]
+  __EventPrespawn__Delegate: FScriptDelegate; // 0x00a0 (0x0018) [FScriptDelegate]
 };
 
 // PlayerSpawnTicket_TA Functions
@@ -39615,6 +40138,7 @@ export type UPlaylistSettings_TA = UPlaylistSettings_X & {
   bAllowHonorDuelChallenges: boolean; // 0x0170 (0x0004) [bool : 0x1]
   bAllowVoiceChat: boolean; // 0x0170 (0x0004) [bool : 0x2]
   bAllowViralItems: boolean; // 0x0170 (0x0004) [bool : 0x4]
+  bAllowAnonymize: boolean; // 0x0170 (0x0004) [bool : 0x8]
   DetailsGroup: number; // 0x0174 (0x0004) [int32]
   BackFillPolicy: UBackFillPolicy_TA; // 0x0178 (0x0008) [UBackFillPolicy_TA*]
   TeamColors: FTeamColor[]; // 0x0180 (0x0010) [TArray<FTeamColor>]
@@ -39831,7 +40355,7 @@ export type UPrespawnConfig_TA = UOnlineConfig_X & {
 
 /**
  * Class TAGame.PRI_TA
- * Size: 0x0CC8
+ * Size: 0x0D40
  * Extends: UPRI_X
  */
 export type UPRI_TA = UPRI_X & {
@@ -39867,6 +40391,10 @@ export type UPRI_TA = UPRI_X & {
   bStayAsPartyActive: boolean; // 0x0480 (0x0004) [bool : 0x80000]
   bAbleToStart: boolean; // 0x0480 (0x0004) [bool : 0x100000]
   bTeamChanged: boolean; // 0x0480 (0x0004) [bool : 0x200000]
+  bAnonymizeToTeammates: boolean; // 0x0480 (0x0004) [bool : 0x400000]
+  bAnonymizeToOpponents: boolean; // 0x0480 (0x0004) [bool : 0x800000]
+  bReceivedAnonymizationSettings: boolean; // 0x0480 (0x0004) [bool : 0x1000000]
+  bAutoSkipGoalReplay: boolean; // 0x0480 (0x0004) [bool : 0x2000000]
   GameEvent: UGameEvent_TA; // 0x0488 (0x0008) [UGameEvent_TA*]
   ReplicatedGameEvent: UGameEvent_TA; // 0x0490 (0x0008) [UGameEvent_TA*]
   Car: UCar_TA; // 0x0498 (0x0008) [UCar_TA*]
@@ -39911,87 +40439,92 @@ export type UPRI_TA = UPRI_X & {
   MaxDodgeStreak: number; // 0x0754 (0x0004) [int32]
   BoostUsed: number; // 0x0758 (0x0004) [float]
   Dodges: number; // 0x075c (0x0004) [int32]
-  BallTouches: number; // 0x0760 (0x0004) [int32]
-  CarTouches: number; // 0x0764 (0x0004) [int32]
-  ReplacingBotPRI: UPRI_TA; // 0x0768 (0x0008) [UPRI_TA*]
-  PrimaryTitle: FMemberTitleStat; // 0x0770 (0x0020) [FMemberTitleStat]
-  SecondaryTitle: FMemberTitleStat; // 0x0790 (0x0020) [FMemberTitleStat]
-  PlayerGoalExplosion: UProductAsset_GoalExplosion_TA; // 0x07b0 (0x0008) [UProductAsset_GoalExplosion_TA*]
-  PlayerBanner: UPlayerBanner_TA; // 0x07b8 (0x0008) [UPlayerBanner_TA*]
-  PlayerAvatar: UPlayerAvatar_TA; // 0x07c0 (0x0008) [UPlayerAvatar_TA*]
-  PlayerBorder: UPlayerAvatarBorder_TA; // 0x07c8 (0x0008) [UPlayerAvatarBorder_TA*]
-  PlayerMusicStinger: UProductAsset_MusicStingers_TA; // 0x07d0 (0x0008) [UProductAsset_MusicStingers_TA*]
-  BotProductName: FName; // 0x07d8 (0x0008) [FName]
-  BotAvatarProductID: number; // 0x07e0 (0x0004) [int32]
-  BotBannerProductID: number; // 0x07e4 (0x0004) [int32]
-  ClubID: bigint; // 0x07e8 (0x0008) [uint64]
-  LastTeamIndex: number; // 0x07f0 (0x0004) [int32]
-  PublicIP: string; // 0x07f8 (0x0010) [FString]
-  SpectatorShortcut: number; // 0x0808 (0x0004) [int32]
-  CarDistanceTracker: UCarDistanceTracker_TA; // 0x0810 (0x0008) [UCarDistanceTracker_TA*]
-  CarGrappleTracker: UCarGrappleTracker_TA; // 0x0818 (0x0008) [UCarGrappleTracker_TA*]
-  CarFlipResetTracker: UCarFlipResetTracker_TA; // 0x0820 (0x0008) [UCarFlipResetTracker_TA*]
-  StayAsPartyVoter: UStayAsPartyVoter_TA; // 0x0828 (0x0008) [UStayAsPartyVoter_TA*]
-  StayAsPartyVoteYes: UStayAsPartyVoteYes_TA; // 0x0830 (0x0008) [UStayAsPartyVoteYes_TA*]
-  PickupTimer: UPickupTimer_TA; // 0x0838 (0x0008) [UPickupTimer_TA*]
-  ViralItemActor: UViralItemActor_TA; // 0x0840 (0x0008) [UViralItemActor_TA*]
-  TimeTillItem: number; // 0x0848 (0x0004) [int32]
-  MaxTimeTillItem: number; // 0x084c (0x0004) [int32]
-  ProductsConfig: UProductsConfig_TA; // 0x0850 (0x0008) [UProductsConfig_TA*]
-  CurrentVoiceRoom: string; // 0x0858 (0x0010) [FString]
-  PendingLoadout: FServerSetLoadoutParams; // 0x0868 (0x0058) [FServerSetLoadoutParams]
-  PossessionSteals: number; // 0x08c0 (0x0004) [int32]
-  PossessionDenials: number; // 0x08c4 (0x0004) [int32]
-  PossessionClears: number; // 0x08c8 (0x0004) [int32]
-  BallDemolitionSaves: number; // 0x08cc (0x0004) [int32]
-  CarDemolitions: number; // 0x08d0 (0x0004) [int32]
-  BallDemolitions: number; // 0x08d4 (0x0004) [int32]
-  SelfDemolitions: number; // 0x08d8 (0x0004) [int32]
-  KeepUpDenials: number; // 0x08dc (0x0004) [int32]
-  KeepUpClears: number; // 0x08e0 (0x0004) [int32]
-  KeepUpPossessions: number; // 0x08e4 (0x0004) [int32]
-  EpicPUID: string; // 0x08e8 (0x0010) [FString]
-  ValidationFailedClearedSlots: UProductSlot_TA[]; // 0x08f8 (0x0010) [TArray<UProductSlot_TA*>]
-  __EventGameEventChanged__Delegate: FScriptDelegate; // 0x0908 (0x0018) [FScriptDelegate]
-  __EventStatEvent__Delegate: FScriptDelegate; // 0x0920 (0x0018) [FScriptDelegate]
-  __EventRequestOverrideLoadout__Delegate: FScriptDelegate; // 0x0938 (0x0018) [FScriptDelegate]
-  __EventSelectedLoadout__Delegate: FScriptDelegate; // 0x0950 (0x0018) [FScriptDelegate]
-  __EventVanityChanged__Delegate: FScriptDelegate; // 0x0968 (0x0018) [FScriptDelegate]
-  __EventStatTickerMessage__Delegate: FScriptDelegate; // 0x0980 (0x0018) [FScriptDelegate]
-  __EventInvalidPsyonixID__Delegate: FScriptDelegate; // 0x0998 (0x0018) [FScriptDelegate]
-  __EventReadyChanged__Delegate: FScriptDelegate; // 0x09b0 (0x0018) [FScriptDelegate]
-  __EventCarPreUpdate__Delegate: FScriptDelegate; // 0x09c8 (0x0018) [FScriptDelegate]
-  __EventCarSet__Delegate: FScriptDelegate; // 0x09e0 (0x0018) [FScriptDelegate]
-  __EventSplitScreenStatusChanged__Delegate: FScriptDelegate; // 0x09f8 (0x0018) [FScriptDelegate]
-  __EventDistracted__Delegate: FScriptDelegate; // 0x0a10 (0x0018) [FScriptDelegate]
-  __EventPersistentCameraSet__Delegate: FScriptDelegate; // 0x0a28 (0x0018) [FScriptDelegate]
-  __EventCameraChanged__Delegate: FScriptDelegate; // 0x0a40 (0x0018) [FScriptDelegate]
-  __EventPartyLeaderChanged__Delegate: FScriptDelegate; // 0x0a58 (0x0018) [FScriptDelegate]
-  __EventScorePoint__Delegate: FScriptDelegate; // 0x0a70 (0x0018) [FScriptDelegate]
-  __EventWonMVP__Delegate: FScriptDelegate; // 0x0a88 (0x0018) [FScriptDelegate]
-  __EventStatTitlesSet__Delegate: FScriptDelegate; // 0x0aa0 (0x0018) [FScriptDelegate]
-  __EventPawnTypeChanged__Delegate: FScriptDelegate; // 0x0ab8 (0x0018) [FScriptDelegate]
-  __EventCommittedProductStats__Delegate: FScriptDelegate; // 0x0ad0 (0x0018) [FScriptDelegate]
-  __EventCommittedMatchStats__Delegate: FScriptDelegate; // 0x0ae8 (0x0018) [FScriptDelegate]
-  __EventStartVoteToForfeitDisabledChanged__Delegate: FScriptDelegate; // 0x0b00 (0x0018) [FScriptDelegate]
-  __EventTitleChanged__Delegate: FScriptDelegate; // 0x0b18 (0x0018) [FScriptDelegate]
-  __EventSkillTierChanged__Delegate: FScriptDelegate; // 0x0b30 (0x0018) [FScriptDelegate]
-  __EventServerChangeTeamFailed__Delegate: FScriptDelegate; // 0x0b48 (0x0018) [FScriptDelegate]
-  __EventScoredGoal__Delegate: FScriptDelegate; // 0x0b60 (0x0018) [FScriptDelegate]
-  __EventReplacingBotChanged__Delegate: FScriptDelegate; // 0x0b78 (0x0018) [FScriptDelegate]
-  __EventMatchAdmin__Delegate: FScriptDelegate; // 0x0b90 (0x0018) [FScriptDelegate]
-  __EventServerUnlockedAchievement__Delegate: FScriptDelegate; // 0x0ba8 (0x0018) [FScriptDelegate]
-  __EventSpectatorShortcutChanged__Delegate: FScriptDelegate; // 0x0bc0 (0x0018) [FScriptDelegate]
-  __EventOwnerChanged__Delegate: FScriptDelegate; // 0x0bd8 (0x0018) [FScriptDelegate]
-  __EventQuitSeverityChanged__Delegate: FScriptDelegate; // 0x0bf0 (0x0018) [FScriptDelegate]
-  __EventIdleBannedChanged__Delegate: FScriptDelegate; // 0x0c08 (0x0018) [FScriptDelegate]
-  __EventCurrentVoiceRoomChanged__Delegate: FScriptDelegate; // 0x0c20 (0x0018) [FScriptDelegate]
-  __EventPlayerGoalExplosionChanged__Delegate: FScriptDelegate; // 0x0c38 (0x0018) [FScriptDelegate]
-  __EventInfectedStatusSet__Delegate: FScriptDelegate; // 0x0c50 (0x0018) [FScriptDelegate]
-  __EventNewlyInfected__Delegate: FScriptDelegate; // 0x0c68 (0x0018) [FScriptDelegate]
-  __bStayAsPartyActive__ChangeNotify: FScriptDelegate; // 0x0c80 (0x0018) [FScriptDelegate]
-  __ReplicatedWorstNetQualityBeyondLatency__ChangeNotify: FScriptDelegate; // 0x0c98 (0x0018) [FScriptDelegate]
-  __ClubID__ChangeNotify: FScriptDelegate; // 0x0cb0 (0x0018) [FScriptDelegate]
+  PowerUpsUsed: number; // 0x0760 (0x0004) [int32]
+  BallTouches: number; // 0x0764 (0x0004) [int32]
+  CarTouches: number; // 0x0768 (0x0004) [int32]
+  ReplacingBotPRI: UPRI_TA; // 0x0770 (0x0008) [UPRI_TA*]
+  PrimaryTitle: FMemberTitleStat; // 0x0778 (0x0020) [FMemberTitleStat]
+  SecondaryTitle: FMemberTitleStat; // 0x0798 (0x0020) [FMemberTitleStat]
+  PlayerGoalExplosion: UProductAsset_GoalExplosion_TA; // 0x07b8 (0x0008) [UProductAsset_GoalExplosion_TA*]
+  PlayerBanner: UPlayerBanner_TA; // 0x07c0 (0x0008) [UPlayerBanner_TA*]
+  PlayerAvatar: UPlayerAvatar_TA; // 0x07c8 (0x0008) [UPlayerAvatar_TA*]
+  PlayerBorder: UPlayerAvatarBorder_TA; // 0x07d0 (0x0008) [UPlayerAvatarBorder_TA*]
+  PlayerMusicStinger: UProductAsset_MusicStingers_TA; // 0x07d8 (0x0008) [UProductAsset_MusicStingers_TA*]
+  BotProductName: FName; // 0x07e0 (0x0008) [FName]
+  BotAvatarProductID: number; // 0x07e8 (0x0004) [int32]
+  BotBannerProductID: number; // 0x07ec (0x0004) [int32]
+  ClubID: bigint; // 0x07f0 (0x0008) [uint64]
+  LastTeamIndex: number; // 0x07f8 (0x0004) [int32]
+  PublicIP: string; // 0x0800 (0x0010) [FString]
+  SpectatorShortcut: number; // 0x0810 (0x0004) [int32]
+  CarDistanceTracker: UCarDistanceTracker_TA; // 0x0818 (0x0008) [UCarDistanceTracker_TA*]
+  CarGrappleTracker: UCarGrappleTracker_TA; // 0x0820 (0x0008) [UCarGrappleTracker_TA*]
+  CarFlipResetTracker: UCarFlipResetTracker_TA; // 0x0828 (0x0008) [UCarFlipResetTracker_TA*]
+  StayAsPartyVoter: UStayAsPartyVoter_TA; // 0x0830 (0x0008) [UStayAsPartyVoter_TA*]
+  StayAsPartyVoteYes: UStayAsPartyVoteYes_TA; // 0x0838 (0x0008) [UStayAsPartyVoteYes_TA*]
+  PickupTimer: UPickupTimer_TA; // 0x0840 (0x0008) [UPickupTimer_TA*]
+  ViralItemActor: UViralItemActor_TA; // 0x0848 (0x0008) [UViralItemActor_TA*]
+  TimeTillItem: number; // 0x0850 (0x0004) [int32]
+  MaxTimeTillItem: number; // 0x0854 (0x0004) [int32]
+  ProductsConfig: UProductsConfig_TA; // 0x0858 (0x0008) [UProductsConfig_TA*]
+  CurrentVoiceRoom: string; // 0x0860 (0x0010) [FString]
+  PendingLoadout: FServerSetLoadoutParams; // 0x0870 (0x0058) [FServerSetLoadoutParams]
+  PossessionSteals: number; // 0x08c8 (0x0004) [int32]
+  PossessionDenials: number; // 0x08cc (0x0004) [int32]
+  PossessionClears: number; // 0x08d0 (0x0004) [int32]
+  BallDemolitionSaves: number; // 0x08d4 (0x0004) [int32]
+  CarDemolitions: number; // 0x08d8 (0x0004) [int32]
+  BallDemolitions: number; // 0x08dc (0x0004) [int32]
+  SelfDemolitions: number; // 0x08e0 (0x0004) [int32]
+  KeepUpDenials: number; // 0x08e4 (0x0004) [int32]
+  KeepUpClears: number; // 0x08e8 (0x0004) [int32]
+  KeepUpPossessions: number; // 0x08ec (0x0004) [int32]
+  EpicPUID: string; // 0x08f0 (0x0010) [FString]
+  ValidationFailedClearedSlots: UProductSlot_TA[]; // 0x0900 (0x0010) [TArray<UProductSlot_TA*>]
+  DemoSelectionData: FDemoSpawnSelectionData; // 0x0910 (0x0030) [FDemoSpawnSelectionData]
+  AnonymizedName: string; // 0x0940 (0x0010) [FString]
+  __EventGameEventChanged__Delegate: FScriptDelegate; // 0x0950 (0x0018) [FScriptDelegate]
+  __EventStatEvent__Delegate: FScriptDelegate; // 0x0968 (0x0018) [FScriptDelegate]
+  __EventRequestOverrideLoadout__Delegate: FScriptDelegate; // 0x0980 (0x0018) [FScriptDelegate]
+  __EventSelectedLoadout__Delegate: FScriptDelegate; // 0x0998 (0x0018) [FScriptDelegate]
+  __EventVanityChanged__Delegate: FScriptDelegate; // 0x09b0 (0x0018) [FScriptDelegate]
+  __EventStatTickerMessage__Delegate: FScriptDelegate; // 0x09c8 (0x0018) [FScriptDelegate]
+  __EventInvalidPsyonixID__Delegate: FScriptDelegate; // 0x09e0 (0x0018) [FScriptDelegate]
+  __EventReadyChanged__Delegate: FScriptDelegate; // 0x09f8 (0x0018) [FScriptDelegate]
+  __EventCarPreUpdate__Delegate: FScriptDelegate; // 0x0a10 (0x0018) [FScriptDelegate]
+  __EventCarSet__Delegate: FScriptDelegate; // 0x0a28 (0x0018) [FScriptDelegate]
+  __EventSplitScreenStatusChanged__Delegate: FScriptDelegate; // 0x0a40 (0x0018) [FScriptDelegate]
+  __EventDistracted__Delegate: FScriptDelegate; // 0x0a58 (0x0018) [FScriptDelegate]
+  __EventPersistentCameraSet__Delegate: FScriptDelegate; // 0x0a70 (0x0018) [FScriptDelegate]
+  __EventCameraChanged__Delegate: FScriptDelegate; // 0x0a88 (0x0018) [FScriptDelegate]
+  __EventPartyLeaderChanged__Delegate: FScriptDelegate; // 0x0aa0 (0x0018) [FScriptDelegate]
+  __EventScorePoint__Delegate: FScriptDelegate; // 0x0ab8 (0x0018) [FScriptDelegate]
+  __EventWonMVP__Delegate: FScriptDelegate; // 0x0ad0 (0x0018) [FScriptDelegate]
+  __EventStatTitlesSet__Delegate: FScriptDelegate; // 0x0ae8 (0x0018) [FScriptDelegate]
+  __EventPawnTypeChanged__Delegate: FScriptDelegate; // 0x0b00 (0x0018) [FScriptDelegate]
+  __EventCommittedProductStats__Delegate: FScriptDelegate; // 0x0b18 (0x0018) [FScriptDelegate]
+  __EventCommittedMatchStats__Delegate: FScriptDelegate; // 0x0b30 (0x0018) [FScriptDelegate]
+  __EventStartVoteToForfeitDisabledChanged__Delegate: FScriptDelegate; // 0x0b48 (0x0018) [FScriptDelegate]
+  __EventTitleChanged__Delegate: FScriptDelegate; // 0x0b60 (0x0018) [FScriptDelegate]
+  __EventSkillTierChanged__Delegate: FScriptDelegate; // 0x0b78 (0x0018) [FScriptDelegate]
+  __EventServerChangeTeamFailed__Delegate: FScriptDelegate; // 0x0b90 (0x0018) [FScriptDelegate]
+  __EventScoredGoal__Delegate: FScriptDelegate; // 0x0ba8 (0x0018) [FScriptDelegate]
+  __EventReplacingBotChanged__Delegate: FScriptDelegate; // 0x0bc0 (0x0018) [FScriptDelegate]
+  __EventMatchAdmin__Delegate: FScriptDelegate; // 0x0bd8 (0x0018) [FScriptDelegate]
+  __EventServerUnlockedAchievement__Delegate: FScriptDelegate; // 0x0bf0 (0x0018) [FScriptDelegate]
+  __EventSpectatorShortcutChanged__Delegate: FScriptDelegate; // 0x0c08 (0x0018) [FScriptDelegate]
+  __EventOwnerChanged__Delegate: FScriptDelegate; // 0x0c20 (0x0018) [FScriptDelegate]
+  __EventQuitSeverityChanged__Delegate: FScriptDelegate; // 0x0c38 (0x0018) [FScriptDelegate]
+  __EventIdleBannedChanged__Delegate: FScriptDelegate; // 0x0c50 (0x0018) [FScriptDelegate]
+  __EventCurrentVoiceRoomChanged__Delegate: FScriptDelegate; // 0x0c68 (0x0018) [FScriptDelegate]
+  __EventPlayerGoalExplosionChanged__Delegate: FScriptDelegate; // 0x0c80 (0x0018) [FScriptDelegate]
+  __EventInfectedStatusSet__Delegate: FScriptDelegate; // 0x0c98 (0x0018) [FScriptDelegate]
+  __EventNewlyInfected__Delegate: FScriptDelegate; // 0x0cb0 (0x0018) [FScriptDelegate]
+  __EventDemoSpawnSelectionDataChanged__Delegate: FScriptDelegate; // 0x0cc8 (0x0018) [FScriptDelegate]
+  __EventAnonymizationSettingsChanged__Delegate: FScriptDelegate; // 0x0ce0 (0x0018) [FScriptDelegate]
+  __bStayAsPartyActive__ChangeNotify: FScriptDelegate; // 0x0cf8 (0x0018) [FScriptDelegate]
+  __ReplicatedWorstNetQualityBeyondLatency__ChangeNotify: FScriptDelegate; // 0x0d10 (0x0018) [FScriptDelegate]
+  __ClubID__ChangeNotify: FScriptDelegate; // 0x0d28 (0x0018) [FScriptDelegate]
 };
 
 // PRI_TA Functions
@@ -40042,6 +40575,7 @@ export type UPRI_TA = UPRI_X & {
 // UpdateCarLocalPlayer(): void
 // OnReplacingBotPRIChanged(): void
 // OnTeamChanged(): void
+// HasPlayerTeam(): boolean
 // ClearBotReplacement(): void
 // SetBotReplacement(C: UAIController_TA): void
 // ReportCheater(Reason: string): void
@@ -40052,6 +40586,10 @@ export type UPRI_TA = UPRI_X & {
 // ServerVoteToForfeit(): void
 // GetOnlineGameBase(): UOnlineGame_Base_X
 // GetOnlineGame(): UOnlineGame_X
+// ShouldAnonymize(ViewerPRI: UPRI_TA): boolean
+// SetAnonymizationSettings(bInAnonymizeToTeammates: boolean, bInAnonymizeToOpponents: boolean): void
+// ServerSetAnonymizationSettings(bInAnonymizeToTeammates: boolean, bInAnonymizeToOpponents: boolean): void
+// ServerSetAutoSkipGoalReplay(bValue: boolean): void
 // SetUserCarPreferences(NewDodgeThreshold: number, NewSteeringSensitivity: number, NewAirControlSensitivity: number): void
 // ServerSetUserCarPreferences(NewDodgeThreshold: number, NewSteeringSensitivity: number, NewAirControlSensitivity: number): void
 // ValidateUserInt(Reason: string, NewValue: number, Min: number, Max: number): number
@@ -40125,6 +40663,11 @@ export type UPRI_TA = UPRI_X & {
 // UpdateFromLoadout(): void
 // UpdateUserCarPreferences(AirControlComponent: UCarComponent_AirControl_TA): void
 // HandleAirControl(AirControlComp: UCarComponent_AirControl_TA): void
+// OnDemoSelectionDataChanged(): void
+// ClearDemoSelectionData(): void
+// SetDemoSelectionTimeLeft(TimeLeft: number): void
+// SetDemoSelectionState(SelectionState: EDemoSelectionState): void
+// SetDemoSpawnPreference(Preference: EDemoSpawnPreference): void
 // SetCar(NewCar: UCar_TA): void
 // IsClientPlayerPRI(): boolean
 // IsLocalPlayerPRI(): boolean
@@ -40141,6 +40684,7 @@ export type UPRI_TA = UPRI_X & {
 // Deprecated_IsLoadoutSet(): boolean
 // Deprecated_OnLoadoutOnlineSet(): void
 // Deprecated_OnLoadoutSet(): void
+// SetTestDataOnlineProducts(Products: UOnlineProduct_TA[]): void
 // SetTestLoadout(NewLoadout: FLoadoutData): void
 // GetMatchCompleteLoadout(): FOnlineProductData[]
 // GetLoadoutSlotForCurrentTeam(InSlotIndex: number): number
@@ -40209,6 +40753,8 @@ export type UPRI_TA = UPRI_X & {
 // OnInfectedStatusSet(ViralActor: UViralItemActor_TA): void
 // OnRep_ViralItemActor(): void
 // ReplicatedEvent(VarName: FName): void
+// EventAnonymizationSettingsChanged(PRI: UPRI_TA): void
+// EventDemoSpawnSelectionDataChanged(PRI: UPRI_TA): void
 // EventNewlyInfected(PRI: UPRI_TA, InfectedBy: UPRI_TA): void
 // EventInfectedStatusSet(PRI: UPRI_TA): void
 // EventPlayerGoalExplosionChanged(PRI: UPRI_TA): void
@@ -40249,7 +40795,7 @@ export type UPRI_TA = UPRI_X & {
 
 /**
  * Class TAGame.PRI_Breakout_TA
- * Size: 0x0CC8
+ * Size: 0x0D40
  * Extends: UPRI_TA
  */
 export type UPRI_Breakout_TA = UPRI_TA & {};
@@ -40259,7 +40805,7 @@ export type UPRI_Breakout_TA = UPRI_TA & {};
 
 /**
  * Class TAGame.PRI_KeepUp_TA
- * Size: 0x0CC8
+ * Size: 0x0D40
  * Extends: UPRI_TA
  */
 export type UPRI_KeepUp_TA = UPRI_TA & {};
@@ -40269,31 +40815,31 @@ export type UPRI_KeepUp_TA = UPRI_TA & {};
 
 /**
  * Class TAGame.PRI_KnockOut_TA
- * Size: 0x0D68
+ * Size: 0x0DE0
  * Extends: UPRI_TA
  */
 export type UPRI_KnockOut_TA = UPRI_TA & {
-  GameEvent_KO: UGameEvent_KnockOut_TA; // 0x0cc8 (0x0008) [UGameEvent_KnockOut_TA*]
-  bShowMatchPlacement: boolean; // 0x0cd0 (0x0004) [bool : 0x1]
-  bIsEliminated: boolean; // 0x0cd0 (0x0004) [bool : 0x2]
-  bIsActiveMVP: boolean; // 0x0cd0 (0x0004) [bool : 0x4]
-  Knockouts: number; // 0x0cd4 (0x0004) [int32]
-  StackedKnockoutCount: number; // 0x0cd8 (0x0004) [int32]
-  LastKnockoutTime: number; // 0x0cdc (0x0004) [float]
-  MaxKnockoutStackTime: number; // 0x0ce0 (0x0004) [float]
-  KnockoutAssists: number; // 0x0ce4 (0x0004) [int32]
-  KnockoutDeaths: number; // 0x0ce8 (0x0004) [int32]
-  DamageCaused: number; // 0x0cec (0x0004) [int32]
-  Hits: number; // 0x0cf0 (0x0004) [int32]
-  Grabs: number; // 0x0cf4 (0x0004) [int32]
-  Blocks: number; // 0x0cf8 (0x0004) [int32]
-  EliminationOrder: number; // 0x0cfc (0x0004) [int32]
-  MatchPlacement: number; // 0x0d00 (0x0004) [int32]
-  SpectateDelaySeconds: number; // 0x0d04 (0x0004) [int32]
-  __EventKnockedOut__Delegate: FScriptDelegate; // 0x0d08 (0x0018) [FScriptDelegate]
-  __EventActiveMVPChanged__Delegate: FScriptDelegate; // 0x0d20 (0x0018) [FScriptDelegate]
-  __EventLivesChanged__Delegate: FScriptDelegate; // 0x0d38 (0x0018) [FScriptDelegate]
-  __EventEliminated__Delegate: FScriptDelegate; // 0x0d50 (0x0018) [FScriptDelegate]
+  GameEvent_KO: UGameEvent_KnockOut_TA; // 0x0d40 (0x0008) [UGameEvent_KnockOut_TA*]
+  bShowMatchPlacement: boolean; // 0x0d48 (0x0004) [bool : 0x1]
+  bIsEliminated: boolean; // 0x0d48 (0x0004) [bool : 0x2]
+  bIsActiveMVP: boolean; // 0x0d48 (0x0004) [bool : 0x4]
+  Knockouts: number; // 0x0d4c (0x0004) [int32]
+  StackedKnockoutCount: number; // 0x0d50 (0x0004) [int32]
+  LastKnockoutTime: number; // 0x0d54 (0x0004) [float]
+  MaxKnockoutStackTime: number; // 0x0d58 (0x0004) [float]
+  KnockoutAssists: number; // 0x0d5c (0x0004) [int32]
+  KnockoutDeaths: number; // 0x0d60 (0x0004) [int32]
+  DamageCaused: number; // 0x0d64 (0x0004) [int32]
+  Hits: number; // 0x0d68 (0x0004) [int32]
+  Grabs: number; // 0x0d6c (0x0004) [int32]
+  Blocks: number; // 0x0d70 (0x0004) [int32]
+  EliminationOrder: number; // 0x0d74 (0x0004) [int32]
+  MatchPlacement: number; // 0x0d78 (0x0004) [int32]
+  SpectateDelaySeconds: number; // 0x0d7c (0x0004) [int32]
+  __EventKnockedOut__Delegate: FScriptDelegate; // 0x0d80 (0x0018) [FScriptDelegate]
+  __EventActiveMVPChanged__Delegate: FScriptDelegate; // 0x0d98 (0x0018) [FScriptDelegate]
+  __EventLivesChanged__Delegate: FScriptDelegate; // 0x0db0 (0x0018) [FScriptDelegate]
+  __EventEliminated__Delegate: FScriptDelegate; // 0x0dc8 (0x0018) [FScriptDelegate]
 };
 
 // PRI_KnockOut_TA Functions
@@ -40331,7 +40877,7 @@ export type UPRI_KnockOut_TA = UPRI_TA & {
 
 /**
  * Class TAGame.PRI_Possession_TA
- * Size: 0x0CC8
+ * Size: 0x0D40
  * Extends: UPRI_TA
  */
 export type UPRI_Possession_TA = UPRI_TA & {};
@@ -42396,6 +42942,7 @@ export type UProductsHashSave_TA = UJsonSaveObject_TA & {
 // __ProductsHashSave_TA__OnLoad_0x1(InstanceID: FProductInstanceID): FProductHashID
 // __ProductsHashSave_TA__UpdateInstanceIDs_0x1(P: FProductHashSource): FProductInstanceID
 // __HashIDs__ChangeNotifyFunc(): void
+// GetProducts(): FProductInstanceID[]
 // UpdateInstanceIDs(HashID: FProductHashID, SaveData: USaveData_TA, bSaved: boolean): void
 // OnOnlineProductRemoved(OnlineProduct: UOnlineProduct_TA, SaveData: USaveData_TA): void
 // OnNewOnlineProduct(OnlineProduct: UOnlineProduct_TA): void
@@ -43053,7 +43600,7 @@ export type UProfile_TA = UObject & {
 
 /**
  * Class TAGame.ProfileCameraSave_TA
- * Size: 0x0160
+ * Size: 0x0168
  * Extends: UJsonSaveObject_TA
  */
 export type UProfileCameraSave_TA = UJsonSaveObject_TA & {
@@ -43070,19 +43617,24 @@ export type UProfileCameraSave_TA = UJsonSaveObject_TA & {
   bUseBallCamIndicator: boolean; // 0x0118 (0x0004) [bool : 0x100]
   bEnableCameraShake: boolean; // 0x0118 (0x0004) [bool : 0x200]
   bDirectorAllowCameraBlending: boolean; // 0x0118 (0x0004) [bool : 0x400]
+  bReplayScorerView: boolean; // 0x0118 (0x0004) [bool : 0x800]
   CameraSettingsPreset: ECameraSettingsPreset; // 0x011c (0x0001) [ECameraSettingsPreset]
   DirectorMinChangeTeamFocusTime: number; // 0x0120 (0x0004) [float]
   DirectorMinSameTeamFocusTime: number; // 0x0124 (0x0004) [float]
   MaxProximityDistance: number; // 0x0128 (0x0004) [float]
   PrespawnLerpSpeed: number; // 0x012c (0x0004) [float]
-  __bToggleSecondaryCamera__ChangeNotify: FScriptDelegate; // 0x0130 (0x0018) [FScriptDelegate]
-  __MaxProximityDistance__ChangeNotify: FScriptDelegate; // 0x0148 (0x0018) [FScriptDelegate]
+  DemoSelectLerpTime: number; // 0x0130 (0x0004) [float]
+  DemoSelectChangeSpawnTime: number; // 0x0134 (0x0004) [float]
+  __bToggleSecondaryCamera__ChangeNotify: FScriptDelegate; // 0x0138 (0x0018) [FScriptDelegate]
+  __MaxProximityDistance__ChangeNotify: FScriptDelegate; // 0x0150 (0x0018) [FScriptDelegate]
 };
 
 // ProfileCameraSave_TA Functions
+// __ProfileCameraSave_TA__GetVersionDelegates_0x1(SaveObj: UObject): void
 // __MaxProximityDistance__ChangeNotifyFunc(): void
 // __bToggleSecondaryCamera__ChangeNotifyFunc(): void
-// OnLoad(): void
+// GetVersionDelegates(VersionDelegates: FScriptDelegate[]): void
+// OnCreate(): void
 
 /**
  * Class TAGame.ProfileControlsSave_TA
@@ -43131,7 +43683,7 @@ export type UProfileGamepadSave_TA = UJsonSaveObject_TA & {
 
 /**
  * Class TAGame.ProfileGameplaySave_TA
- * Size: 0x0150
+ * Size: 0x0188
  * Extends: UJsonSaveObject_TA
  */
 export type UProfileGameplaySave_TA = UJsonSaveObject_TA & {
@@ -43139,26 +43691,36 @@ export type UProfileGameplaySave_TA = UJsonSaveObject_TA & {
   bTeamColoredBoostMeter: boolean; // 0x00d0 (0x0004) [bool : 0x2]
   bDisableDivisions: boolean; // 0x00d0 (0x0004) [bool : 0x4]
   bDisableDivisionsSports: boolean; // 0x00d0 (0x0004) [bool : 0x8]
-  bAllowTargetedNews_Experience: boolean; // 0x00d0 (0x0004) [bool : 0x10]
-  bAllowTargetedNews_Marketing: boolean; // 0x00d0 (0x0004) [bool : 0x20]
-  bAllowTargetedNews_Functional: boolean; // 0x00d0 (0x0004) [bool : 0x40]
-  bHideHUD: boolean; // 0x00d0 (0x0004) [bool : 0x80]
+  bAnonymizeTeammates: boolean; // 0x00d0 (0x0004) [bool : 0x10]
+  bAnonymizeOpponents: boolean; // 0x00d0 (0x0004) [bool : 0x20]
+  bHideMatchmakingStatus: boolean; // 0x00d0 (0x0004) [bool : 0x40]
+  bAllowTargetedNews_Experience: boolean; // 0x00d0 (0x0004) [bool : 0x80]
+  bAllowTargetedNews_Marketing: boolean; // 0x00d0 (0x0004) [bool : 0x100]
+  bAllowTargetedNews_Functional: boolean; // 0x00d0 (0x0004) [bool : 0x200]
+  bHideHUD: boolean; // 0x00d0 (0x0004) [bool : 0x400]
+  bAutoSkipGoalReplay: boolean; // 0x00d0 (0x0004) [bool : 0x800]
   HUDMessageThreshold: EHUDMessageLevel; // 0x00d4 (0x0001) [EHUDMessageLevel]
   RankInfoDisplayType: ERankInfoDisplayType; // 0x00d5 (0x0001) [ERankInfoDisplayType]
   NameplateMode: ENameplateMode; // 0x00d6 (0x0001) [ENameplateMode]
-  VisibleMMRPreference: EVisibleMMRPreference; // 0x00d7 (0x0001) [EVisibleMMRPreference]
-  TARGETING_EXPERIENCE: string; // 0x00d8 (0x0010) [FString]
-  TARGETING_MARKETING: string; // 0x00e8 (0x0010) [FString]
-  TARGETING_FUNCTIONAL: string; // 0x00f8 (0x0010) [FString]
-  __bMetric__ChangeNotify: FScriptDelegate; // 0x0108 (0x0018) [FScriptDelegate]
-  __bAllowTargetedNews_Experience__ChangeNotify: FScriptDelegate; // 0x0120 (0x0018) [FScriptDelegate]
-  __bAllowTargetedNews_Marketing__ChangeNotify: FScriptDelegate; // 0x0138 (0x0018) [FScriptDelegate]
+  AnonymizeOwnName: EAnonymizationTargets; // 0x00d7 (0x0001) [EAnonymizationTargets]
+  VisibleMMRPreference: EVisibleMMRPreference; // 0x00d8 (0x0001) [EVisibleMMRPreference]
+  MaxMatchmakingDelay: number; // 0x00dc (0x0004) [float]
+  TARGETING_EXPERIENCE: string; // 0x00e0 (0x0010) [FString]
+  TARGETING_MARKETING: string; // 0x00f0 (0x0010) [FString]
+  TARGETING_FUNCTIONAL: string; // 0x0100 (0x0010) [FString]
+  __bMetric__ChangeNotify: FScriptDelegate; // 0x0110 (0x0018) [FScriptDelegate]
+  __bAnonymizeTeammates__ChangeNotify: FScriptDelegate; // 0x0128 (0x0018) [FScriptDelegate]
+  __bAnonymizeOpponents__ChangeNotify: FScriptDelegate; // 0x0140 (0x0018) [FScriptDelegate]
+  __bAllowTargetedNews_Experience__ChangeNotify: FScriptDelegate; // 0x0158 (0x0018) [FScriptDelegate]
+  __bAllowTargetedNews_Marketing__ChangeNotify: FScriptDelegate; // 0x0170 (0x0018) [FScriptDelegate]
 };
 
 // ProfileGameplaySave_TA Functions
 // __ProfileGameplaySave_TA__GetVersionDelegates_0x1(SaveObj: UObject): void
 // __bAllowTargetedNews_Marketing__ChangeNotifyFunc(): void
 // __bAllowTargetedNews_Experience__ChangeNotifyFunc(): void
+// __bAnonymizeOpponents__ChangeNotifyFunc(): void
+// __bAnonymizeTeammates__ChangeNotifyFunc(): void
 // __bMetric__ChangeNotifyFunc(): void
 // static GetMetricDefaultValue(): boolean
 // GetVersionDelegates(VersionDelegates: FScriptDelegate[]): void
@@ -43188,6 +43750,7 @@ export type UProfileLoadoutSave_TA = UJsonSaveObject_TA & {
 // __ProfileLoadoutSave_TA__GetVersionDelegates_0x1(SaveObj: UObject): void
 // __MusicStingerInstanceID__ChangeNotifyFunc(): void
 // __PlayerTitle__ChangeNotifyFunc(): void
+// GetProducts(): FProductInstanceID[]
 // GetAllLoadoutOnlineProducts(): FProductInstanceID[]
 // GetAllLoadoutProducts(): number[]
 // HandleOnlineProductEquipped(LoadoutSet: ULoadoutSet_TA, InstanceID: FProductInstanceID): void
@@ -43642,6 +44205,45 @@ export type URankedReconnectSave_TA = UJsonSaveObject_TA & {
 // SetRankedReconnect(Server: FActiveServerData, InPlaylistID: number): void
 
 /**
+ * Class TAGame.RBActorStatGraph_TA
+ * Size: 0x0110
+ * Extends: UStatGraph_TA
+ */
+export type URBActorStatGraph_TA = UStatGraph_TA & {
+  VehicleData: USampleHistory_TA; // 0x0090 (0x0008) [USampleHistory_TA*]
+  VehicleDataXY: USampleHistory_TA; // 0x0098 (0x0008) [USampleHistory_TA*]
+  VehicleDataZ: USampleHistory_TA; // 0x00a0 (0x0008) [USampleHistory_TA*]
+  BallData: USampleHistory_TA; // 0x00a8 (0x0008) [USampleHistory_TA*]
+  BallDataXY: USampleHistory_TA; // 0x00b0 (0x0008) [USampleHistory_TA*]
+  BallDataZ: USampleHistory_TA; // 0x00b8 (0x0008) [USampleHistory_TA*]
+  CarMin: number; // 0x00c0 (0x0004) [float]
+  CarMax: number; // 0x00c4 (0x0004) [float]
+  BallMin: number; // 0x00c8 (0x0004) [float]
+  BallMax: number; // 0x00cc (0x0004) [float]
+  CarBadValue: number; // 0x00d0 (0x0004) [float]
+  CarGoodValue: number; // 0x00d4 (0x0004) [float]
+  BallBadValue: number; // 0x00d8 (0x0004) [float]
+  BallGoodValue: number; // 0x00dc (0x0004) [float]
+  ToMph: number; // 0x00e0 (0x0004) [float]
+  ToKph: number; // 0x00e4 (0x0004) [float]
+  Ball: UBall_TA; // 0x00e8 (0x0008) [UBall_TA*]
+  GameplaySave: UProfileGameplaySave_TA; // 0x00f0 (0x0008) [UProfileGameplaySave_TA*]
+  PrimaryPC: UPlayerControllerBase_TA; // 0x00f8 (0x0008) [UPlayerControllerBase_TA*]
+  GameEvent: UGameEvent_TA; // 0x0100 (0x0008) [UGameEvent_TA*]
+  PrimaryOnlinePlayer: UOnlinePlayer_TA; // 0x0108 (0x0008) [UOnlinePlayer_TA*]
+};
+
+// RBActorStatGraph_TA Functions
+// GetSpeedScale(): number
+// UpdateSpeedScale(): void
+// UpdateGraphData(): void
+// HandleBallAdded(InBall: UBall_TA): void
+// HandleProfileGameplaySettingsLoaded(GameplaySettings: UProfileGameplaySave_TA): void
+// HandleProfileSet(InLocalPlayer: ULocalPlayer_TA): void
+// HandlePrimaryOnlinePlayer(): void
+// Construct(): void
+
+/**
  * Class TAGame.RBHistory_TA
  * Size: 0x00A0
  * Extends: UComponent
@@ -43680,12 +44282,14 @@ export type URecentPlayers_TA = UComponent & {
 };
 
 // RecentPlayers_TA Functions
-// __RecentPlayers_TA__UpdateFromOnline_0x2(L: FPlayerLoadoutData): boolean
+// __RecentPlayers_TA__UpdateFromOnline_0x4(L: FPlayerLoadoutData): boolean
+// __RecentPlayers_TA__UpdateFromOnline_0x3(C: FPersonaDataId): boolean
 // __RecentPlayers_TA__UpdateFromOnline_0x1(RP: FOnlineFriend): FPersonaDataId
 // __RecentPlayers_TA__SetPersonaSave_0x1(): void
 // __RecentPlayers_TA__OnRecentsChanged_0x1(G: FPlayerGameID): boolean
 // __ObservedLoadouts__ChangeNotifyFunc(): void
 // __RecentList__ChangeNotifyFunc(): void
+// RemoveRecentDuplicates(): void
 // AddPlayerInternal(Persona: UPersona_TA, VanityLoadout: UIVanityLoadout_TA): void
 // ShouldAddToRecentPlayerList(Persona: UPersona_TA, bIncludeFriends: boolean): boolean
 // OnRecentsChanged(): void
@@ -43919,7 +44523,7 @@ export type UReplayComponent_TA = UActorComponent & {
 
 /**
  * Class TAGame.ReplayDirector_TA
- * Size: 0x0410
+ * Size: 0x0418
  * Extends: UActor
  */
 export type UReplayDirector_TA = UActor & {
@@ -43943,35 +44547,37 @@ export type UReplayDirector_TA = UActor & {
   TimeBeforeHighlightReplay: number; // 0x02cc (0x0004) [float]
   LastScoredGoalTime: number; // 0x02d0 (0x0004) [float]
   Replay: UReplay_Soccar_TA; // 0x02d8 (0x0008) [UReplay_Soccar_TA*]
-  FocusCar: UActor; // 0x02e0 (0x0008) [UActor*]
-  FocusCarChangeTime: number; // 0x02e8 (0x0004) [float]
-  FocusBall: UActor; // 0x02f0 (0x0008) [UActor*]
-  BallTouches: FBallHitInfo[]; // 0x02f8 (0x0010) [TArray<FBallHitInfo>]
-  BallName: FName; // 0x0308 (0x0008) [FName]
-  ScoreTime: number; // 0x0310 (0x0004) [float]
-  ScoreHitIndex: number; // 0x0314 (0x0004) [int32]
-  GoalActorName: FName; // 0x0318 (0x0008) [FName]
-  ScoredGoal: UGoal_TA; // 0x0320 (0x0008) [UGoal_TA*]
-  bSlomo: boolean; // 0x0328 (0x0004) [bool : 0x1]
-  bReplicatedSlomo: boolean; // 0x0328 (0x0004) [bool : 0x2]
-  bSlomoForDefender: boolean; // 0x0328 (0x0004) [bool : 0x4]
-  bAutoSave: boolean; // 0x0328 (0x0004) [bool : 0x8]
-  FocusHitIndex: number; // 0x032c (0x0004) [int32]
-  FocusCars: FReplayFocusCar[]; // 0x0330 (0x0010) [TArray<FReplayFocusCar>]
-  FocusCarIdx: number; // 0x0340 (0x0004) [int32]
-  ReplayStartGameTime: number; // 0x0344 (0x0004) [float]
-  BallSpawnTime: number; // 0x0348 (0x0004) [float]
-  SoccarGame: UGameEvent_Soccar_TA; // 0x0350 (0x0008) [UGameEvent_Soccar_TA*]
-  ScoredOnTeam: number; // 0x0358 (0x0001) [uint8]
-  ScoreData: FReplayScoreData; // 0x0360 (0x0020) [FReplayScoreData]
-  PreviousScores: number; // 0x0380 (0x0008) [int32]
-  ForceCutToFocusActors: number; // 0x0388 (0x0004) [int32]
-  CameraConfig: UCameraConfig_TA; // 0x0390 (0x0008) [UCameraConfig_TA*]
-  __EventReplayFinished__Delegate: FScriptDelegate; // 0x0398 (0x0018) [FScriptDelegate]
-  __EventScoreDataChanged__Delegate: FScriptDelegate; // 0x03b0 (0x0018) [FScriptDelegate]
-  __EventAutoSaveChanged__Delegate: FScriptDelegate; // 0x03c8 (0x0018) [FScriptDelegate]
-  __EventFocusCarChanged__Delegate: FScriptDelegate; // 0x03e0 (0x0018) [FScriptDelegate]
-  __EventDataRecordingFinished__Delegate: FScriptDelegate; // 0x03f8 (0x0018) [FScriptDelegate]
+  ScorerCarActor: UActor; // 0x02e0 (0x0008) [UActor*]
+  FocusCar: UActor; // 0x02e8 (0x0008) [UActor*]
+  FocusCarChangeTime: number; // 0x02f0 (0x0004) [float]
+  FocusBall: UActor; // 0x02f8 (0x0008) [UActor*]
+  BallTouches: FBallHitInfo[]; // 0x0300 (0x0010) [TArray<FBallHitInfo>]
+  BallName: FName; // 0x0310 (0x0008) [FName]
+  ScoreTime: number; // 0x0318 (0x0004) [float]
+  ScoreHitIndex: number; // 0x031c (0x0004) [int32]
+  GoalActorName: FName; // 0x0320 (0x0008) [FName]
+  ScoredGoal: UGoal_TA; // 0x0328 (0x0008) [UGoal_TA*]
+  bSlomo: boolean; // 0x0330 (0x0004) [bool : 0x1]
+  bReplicatedSlomo: boolean; // 0x0330 (0x0004) [bool : 0x2]
+  bSlomoForDefender: boolean; // 0x0330 (0x0004) [bool : 0x4]
+  bAutoSave: boolean; // 0x0330 (0x0004) [bool : 0x8]
+  bReplayScorerView: boolean; // 0x0330 (0x0004) [bool : 0x10]
+  FocusHitIndex: number; // 0x0334 (0x0004) [int32]
+  FocusCars: FReplayFocusCar[]; // 0x0338 (0x0010) [TArray<FReplayFocusCar>]
+  FocusCarIdx: number; // 0x0348 (0x0004) [int32]
+  ReplayStartGameTime: number; // 0x034c (0x0004) [float]
+  BallSpawnTime: number; // 0x0350 (0x0004) [float]
+  SoccarGame: UGameEvent_Soccar_TA; // 0x0358 (0x0008) [UGameEvent_Soccar_TA*]
+  ScoredOnTeam: number; // 0x0360 (0x0001) [uint8]
+  ScoreData: FReplayScoreData; // 0x0368 (0x0020) [FReplayScoreData]
+  PreviousScores: number; // 0x0388 (0x0008) [int32]
+  ForceCutToFocusActors: number; // 0x0390 (0x0004) [int32]
+  CameraConfig: UCameraConfig_TA; // 0x0398 (0x0008) [UCameraConfig_TA*]
+  __EventReplayFinished__Delegate: FScriptDelegate; // 0x03a0 (0x0018) [FScriptDelegate]
+  __EventScoreDataChanged__Delegate: FScriptDelegate; // 0x03b8 (0x0018) [FScriptDelegate]
+  __EventAutoSaveChanged__Delegate: FScriptDelegate; // 0x03d0 (0x0018) [FScriptDelegate]
+  __EventFocusCarChanged__Delegate: FScriptDelegate; // 0x03e8 (0x0018) [FScriptDelegate]
+  __EventDataRecordingFinished__Delegate: FScriptDelegate; // 0x0400 (0x0018) [FScriptDelegate]
 };
 
 // ReplayDirector_TA Functions
@@ -43981,6 +44587,7 @@ export type UReplayDirector_TA = UActor & {
 // HandleReplayFinished(InReplay: UReplay_TA): void
 // ShouldSlomo(): boolean
 // UpdateSlomo(): void
+// FocusScorerActor(): void
 // UpdateFocusActors(): void
 // SetHighlightFocusActors(NewCar: UActor, NewBall: UActor, NewGoal: UGoal_TA): void
 // PlayRandomHighlight(): void
@@ -43992,6 +44599,9 @@ export type UReplayDirector_TA = UActor & {
 // SetSlomo(bNewSlomo: boolean, bForceChange: boolean): void
 // Tick(DeltaTime: number): void
 // Destroyed(): void
+// IsPlayingHighlights(): boolean
+// PlayCinematicLiveReplay(): boolean
+// IsInPlayingState(): boolean
 // GetReplayProxy(ReplayActorName: FName): UActor
 // GetReplayTimeSeconds(): number
 // SetFocusActors(NewCar: UActor, NewBall: UActor): void
@@ -44000,6 +44610,9 @@ export type UReplayDirector_TA = UActor & {
 // OnScoreDataChanged(): void
 // SetMatchHistoryData(bIsUnfinishedMatch: boolean): void
 // GoalScored(Ball: UBall_TA, Goal: UGoal_TA, ScoreIndex: number, AssistIndex: number): void
+// GetScorerCameraSettings(): FProfileCameraSettings
+// IsScorerLocalPlayer(): boolean
+// ToggleToScorerView(ToggleScorerViewState: boolean): void
 // HandleScoreUpdated(Team: UTeam_TA): void
 // HandleAllTeamsCreated(TeamGame: UGameEvent_Team_TA): void
 // PrepareForSavingReplay(): void
@@ -44257,6 +44870,7 @@ export type URLBot_Util_TA = UObject & {
 // RLBot_Util_TA Functions
 // __RLBot_Util_TA__Init_0x1(_: string): void
 // ReplayFileChanged(Path: string): void
+// GetPlayerPickupData(PlayerReplicationInfo: UPlayerReplicationInfo): FPlayerPickupData
 // GetSpectatorViewTarget(): UPlayerReplicationInfo
 // GetPlayerStats(PlayerReplicationInfo: UPlayerReplicationInfo): FPlayerStats
 // SetPaused(bPaused: boolean): void
@@ -44912,6 +45526,18 @@ export type URPC_DebugAddXP_TA = URPC_X & {
 // SetPlayerID(InPlayerID: FUniqueNetId): URPC_DebugAddXP_TA
 
 /**
+ * Class TAGame.RPC_DebugResetWorldCup26Country_TA
+ * Size: 0x0130
+ * Extends: URPC_X
+ */
+export type URPC_DebugResetWorldCup26Country_TA = URPC_X & {
+  PlayerID: FUniqueNetId; // 0x00e8 (0x0048) [FUniqueNetId]
+};
+
+// RPC_DebugResetWorldCup26Country_TA Functions
+// SetPlayerID(InPlayerID: FUniqueNetId): URPC_DebugResetWorldCup26Country_TA
+
+/**
  * Class TAGame.RPC_DebugSetXP_TA
  * Size: 0x0158
  * Extends: URPC_X
@@ -45222,6 +45848,29 @@ export type URPC_GetWallet_TA = URPC_X & {
 
 // RPC_GetWallet_TA Functions
 // SetPlayerID(InPlayerID: FUniqueNetId): URPC_GetWallet_TA
+
+/**
+ * Class TAGame.RPC_GetWorldCupEvent_TA
+ * Size: 0x0108
+ * Extends: URPC_X
+ */
+export type URPC_GetWorldCupEvent_TA = URPC_X & {
+  Country: string; // 0x00e8 (0x0010) [FString]
+  CurrentWinner: string; // 0x00f8 (0x0010) [FString]
+};
+
+/**
+ * Class TAGame.RPC_GetWorldCupPlayerCountries_TA
+ * Size: 0x0108
+ * Extends: URPC_X
+ */
+export type URPC_GetWorldCupPlayerCountries_TA = URPC_X & {
+  PlayerIds: FUniqueNetId[]; // 0x00e8 (0x0010) [TArray<FUniqueNetId>]
+  Players: FPlayerRepresentingTeamData[]; // 0x00f8 (0x0010) [TArray<FPlayerRepresentingTeamData>]
+};
+
+// RPC_GetWorldCupPlayerCountries_TA Functions
+// SetPlayerIDs(InPlayerIDs: FUniqueNetId[]): void
 
 /**
  * Class TAGame.RPC_MatchComplete_TA
@@ -45919,6 +46568,19 @@ export type URPC_SchematicsTradeIn_TA = URPC_X & {
 // SetSchematics(InSchematics: FSchematicResourceData[]): URPC_SchematicsTradeIn_TA
 // SetCrateID(InCrateID: FProductInstanceID): URPC_SchematicsTradeIn_TA
 // SetPlayerID(InPlayerID: FUniqueNetId): URPC_SchematicsTradeIn_TA
+
+/**
+ * Class TAGame.RPC_SetWorldCupCountry_TA
+ * Size: 0x0108
+ * Extends: URPC_X
+ */
+export type URPC_SetWorldCupCountry_TA = URPC_X & {
+  Country: string; // 0x00e8 (0x0010) [FString]
+  Products: FOnlineProductData[]; // 0x00f8 (0x0010) [TArray<FOnlineProductData>]
+};
+
+// RPC_SetWorldCupCountry_TA Functions
+// SetSelectedCountry(InSelectedCountry: string): void
 
 /**
  * Class TAGame.RPC_SubmitUserBugReport_TA
@@ -48638,18 +49300,19 @@ export type USettingsMenuConfig_TA = UOnlineConfig_X & {
 
 /**
  * Class TAGame.SettingsSnapshotManager_TA
- * Size: 0x00C0
+ * Size: 0x00D0
  * Extends: UObject
  */
 export type USettingsSnapshotManager_TA = UObject & {
   MetadataString: string; // 0x0060 (0x0010) [FString]
   Payload: string; // 0x0070 (0x0010) [FString]
-  Player: ULocalPlayer_TA; // 0x0080 (0x0008) [ULocalPlayer_TA*]
-  RegisteredSettings: UJsonSaveObject_TA[]; // 0x0088 (0x0010) [TArray<UJsonSaveObject_TA*>]
-  PayloadChecksum: number; // 0x0098 (0x0004) [int32]
-  schemaVersion: number; // 0x009c (0x0004) [int32]
-  Config: UOnlineStorageConfig_TA; // 0x00a0 (0x0008) [UOnlineStorageConfig_TA*]
-  __EventSettingsSnapshotUpdated__Delegate: FScriptDelegate; // 0x00a8 (0x0018) [FScriptDelegate]
+  Products: string; // 0x0080 (0x0010) [FString]
+  Player: ULocalPlayer_TA; // 0x0090 (0x0008) [ULocalPlayer_TA*]
+  RegisteredSettings: UJsonSaveObject_TA[]; // 0x0098 (0x0010) [TArray<UJsonSaveObject_TA*>]
+  PayloadChecksum: number; // 0x00a8 (0x0004) [int32]
+  schemaVersion: number; // 0x00ac (0x0004) [int32]
+  Config: UOnlineStorageConfig_TA; // 0x00b0 (0x0008) [UOnlineStorageConfig_TA*]
+  __EventSettingsSnapshotUpdated__Delegate: FScriptDelegate; // 0x00b8 (0x0018) [FScriptDelegate]
 };
 
 // SettingsSnapshotManager_TA Functions
@@ -48658,6 +49321,8 @@ export type USettingsSnapshotManager_TA = UObject & {
 // HandleSaveManagerDataLoaded(InSaveGameManager: USaveGameManager_TA, SaveData: USaveData_TA, DataLoadError: UError): void
 // FillRegisteredSettings(NewObject: UJsonSaveObject_TA): void
 // GeneratePayload(): boolean
+// FillProducts(): void
+// GetProducts(): FProductInstanceID[]
 // FillMetadataString(): void
 // AreSettingsSynced(OnlineSettings: string): boolean
 // GetJsonPayload(): string
@@ -48951,14 +49616,13 @@ export type UShopsService_PsyNet_TA = UShopsService_TA & {};
 
 /**
  * Class TAGame.ShopTabs_TA
- * Size: 0x0094
+ * Size: 0x0090
  * Extends: UComponent
  */
 export type UShopTabs_TA = UComponent & {
   Config: UShopTabsConfig_TA; // 0x0070 (0x0008) [UShopTabsConfig_TA*]
   LoadedMtx: ULoadedMtxCatalog_TA; // 0x0078 (0x0008) [ULoadedMtxCatalog_TA*]
   EsportsLabel: string; // 0x0080 (0x0010) [FString]
-  MaxTabs: number; // 0x0090 (0x0004) [int32]
 };
 
 // ShopTabs_TA Functions
@@ -49453,20 +50117,20 @@ export type USpawnPointGroup_TA = UObject & {
 
 /**
  * Class TAGame.SpecialAttachment_TA
- * Size: 0x07F0
+ * Size: 0x07F8
  * Extends: URBActor_TA
  */
 export type USpecialAttachment_TA = URBActor_TA & {
-  Offset: FVector; // 0x07b8 (0x000c) [FVector]
-  StaticMesh: UStaticMeshComponent; // 0x07c8 (0x0008) [UStaticMeshComponent*]
-  BallHitMultiplier: number; // 0x07d0 (0x0004) [float]
-  CarHitMultiplier: number; // 0x07d4 (0x0004) [float]
-  CarHitVerticalMultiplier: number; // 0x07d8 (0x0004) [float]
-  CarHitTorque: number; // 0x07dc (0x0004) [float]
-  bUseCarsBump: boolean; // 0x07e0 (0x0004) [bool : 0x1]
-  bDemolishOnHit: boolean; // 0x07e0 (0x0004) [bool : 0x2]
-  bDemolishTeam: boolean; // 0x07e0 (0x0004) [bool : 0x4]
-  AttachedCar: UCar_TA; // 0x07e8 (0x0008) [UCar_TA*]
+  Offset: FVector; // 0x07c0 (0x000c) [FVector]
+  StaticMesh: UStaticMeshComponent; // 0x07d0 (0x0008) [UStaticMeshComponent*]
+  BallHitMultiplier: number; // 0x07d8 (0x0004) [float]
+  CarHitMultiplier: number; // 0x07dc (0x0004) [float]
+  CarHitVerticalMultiplier: number; // 0x07e0 (0x0004) [float]
+  CarHitTorque: number; // 0x07e4 (0x0004) [float]
+  bUseCarsBump: boolean; // 0x07e8 (0x0004) [bool : 0x1]
+  bDemolishOnHit: boolean; // 0x07e8 (0x0004) [bool : 0x2]
+  bDemolishTeam: boolean; // 0x07e8 (0x0004) [bool : 0x4]
+  AttachedCar: UCar_TA; // 0x07f0 (0x0008) [UCar_TA*]
 };
 
 // SpecialAttachment_TA Functions
@@ -49497,7 +50161,7 @@ export type USpecialEditionDatabase_TA = UObject & {
 
 /**
  * Class TAGame.SpecialEvent_TA
- * Size: 0x0200
+ * Size: 0x0208
  * Extends: UObject
  */
 export type USpecialEvent_TA = UObject & {
@@ -49531,9 +50195,10 @@ export type USpecialEvent_TA = UObject & {
   LogoImage: UTexture; // 0x01a8 (0x0008) [UTexture*]
   EventState: ESpecialEventState; // 0x01b0 (0x0001) [ESpecialEventState]
   SecondsRemaining: number; // 0x01b4 (0x0004) [int32]
-  __CurrencyID__ChangeNotify: FScriptDelegate; // 0x01b8 (0x0018) [FScriptDelegate]
-  __CurrencyImage__ChangeNotify: FScriptDelegate; // 0x01d0 (0x0018) [FScriptDelegate]
-  __CurrencyImageLarge__ChangeNotify: FScriptDelegate; // 0x01e8 (0x0018) [FScriptDelegate]
+  bIsTargetedChallengeEvent: boolean; // 0x01b8 (0x0004) [bool : 0x1]
+  __CurrencyID__ChangeNotify: FScriptDelegate; // 0x01c0 (0x0018) [FScriptDelegate]
+  __CurrencyImage__ChangeNotify: FScriptDelegate; // 0x01d8 (0x0018) [FScriptDelegate]
+  __CurrencyImageLarge__ChangeNotify: FScriptDelegate; // 0x01f0 (0x0018) [FScriptDelegate]
 };
 
 // SpecialEvent_TA Functions
@@ -49545,6 +50210,7 @@ export type USpecialEvent_TA = UObject & {
 // __CurrencyImageLarge__ChangeNotifyFunc(): void
 // __CurrencyImage__ChangeNotifyFunc(): void
 // __CurrencyID__ChangeNotifyFunc(): void
+// IsEventActive(): boolean
 // UpdateEventStatus(): void
 // GetSecondsRemaining(): number
 // GetState(): ESpecialEventState
@@ -49585,7 +50251,7 @@ export type USpecialEventErrors_TA = UErrorList & {
 
 /**
  * Class TAGame.SpecialPickup_TA
- * Size: 0x0390
+ * Size: 0x0398
  * Extends: UCarComponent_TA
  */
 export type USpecialPickup_TA = UCarComponent_TA & {
@@ -49605,8 +50271,9 @@ export type USpecialPickup_TA = UCarComponent_TA & {
   ShakeComp: UShakeComponent_X; // 0x0350 (0x0008) [UShakeComponent_X*]
   PickupSlot: number; // 0x0358 (0x0004) [int32]
   CooldownSeconds: number; // 0x035c (0x0004) [int32]
-  __EventActivated__Delegate: FScriptDelegate; // 0x0360 (0x0018) [FScriptDelegate]
-  __EventDeactivated__Delegate: FScriptDelegate; // 0x0378 (0x0018) [FScriptDelegate]
+  PickupStatEvent: UStatEvent_TA; // 0x0360 (0x0008) [UStatEvent_TA*]
+  __EventActivated__Delegate: FScriptDelegate; // 0x0368 (0x0018) [FScriptDelegate]
+  __EventDeactivated__Delegate: FScriptDelegate; // 0x0380 (0x0018) [FScriptDelegate]
 };
 
 // SpecialPickup_TA Functions
@@ -49638,12 +50305,12 @@ export type USpecialPickup_TA = UCarComponent_TA & {
 
 /**
  * Class TAGame.SpecialPickup_Attachment_TA
- * Size: 0x03A0
+ * Size: 0x03A8
  * Extends: USpecialPickup_TA
  */
 export type USpecialPickup_Attachment_TA = USpecialPickup_TA & {
-  AttachmentArchetype: USpecialAttachment_TA; // 0x0390 (0x0008) [USpecialAttachment_TA*]
-  Attachment: USpecialAttachment_TA; // 0x0398 (0x0008) [USpecialAttachment_TA*]
+  AttachmentArchetype: USpecialAttachment_TA; // 0x0398 (0x0008) [USpecialAttachment_TA*]
+  Attachment: USpecialAttachment_TA; // 0x03a0 (0x0008) [USpecialAttachment_TA*]
 };
 
 // SpecialPickup_Attachment_TA Functions
@@ -49652,21 +50319,21 @@ export type USpecialPickup_Attachment_TA = USpecialPickup_TA & {
 
 /**
  * Class TAGame.SpecialPickup_Targeted_TA
- * Size: 0x03C8
+ * Size: 0x03D0
  * Extends: USpecialPickup_TA
  */
 export type USpecialPickup_Targeted_TA = USpecialPickup_TA & {
-  bCanTargetBall: boolean; // 0x0390 (0x0004) [bool : 0x1]
-  bCanTargetCars: boolean; // 0x0390 (0x0004) [bool : 0x2]
-  bCanTargetEnemyCars: boolean; // 0x0390 (0x0004) [bool : 0x4]
-  bCanTargetTeamCars: boolean; // 0x0390 (0x0004) [bool : 0x8]
-  bUseDirectionalTargeting: boolean; // 0x0390 (0x0004) [bool : 0x10]
-  bRequireTrace: boolean; // 0x0390 (0x0004) [bool : 0x20]
-  Range: number; // 0x0394 (0x0004) [float]
-  DirectionalTargetingAccuracy: number; // 0x0398 (0x0004) [float]
-  ClientTarget: URBActor_TA; // 0x03a0 (0x0008) [URBActor_TA*]
-  Targeted: URBActor_TA; // 0x03a8 (0x0008) [URBActor_TA*]
-  __EventNewTarget__Delegate: FScriptDelegate; // 0x03b0 (0x0018) [FScriptDelegate]
+  bCanTargetBall: boolean; // 0x0398 (0x0004) [bool : 0x1]
+  bCanTargetCars: boolean; // 0x0398 (0x0004) [bool : 0x2]
+  bCanTargetEnemyCars: boolean; // 0x0398 (0x0004) [bool : 0x4]
+  bCanTargetTeamCars: boolean; // 0x0398 (0x0004) [bool : 0x8]
+  bUseDirectionalTargeting: boolean; // 0x0398 (0x0004) [bool : 0x10]
+  bRequireTrace: boolean; // 0x0398 (0x0004) [bool : 0x20]
+  Range: number; // 0x039c (0x0004) [float]
+  DirectionalTargetingAccuracy: number; // 0x03a0 (0x0004) [float]
+  ClientTarget: URBActor_TA; // 0x03a8 (0x0008) [URBActor_TA*]
+  Targeted: URBActor_TA; // 0x03b0 (0x0008) [URBActor_TA*]
+  __EventNewTarget__Delegate: FScriptDelegate; // 0x03b8 (0x0018) [FScriptDelegate]
 };
 
 // SpecialPickup_Targeted_TA Functions
@@ -49683,60 +50350,60 @@ export type USpecialPickup_Targeted_TA = USpecialPickup_TA & {
 
 /**
  * Class TAGame.SpecialPickup_Spring_TA
- * Size: 0x0570
+ * Size: 0x0578
  * Extends: USpecialPickup_Targeted_TA
  */
 export type USpecialPickup_Spring_TA = USpecialPickup_Targeted_TA & {
-  Force: number; // 0x03c8 (0x0004) [float]
-  VerticalForce: number; // 0x03cc (0x0004) [float]
-  Torque: FVector; // 0x03d0 (0x000c) [FVector]
-  bApplyRelativeForce: boolean; // 0x03dc (0x0004) [bool : 0x1]
-  bApplyConstantForce: boolean; // 0x03dc (0x0004) [bool : 0x2]
-  bBreakConstantForceWithHit: boolean; // 0x03dc (0x0004) [bool : 0x4]
-  bApplyRelativeConstantForce: boolean; // 0x03dc (0x0004) [bool : 0x8]
-  bInstant: boolean; // 0x03dc (0x0004) [bool : 0x10]
-  bFollowAfterHit: boolean; // 0x03dc (0x0004) [bool : 0x20]
-  bSpringed: boolean; // 0x03dc (0x0004) [bool : 0x40]
-  RelativeForceCurve: FInterpCurveFloat; // 0x03e0 (0x0018) [FInterpCurveFloat]
-  RelativeForceNormalDirection: number; // 0x03f8 (0x0004) [float]
-  MaxSpringLength: number; // 0x03fc (0x0004) [float]
-  ConstantForce: number; // 0x0400 (0x0004) [float]
-  RelativeConstantForceCurve: FInterpCurveFloat; // 0x0408 (0x0018) [FInterpCurveFloat]
-  SpringLengthCurve: FInterpCurveFloat; // 0x0420 (0x0018) [FInterpCurveFloat]
-  FromOffset: FVector; // 0x0438 (0x000c) [FVector]
-  SpringMesh: UStaticMesh; // 0x0448 (0x0008) [UStaticMesh*]
-  SpringMeshScale: FVector; // 0x0450 (0x000c) [FVector]
-  SpringMeshInitialSize: number; // 0x045c (0x0004) [float]
-  SpringRotationOffset: FRotator; // 0x0460 (0x000c) [FRotator]
-  HittingMesh: UStaticMesh; // 0x0470 (0x0008) [UStaticMesh*]
-  HittingMeshScale: FVector; // 0x0478 (0x000c) [FVector]
-  HittingMeshOffset: FVector; // 0x0484 (0x000c) [FVector]
-  HittingRotationOffset: FRotator; // 0x0490 (0x000c) [FRotator]
-  HitDistanceOffset: number; // 0x049c (0x0004) [float]
-  AfterSpringDuration: number; // 0x04a0 (0x0004) [float]
-  BallHitType: EBallHitType; // 0x04a4 (0x0001) [EBallHitType]
-  AfterHitLengthCurve: FInterpCurveFloat; // 0x04a8 (0x0018) [FInterpCurveFloat]
-  HitFXArchetype: UFXActor_TA; // 0x04c0 (0x0008) [UFXActor_TA*]
-  ShootFXArchetype: UFXActor_TA; // 0x04c8 (0x0008) [UFXActor_TA*]
-  HitSFX: UAkSoundCue; // 0x04d0 (0x0008) [UAkSoundCue*]
-  FadeOutParam: FName; // 0x04d8 (0x0008) [FName]
-  FadeOutCurve: FInterpCurveFloat; // 0x04e0 (0x0018) [FInterpCurveFloat]
-  MinSpringLength: number; // 0x04f8 (0x0004) [float]
-  WeldedForceScalar: number; // 0x04fc (0x0004) [float]
-  WeldedVerticalForce: number; // 0x0500 (0x0004) [float]
-  CurrentSpringLength: number; // 0x0504 (0x0004) [float]
-  SpringedTime: number; // 0x0508 (0x0004) [float]
-  SMC: UStaticMeshComponent_TA; // 0x0510 (0x0008) [UStaticMeshComponent_TA*]
-  SMI: UMaterialInstance; // 0x0518 (0x0008) [UMaterialInstance*]
-  HMC: UStaticMeshComponent_TA; // 0x0520 (0x0008) [UStaticMeshComponent_TA*]
-  HMI: UMaterialInstance[]; // 0x0528 (0x0010) [TArray<UMaterialInstance*>]
-  AfterSpringTime: number; // 0x0538 (0x0004) [float]
-  SpringToTime: number; // 0x053c (0x0004) [float]
-  SpringOrigin: FVector; // 0x0540 (0x000c) [FVector]
-  SpringedLocation: FVector; // 0x054c (0x000c) [FVector]
-  SpringedNormal: FVector; // 0x0558 (0x000c) [FVector]
-  SpringedLength: number; // 0x0564 (0x0004) [float]
-  ShootFX: UFXActor_TA; // 0x0568 (0x0008) [UFXActor_TA*]
+  Force: number; // 0x03d0 (0x0004) [float]
+  VerticalForce: number; // 0x03d4 (0x0004) [float]
+  Torque: FVector; // 0x03d8 (0x000c) [FVector]
+  bApplyRelativeForce: boolean; // 0x03e4 (0x0004) [bool : 0x1]
+  bApplyConstantForce: boolean; // 0x03e4 (0x0004) [bool : 0x2]
+  bBreakConstantForceWithHit: boolean; // 0x03e4 (0x0004) [bool : 0x4]
+  bApplyRelativeConstantForce: boolean; // 0x03e4 (0x0004) [bool : 0x8]
+  bInstant: boolean; // 0x03e4 (0x0004) [bool : 0x10]
+  bFollowAfterHit: boolean; // 0x03e4 (0x0004) [bool : 0x20]
+  bSpringed: boolean; // 0x03e4 (0x0004) [bool : 0x40]
+  RelativeForceCurve: FInterpCurveFloat; // 0x03e8 (0x0018) [FInterpCurveFloat]
+  RelativeForceNormalDirection: number; // 0x0400 (0x0004) [float]
+  MaxSpringLength: number; // 0x0404 (0x0004) [float]
+  ConstantForce: number; // 0x0408 (0x0004) [float]
+  RelativeConstantForceCurve: FInterpCurveFloat; // 0x0410 (0x0018) [FInterpCurveFloat]
+  SpringLengthCurve: FInterpCurveFloat; // 0x0428 (0x0018) [FInterpCurveFloat]
+  FromOffset: FVector; // 0x0440 (0x000c) [FVector]
+  SpringMesh: UStaticMesh; // 0x0450 (0x0008) [UStaticMesh*]
+  SpringMeshScale: FVector; // 0x0458 (0x000c) [FVector]
+  SpringMeshInitialSize: number; // 0x0464 (0x0004) [float]
+  SpringRotationOffset: FRotator; // 0x0468 (0x000c) [FRotator]
+  HittingMesh: UStaticMesh; // 0x0478 (0x0008) [UStaticMesh*]
+  HittingMeshScale: FVector; // 0x0480 (0x000c) [FVector]
+  HittingMeshOffset: FVector; // 0x048c (0x000c) [FVector]
+  HittingRotationOffset: FRotator; // 0x0498 (0x000c) [FRotator]
+  HitDistanceOffset: number; // 0x04a4 (0x0004) [float]
+  AfterSpringDuration: number; // 0x04a8 (0x0004) [float]
+  BallHitType: EBallHitType; // 0x04ac (0x0001) [EBallHitType]
+  AfterHitLengthCurve: FInterpCurveFloat; // 0x04b0 (0x0018) [FInterpCurveFloat]
+  HitFXArchetype: UFXActor_TA; // 0x04c8 (0x0008) [UFXActor_TA*]
+  ShootFXArchetype: UFXActor_TA; // 0x04d0 (0x0008) [UFXActor_TA*]
+  HitSFX: UAkSoundCue; // 0x04d8 (0x0008) [UAkSoundCue*]
+  FadeOutParam: FName; // 0x04e0 (0x0008) [FName]
+  FadeOutCurve: FInterpCurveFloat; // 0x04e8 (0x0018) [FInterpCurveFloat]
+  MinSpringLength: number; // 0x0500 (0x0004) [float]
+  WeldedForceScalar: number; // 0x0504 (0x0004) [float]
+  WeldedVerticalForce: number; // 0x0508 (0x0004) [float]
+  CurrentSpringLength: number; // 0x050c (0x0004) [float]
+  SpringedTime: number; // 0x0510 (0x0004) [float]
+  SMC: UStaticMeshComponent_TA; // 0x0518 (0x0008) [UStaticMeshComponent_TA*]
+  SMI: UMaterialInstance; // 0x0520 (0x0008) [UMaterialInstance*]
+  HMC: UStaticMeshComponent_TA; // 0x0528 (0x0008) [UStaticMeshComponent_TA*]
+  HMI: UMaterialInstance[]; // 0x0530 (0x0010) [TArray<UMaterialInstance*>]
+  AfterSpringTime: number; // 0x0540 (0x0004) [float]
+  SpringToTime: number; // 0x0544 (0x0004) [float]
+  SpringOrigin: FVector; // 0x0548 (0x000c) [FVector]
+  SpringedLocation: FVector; // 0x0554 (0x000c) [FVector]
+  SpringedNormal: FVector; // 0x0560 (0x000c) [FVector]
+  SpringedLength: number; // 0x056c (0x0004) [float]
+  ShootFX: UFXActor_TA; // 0x0570 (0x0008) [UFXActor_TA*]
 };
 
 // SpecialPickup_Spring_TA Functions
@@ -49757,11 +50424,11 @@ export type USpecialPickup_Spring_TA = USpecialPickup_Targeted_TA & {
 
 /**
  * Class TAGame.SpecialPickup_BallCarSpring_TA
- * Size: 0x0578
+ * Size: 0x0580
  * Extends: USpecialPickup_Spring_TA
  */
 export type USpecialPickup_BallCarSpring_TA = USpecialPickup_Spring_TA & {
-  SpringMeshDistanceParam: FName; // 0x0570 (0x0008) [FName]
+  SpringMeshDistanceParam: FName; // 0x0578 (0x0008) [FName]
 };
 
 // SpecialPickup_BallCarSpring_TA Functions
@@ -49769,29 +50436,29 @@ export type USpecialPickup_BallCarSpring_TA = USpecialPickup_Spring_TA & {
 
 /**
  * Class TAGame.SpecialPickup_BallFreeze_TA
- * Size: 0x0460
+ * Size: 0x0468
  * Extends: USpecialPickup_Targeted_TA
  */
 export type USpecialPickup_BallFreeze_TA = USpecialPickup_Targeted_TA & {
-  FreezeBreakFXArchetype: UFXActor_X; // 0x03c8 (0x0008) [UFXActor_X*]
-  FreezeFXArchetype: UFXActor_X; // 0x03d0 (0x0008) [UFXActor_X*]
-  FreezeMIC: UMaterialInstanceConstant; // 0x03d8 (0x0008) [UMaterialInstanceConstant*]
-  FreezeMaterialParam: FName; // 0x03e0 (0x0008) [FName]
-  FreezeInterpTime: FInterpCurveFloat; // 0x03e8 (0x0018) [FInterpCurveFloat]
-  bMaintainMomentum: boolean; // 0x0400 (0x0004) [bool : 0x1]
-  bTouched: boolean; // 0x0400 (0x0004) [bool : 0x2]
-  TimeToStop: number; // 0x0404 (0x0004) [float]
-  StopMomentumPercentage: number; // 0x0408 (0x0004) [float]
-  FreezeSFX: UAkSoundCue; // 0x0410 (0x0008) [UAkSoundCue*]
-  BreakSFX: UAkSoundCue; // 0x0418 (0x0008) [UAkSoundCue*]
-  CopiedBallMesh: UStaticMeshComponent; // 0x0420 (0x0008) [UStaticMeshComponent*]
-  Ball: UBall_TA; // 0x0428 (0x0008) [UBall_TA*]
-  OrigLinearVelocity: FVector; // 0x0430 (0x000c) [FVector]
-  OrigAngularVelocity: FVector; // 0x043c (0x000c) [FVector]
-  OrigSpeed: number; // 0x0448 (0x0004) [float]
-  RepOrigSpeed: number; // 0x044c (0x0004) [float]
-  FreezeMat: UMaterialInstanceConstant; // 0x0450 (0x0008) [UMaterialInstanceConstant*]
-  FreezeFX: UFXActor_X; // 0x0458 (0x0008) [UFXActor_X*]
+  FreezeBreakFXArchetype: UFXActor_X; // 0x03d0 (0x0008) [UFXActor_X*]
+  FreezeFXArchetype: UFXActor_X; // 0x03d8 (0x0008) [UFXActor_X*]
+  FreezeMIC: UMaterialInstanceConstant; // 0x03e0 (0x0008) [UMaterialInstanceConstant*]
+  FreezeMaterialParam: FName; // 0x03e8 (0x0008) [FName]
+  FreezeInterpTime: FInterpCurveFloat; // 0x03f0 (0x0018) [FInterpCurveFloat]
+  bMaintainMomentum: boolean; // 0x0408 (0x0004) [bool : 0x1]
+  bTouched: boolean; // 0x0408 (0x0004) [bool : 0x2]
+  TimeToStop: number; // 0x040c (0x0004) [float]
+  StopMomentumPercentage: number; // 0x0410 (0x0004) [float]
+  FreezeSFX: UAkSoundCue; // 0x0418 (0x0008) [UAkSoundCue*]
+  BreakSFX: UAkSoundCue; // 0x0420 (0x0008) [UAkSoundCue*]
+  CopiedBallMesh: UStaticMeshComponent; // 0x0428 (0x0008) [UStaticMeshComponent*]
+  Ball: UBall_TA; // 0x0430 (0x0008) [UBall_TA*]
+  OrigLinearVelocity: FVector; // 0x0438 (0x000c) [FVector]
+  OrigAngularVelocity: FVector; // 0x0444 (0x000c) [FVector]
+  OrigSpeed: number; // 0x0450 (0x0004) [float]
+  RepOrigSpeed: number; // 0x0454 (0x0004) [float]
+  FreezeMat: UMaterialInstanceConstant; // 0x0458 (0x0008) [UMaterialInstanceConstant*]
+  FreezeFX: UFXActor_X; // 0x0460 (0x0008) [UFXActor_X*]
 };
 
 // SpecialPickup_BallFreeze_TA Functions
@@ -49809,28 +50476,28 @@ export type USpecialPickup_BallFreeze_TA = USpecialPickup_Targeted_TA & {
 
 /**
  * Class TAGame.SpecialPickup_BallGravity_TA
- * Size: 0x0428
+ * Size: 0x0430
  * Extends: USpecialPickup_TA
  */
 export type USpecialPickup_BallGravity_TA = USpecialPickup_TA & {
-  BallGravity: number; // 0x0390 (0x0004) [float]
-  Range: number; // 0x0394 (0x0004) [float]
-  Offset: FVector; // 0x0398 (0x000c) [FVector]
-  bDeactivateOnTouch: boolean; // 0x03a4 (0x0004) [bool : 0x1]
-  BeamPSArchetype: UParticleSystem; // 0x03a8 (0x0008) [UParticleSystem*]
-  BeamPSParam: FName; // 0x03b0 (0x0008) [FName]
-  RecordBallHitRate: number; // 0x03b8 (0x0004) [float]
-  BallMIC: UMaterialInstanceConstant; // 0x03c0 (0x0008) [UMaterialInstanceConstant*]
-  BallMICParam: FName; // 0x03c8 (0x0008) [FName]
-  BallFXArchetype: UFXActor_TA; // 0x03d0 (0x0008) [UFXActor_TA*]
-  BallMICCurve: FInterpCurveFloat; // 0x03d8 (0x0018) [FInterpCurveFloat]
-  BallSFX: UAkSoundCue; // 0x03f0 (0x0008) [UAkSoundCue*]
-  LastRecordedBallHitTime: number; // 0x03f8 (0x0004) [float]
-  BeamPSC: UParticleSystemComponent; // 0x0400 (0x0008) [UParticleSystemComponent*]
-  BallFX: UFXActor_TA; // 0x0408 (0x0008) [UFXActor_TA*]
-  CopiedBallMesh: UStaticMeshComponent; // 0x0410 (0x0008) [UStaticMeshComponent*]
-  BMIC: UMaterialInstanceConstant; // 0x0418 (0x0008) [UMaterialInstanceConstant*]
-  PrevBall: UBall_TA; // 0x0420 (0x0008) [UBall_TA*]
+  BallGravity: number; // 0x0398 (0x0004) [float]
+  Range: number; // 0x039c (0x0004) [float]
+  Offset: FVector; // 0x03a0 (0x000c) [FVector]
+  bDeactivateOnTouch: boolean; // 0x03ac (0x0004) [bool : 0x1]
+  BeamPSArchetype: UParticleSystem; // 0x03b0 (0x0008) [UParticleSystem*]
+  BeamPSParam: FName; // 0x03b8 (0x0008) [FName]
+  RecordBallHitRate: number; // 0x03c0 (0x0004) [float]
+  BallMIC: UMaterialInstanceConstant; // 0x03c8 (0x0008) [UMaterialInstanceConstant*]
+  BallMICParam: FName; // 0x03d0 (0x0008) [FName]
+  BallFXArchetype: UFXActor_TA; // 0x03d8 (0x0008) [UFXActor_TA*]
+  BallMICCurve: FInterpCurveFloat; // 0x03e0 (0x0018) [FInterpCurveFloat]
+  BallSFX: UAkSoundCue; // 0x03f8 (0x0008) [UAkSoundCue*]
+  LastRecordedBallHitTime: number; // 0x0400 (0x0004) [float]
+  BeamPSC: UParticleSystemComponent; // 0x0408 (0x0008) [UParticleSystemComponent*]
+  BallFX: UFXActor_TA; // 0x0410 (0x0008) [UFXActor_TA*]
+  CopiedBallMesh: UStaticMeshComponent; // 0x0418 (0x0008) [UStaticMeshComponent*]
+  BMIC: UMaterialInstanceConstant; // 0x0420 (0x0008) [UMaterialInstanceConstant*]
+  PrevBall: UBall_TA; // 0x0428 (0x0008) [UBall_TA*]
 };
 
 // SpecialPickup_BallGravity_TA Functions
@@ -49848,11 +50515,11 @@ export type USpecialPickup_BallGravity_TA = USpecialPickup_TA & {
 
 /**
  * Class TAGame.SpecialPickup_BallLasso_TA
- * Size: 0x0578
+ * Size: 0x0580
  * Extends: USpecialPickup_Spring_TA
  */
 export type USpecialPickup_BallLasso_TA = USpecialPickup_Spring_TA & {
-  SpringMeshSlackParam: FName; // 0x0570 (0x0008) [FName]
+  SpringMeshSlackParam: FName; // 0x0578 (0x0008) [FName]
 };
 
 // SpecialPickup_BallLasso_TA Functions
@@ -49861,30 +50528,30 @@ export type USpecialPickup_BallLasso_TA = USpecialPickup_Spring_TA & {
 
 /**
  * Class TAGame.SpecialPickup_BallVelcro_TA
- * Size: 0x0438
+ * Size: 0x0440
  * Extends: USpecialPickup_TA
  */
 export type USpecialPickup_BallVelcro_TA = USpecialPickup_TA & {
-  BallOffset: FVector; // 0x0390 (0x000c) [FVector]
-  bUseRealOffset: boolean; // 0x039c (0x0004) [bool : 0x1]
-  bHit: boolean; // 0x039c (0x0004) [bool : 0x2]
-  bBroken: boolean; // 0x039c (0x0004) [bool : 0x4]
-  AfterHitDuration: number; // 0x03a0 (0x0004) [float]
-  Mesh: UStaticMesh; // 0x03a8 (0x0008) [UStaticMesh*]
-  MeshScaleCurve: FInterpCurveFloat; // 0x03b0 (0x0018) [FInterpCurveFloat]
-  HitMeshScaleCurve: FInterpCurveFloat; // 0x03c8 (0x0018) [FInterpCurveFloat]
-  BrokenScaleCurve: FInterpCurveFloat; // 0x03e0 (0x0018) [FInterpCurveFloat]
-  PostBreakDuration: number; // 0x03f8 (0x0004) [float]
-  BallHitSFX: UAkSoundCue; // 0x0400 (0x0008) [UAkSoundCue*]
-  MinBreakForce: number; // 0x0408 (0x0004) [float]
-  MinBreakTime: number; // 0x040c (0x0004) [float]
-  CheckLastTouchRate: number; // 0x0410 (0x0004) [float]
-  SMC: UStaticMeshComponent; // 0x0418 (0x0008) [UStaticMeshComponent*]
-  WeldedBall: UBall_TA; // 0x0420 (0x0008) [UBall_TA*]
-  OldBallMass: number; // 0x0428 (0x0004) [float]
-  AttachTime: number; // 0x042c (0x0004) [float]
-  LastTouchCheckTime: number; // 0x0430 (0x0004) [float]
-  BreakTime: number; // 0x0434 (0x0004) [float]
+  BallOffset: FVector; // 0x0398 (0x000c) [FVector]
+  bUseRealOffset: boolean; // 0x03a4 (0x0004) [bool : 0x1]
+  bHit: boolean; // 0x03a4 (0x0004) [bool : 0x2]
+  bBroken: boolean; // 0x03a4 (0x0004) [bool : 0x4]
+  AfterHitDuration: number; // 0x03a8 (0x0004) [float]
+  Mesh: UStaticMesh; // 0x03b0 (0x0008) [UStaticMesh*]
+  MeshScaleCurve: FInterpCurveFloat; // 0x03b8 (0x0018) [FInterpCurveFloat]
+  HitMeshScaleCurve: FInterpCurveFloat; // 0x03d0 (0x0018) [FInterpCurveFloat]
+  BrokenScaleCurve: FInterpCurveFloat; // 0x03e8 (0x0018) [FInterpCurveFloat]
+  PostBreakDuration: number; // 0x0400 (0x0004) [float]
+  BallHitSFX: UAkSoundCue; // 0x0408 (0x0008) [UAkSoundCue*]
+  MinBreakForce: number; // 0x0410 (0x0004) [float]
+  MinBreakTime: number; // 0x0414 (0x0004) [float]
+  CheckLastTouchRate: number; // 0x0418 (0x0004) [float]
+  SMC: UStaticMeshComponent; // 0x0420 (0x0008) [UStaticMeshComponent*]
+  WeldedBall: UBall_TA; // 0x0428 (0x0008) [UBall_TA*]
+  OldBallMass: number; // 0x0430 (0x0004) [float]
+  AttachTime: number; // 0x0434 (0x0004) [float]
+  LastTouchCheckTime: number; // 0x0438 (0x0004) [float]
+  BreakTime: number; // 0x043c (0x0004) [float]
 };
 
 // SpecialPickup_BallVelcro_TA Functions
@@ -49905,12 +50572,12 @@ export type USpecialPickup_BallVelcro_TA = USpecialPickup_TA & {
 
 /**
  * Class TAGame.SpecialPickup_Batarang_TA
- * Size: 0x0580
+ * Size: 0x0588
  * Extends: USpecialPickup_BallLasso_TA
  */
 export type USpecialPickup_Batarang_TA = USpecialPickup_BallLasso_TA & {
-  SpinSpeed: number; // 0x0578 (0x0004) [float]
-  CurRotation: number; // 0x057c (0x0004) [float]
+  SpinSpeed: number; // 0x0580 (0x0004) [float]
+  CurRotation: number; // 0x0584 (0x0004) [float]
 };
 
 // SpecialPickup_Batarang_TA Functions
@@ -49918,13 +50585,13 @@ export type USpecialPickup_Batarang_TA = USpecialPickup_BallLasso_TA & {
 
 /**
  * Class TAGame.SpecialPickup_BoostMod_TA
- * Size: 0x039C
+ * Size: 0x03A4
  * Extends: USpecialPickup_TA
  */
 export type USpecialPickup_BoostMod_TA = USpecialPickup_TA & {
-  bUnlimitedBoost: boolean; // 0x0390 (0x0004) [bool : 0x1]
-  BoostStrength: number; // 0x0394 (0x0004) [float]
-  OldBoostStrength: number; // 0x0398 (0x0004) [float]
+  bUnlimitedBoost: boolean; // 0x0398 (0x0004) [bool : 0x1]
+  BoostStrength: number; // 0x039c (0x0004) [float]
+  OldBoostStrength: number; // 0x03a0 (0x0004) [float]
 };
 
 // SpecialPickup_BoostMod_TA Functions
@@ -49933,17 +50600,17 @@ export type USpecialPickup_BoostMod_TA = USpecialPickup_TA & {
 
 /**
  * Class TAGame.SpecialPickup_BoostOverride_TA
- * Size: 0x0400
+ * Size: 0x0408
  * Extends: USpecialPickup_Targeted_TA
  */
 export type USpecialPickup_BoostOverride_TA = USpecialPickup_Targeted_TA & {
-  OtherCarFXArchetype: UFXActor_X; // 0x03c8 (0x0008) [UFXActor_X*]
-  BoostSFX: UAkSoundCue; // 0x03d0 (0x0008) [UAkSoundCue*]
-  BeamPS: UParticleSystem; // 0x03d8 (0x0008) [UParticleSystem*]
-  AddVelocityZ: number; // 0x03e0 (0x0004) [float]
-  BeamPSC: UParticleSystemComponent; // 0x03e8 (0x0008) [UParticleSystemComponent*]
-  OtherCarFX: UFXActor_X; // 0x03f0 (0x0008) [UFXActor_X*]
-  OtherCar: UCar_TA; // 0x03f8 (0x0008) [UCar_TA*]
+  OtherCarFXArchetype: UFXActor_X; // 0x03d0 (0x0008) [UFXActor_X*]
+  BoostSFX: UAkSoundCue; // 0x03d8 (0x0008) [UAkSoundCue*]
+  BeamPS: UParticleSystem; // 0x03e0 (0x0008) [UParticleSystem*]
+  AddVelocityZ: number; // 0x03e8 (0x0004) [float]
+  BeamPSC: UParticleSystemComponent; // 0x03f0 (0x0008) [UParticleSystemComponent*]
+  OtherCarFX: UFXActor_X; // 0x03f8 (0x0008) [UFXActor_X*]
+  OtherCar: UCar_TA; // 0x0400 (0x0008) [UCar_TA*]
 };
 
 // SpecialPickup_BoostOverride_TA Functions
@@ -49955,15 +50622,15 @@ export type USpecialPickup_BoostOverride_TA = USpecialPickup_Targeted_TA & {
 
 /**
  * Class TAGame.SpecialPickup_CarFreeze_TA
- * Size: 0x03E8
+ * Size: 0x03F0
  * Extends: USpecialPickup_Targeted_TA
  */
 export type USpecialPickup_CarFreeze_TA = USpecialPickup_Targeted_TA & {
-  OtherCarFXArchetype: UFXActor_X; // 0x03c8 (0x0008) [UFXActor_X*]
-  TireFrictionScale: number; // 0x03d0 (0x0004) [float]
-  AddAngularVelocity: number; // 0x03d4 (0x0004) [float]
-  OtherCarFX: UFXActor_X; // 0x03d8 (0x0008) [UFXActor_X*]
-  OtherCar: UCar_TA; // 0x03e0 (0x0008) [UCar_TA*]
+  OtherCarFXArchetype: UFXActor_X; // 0x03d0 (0x0008) [UFXActor_X*]
+  TireFrictionScale: number; // 0x03d8 (0x0004) [float]
+  AddAngularVelocity: number; // 0x03dc (0x0004) [float]
+  OtherCarFX: UFXActor_X; // 0x03e0 (0x0008) [UFXActor_X*]
+  OtherCar: UCar_TA; // 0x03e8 (0x0008) [UCar_TA*]
 };
 
 // SpecialPickup_CarFreeze_TA Functions
@@ -49974,13 +50641,13 @@ export type USpecialPickup_CarFreeze_TA = USpecialPickup_Targeted_TA & {
 
 /**
  * Class TAGame.SpecialPickup_CarGravity_TA
- * Size: 0x03A4
+ * Size: 0x03AC
  * Extends: USpecialPickup_TA
  */
 export type USpecialPickup_CarGravity_TA = USpecialPickup_TA & {
-  GravityScale: number; // 0x0390 (0x0004) [float]
-  AddedForce: FVector; // 0x0394 (0x000c) [FVector]
-  OrigGravityScale: number; // 0x03a0 (0x0004) [float]
+  GravityScale: number; // 0x0398 (0x0004) [float]
+  AddedForce: FVector; // 0x039c (0x000c) [FVector]
+  OrigGravityScale: number; // 0x03a8 (0x0004) [float]
 };
 
 // SpecialPickup_CarGravity_TA Functions
@@ -49990,11 +50657,11 @@ export type USpecialPickup_CarGravity_TA = USpecialPickup_TA & {
 
 /**
  * Class TAGame.SpecialPickup_CarLaunch_TA
- * Size: 0x0394
+ * Size: 0x039C
  * Extends: USpecialPickup_TA
  */
 export type USpecialPickup_CarLaunch_TA = USpecialPickup_TA & {
-  LaunchVelocity: number; // 0x0390 (0x0004) [float]
+  LaunchVelocity: number; // 0x0398 (0x0004) [float]
 };
 
 // SpecialPickup_CarLaunch_TA Functions
@@ -50002,16 +50669,16 @@ export type USpecialPickup_CarLaunch_TA = USpecialPickup_TA & {
 
 /**
  * Class TAGame.SpecialPickup_CarSpeed_TA
- * Size: 0x03D0
+ * Size: 0x03D8
  * Extends: USpecialPickup_TA
  */
 export type USpecialPickup_CarSpeed_TA = USpecialPickup_TA & {
-  SpeedMultiplier: number; // 0x0390 (0x0004) [float]
-  MaxLinearSpeedMultiplier: number; // 0x0394 (0x0004) [float]
-  DriveTorqueCurve: FInterpCurveFloat; // 0x0398 (0x0018) [FInterpCurveFloat]
-  OriginalTorque: number; // 0x03b0 (0x0004) [float]
-  OriginalMaxLinearSpeed: number; // 0x03b4 (0x0004) [float]
-  OriginalDriveTorqueCurve: FInterpCurveFloat; // 0x03b8 (0x0018) [FInterpCurveFloat]
+  SpeedMultiplier: number; // 0x0398 (0x0004) [float]
+  MaxLinearSpeedMultiplier: number; // 0x039c (0x0004) [float]
+  DriveTorqueCurve: FInterpCurveFloat; // 0x03a0 (0x0018) [FInterpCurveFloat]
+  OriginalTorque: number; // 0x03b8 (0x0004) [float]
+  OriginalMaxLinearSpeed: number; // 0x03bc (0x0004) [float]
+  OriginalDriveTorqueCurve: FInterpCurveFloat; // 0x03c0 (0x0018) [FInterpCurveFloat]
 };
 
 // SpecialPickup_CarSpeed_TA Functions
@@ -50020,14 +50687,14 @@ export type USpecialPickup_CarSpeed_TA = USpecialPickup_TA & {
 
 /**
  * Class TAGame.SpecialPickup_Demolish_TA
- * Size: 0x0394
+ * Size: 0x039C
  * Extends: USpecialPickup_TA
  */
 export type USpecialPickup_Demolish_TA = USpecialPickup_TA & {
-  DemolishTarget: EDemolishTarget; // 0x0390 (0x0001) [EDemolishTarget]
-  DemolishSpeed: EDemolishSpeed; // 0x0391 (0x0001) [EDemolishSpeed]
-  OldTarget: EDemolishTarget; // 0x0392 (0x0001) [EDemolishTarget]
-  OldSpeed: EDemolishSpeed; // 0x0393 (0x0001) [EDemolishSpeed]
+  DemolishTarget: EDemolishTarget; // 0x0398 (0x0001) [EDemolishTarget]
+  DemolishSpeed: EDemolishSpeed; // 0x0399 (0x0001) [EDemolishSpeed]
+  OldTarget: EDemolishTarget; // 0x039a (0x0001) [EDemolishTarget]
+  OldSpeed: EDemolishSpeed; // 0x039b (0x0001) [EDemolishSpeed]
 };
 
 // SpecialPickup_Demolish_TA Functions
@@ -50036,27 +50703,27 @@ export type USpecialPickup_Demolish_TA = USpecialPickup_TA & {
 
 /**
  * Class TAGame.SpecialPickup_Football_TA
- * Size: 0x0404
+ * Size: 0x040C
  * Extends: USpecialPickup_TA
  */
 export type USpecialPickup_Football_TA = USpecialPickup_TA & {
-  BallHitSFX: UAkSoundCue; // 0x0390 (0x0008) [UAkSoundCue*]
-  DeactivateSFX: UAkSoundCue; // 0x0398 (0x0008) [UAkSoundCue*]
-  AttachTime: number; // 0x03a0 (0x0004) [float]
-  DetachTime: number; // 0x03a4 (0x0004) [float]
-  ThrowSettings: FThrowSetting[]; // 0x03a8 (0x0010) [TArray<FThrowSetting>]
-  AttachOffset: FVector; // 0x03b8 (0x000c) [FVector]
-  CarFumbleForce: number; // 0x03c4 (0x0004) [float]
-  DoubleJumpUpForce: number; // 0x03c8 (0x0004) [float]
-  DemolishUpForce: number; // 0x03cc (0x0004) [float]
-  MinBreakTime: number; // 0x03d0 (0x0004) [float]
-  MinAttachTime: number; // 0x03d4 (0x0004) [float]
-  CheckLastTouchRate: number; // 0x03d8 (0x0004) [float]
-  OutOfBoundsZ: number; // 0x03dc (0x0004) [float]
-  WeldedBall: UBall_TA; // 0x03e0 (0x0008) [UBall_TA*]
-  LastTouchCheckTime: number; // 0x03e8 (0x0004) [float]
-  PendingBall: UBall_TA; // 0x03f0 (0x0008) [UBall_TA*]
-  PendingBallDodge: FVector; // 0x03f8 (0x000c) [FVector]
+  BallHitSFX: UAkSoundCue; // 0x0398 (0x0008) [UAkSoundCue*]
+  DeactivateSFX: UAkSoundCue; // 0x03a0 (0x0008) [UAkSoundCue*]
+  AttachTime: number; // 0x03a8 (0x0004) [float]
+  DetachTime: number; // 0x03ac (0x0004) [float]
+  ThrowSettings: FThrowSetting[]; // 0x03b0 (0x0010) [TArray<FThrowSetting>]
+  AttachOffset: FVector; // 0x03c0 (0x000c) [FVector]
+  CarFumbleForce: number; // 0x03cc (0x0004) [float]
+  DoubleJumpUpForce: number; // 0x03d0 (0x0004) [float]
+  DemolishUpForce: number; // 0x03d4 (0x0004) [float]
+  MinBreakTime: number; // 0x03d8 (0x0004) [float]
+  MinAttachTime: number; // 0x03dc (0x0004) [float]
+  CheckLastTouchRate: number; // 0x03e0 (0x0004) [float]
+  OutOfBoundsZ: number; // 0x03e4 (0x0004) [float]
+  WeldedBall: UBall_TA; // 0x03e8 (0x0008) [UBall_TA*]
+  LastTouchCheckTime: number; // 0x03f0 (0x0004) [float]
+  PendingBall: UBall_TA; // 0x03f8 (0x0008) [UBall_TA*]
+  PendingBallDodge: FVector; // 0x0400 (0x000c) [FVector]
 };
 
 // SpecialPickup_Football_TA Functions
@@ -50086,48 +50753,48 @@ export type USpecialPickup_Football_TA = USpecialPickup_TA & {
 
 /**
  * Class TAGame.SpecialPickup_GrapplingHook_TA
- * Size: 0x0500
+ * Size: 0x0508
  * Extends: USpecialPickup_Targeted_TA
  */
 export type USpecialPickup_GrapplingHook_TA = USpecialPickup_Targeted_TA & {
-  Impulse: number; // 0x03c8 (0x0004) [float]
-  Force: number; // 0x03cc (0x0004) [float]
-  MaxRopeLength: number; // 0x03d0 (0x0004) [float]
-  PredictionSpeed: number; // 0x03d4 (0x0004) [float]
-  bDeactivateOnTouch: boolean; // 0x03d8 (0x0004) [bool : 0x1]
-  bInstant: boolean; // 0x03d8 (0x0004) [bool : 0x2]
-  bBlocked: boolean; // 0x03d8 (0x0004) [bool : 0x4]
-  bAttachedToBall: boolean; // 0x03d8 (0x0004) [bool : 0x8]
-  RopeLengthCurve: FInterpCurveFloat; // 0x03e0 (0x0018) [FInterpCurveFloat]
-  RopeMesh: UStaticMesh; // 0x03f8 (0x0008) [UStaticMesh*]
-  RopeMeshScale: FVector; // 0x0400 (0x000c) [FVector]
-  RopeMeshInitialSize: number; // 0x040c (0x0004) [float]
-  RopeRotationOffset: FRotator; // 0x0410 (0x000c) [FRotator]
-  RopeMeshSlackParam: FName; // 0x041c (0x0008) [FName]
-  RopeMeshGravityParam: FName; // 0x0424 (0x0008) [FName]
-  HookMesh: USkeletalMesh; // 0x0430 (0x0008) [USkeletalMesh*]
-  HookMeshScale: FVector; // 0x0438 (0x000c) [FVector]
-  HookMeshOffset: FVector; // 0x0444 (0x000c) [FVector]
-  HookRotationOffset: FRotator; // 0x0450 (0x000c) [FRotator]
-  HitDistanceOffset: number; // 0x045c (0x0004) [float]
-  AfterAttachDuration: number; // 0x0460 (0x0004) [float]
-  HookAnimSet: UAnimSet; // 0x0468 (0x0008) [UAnimSet*]
-  HookClosedAnim: FName; // 0x0470 (0x0008) [FName]
-  HookOpenAnim: FName; // 0x0478 (0x0008) [FName]
-  BlockedRequiredMoveDistance: number; // 0x0480 (0x0004) [float]
-  BlockedRequiredMoveTime: number; // 0x0484 (0x0004) [float]
-  BlockedStartTime: number; // 0x0488 (0x0004) [float]
-  BlockedStartPos: FVector; // 0x048c (0x000c) [FVector]
-  RMC: UStaticMeshComponent_TA; // 0x0498 (0x0008) [UStaticMeshComponent_TA*]
-  RMI: UMaterialInstance; // 0x04a0 (0x0008) [UMaterialInstance*]
-  HMC: USkeletalMeshComponent_TA; // 0x04a8 (0x0008) [USkeletalMeshComponent_TA*]
-  Ball: UBall_TA; // 0x04b0 (0x0008) [UBall_TA*]
-  RopeOrigin: FVector; // 0x04b8 (0x000c) [FVector]
-  RopeToTime: number; // 0x04c4 (0x0004) [float]
-  CurrentRopeLength: number; // 0x04c8 (0x0004) [float]
-  AttachTime: number; // 0x04cc (0x0004) [float]
-  __EventAttachedToBall__Delegate: FScriptDelegate; // 0x04d0 (0x0018) [FScriptDelegate]
-  __EventDetachedToBall__Delegate: FScriptDelegate; // 0x04e8 (0x0018) [FScriptDelegate]
+  Impulse: number; // 0x03d0 (0x0004) [float]
+  Force: number; // 0x03d4 (0x0004) [float]
+  MaxRopeLength: number; // 0x03d8 (0x0004) [float]
+  PredictionSpeed: number; // 0x03dc (0x0004) [float]
+  bDeactivateOnTouch: boolean; // 0x03e0 (0x0004) [bool : 0x1]
+  bInstant: boolean; // 0x03e0 (0x0004) [bool : 0x2]
+  bBlocked: boolean; // 0x03e0 (0x0004) [bool : 0x4]
+  bAttachedToBall: boolean; // 0x03e0 (0x0004) [bool : 0x8]
+  RopeLengthCurve: FInterpCurveFloat; // 0x03e8 (0x0018) [FInterpCurveFloat]
+  RopeMesh: UStaticMesh; // 0x0400 (0x0008) [UStaticMesh*]
+  RopeMeshScale: FVector; // 0x0408 (0x000c) [FVector]
+  RopeMeshInitialSize: number; // 0x0414 (0x0004) [float]
+  RopeRotationOffset: FRotator; // 0x0418 (0x000c) [FRotator]
+  RopeMeshSlackParam: FName; // 0x0424 (0x0008) [FName]
+  RopeMeshGravityParam: FName; // 0x042c (0x0008) [FName]
+  HookMesh: USkeletalMesh; // 0x0438 (0x0008) [USkeletalMesh*]
+  HookMeshScale: FVector; // 0x0440 (0x000c) [FVector]
+  HookMeshOffset: FVector; // 0x044c (0x000c) [FVector]
+  HookRotationOffset: FRotator; // 0x0458 (0x000c) [FRotator]
+  HitDistanceOffset: number; // 0x0464 (0x0004) [float]
+  AfterAttachDuration: number; // 0x0468 (0x0004) [float]
+  HookAnimSet: UAnimSet; // 0x0470 (0x0008) [UAnimSet*]
+  HookClosedAnim: FName; // 0x0478 (0x0008) [FName]
+  HookOpenAnim: FName; // 0x0480 (0x0008) [FName]
+  BlockedRequiredMoveDistance: number; // 0x0488 (0x0004) [float]
+  BlockedRequiredMoveTime: number; // 0x048c (0x0004) [float]
+  BlockedStartTime: number; // 0x0490 (0x0004) [float]
+  BlockedStartPos: FVector; // 0x0494 (0x000c) [FVector]
+  RMC: UStaticMeshComponent_TA; // 0x04a0 (0x0008) [UStaticMeshComponent_TA*]
+  RMI: UMaterialInstance; // 0x04a8 (0x0008) [UMaterialInstance*]
+  HMC: USkeletalMeshComponent_TA; // 0x04b0 (0x0008) [USkeletalMeshComponent_TA*]
+  Ball: UBall_TA; // 0x04b8 (0x0008) [UBall_TA*]
+  RopeOrigin: FVector; // 0x04c0 (0x000c) [FVector]
+  RopeToTime: number; // 0x04cc (0x0004) [float]
+  CurrentRopeLength: number; // 0x04d0 (0x0004) [float]
+  AttachTime: number; // 0x04d4 (0x0004) [float]
+  __EventAttachedToBall__Delegate: FScriptDelegate; // 0x04d8 (0x0018) [FScriptDelegate]
+  __EventDetachedToBall__Delegate: FScriptDelegate; // 0x04f0 (0x0018) [FScriptDelegate]
 };
 
 // SpecialPickup_GrapplingHook_TA Functions
@@ -50149,11 +50816,11 @@ export type USpecialPickup_GrapplingHook_TA = USpecialPickup_Targeted_TA & {
 
 /**
  * Class TAGame.SpecialPickup_HandbrakeOverride_TA
- * Size: 0x03D0
+ * Size: 0x03D8
  * Extends: USpecialPickup_Targeted_TA
  */
 export type USpecialPickup_HandbrakeOverride_TA = USpecialPickup_Targeted_TA & {
-  OtherCar: UCar_TA; // 0x03c8 (0x0008) [UCar_TA*]
+  OtherCar: UCar_TA; // 0x03d0 (0x0008) [UCar_TA*]
 };
 
 // SpecialPickup_HandbrakeOverride_TA Functions
@@ -50162,20 +50829,20 @@ export type USpecialPickup_HandbrakeOverride_TA = USpecialPickup_Targeted_TA & {
 
 /**
  * Class TAGame.SpecialPickup_HauntedBallBeam_TA
- * Size: 0x0468
+ * Size: 0x0470
  * Extends: USpecialPickup_BallGravity_TA
  */
 export type USpecialPickup_HauntedBallBeam_TA = USpecialPickup_BallGravity_TA & {
-  bIsPhasingBall: boolean; // 0x0428 (0x0004) [bool : 0x1]
-  bIsInRange: boolean; // 0x0428 (0x0004) [bool : 0x2]
-  bSFxLoopIsPlaying: boolean; // 0x0428 (0x0004) [bool : 0x4]
-  PrevHauntedBall: UBall_Haunted_TA; // 0x0430 (0x0008) [UBall_Haunted_TA*]
-  MaxSimulatedClients: number; // 0x0438 (0x0004) [int32]
-  ArrivalDistance: number; // 0x043c (0x0004) [float]
-  CarAvoidenceOffset: FVector; // 0x0440 (0x000c) [FVector]
-  BeamEndSFX: UAkSoundCue; // 0x0450 (0x0008) [UAkSoundCue*]
-  ConnectedBeamLoopSFX: UAkSoundCue; // 0x0458 (0x0008) [UAkSoundCue*]
-  BeamLoopSFX: UAkSoundCue; // 0x0460 (0x0008) [UAkSoundCue*]
+  bIsPhasingBall: boolean; // 0x0430 (0x0004) [bool : 0x1]
+  bIsInRange: boolean; // 0x0430 (0x0004) [bool : 0x2]
+  bSFxLoopIsPlaying: boolean; // 0x0430 (0x0004) [bool : 0x4]
+  PrevHauntedBall: UBall_Haunted_TA; // 0x0438 (0x0008) [UBall_Haunted_TA*]
+  MaxSimulatedClients: number; // 0x0440 (0x0004) [int32]
+  ArrivalDistance: number; // 0x0444 (0x0004) [float]
+  CarAvoidenceOffset: FVector; // 0x0448 (0x000c) [FVector]
+  BeamEndSFX: UAkSoundCue; // 0x0458 (0x0008) [UAkSoundCue*]
+  ConnectedBeamLoopSFX: UAkSoundCue; // 0x0460 (0x0008) [UAkSoundCue*]
+  BeamLoopSFX: UAkSoundCue; // 0x0468 (0x0008) [UAkSoundCue*]
 };
 
 // SpecialPickup_HauntedBallBeam_TA Functions
@@ -50190,22 +50857,22 @@ export type USpecialPickup_HauntedBallBeam_TA = USpecialPickup_BallGravity_TA & 
 
 /**
  * Class TAGame.SpecialPickup_HitForce_TA
- * Size: 0x03C8
+ * Size: 0x03D0
  * Extends: USpecialPickup_TA
  */
 export type USpecialPickup_HitForce_TA = USpecialPickup_TA & {
-  bBallForce: boolean; // 0x0390 (0x0004) [bool : 0x1]
-  bCarForce: boolean; // 0x0390 (0x0004) [bool : 0x2]
-  bDemolishCars: boolean; // 0x0390 (0x0004) [bool : 0x4]
-  BallHitForce: number; // 0x0394 (0x0004) [float]
-  CarHitForce: number; // 0x0398 (0x0004) [float]
-  BallHitFXArchetype: UFXActor_TA; // 0x03a0 (0x0008) [UFXActor_TA*]
-  CarHitFXArchetype: UFXActor_TA; // 0x03a8 (0x0008) [UFXActor_TA*]
-  HitSFX: UAkSoundCue; // 0x03b0 (0x0008) [UAkSoundCue*]
-  MinFXTime: number; // 0x03b8 (0x0004) [float]
-  OrigBallHitForce: number; // 0x03bc (0x0004) [float]
-  OrigCarHitForce: number; // 0x03c0 (0x0004) [float]
-  LastFXTime: number; // 0x03c4 (0x0004) [float]
+  bBallForce: boolean; // 0x0398 (0x0004) [bool : 0x1]
+  bCarForce: boolean; // 0x0398 (0x0004) [bool : 0x2]
+  bDemolishCars: boolean; // 0x0398 (0x0004) [bool : 0x4]
+  BallHitForce: number; // 0x039c (0x0004) [float]
+  CarHitForce: number; // 0x03a0 (0x0004) [float]
+  BallHitFXArchetype: UFXActor_TA; // 0x03a8 (0x0008) [UFXActor_TA*]
+  CarHitFXArchetype: UFXActor_TA; // 0x03b0 (0x0008) [UFXActor_TA*]
+  HitSFX: UAkSoundCue; // 0x03b8 (0x0008) [UAkSoundCue*]
+  MinFXTime: number; // 0x03c0 (0x0004) [float]
+  OrigBallHitForce: number; // 0x03c4 (0x0004) [float]
+  OrigCarHitForce: number; // 0x03c8 (0x0004) [float]
+  LastFXTime: number; // 0x03cc (0x0004) [float]
 };
 
 // SpecialPickup_HitForce_TA Functions
@@ -50216,13 +50883,13 @@ export type USpecialPickup_HitForce_TA = USpecialPickup_TA & {
 
 /**
  * Class TAGame.SpecialPickup_Inflate_TA
- * Size: 0x03D8
+ * Size: 0x03E0
  * Extends: USpecialPickup_Targeted_TA
  */
 export type USpecialPickup_Inflate_TA = USpecialPickup_Targeted_TA & {
-  ScaleMultiplier: number; // 0x03c8 (0x0004) [float]
-  GravityMultiplier: number; // 0x03cc (0x0004) [float]
-  OtherCar: UCar_TA; // 0x03d0 (0x0008) [UCar_TA*]
+  ScaleMultiplier: number; // 0x03d0 (0x0004) [float]
+  GravityMultiplier: number; // 0x03d4 (0x0004) [float]
+  OtherCar: UCar_TA; // 0x03d8 (0x0008) [UCar_TA*]
 };
 
 // SpecialPickup_Inflate_TA Functions
@@ -50232,33 +50899,33 @@ export type USpecialPickup_Inflate_TA = USpecialPickup_Targeted_TA & {
 
 /**
  * Class TAGame.SpecialPickup_Rugby_TA
- * Size: 0x0440
+ * Size: 0x0448
  * Extends: USpecialPickup_TA
  */
 export type USpecialPickup_Rugby_TA = USpecialPickup_TA & {
-  Mesh: UStaticMesh; // 0x0390 (0x0008) [UStaticMesh*]
-  BallHitSFX: UAkSoundCue; // 0x0398 (0x0008) [UAkSoundCue*]
-  DeactivateSFX: UAkSoundCue; // 0x03a0 (0x0008) [UAkSoundCue*]
-  AttachTime: number; // 0x03a8 (0x0004) [float]
-  MinDetachTime: number; // 0x03ac (0x0004) [float]
-  MinBreakTime: number; // 0x03b0 (0x0004) [float]
-  MinBreakForce: number; // 0x03b4 (0x0004) [float]
-  CheckLastTouchRate: number; // 0x03b8 (0x0004) [float]
-  KickOffActivationDelay: number; // 0x03bc (0x0004) [float]
-  BallReleaseForce: number; // 0x03c0 (0x0004) [float]
-  BallReleaseLift: number; // 0x03c4 (0x0004) [float]
-  bUseForwardReleaseDirection: boolean; // 0x03c8 (0x0004) [bool : 0x1]
-  bBallWelded: boolean; // 0x03c8 (0x0004) [bool : 0x2]
-  MaterialInstanceOverride: UMaterialInstanceConstant; // 0x03d0 (0x0008) [UMaterialInstanceConstant*]
-  Team0Color: FLinearColor; // 0x03d8 (0x0010) [FLinearColor]
-  Team1Color: FLinearColor; // 0x03e8 (0x0010) [FLinearColor]
-  LightColorName: FName; // 0x03f8 (0x0008) [FName]
-  InstantDemoSFX: UAkSoundCue; // 0x0400 (0x0008) [UAkSoundCue*]
-  DodgeSFX: UAkSoundCue; // 0x0408 (0x0008) [UAkSoundCue*]
-  SMC: UStaticMeshComponent; // 0x0410 (0x0008) [UStaticMeshComponent*]
-  WeldedBall: UBall_TA; // 0x0418 (0x0008) [UBall_TA*]
-  LastTouchCheckTime: number; // 0x0420 (0x0004) [float]
-  __bBallWelded__ChangeNotify: FScriptDelegate; // 0x0428 (0x0018) [FScriptDelegate]
+  Mesh: UStaticMesh; // 0x0398 (0x0008) [UStaticMesh*]
+  BallHitSFX: UAkSoundCue; // 0x03a0 (0x0008) [UAkSoundCue*]
+  DeactivateSFX: UAkSoundCue; // 0x03a8 (0x0008) [UAkSoundCue*]
+  AttachTime: number; // 0x03b0 (0x0004) [float]
+  MinDetachTime: number; // 0x03b4 (0x0004) [float]
+  MinBreakTime: number; // 0x03b8 (0x0004) [float]
+  MinBreakForce: number; // 0x03bc (0x0004) [float]
+  CheckLastTouchRate: number; // 0x03c0 (0x0004) [float]
+  KickOffActivationDelay: number; // 0x03c4 (0x0004) [float]
+  BallReleaseForce: number; // 0x03c8 (0x0004) [float]
+  BallReleaseLift: number; // 0x03cc (0x0004) [float]
+  bUseForwardReleaseDirection: boolean; // 0x03d0 (0x0004) [bool : 0x1]
+  bBallWelded: boolean; // 0x03d0 (0x0004) [bool : 0x2]
+  MaterialInstanceOverride: UMaterialInstanceConstant; // 0x03d8 (0x0008) [UMaterialInstanceConstant*]
+  Team0Color: FLinearColor; // 0x03e0 (0x0010) [FLinearColor]
+  Team1Color: FLinearColor; // 0x03f0 (0x0010) [FLinearColor]
+  LightColorName: FName; // 0x0400 (0x0008) [FName]
+  InstantDemoSFX: UAkSoundCue; // 0x0408 (0x0008) [UAkSoundCue*]
+  DodgeSFX: UAkSoundCue; // 0x0410 (0x0008) [UAkSoundCue*]
+  SMC: UStaticMeshComponent; // 0x0418 (0x0008) [UStaticMeshComponent*]
+  WeldedBall: UBall_TA; // 0x0420 (0x0008) [UBall_TA*]
+  LastTouchCheckTime: number; // 0x0428 (0x0004) [float]
+  __bBallWelded__ChangeNotify: FScriptDelegate; // 0x0430 (0x0018) [FScriptDelegate]
 };
 
 // SpecialPickup_Rugby_TA Functions
@@ -50288,15 +50955,15 @@ export type USpecialPickup_Rugby_TA = USpecialPickup_TA & {
 
 /**
  * Class TAGame.SpecialPickup_Swapper_TA
- * Size: 0x03F0
+ * Size: 0x03F8
  * Extends: USpecialPickup_Targeted_TA
  */
 export type USpecialPickup_Swapper_TA = USpecialPickup_Targeted_TA & {
-  OwnCarFX: UFXActor_TA; // 0x03c8 (0x0008) [UFXActor_TA*]
-  OtherCarFX: UFXActor_TA; // 0x03d0 (0x0008) [UFXActor_TA*]
-  AddVelocityZ: number; // 0x03d8 (0x0004) [float]
-  OtherFX: UFXActor_TA; // 0x03e0 (0x0008) [UFXActor_TA*]
-  OtherCar: UCar_TA; // 0x03e8 (0x0008) [UCar_TA*]
+  OwnCarFX: UFXActor_TA; // 0x03d0 (0x0008) [UFXActor_TA*]
+  OtherCarFX: UFXActor_TA; // 0x03d8 (0x0008) [UFXActor_TA*]
+  AddVelocityZ: number; // 0x03e0 (0x0004) [float]
+  OtherFX: UFXActor_TA; // 0x03e8 (0x0008) [UFXActor_TA*]
+  OtherCar: UCar_TA; // 0x03f0 (0x0008) [UCar_TA*]
 };
 
 // SpecialPickup_Swapper_TA Functions
@@ -50307,19 +50974,19 @@ export type USpecialPickup_Swapper_TA = USpecialPickup_Targeted_TA & {
 
 /**
  * Class TAGame.SpecialPickup_TimeBomb_TA
- * Size: 0x03B0
+ * Size: 0x03B8
  * Extends: USpecialPickup_TA
  */
 export type USpecialPickup_TimeBomb_TA = USpecialPickup_TA & {
-  Radius: number; // 0x0390 (0x0004) [float]
-  AlmostReadyDuration: number; // 0x0394 (0x0004) [float]
-  StartMatSpeed: number; // 0x0398 (0x0004) [float]
-  AlmostReadyMatSpeed: number; // 0x039c (0x0004) [float]
-  ImpulseForce: number; // 0x03a0 (0x0004) [float]
-  CarVerticalForce: number; // 0x03a4 (0x0004) [float]
-  CarTorque: number; // 0x03a8 (0x0004) [float]
-  bDemolish: boolean; // 0x03ac (0x0004) [bool : 0x1]
-  bImpulse: boolean; // 0x03ac (0x0004) [bool : 0x2]
+  Radius: number; // 0x0398 (0x0004) [float]
+  AlmostReadyDuration: number; // 0x039c (0x0004) [float]
+  StartMatSpeed: number; // 0x03a0 (0x0004) [float]
+  AlmostReadyMatSpeed: number; // 0x03a4 (0x0004) [float]
+  ImpulseForce: number; // 0x03a8 (0x0004) [float]
+  CarVerticalForce: number; // 0x03ac (0x0004) [float]
+  CarTorque: number; // 0x03b0 (0x0004) [float]
+  bDemolish: boolean; // 0x03b4 (0x0004) [bool : 0x1]
+  bImpulse: boolean; // 0x03b4 (0x0004) [bool : 0x2]
 };
 
 // SpecialPickup_TimeBomb_TA Functions
@@ -50329,45 +50996,45 @@ export type USpecialPickup_TimeBomb_TA = USpecialPickup_TA & {
 
 /**
  * Class TAGame.SpecialPickup_Tornado_TA
- * Size: 0x04F8
+ * Size: 0x0500
  * Extends: USpecialPickup_TA
  */
 export type USpecialPickup_Tornado_TA = USpecialPickup_TA & {
-  Height: number; // 0x0390 (0x0004) [float]
-  Radius: number; // 0x0394 (0x0004) [float]
-  Offset: FVector; // 0x0398 (0x000c) [FVector]
-  VerticalForceCurve: FInterpCurveFloat; // 0x03a8 (0x0018) [FInterpCurveFloat]
-  RotationalForce: number; // 0x03c0 (0x0004) [float]
-  CentripetalForceCurve: FInterpCurveFloat; // 0x03c8 (0x0018) [FInterpCurveFloat]
-  CarDirectionForceCurve: FInterpCurveFloat; // 0x03e0 (0x0018) [FInterpCurveFloat]
-  Torque: number; // 0x03f8 (0x0004) [float]
-  FXScale: FVector; // 0x03fc (0x000c) [FVector]
-  FXOffset: FVector; // 0x0408 (0x000c) [FVector]
-  TornadoMesh: UStaticMesh; // 0x0418 (0x0008) [UStaticMesh*]
-  MeshOffset: FVector; // 0x0420 (0x000c) [FVector]
-  MeshScale: FVector; // 0x042c (0x000c) [FVector]
-  TornadoMIC0: UMaterialInstanceConstant; // 0x0438 (0x0008) [UMaterialInstanceConstant*]
-  TornadoMIC1: UMaterialInstanceConstant; // 0x0440 (0x0008) [UMaterialInstanceConstant*]
-  TornadoMIC2: UMaterialInstanceConstant; // 0x0448 (0x0008) [UMaterialInstanceConstant*]
-  TornadoMIC3: UMaterialInstanceConstant; // 0x0450 (0x0008) [UMaterialInstanceConstant*]
-  TornadoMIC4: UMaterialInstanceConstant; // 0x0458 (0x0008) [UMaterialInstanceConstant*]
-  TornadoMIC5: UMaterialInstanceConstant; // 0x0460 (0x0008) [UMaterialInstanceConstant*]
-  OpacityCurve: FInterpCurveFloat; // 0x0468 (0x0018) [FInterpCurveFloat]
-  MaxVelocityOffset: number; // 0x0480 (0x0004) [float]
-  BallMultiplier: number; // 0x0484 (0x0004) [float]
-  bDebugVis: boolean; // 0x0488 (0x0004) [bool : 0x1]
-  VelocityEase: number; // 0x048c (0x0004) [float]
-  BallSFX: UAkSoundCue; // 0x0490 (0x0008) [UAkSoundCue*]
-  CarSFX: UAkSoundCue; // 0x0498 (0x0008) [UAkSoundCue*]
-  SMC: UStaticMeshComponent; // 0x04a0 (0x0008) [UStaticMeshComponent*]
-  MIC0: UMaterialInstanceConstant; // 0x04a8 (0x0008) [UMaterialInstanceConstant*]
-  MIC1: UMaterialInstanceConstant; // 0x04b0 (0x0008) [UMaterialInstanceConstant*]
-  MIC2: UMaterialInstanceConstant; // 0x04b8 (0x0008) [UMaterialInstanceConstant*]
-  MIC3: UMaterialInstanceConstant; // 0x04c0 (0x0008) [UMaterialInstanceConstant*]
-  MIC4: UMaterialInstanceConstant; // 0x04c8 (0x0008) [UMaterialInstanceConstant*]
-  MIC5: UMaterialInstanceConstant; // 0x04d0 (0x0008) [UMaterialInstanceConstant*]
-  Vel: FVector; // 0x04d8 (0x000c) [FVector]
-  Affecting: URBActor_TA[]; // 0x04e8 (0x0010) [TArray<URBActor_TA*>]
+  Height: number; // 0x0398 (0x0004) [float]
+  Radius: number; // 0x039c (0x0004) [float]
+  Offset: FVector; // 0x03a0 (0x000c) [FVector]
+  VerticalForceCurve: FInterpCurveFloat; // 0x03b0 (0x0018) [FInterpCurveFloat]
+  RotationalForce: number; // 0x03c8 (0x0004) [float]
+  CentripetalForceCurve: FInterpCurveFloat; // 0x03d0 (0x0018) [FInterpCurveFloat]
+  CarDirectionForceCurve: FInterpCurveFloat; // 0x03e8 (0x0018) [FInterpCurveFloat]
+  Torque: number; // 0x0400 (0x0004) [float]
+  FXScale: FVector; // 0x0404 (0x000c) [FVector]
+  FXOffset: FVector; // 0x0410 (0x000c) [FVector]
+  TornadoMesh: UStaticMesh; // 0x0420 (0x0008) [UStaticMesh*]
+  MeshOffset: FVector; // 0x0428 (0x000c) [FVector]
+  MeshScale: FVector; // 0x0434 (0x000c) [FVector]
+  TornadoMIC0: UMaterialInstanceConstant; // 0x0440 (0x0008) [UMaterialInstanceConstant*]
+  TornadoMIC1: UMaterialInstanceConstant; // 0x0448 (0x0008) [UMaterialInstanceConstant*]
+  TornadoMIC2: UMaterialInstanceConstant; // 0x0450 (0x0008) [UMaterialInstanceConstant*]
+  TornadoMIC3: UMaterialInstanceConstant; // 0x0458 (0x0008) [UMaterialInstanceConstant*]
+  TornadoMIC4: UMaterialInstanceConstant; // 0x0460 (0x0008) [UMaterialInstanceConstant*]
+  TornadoMIC5: UMaterialInstanceConstant; // 0x0468 (0x0008) [UMaterialInstanceConstant*]
+  OpacityCurve: FInterpCurveFloat; // 0x0470 (0x0018) [FInterpCurveFloat]
+  MaxVelocityOffset: number; // 0x0488 (0x0004) [float]
+  BallMultiplier: number; // 0x048c (0x0004) [float]
+  bDebugVis: boolean; // 0x0490 (0x0004) [bool : 0x1]
+  VelocityEase: number; // 0x0494 (0x0004) [float]
+  BallSFX: UAkSoundCue; // 0x0498 (0x0008) [UAkSoundCue*]
+  CarSFX: UAkSoundCue; // 0x04a0 (0x0008) [UAkSoundCue*]
+  SMC: UStaticMeshComponent; // 0x04a8 (0x0008) [UStaticMeshComponent*]
+  MIC0: UMaterialInstanceConstant; // 0x04b0 (0x0008) [UMaterialInstanceConstant*]
+  MIC1: UMaterialInstanceConstant; // 0x04b8 (0x0008) [UMaterialInstanceConstant*]
+  MIC2: UMaterialInstanceConstant; // 0x04c0 (0x0008) [UMaterialInstanceConstant*]
+  MIC3: UMaterialInstanceConstant; // 0x04c8 (0x0008) [UMaterialInstanceConstant*]
+  MIC4: UMaterialInstanceConstant; // 0x04d0 (0x0008) [UMaterialInstanceConstant*]
+  MIC5: UMaterialInstanceConstant; // 0x04d8 (0x0008) [UMaterialInstanceConstant*]
+  Vel: FVector; // 0x04e0 (0x000c) [FVector]
+  Affecting: URBActor_TA[]; // 0x04f0 (0x0010) [TArray<URBActor_TA*>]
 };
 
 // SpecialPickup_Tornado_TA Functions
@@ -50508,38 +51175,38 @@ export type UStatFactoryBase_TA = UActor & {
 
 /**
  * Class TAGame.StatFactory_TA
- * Size: 0x0570
+ * Size: 0x0578
  * Extends: UStatFactoryBase_TA
  */
 export type UStatFactory_TA = UStatFactoryBase_TA & {
-  Events: FStatEventCollection; // 0x0278 (0x0248) [FStatEventCollection]
-  BallCache: FBallInfo[]; // 0x04c0 (0x0010) [TArray<FBallInfo>]
-  GoalSizeFudge: number; // 0x04d0 (0x0004) [float]
-  ShotMaxTime: number; // 0x04d4 (0x0004) [float]
-  ShotArriveTime: number; // 0x04d8 (0x0004) [float]
-  ShotMaxDistance: number; // 0x04dc (0x0004) [float]
-  RedZoneDistance: number; // 0x04e0 (0x0004) [float]
-  JuggleMinSpeed: number; // 0x04e4 (0x0004) [float]
-  BulletHitSpeed: number; // 0x04e8 (0x0004) [float]
-  AerialHitHeight: number; // 0x04ec (0x0004) [float]
-  AerialHitMinRelSpeed: number; // 0x04f0 (0x0004) [float]
-  FlipResetBallAerialBuffer: number; // 0x04f4 (0x0004) [float]
-  AerialFlipResetHeight: number; // 0x04f8 (0x0004) [float]
-  BicycleSpinSpeed: number; // 0x04fc (0x0004) [float]
-  LongGoalDistance: number; // 0x0500 (0x0004) [float]
-  HatTrickThreshold: number; // 0x0504 (0x0004) [int32]
-  PlaymakerThreshold: number; // 0x0508 (0x0004) [int32]
-  SaviorThreshold: number; // 0x050c (0x0004) [int32]
-  DemolitionThreshold: number; // 0x0510 (0x0004) [int32]
-  ComebackScoreDifference: number; // 0x0514 (0x0004) [int32]
-  bGaveFirstTouch: boolean; // 0x0518 (0x0004) [bool : 0x1]
-  SoccarGame: UGameEvent_Soccar_TA; // 0x0520 (0x0008) [UGameEvent_Soccar_TA*]
-  ScoringPRI: UPRI_TA; // 0x0528 (0x0008) [UPRI_TA*]
-  CarsIssuedAnyFiveHit: UCar_TA[]; // 0x0530 (0x0010) [TArray<UCar_TA*>]
-  ComebackTeams: UTeam_TA[]; // 0x0540 (0x0010) [TArray<UTeam_TA*>]
-  MinPossessionTimeForSteal: number; // 0x0550 (0x0004) [float]
-  CrossbarHitsCooldown: number; // 0x0554 (0x0004) [float]
-  __EventGaveStat__Delegate: FScriptDelegate; // 0x0558 (0x0018) [FScriptDelegate]
+  Events: FStatEventCollection; // 0x0278 (0x0250) [FStatEventCollection]
+  BallCache: FBallInfo[]; // 0x04c8 (0x0010) [TArray<FBallInfo>]
+  GoalSizeFudge: number; // 0x04d8 (0x0004) [float]
+  ShotMaxTime: number; // 0x04dc (0x0004) [float]
+  ShotArriveTime: number; // 0x04e0 (0x0004) [float]
+  ShotMaxDistance: number; // 0x04e4 (0x0004) [float]
+  RedZoneDistance: number; // 0x04e8 (0x0004) [float]
+  JuggleMinSpeed: number; // 0x04ec (0x0004) [float]
+  BulletHitSpeed: number; // 0x04f0 (0x0004) [float]
+  AerialHitHeight: number; // 0x04f4 (0x0004) [float]
+  AerialHitMinRelSpeed: number; // 0x04f8 (0x0004) [float]
+  FlipResetBallAerialBuffer: number; // 0x04fc (0x0004) [float]
+  AerialFlipResetHeight: number; // 0x0500 (0x0004) [float]
+  BicycleSpinSpeed: number; // 0x0504 (0x0004) [float]
+  LongGoalDistance: number; // 0x0508 (0x0004) [float]
+  HatTrickThreshold: number; // 0x050c (0x0004) [int32]
+  PlaymakerThreshold: number; // 0x0510 (0x0004) [int32]
+  SaviorThreshold: number; // 0x0514 (0x0004) [int32]
+  DemolitionThreshold: number; // 0x0518 (0x0004) [int32]
+  ComebackScoreDifference: number; // 0x051c (0x0004) [int32]
+  bGaveFirstTouch: boolean; // 0x0520 (0x0004) [bool : 0x1]
+  SoccarGame: UGameEvent_Soccar_TA; // 0x0528 (0x0008) [UGameEvent_Soccar_TA*]
+  ScoringPRI: UPRI_TA; // 0x0530 (0x0008) [UPRI_TA*]
+  CarsIssuedAnyFiveHit: UCar_TA[]; // 0x0538 (0x0010) [TArray<UCar_TA*>]
+  ComebackTeams: UTeam_TA[]; // 0x0548 (0x0010) [TArray<UTeam_TA*>]
+  MinPossessionTimeForSteal: number; // 0x0558 (0x0004) [float]
+  CrossbarHitsCooldown: number; // 0x055c (0x0004) [float]
+  __EventGaveStat__Delegate: FScriptDelegate; // 0x0560 (0x0018) [FScriptDelegate]
 };
 
 // StatFactory_TA Functions
@@ -50606,12 +51273,12 @@ export type UStatFactory_TA = UStatFactoryBase_TA & {
 
 /**
  * Class TAGame.StatFactory_Basketball_TA
- * Size: 0x057C
+ * Size: 0x0584
  * Extends: UStatFactory_TA
  */
 export type UStatFactory_Basketball_TA = UStatFactory_TA & {
-  HoopsSwishGoal: UStatEvent_TA; // 0x0570 (0x0008) [UStatEvent_TA*]
-  RedZoneHeightScale: number; // 0x0578 (0x0004) [float]
+  HoopsSwishGoal: UStatEvent_TA; // 0x0578 (0x0008) [UStatEvent_TA*]
+  RedZoneHeightScale: number; // 0x0580 (0x0004) [float]
 };
 
 // StatFactory_Basketball_TA Functions
@@ -50622,17 +51289,17 @@ export type UStatFactory_Basketball_TA = UStatFactory_TA & {
 
 /**
  * Class TAGame.StatFactory_Breakout_TA
- * Size: 0x05A4
+ * Size: 0x05AC
  * Extends: UStatFactory_TA
  */
 export type UStatFactory_Breakout_TA = UStatFactory_TA & {
-  BreakoutDamage: UStatEvent_TA; // 0x0570 (0x0008) [UStatEvent_TA*]
-  BreakoutDamageLarge: UStatEvent_TA; // 0x0578 (0x0008) [UStatEvent_TA*]
-  BreakoutSaveDamageThreshold: number; // 0x0580 (0x0004) [int32]
-  BreakoutDamageLargeThreshold: number; // 0x0584 (0x0004) [int32]
-  ShotGoalTimestep: number; // 0x0588 (0x0004) [float]
-  BreakoutEvent: UGameEvent_Breakout_TA; // 0x0590 (0x0008) [UGameEvent_Breakout_TA*]
-  FieldCenter: FVector; // 0x0598 (0x000c) [FVector]
+  BreakoutDamage: UStatEvent_TA; // 0x0578 (0x0008) [UStatEvent_TA*]
+  BreakoutDamageLarge: UStatEvent_TA; // 0x0580 (0x0008) [UStatEvent_TA*]
+  BreakoutSaveDamageThreshold: number; // 0x0588 (0x0004) [int32]
+  BreakoutDamageLargeThreshold: number; // 0x058c (0x0004) [int32]
+  ShotGoalTimestep: number; // 0x0590 (0x0004) [float]
+  BreakoutEvent: UGameEvent_Breakout_TA; // 0x0598 (0x0008) [UGameEvent_Breakout_TA*]
+  FieldCenter: FVector; // 0x05a0 (0x000c) [FVector]
 };
 
 // StatFactory_Breakout_TA Functions
@@ -50647,11 +51314,11 @@ export type UStatFactory_Breakout_TA = UStatFactory_TA & {
 
 /**
  * Class TAGame.StatFactory_HauntedBall_TA
- * Size: 0x0574
+ * Size: 0x057C
  * Extends: UStatFactory_TA
  */
 export type UStatFactory_HauntedBall_TA = UStatFactory_TA & {
-  EpicSaveTime: number; // 0x0570 (0x0004) [float]
+  EpicSaveTime: number; // 0x0578 (0x0004) [float]
 };
 
 // StatFactory_HauntedBall_TA Functions
@@ -50661,14 +51328,14 @@ export type UStatFactory_HauntedBall_TA = UStatFactory_TA & {
 
 /**
  * Class TAGame.StatFactory_KnockOut_TA
- * Size: 0x0630
+ * Size: 0x0638
  * Extends: UStatFactory_TA
  */
 export type UStatFactory_KnockOut_TA = UStatFactory_TA & {
-  Events_KO: FStatEventCollection_KO; // 0x0570 (0x0098) [FStatEventCollection_KO]
-  KnockOutGame: UGameEvent_KnockOut_TA; // 0x0608 (0x0008) [UGameEvent_KnockOut_TA*]
-  AerialHitFloorDistance: number; // 0x0610 (0x0004) [float]
-  __EventPlayerKnockedOut__Delegate: FScriptDelegate; // 0x0618 (0x0018) [FScriptDelegate]
+  Events_KO: FStatEventCollection_KO; // 0x0578 (0x0098) [FStatEventCollection_KO]
+  KnockOutGame: UGameEvent_KnockOut_TA; // 0x0610 (0x0008) [UGameEvent_KnockOut_TA*]
+  AerialHitFloorDistance: number; // 0x0618 (0x0004) [float]
+  __EventPlayerKnockedOut__Delegate: FScriptDelegate; // 0x0620 (0x0018) [FScriptDelegate]
 };
 
 // StatFactory_KnockOut_TA Functions
@@ -50687,37 +51354,38 @@ export type UStatFactory_KnockOut_TA = UStatFactory_TA & {
 
 /**
  * Class TAGame.StatGraphDrawer_TA
- * Size: 0x00E4
+ * Size: 0x00EC
  * Extends: UObject
  */
 export type UStatGraphDrawer_TA = UObject & {
   History: USampleHistory_TA; // 0x0060 (0x0008) [USampleHistory_TA*]
   MaxSampleAge: number; // 0x0068 (0x0004) [float]
-  Scale: number; // 0x006c (0x0004) [float]
-  PixelsPerSample: number; // 0x0070 (0x0004) [float]
-  ValueStartX: number; // 0x0074 (0x0004) [float]
-  MaxCharHeight: number; // 0x0078 (0x0004) [float]
-  SpaceWidth: number; // 0x007c (0x0004) [float]
-  LabelMaxWidth: number; // 0x0080 (0x0004) [float]
-  ValueMaxWidth: number; // 0x0084 (0x0004) [float]
-  GridCellWidth: number; // 0x0088 (0x0004) [float]
-  GridCellHeight: number; // 0x008c (0x0004) [float]
-  GraphWidth: number; // 0x0090 (0x0004) [float]
-  GraphHeight: number; // 0x0094 (0x0004) [float]
-  GraphStartX: number; // 0x0098 (0x0004) [float]
-  GraphEndX: number; // 0x009c (0x0004) [float]
-  X: number; // 0x00a0 (0x0004) [float]
-  Y: number; // 0x00a4 (0x0004) [float]
-  Canvas: UCanvas; // 0x00a8 (0x0008) [UCanvas*]
-  SummaryLabels: FSummaryLabel[]; // 0x00b0 (0x0010) [TArray<FSummaryLabel>]
-  GridLines: FGraphLine[]; // 0x00c0 (0x0010) [TArray<FGraphLine>]
-  SampleLines: FGraphLine[]; // 0x00d0 (0x0010) [TArray<FGraphLine>]
-  SampleLineIndex: number; // 0x00e0 (0x0004) [int32]
+  XScale: number; // 0x006c (0x0004) [float]
+  YScale: number; // 0x0070 (0x0004) [float]
+  PixelsPerSample: number; // 0x0074 (0x0004) [float]
+  ValueStartX: number; // 0x0078 (0x0004) [float]
+  MaxCharHeight: number; // 0x007c (0x0004) [float]
+  SpaceWidth: number; // 0x0080 (0x0004) [float]
+  LabelMaxWidth: number; // 0x0084 (0x0004) [float]
+  ValueMaxWidth: number; // 0x0088 (0x0004) [float]
+  GridCellWidth: number; // 0x008c (0x0004) [float]
+  GridCellHeight: number; // 0x0090 (0x0004) [float]
+  GraphWidth: number; // 0x0094 (0x0004) [float]
+  GraphHeight: number; // 0x0098 (0x0004) [float]
+  GraphStartX: number; // 0x009c (0x0004) [float]
+  GraphEndX: number; // 0x00a0 (0x0004) [float]
+  X: number; // 0x00a4 (0x0004) [float]
+  Y: number; // 0x00a8 (0x0004) [float]
+  Canvas: UCanvas; // 0x00b0 (0x0008) [UCanvas*]
+  SummaryLabels: FSummaryLabel[]; // 0x00b8 (0x0010) [TArray<FSummaryLabel>]
+  GridLines: FGraphLine[]; // 0x00c8 (0x0010) [TArray<FGraphLine>]
+  SampleLines: FGraphLine[]; // 0x00d8 (0x0010) [TArray<FGraphLine>]
+  SampleLineIndex: number; // 0x00e8 (0x0004) [int32]
 };
 
 /**
  * Class TAGame.StatGraphSystem_TA
- * Size: 0x00B4
+ * Size: 0x00BC
  * Extends: UComponent
  */
 export type UStatGraphSystem_TA = UComponent & {
@@ -50726,9 +51394,10 @@ export type UStatGraphSystem_TA = UComponent & {
   PerfStatGraph: UPerfStatGraph_TA; // 0x0078 (0x0008) [UPerfStatGraph_TA*]
   NetStatGraph: UNetStatGraph_TA; // 0x0080 (0x0008) [UNetStatGraph_TA*]
   InputBufferGraph: UInputBufferGraph_TA; // 0x0088 (0x0008) [UInputBufferGraph_TA*]
-  StatGraphs: UStatGraph_TA[]; // 0x0090 (0x0010) [TArray<UStatGraph_TA*>]
-  VisibleStatGraphs: UStatGraph_TA[]; // 0x00a0 (0x0010) [TArray<UStatGraph_TA*>]
-  PreallocGraphLines: number; // 0x00b0 (0x0004) [int32]
+  ActorStatGraphs: URBActorStatGraph_TA; // 0x0090 (0x0008) [URBActorStatGraph_TA*]
+  StatGraphs: UStatGraph_TA[]; // 0x0098 (0x0010) [TArray<UStatGraph_TA*>]
+  VisibleStatGraphs: UStatGraph_TA[]; // 0x00a8 (0x0010) [TArray<UStatGraph_TA*>]
+  PreallocGraphLines: number; // 0x00b8 (0x0004) [int32]
 };
 
 // StatGraphSystem_TA Functions
@@ -51211,6 +51880,26 @@ export type UStoredChatData_TA = UObject & {
 // StoreChatMessage(Data: FGFxChatMessage): void
 
 /**
+ * Class TAGame.StreamerSafeAnonymizationUtils_TA
+ * Size: 0x00A0
+ * Extends: UObject
+ */
+export type UStreamerSafeAnonymizationUtils_TA = UObject & {
+  LocalAnonymizationSettings: UProfileGameplaySave_TA; // 0x0060 (0x0008) [UProfileGameplaySave_TA*]
+  CurrentCallback: FScriptDelegate; // 0x0068 (0x0018) [FScriptDelegate]
+  LocalPlayer: ULocalPlayer_TA; // 0x0080 (0x0008) [ULocalPlayer_TA*]
+  __OnAnonymizationChanged__Delegate: FScriptDelegate; // 0x0088 (0x0018) [FScriptDelegate]
+};
+
+// StreamerSafeAnonymizationUtils_TA Functions
+// __StreamerSafeAnonymizationUtils_TA__HandleLocalProfileSet_0x1(Settings: UProfileGameplaySave_TA): void
+// Destroy(): void
+// InvokeCurrentCallback(): void
+// HandleLocalProfileSet(LP: ULocalPlayer_TA): void
+// SubscribeToLocalAnonymizationSettings(Callback: FScriptDelegate): void
+// OnAnonymizationChanged(): void
+
+/**
  * Class TAGame.StreamerSafeConfig_TA
  * Size: 0x00B8
  * Extends: UOnlineConfig_X
@@ -51411,7 +52100,7 @@ export type UTAsyncResult__UserBugReportUploadResult_TA = UAsyncTask & {
 
 /**
  * Class TAGame.Team_TA
- * Size: 0x0480
+ * Size: 0x0488
  * Extends: UTeamInfo
  */
 export type UTeam_TA = UTeamInfo & {
@@ -51441,16 +52130,17 @@ export type UTeam_TA = UTeamInfo & {
   PartyUpVote: UVoteActor_TA; // 0x0380 (0x0008) [UVoteActor_TA*]
   bForfeit: boolean; // 0x0388 (0x0004) [bool : 0x1]
   TemporarySpawnSpots: FTemporarySpawnSpot[]; // 0x0390 (0x0010) [TArray<FTemporarySpawnSpot>]
-  Difficulty: number; // 0x03a0 (0x0004) [int32]
-  __EventMemberAdded__Delegate: FScriptDelegate; // 0x03a8 (0x0018) [FScriptDelegate]
-  __EventMemberRemoved__Delegate: FScriptDelegate; // 0x03c0 (0x0018) [FScriptDelegate]
-  __EventColorsChanged__Delegate: FScriptDelegate; // 0x03d8 (0x0018) [FScriptDelegate]
-  __EventScoreUpdated__Delegate: FScriptDelegate; // 0x03f0 (0x0018) [FScriptDelegate]
-  __EventLogoChanged__Delegate: FScriptDelegate; // 0x0408 (0x0018) [FScriptDelegate]
-  __EventForfeit__Delegate: FScriptDelegate; // 0x0420 (0x0018) [FScriptDelegate]
-  __EventClubIDChanged__Delegate: FScriptDelegate; // 0x0438 (0x0018) [FScriptDelegate]
-  __ClubColors__ChangeNotify: FScriptDelegate; // 0x0450 (0x0018) [FScriptDelegate]
-  __Difficulty__ChangeNotify: FScriptDelegate; // 0x0468 (0x0018) [FScriptDelegate]
+  LocalAnonymizationSettingsHelper: UStreamerSafeAnonymizationUtils_TA; // 0x03a0 (0x0008) [UStreamerSafeAnonymizationUtils_TA*]
+  Difficulty: number; // 0x03a8 (0x0004) [int32]
+  __EventMemberAdded__Delegate: FScriptDelegate; // 0x03b0 (0x0018) [FScriptDelegate]
+  __EventMemberRemoved__Delegate: FScriptDelegate; // 0x03c8 (0x0018) [FScriptDelegate]
+  __EventColorsChanged__Delegate: FScriptDelegate; // 0x03e0 (0x0018) [FScriptDelegate]
+  __EventScoreUpdated__Delegate: FScriptDelegate; // 0x03f8 (0x0018) [FScriptDelegate]
+  __EventLogoChanged__Delegate: FScriptDelegate; // 0x0410 (0x0018) [FScriptDelegate]
+  __EventForfeit__Delegate: FScriptDelegate; // 0x0428 (0x0018) [FScriptDelegate]
+  __EventClubIDChanged__Delegate: FScriptDelegate; // 0x0440 (0x0018) [FScriptDelegate]
+  __ClubColors__ChangeNotify: FScriptDelegate; // 0x0458 (0x0018) [FScriptDelegate]
+  __Difficulty__ChangeNotify: FScriptDelegate; // 0x0470 (0x0018) [FScriptDelegate]
 };
 
 // Team_TA Functions
@@ -51466,6 +52156,7 @@ export type UTeam_TA = UTeamInfo & {
 // __Difficulty__ChangeNotifyFunc(): void
 // __ClubColors__ChangeNotifyFunc(): void
 // UpdateGameShaderParamColors(TeamIdx: number, NewColors: FLinearColor[]): void
+// GetCarColorSet(): UCarColorSet_TA
 // PrintDebugInfo(Drawer: UDebugDrawer): void
 // OnClubColorsChanged(): void
 // SetClubColors(Colors: FClubColorSet): void
@@ -51478,6 +52169,9 @@ export type UTeam_TA = UTeamInfo & {
 // GetNumOfMembersThatCanStartForfeit(): number
 // VoteToForfeit(PRI: UPRI_TA): void
 // GetColors(OutFontColor: FLinearColor, OutColors: FLinearColor[]): void
+// ShouldAnonymizeClubColorsForLocalViewer(): boolean
+// HandleAnyPRIAnonymizationChanged(PRI: UPRI_TA): void
+// HandleAnyPRITeamChanged(PRI: UPlayerReplicationInfo): void
 // ForceRecaptureScene(): void
 // NotifyKismetTeamColorChanged(): void
 // UpdateColors(): void
@@ -51530,20 +52224,28 @@ export type UTeam_TA = UTeamInfo & {
 
 /**
  * Class TAGame.Team_Soccar_TA
- * Size: 0x04C0
+ * Size: 0x04E8
  * Extends: UTeam_TA
  */
 export type UTeam_Soccar_TA = UTeam_TA & {
-  GameScore: number; // 0x0480 (0x0004) [int32]
-  PrimaryStarts: UActor[]; // 0x0488 (0x0010) [TArray<UActor*>]
-  SecondaryStarts: UActor[]; // 0x0498 (0x0010) [TArray<UActor*>]
-  __EventGameScoreUpdated__Delegate: FScriptDelegate; // 0x04a8 (0x0018) [FScriptDelegate]
+  GameScore: number; // 0x0488 (0x0004) [int32]
+  PrimaryStarts: UActor[]; // 0x0490 (0x0010) [TArray<UActor*>]
+  SecondaryStarts: UActor[]; // 0x04a0 (0x0010) [TArray<UActor*>]
+  LeftSecondaryStarts: UActor[]; // 0x04b0 (0x0010) [TArray<UActor*>]
+  RightSecondaryStarts: UActor[]; // 0x04c0 (0x0010) [TArray<UActor*>]
+  __EventGameScoreUpdated__Delegate: FScriptDelegate; // 0x04d0 (0x0018) [FScriptDelegate]
 };
 
 // Team_Soccar_TA Functions
+// __Team_Soccar_TA__InitSpawnPoints_0x4(P: UActor): boolean
+// __Team_Soccar_TA__InitSpawnPoints_0x3(P: UActor): boolean
+// __Team_Soccar_TA__InitSpawnPoints_0x2(P: UActor): boolean
+// __Team_Soccar_TA__InitSpawnPoints_0x1(P: UActor): boolean
 // OnGameScoreUpdated(): void
 // SetGameScore(Value: number): void
 // ScoreGame(): void
+// GetNextSpawnActor(CurrentSelection: UActor, Preference: EDemoSpawnPreference, SpawnIndex: number): UActor
+// SortSecondary(A: UActor, B: UActor): number
 // InitSpawnPoints(): void
 // MirrorStartPoint(SpawnPoint: UActor, Pivot: FVector): UActor
 // Destroyed(): void
@@ -51553,7 +52255,7 @@ export type UTeam_Soccar_TA = UTeam_TA & {
 
 /**
  * Class TAGame.Team_Freeplay_TA
- * Size: 0x04C0
+ * Size: 0x04E8
  * Extends: UTeam_Soccar_TA
  */
 export type UTeam_Freeplay_TA = UTeam_Soccar_TA & {};
@@ -51626,12 +52328,13 @@ export type UTeamNameComponent_TA = UComponent & {
 // __TeamNameComponent_TA__SetCustomTeamName_0x1(_: string, InSanitized: string): void
 // __bHasCustomColor__ChangeNotifyFunc(): void
 // __SanitizedTeamName__ChangeNotifyFunc(): void
+// GetAnonymizedTeamName(): string
 // GetTeamName(): string
 // HandleClubDetails(Club: UClubDetails_X): void
 // SetCustomTeamName(InTeam: UTeam_TA, NewName: string): void
 // UpdateTeamName(): void
 // Construct(): void
-// EventNameChanged(TeamNameComponent: UTeamNameComponent_TA, NewName: string): void
+// EventNameChanged(TeamNameComponent: UTeamNameComponent_TA): void
 
 /**
  * Class TAGame.TextChatActor_TA
@@ -54199,6 +54902,7 @@ export type UViralItemActor_TA = UActor & {
 };
 
 // ViralItemActor_TA Functions
+// UpdateInfectedStatusFromEquippedLoadout(): void
 // UpdateInfectedStatusFromLoadout(): void
 // GetInfectedStatusAfterHit(GameStateName: FName, HitCarStatus: EInfectedType): EInfectedType
 // OnFXInfectedTypeReplicated(): void
@@ -54217,12 +54921,18 @@ export type UViralItemActor_TA = UActor & {
 
 /**
  * Class TAGame.ViralItemConfig_TA
- * Size: 0x0090
+ * Size: 0x00C8
  * Extends: UOnlineConfig_X
  */
 export type UViralItemConfig_TA = UOnlineConfig_X & {
   ViralPostGoalTime: number; // 0x0078 (0x0004) [float]
   ViralSeriesGroups: FViralSeriesGroup[]; // 0x0080 (0x0010) [TArray<FViralSeriesGroup>]
+  bInfectDuringMatch: boolean; // 0x0090 (0x0004) [bool : 0x1]
+  bAllowViralItemsInAllPlaylists: boolean; // 0x0090 (0x0004) [bool : 0x2]
+  bRequiresViralItemEquipped: boolean; // 0x0090 (0x0004) [bool : 0x4]
+  ScoreboardInfectedTypes: EInfectedType[]; // 0x0098 (0x0010) [TArray<EInfectedType>]
+  NameplateInfectedTypes: EInfectedType[]; // 0x00a8 (0x0010) [TArray<EInfectedType>]
+  AvatarInfectedTypes: EInfectedType[]; // 0x00b8 (0x0010) [TArray<EInfectedType>]
 };
 
 // ViralItemConfig_TA Functions
@@ -54512,7 +55222,7 @@ export type UWheelAssetGenerator_RightWheels_TA = UWheelAssetGenerator_TA & {
 
 /**
  * Class TAGame.WheelAssetSettings_TA
- * Size: 0x00C0
+ * Size: 0x00C8
  * Extends: UComponent
  */
 export type UWheelAssetSettings_TA = UComponent & {
@@ -54521,9 +55231,13 @@ export type UWheelAssetSettings_TA = UComponent & {
   AnimTree: UAnimTree; // 0x0080 (0x0008) [UAnimTree*]
   Behaviors: UAttachmentBehavior_TA[]; // 0x0088 (0x0010) [TArray<UAttachmentBehavior_TA*>]
   Attachments: FWheelAttachment[]; // 0x0098 (0x0010) [TArray<FWheelAttachment>]
-  Scale3D: FVector; // 0x00a8 (0x000c) [FVector]
-  Rotation: FRotator; // 0x00b4 (0x000c) [FRotator]
+  FXActor: UFXActor_X; // 0x00a8 (0x0008) [UFXActor_X*]
+  Scale3D: FVector; // 0x00b0 (0x000c) [FVector]
+  Rotation: FRotator; // 0x00bc (0x000c) [FRotator]
 };
+
+// WheelAssetSettings_TA Functions
+// AttachFXActorComponents(WheelSKC: USkeletalMeshComponent, CompOuter: UObject, Asset: UProductAsset_Wheel_TA, Attributes: UProductAttribute_TA[], OutComponents: UPrimitiveComponent[]): void
 
 /**
  * Class TAGame.WheelShimmy_TA
@@ -54580,6 +55294,24 @@ export type UWheelSpeedComponent_TA = UActorComponent_X & {
  * Extends: UStaticMeshComponent
  */
 export type UWheelStaticMeshMAT_TA = UStaticMeshComponent & {};
+
+/**
+ * Class TAGame.WorldCupConfig_TA
+ * Size: 0x00A8
+ * Extends: UOnlineConfig_X
+ */
+export type UWorldCupConfig_TA = UOnlineConfig_X & {
+  bIsEnabled: boolean; // 0x0078 (0x0004) [bool : 0x1]
+  bDebugUIEnabled: boolean; // 0x0078 (0x0004) [bool : 0x2]
+  TeamsData: FWorldCupData[]; // 0x0080 (0x0010) [TArray<FWorldCupData>]
+  ChallengeEventPageName: string; // 0x0090 (0x0010) [FString]
+  SelectCountryTimeLimit: bigint; // 0x00a0 (0x0008) [uint64]
+};
+
+// WorldCupConfig_TA Functions
+// __WorldCupConfig_TA__Apply_0x1(D1: FWorldCupData, D2: FWorldCupData): number
+// SortAlphabetically(DataA: FWorldCupData, DataB: FWorldCupData): number
+// Apply(): void
 
 /**
  * Class TAGame.XPManager_TA

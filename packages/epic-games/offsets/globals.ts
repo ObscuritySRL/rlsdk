@@ -7,7 +7,7 @@
  */
 
 /** GNames offset from module base */
-export const GNames = 0x240dcc8n;
+export const GNames = 0x24170e8n;
 
 /** GObjects offset from module base */
-export const GObjects = 0x240dd10n;
+export const GObjects = 0x2417130n;

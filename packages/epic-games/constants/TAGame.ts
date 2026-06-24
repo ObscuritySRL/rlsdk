@@ -5,6 +5,7 @@
 
 export const AimNodeName = "'AimNode'"; // TAGame.InMapDragonManager_TA.AimNodeName
 export const AttributeKey_Quality = "'Quality'"; // TAGame._ShopTypes_TA.AttributeKey_Quality
+export const BAD_LABEL_TAG = '"<bad-decal-label>"'; // TAGame.GFxData_ProductAttribute_TeamEdition_TA.BAD_LABEL_TAG
 export const BoostLevel_Activated = '0.0f'; // TAGame.EngineAudioRevSimBoostLevel_TA.BoostLevel_Activated
 export const BoostLevel_Active = '1.0f'; // TAGame.EngineAudioRevSimBoostLevel_TA.BoostLevel_Active
 export const BoostLevel_Inactive = '-1.0f'; // TAGame.EngineAudioRevSimBoostLevel_TA.BoostLevel_Inactive
@@ -31,10 +32,11 @@ export const MaxConcurrentItemCount = 3; // TAGame.RumblePickups_TA.MaxConcurren
 export const MaxFriendKeyLength = 64; // TAGame.PRI_TA.MaxFriendKeyLength
 export const MaxLoadoutSets = 75; // TAGame.ProfileLoadoutSave_TA.MaxLoadoutSets
 export const MaxSteeringSensitivity = '10.f'; // TAGame.VehicleSim_TA.MaxSteeringSensitivity
-export const MENU_BG_SWITCH_VERSION = 12; // TAGame.SeqAct_MainMenuSwitch_TA.MENU_BG_SWITCH_VERSION
+export const MENU_BG_SWITCH_VERSION = 13; // TAGame.SeqAct_MainMenuSwitch_TA.MENU_BG_SWITCH_VERSION
 export const MenuTreeMaxDepth = 20; // TAGame.MenuTreeBuilder_TA.MenuTreeMaxDepth
 export const Mutator_MatchAdmin = "'MatchCreatorAdminEnabled'"; // TAGame._Types_TA.Mutator_MatchAdmin
 export const MutatorCategory_MatchAdmin = "'MatchAdmin'"; // TAGame._Types_TA.MutatorCategory_MatchAdmin
+export const NudgeClearanceZ = '0.2f'; // TAGame.GameEvent_TrainingEditor_TA.NudgeClearanceZ
 export const PartyPresenceId = 10; // TAGame.GFxData_Friends_TA.PartyPresenceId
 export const PerfMetricsVersion = 2; // TAGame.PerfMetrics_TA.PerfMetricsVersion
 export const PlayerCountIrrelevant = '"NO_COUNT"'; // TAGame.LoadingScreen_TA.PlayerCountIrrelevant

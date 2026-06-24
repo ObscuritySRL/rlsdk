@@ -559,11 +559,12 @@ export const __OnlineClubProvider_X__SyncPlayerClubDetails_0x1 = {
 
 /**
  * ProjectX.__OnlineGame_X__CheckPsyNetConnection_0x1 Offsets
- * Size: 0x0068
+ * Size: 0x0078
  * Extends: Object_
  */
 export const __OnlineGame_X__CheckPsyNetConnection_0x1 = {
   Task: 0x0060n, // 0x0060 (0x0008) [UAsyncTask*]
+  ActiveLoginAttemptPlayers: 0x0068n, // 0x0068 (0x0010) [TArray<UOnlinePlayer_X*>]
   ...Object_,
 } as const;
 
@@ -1036,6 +1037,16 @@ export const __PartySequence_InvitedToPsyNetParty_X__HandlePlayerInvitedSilent_0
  */
 export const __PartySequence_JoinParty_X__HandleGetPlatformPartyMessage_0x1 = {
   Message: 0x0060n, // 0x0060 (0x0008) [UPartyMessage_GetPlatformParty_X*]
+  ...Object_,
+} as const;
+
+/**
+ * ProjectX.__PlayerController_X__CloseConnectionWithReason_0x1 Offsets
+ * Size: 0x0070
+ * Extends: Object_
+ */
+export const __PlayerController_X__CloseConnectionWithReason_0x1 = {
+  Reason: 0x0060n, // 0x0060 (0x0010) [FString]
   ...Object_,
 } as const;
 
@@ -2401,13 +2412,14 @@ export const BlockStatusReporterConfig_X = {
 
 /**
  * ProjectX.BlogConfig_X Offsets
- * Size: 0x009c
+ * Size: 0x00a0
  * Extends: OnlineConfig_X
  */
 export const BlogConfig_X = {
   Entries: 0x0078n, // 0x0078 (0x0010) [TArray<UBlogTile_X*>]
   MotD: 0x0088n, // 0x0088 (0x0010) [FString]
   RetryTime: 0x0098n, // 0x0098 (0x0004) [float]
+  RequestDelay: 0x009cn, // 0x009c (0x0004) [float]
   ...OnlineConfig_X,
 } as const;
 
@@ -5420,11 +5432,12 @@ export const FOrientation = {
 
 /**
  * ProjectX.SystemMetrics_X.OSMetrics Offsets
- * Size: 0x0020
+ * Size: 0x0030
  */
 export const FOSMetrics = {
   Type: 0x0000n, // 0x0000 (0x0010) [FString]
   Bits: 0x0010n, // 0x0010 (0x0010) [FString]
+  Native: 0x0020n, // 0x0020 (0x0010) [FString]
 } as const;
 
 /**
@@ -8111,6 +8124,7 @@ export const LocalCache_X = {
   ExportTasks: 0x0088n, // 0x0088 (0x0010) [TArray<FPointer>]
   ExportCallbacks: 0x0098n, // 0x0098 (0x0010) [TArray<FCacheExportCallbackData>]
   bDebug: 0x00a8n, // 0x00a8 (0x0004) [bool : 0x1]
+  GLocalCacheCommitPending: 0x00a8n, // 0x00a8 (0x0004) [bool : 0x2]
   __EventImportFinished__Delegate: 0x00b0n, // 0x00b0 (0x0018) [FScriptDelegate]
   __EventExportFinished__Delegate: 0x00c8n, // 0x00c8 (0x0018) [FScriptDelegate]
   ...Object_,
@@ -9017,7 +9031,7 @@ export const OnlineGameLeaderboards_X = {
 
 /**
  * ProjectX.OnlineGameMatchmakingBase_X Offsets
- * Size: 0x0130
+ * Size: 0x0148
  * Extends: Online_X
  */
 export const OnlineGameMatchmakingBase_X = {
@@ -9028,36 +9042,37 @@ export const OnlineGameMatchmakingBase_X = {
   __EventFindGameStatus__Delegate: 0x00e8n, // 0x00e8 (0x0018) [FScriptDelegate]
   __EventFindGameError__Delegate: 0x0100n, // 0x0100 (0x0018) [FScriptDelegate]
   __EventFindGameStateChanged__Delegate: 0x0118n, // 0x0118 (0x0018) [FScriptDelegate]
+  __EventGetMatchmakingDelaySecs__Delegate: 0x0130n, // 0x0130 (0x0018) [FScriptDelegate]
   ...Online_X,
 } as const;
 
 /**
  * ProjectX.OnlineGameMatchmaking_X Offsets
- * Size: 0x0268
+ * Size: 0x0280
  * Extends: OnlineGameMatchmakingBase_X
  */
 export const OnlineGameMatchmaking_X = {
-  PreferredPlaylists: 0x0130n, // 0x0130 (0x0010) [TArray<int32>]
-  PreferredRegions: 0x0140n, // 0x0140 (0x0010) [TArray<FDSRegionInfo>]
-  SearchingString: 0x0150n, // 0x0150 (0x0010) [FString]
-  StartSearchFailString: 0x0160n, // 0x0160 (0x0010) [FString]
-  FoundServerString: 0x0170n, // 0x0170 (0x0010) [FString]
-  PlaylistsHaveChangedString: 0x0180n, // 0x0180 (0x0010) [FString]
-  RegionsHaveChangedString: 0x0190n, // 0x0190 (0x0010) [FString]
-  MatchmakingAttemptString: 0x01a0n, // 0x01a0 (0x0010) [FString]
-  MatchmakingStartTime: 0x01b0n, // 0x01b0 (0x0004) [float]
-  MatchmakingBanTime: 0x01b4n, // 0x01b4 (0x0004) [int32]
-  EstimatedQueueTime: 0x01b8n, // 0x01b8 (0x0004) [float]
-  bIgnoreSkill: 0x01bcn, // 0x01bc (0x0004) [bool : 0x1]
-  MatchmakingDisabledDuration: 0x01c0n, // 0x01c0 (0x0004) [float]
-  MatchmakingDisabledUntilTime: 0x01c4n, // 0x01c4 (0x0004) [float]
-  LastReservationID: 0x01c8n, // 0x01c8 (0x0010) [FString]
-  __EventStartSearch__Delegate: 0x01d8n, // 0x01d8 (0x0018) [FScriptDelegate]
-  __EventMatchmakingError__Delegate: 0x01f0n, // 0x01f0 (0x0018) [FScriptDelegate]
-  __EventMatchmakingCanceledOnPartySizeChanged__Delegate: 0x0208n, // 0x0208 (0x0018) [FScriptDelegate]
-  __EventMatchmakingRPCSuccess__Delegate: 0x0220n, // 0x0220 (0x0018) [FScriptDelegate]
-  __EventMatchmakingRPCError__Delegate: 0x0238n, // 0x0238 (0x0018) [FScriptDelegate]
-  __EventSendMatchmakingRPC__Delegate: 0x0250n, // 0x0250 (0x0018) [FScriptDelegate]
+  PreferredPlaylists: 0x0148n, // 0x0148 (0x0010) [TArray<int32>]
+  PreferredRegions: 0x0158n, // 0x0158 (0x0010) [TArray<FDSRegionInfo>]
+  SearchingString: 0x0168n, // 0x0168 (0x0010) [FString]
+  StartSearchFailString: 0x0178n, // 0x0178 (0x0010) [FString]
+  FoundServerString: 0x0188n, // 0x0188 (0x0010) [FString]
+  PlaylistsHaveChangedString: 0x0198n, // 0x0198 (0x0010) [FString]
+  RegionsHaveChangedString: 0x01a8n, // 0x01a8 (0x0010) [FString]
+  MatchmakingAttemptString: 0x01b8n, // 0x01b8 (0x0010) [FString]
+  MatchmakingStartTime: 0x01c8n, // 0x01c8 (0x0004) [float]
+  MatchmakingBanTime: 0x01ccn, // 0x01cc (0x0004) [int32]
+  EstimatedQueueTime: 0x01d0n, // 0x01d0 (0x0004) [float]
+  bIgnoreSkill: 0x01d4n, // 0x01d4 (0x0004) [bool : 0x1]
+  MatchmakingDisabledDuration: 0x01d8n, // 0x01d8 (0x0004) [float]
+  MatchmakingDisabledUntilTime: 0x01dcn, // 0x01dc (0x0004) [float]
+  LastReservationID: 0x01e0n, // 0x01e0 (0x0010) [FString]
+  __EventStartSearch__Delegate: 0x01f0n, // 0x01f0 (0x0018) [FScriptDelegate]
+  __EventMatchmakingError__Delegate: 0x0208n, // 0x0208 (0x0018) [FScriptDelegate]
+  __EventMatchmakingCanceledOnPartySizeChanged__Delegate: 0x0220n, // 0x0220 (0x0018) [FScriptDelegate]
+  __EventMatchmakingRPCSuccess__Delegate: 0x0238n, // 0x0238 (0x0018) [FScriptDelegate]
+  __EventMatchmakingRPCError__Delegate: 0x0250n, // 0x0250 (0x0018) [FScriptDelegate]
+  __EventSendMatchmakingRPC__Delegate: 0x0268n, // 0x0268 (0x0018) [FScriptDelegate]
   ...OnlineGameMatchmakingBase_X,
 } as const;
 
@@ -9158,24 +9173,24 @@ export const OnlineGamePopulation_X = {
 
 /**
  * ProjectX.OnlineGamePrivateMatch_X Offsets
- * Size: 0x0288
+ * Size: 0x02a0
  * Extends: OnlineGameMatchmakingBase_X
  */
 export const OnlineGamePrivateMatch_X = {
-  bCancelled: 0x0130n, // 0x0130 (0x0004) [bool : 0x1]
-  PreferredRegion: 0x0138n, // 0x0138 (0x0010) [FString]
-  PreferredPlaylistID: 0x0148n, // 0x0148 (0x0004) [int32]
-  SearchingString: 0x0150n, // 0x0150 (0x0010) [FString]
-  StartSearchFailString: 0x0160n, // 0x0160 (0x0010) [FString]
-  FoundServerString: 0x0170n, // 0x0170 (0x0010) [FString]
-  AlreadyJoiningGameString: 0x0180n, // 0x0180 (0x0010) [FString]
-  TimeoutString: 0x0190n, // 0x0190 (0x0010) [FString]
-  WrongRegionString: 0x01a0n, // 0x01a0 (0x0010) [FString]
-  Settings: 0x01b0n, // 0x01b0 (0x0088) [FCustomMatchSettings]
-  SearchTimeout: 0x0238n, // 0x0238 (0x0004) [float]
-  __EventPrivateMatchError__Delegate: 0x0240n, // 0x0240 (0x0018) [FScriptDelegate]
-  __EventCancelPrivateMatch__Delegate: 0x0258n, // 0x0258 (0x0018) [FScriptDelegate]
-  __EventSendMatchmakingRPC__Delegate: 0x0270n, // 0x0270 (0x0018) [FScriptDelegate]
+  bCancelled: 0x0148n, // 0x0148 (0x0004) [bool : 0x1]
+  PreferredRegion: 0x0150n, // 0x0150 (0x0010) [FString]
+  PreferredPlaylistID: 0x0160n, // 0x0160 (0x0004) [int32]
+  SearchingString: 0x0168n, // 0x0168 (0x0010) [FString]
+  StartSearchFailString: 0x0178n, // 0x0178 (0x0010) [FString]
+  FoundServerString: 0x0188n, // 0x0188 (0x0010) [FString]
+  AlreadyJoiningGameString: 0x0198n, // 0x0198 (0x0010) [FString]
+  TimeoutString: 0x01a8n, // 0x01a8 (0x0010) [FString]
+  WrongRegionString: 0x01b8n, // 0x01b8 (0x0010) [FString]
+  Settings: 0x01c8n, // 0x01c8 (0x0088) [FCustomMatchSettings]
+  SearchTimeout: 0x0250n, // 0x0250 (0x0004) [float]
+  __EventPrivateMatchError__Delegate: 0x0258n, // 0x0258 (0x0018) [FScriptDelegate]
+  __EventCancelPrivateMatch__Delegate: 0x0270n, // 0x0270 (0x0018) [FScriptDelegate]
+  __EventSendMatchmakingRPC__Delegate: 0x0288n, // 0x0288 (0x0018) [FScriptDelegate]
   ...OnlineGameMatchmakingBase_X,
 } as const;
 
@@ -9726,6 +9741,8 @@ export const OnlineSaveLock_X = {
  */
 export const OSSConfig_X = {
   bEnablePresence: 0x0078n, // 0x0078 (0x0004) [bool : 0x1]
+  bWin64OptimizedKeyPolling: 0x0078n, // 0x0078 (0x0004) [bool : 0x2]
+  bUseSteamControllerCache: 0x0078n, // 0x0078 (0x0004) [bool : 0x4]
   EosInitTimeoutSeconds: 0x007cn, // 0x007c (0x0004) [float]
   GdkUpdateDlcTimeoutSeconds: 0x0080n, // 0x0080 (0x0004) [float]
   GdkMaxConcurrentDlcLicenseRequests: 0x0084n, // 0x0084 (0x0004) [int32]
@@ -10883,6 +10900,7 @@ export const PlayerController_X = {
   OldPawnReference: 0x07f8n, // 0x07f8 (0x0008) [UPawn*]
   LockedDebugActor: 0x0800n, // 0x0800 (0x0008) [UActor*]
   bPausedForExternalUI: 0x0808n, // 0x0808 (0x0004) [bool : 0x1]
+  CloseConnectionDelay: 0x080cn, // 0x080c (0x0004) [float]
   NetConnection: 0x0810n, // 0x0810 (0x0008) [UNetConnection*]
   __EventReceivedPRI__Delegate: 0x0818n, // 0x0818 (0x0018) [FScriptDelegate]
   __EventPawnChange__Delegate: 0x0830n, // 0x0830 (0x0018) [FScriptDelegate]
@@ -13849,6 +13867,16 @@ export const ServerPlayerTracker_X = {
 export const SetPlayerStorageResult_X = {
   Items: 0x0060n, // 0x0060 (0x0010) [TArray<FSetPlayerStorageResultItem>]
   ...Object_,
+} as const;
+
+/**
+ * ProjectX.SetVisibilityComponent_X Offsets
+ * Size: 0x00b0
+ * Extends: ActorComponent_X
+ */
+export const SetVisibilityComponent_X = {
+  TargetStaticMesh: 0x00a8n, // 0x00a8 (0x0008) [UStaticMesh*]
+  ...ActorComponent_X,
 } as const;
 
 /**

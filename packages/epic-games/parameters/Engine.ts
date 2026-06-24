@@ -23565,6 +23565,13 @@ export type OnlineSubsystem_GetOnlinePlatformFromName_Params = {
 };
 
 /**
+ * Function Engine.OnlineSubsystem.GetOSVersionString
+ */
+export type OnlineSubsystem_GetOSVersionString_Params = {
+  ReturnValue: string; // 0x0000 (0x0010) [FString] [CPF_Parm | CPF_OutParm | CPF_ReturnParm]
+};
+
+/**
  * Function Engine.OnlineSubsystem.GetPlatformName
  */
 export type OnlineSubsystem_GetPlatformName_Params = {
@@ -37740,6 +37747,13 @@ export type WorldInfo_IsPreparingMapChange_Params = {
  * Function Engine.WorldInfo.IsRecordingDemo
  */
 export type WorldInfo_IsRecordingDemo_Params = {
+  ReturnValue: boolean; // 0x0000 (0x0004) [bool : 0x1] [CPF_Parm | CPF_OutParm | CPF_ReturnParm]
+};
+
+/**
+ * Function Engine.WorldInfo.IsSteamDeck
+ */
+export type WorldInfo_IsSteamDeck_Params = {
   ReturnValue: boolean; // 0x0000 (0x0004) [bool : 0x1] [CPF_Parm | CPF_OutParm | CPF_ReturnParm]
 };
 
