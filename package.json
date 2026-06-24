@@ -16,8 +16,8 @@
     "typecheck": "bun run --filter '@rlsdk/*' typecheck",
     "format": "biome format --write .",
     "check": "biome check .",
-    "publish:epic-games": "cd packages/epic-games && npm publish",
-    "publish:steam": "cd packages/steam && npm publish"
+    "publish:epic-games": "cd packages/epic-games && bun publish",
+    "publish:steam": "cd packages/steam && bun publish"
   },
   "engines": {
     "bun": ">=1.0.0"
