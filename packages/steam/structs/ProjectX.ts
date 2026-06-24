@@ -1349,11 +1349,12 @@ export type FOrientation = {
 
 /**
  * ScriptStruct ProjectX.SystemMetrics_X.OSMetrics
- * Size: 0x0020
+ * Size: 0x0030
  */
 export type FOSMetrics = {
   Type: string; // 0x0000 (0x0010) [FString]
   Bits: string; // 0x0010 (0x0010) [FString]
+  Native: string; // 0x0020 (0x0010) [FString]
 };
 
 /**

@@ -48,6 +48,7 @@ import type {
   USequenceEvent,
   USkelControlBase,
   USkeletalMeshComponent,
+  UStaticMeshComponent,
   UTexture,
   UTexture2DDynamic,
   UTimeWindow,
@@ -477,6 +478,7 @@ import type {
   U__PartySequence_InvitedToPsyNetParty_X__HandlePlayerInvitedPrompt_0x1,
   U__PartySequence_InvitedToPsyNetParty_X__HandlePlayerInvitedSilent_0x1,
   U__PartySequence_JoinParty_X__HandleGetPlatformPartyMessage_0x1,
+  U__PlayerController_X__CloseConnectionWithReason_0x1,
   U__PsyNetBeacon_X__SendMessageToClients_0x1,
   U__PsyNetBeacon_X__SendMessageToServer_0x1,
   U__PsyNetConnection_X__ProcessServiceCall_0x1,
@@ -1167,6 +1169,13 @@ export type __OnlineGame_X__CheckPsyNetConnection_0x1___OnlineGame_X__CheckPsyNe
 };
 
 /**
+ * Function ProjectX.__OnlineGame_X__CheckPsyNetConnection_0x1.__OnlineGame_X__CheckPsyNetConnection_0x2
+ */
+export type __OnlineGame_X__CheckPsyNetConnection_0x1___OnlineGame_X__CheckPsyNetConnection_0x2_Params = {
+  Auth: UOnlinePlayerAuthentication_X; // 0x0000 (0x0008) [UOnlinePlayerAuthentication_X*] [CPF_Parm]
+};
+
+/**
  * Function ProjectX.__OnlineGame_X__GetOnlinePlayerFromEpicId_0x1.__OnlineGame_X__GetOnlinePlayerFromEpicId_0x1
  */
 export type __OnlineGame_X__GetOnlinePlayerFromEpicId_0x1___OnlineGame_X__GetOnlinePlayerFromEpicId_0x1_Params = {
@@ -1520,6 +1529,11 @@ export type __PartySequence_JoinParty_X__HandleGetPlatformPartyMessage_0x1___Par
   M: FPartyMember; // 0x0000 (0x0180) [FPartyMember] [CPF_Parm]
   ReturnValue: boolean; // 0x0180 (0x0004) [bool : 0x1] [CPF_Parm | CPF_OutParm | CPF_ReturnParm]
 };
+
+/**
+ * Function ProjectX.__PlayerController_X__CloseConnectionWithReason_0x1.__PlayerController_X__CloseConnectionWithReason_0x1
+ */
+export type __PlayerController_X__CloseConnectionWithReason_0x1___PlayerController_X__CloseConnectionWithReason_0x1_Params = {};
 
 /**
  * Function ProjectX.__PRI_X__RegisterPlayerWithSession_0x1.__PRI_X__RegisterPlayerWithSession_0x1
@@ -3413,7 +3427,9 @@ export type CameraModifier_CameraShake_X_RemoveCameraShake_Params = {
 /**
  * Function ProjectX.CameraState_CamActor_X.BeginCameraState
  */
-export type CameraState_CamActor_X_BeginCameraState_Params = {};
+export type CameraState_CamActor_X_BeginCameraState_Params = {
+  PreviousState: UCameraState_X; // 0x0000 (0x0008) [UCameraState_X*] [CPF_Parm | CPF_OptionalParm]
+};
 
 /**
  * Function ProjectX.CameraState_CamActor_X.EndCameraState
@@ -3460,7 +3476,9 @@ export type CameraState_CamActorCinematic_X_UpdatePOV_Params = {
 /**
  * Function ProjectX.CameraState_X.BeginCameraState
  */
-export type CameraState_X_BeginCameraState_Params = {};
+export type CameraState_X_BeginCameraState_Params = {
+  PreviousState: UCameraState_X; // 0x0000 (0x0008) [UCameraState_X*] [CPF_Parm | CPF_OptionalParm]
+};
 
 /**
  * Function ProjectX.CameraState_X.EndCameraState
@@ -4287,6 +4305,22 @@ export type ClubUtil_X_AreColorsDifferent_Params = {
 };
 
 /**
+ * Function ProjectX.ClubUtil_X.AreColorsDifferent2D
+ */
+export type ClubUtil_X_AreColorsDifferent2D_Params = {
+  Palette: UColorPalette_X; // 0x0000 (0x0008) [UColorPalette_X*] [CPF_Parm]
+  Color0: number; // 0x0008 (0x0004) [int32] [CPF_Parm]
+  Color1: number; // 0x000c (0x0004) [int32] [CPF_Parm]
+  ReturnValue: boolean; // 0x0010 (0x0004) [bool : 0x1] [CPF_Parm | CPF_OutParm | CPF_ReturnParm]
+  Pos0: FColorPosition; // 0x0014 (0x0008) [FColorPosition]
+  Pos1: FColorPosition; // 0x001c (0x0008) [FColorPosition]
+  bSameRow: boolean; // 0x0024 (0x0004) [bool : 0x1]
+  bSameColumn: boolean; // 0x0028 (0x0004) [bool : 0x1]
+  Value: number; // 0x002c (0x0004) [int32]
+  Hue: number; // 0x0030 (0x0004) [int32]
+};
+
+/**
  * Function ProjectX.ClubUtil_X.EnsureDifferentColors
  */
 export type ClubUtil_X_EnsureDifferentColors_Params = {
@@ -4323,6 +4357,15 @@ export type ClubUtil_X_IsClubTeam_Params = {
   TeamSize: number; // 0x0010 (0x0004) [int32] [CPF_Parm]
   ReturnValue: boolean; // 0x0014 (0x0004) [bool : 0x1] [CPF_Parm | CPF_OutParm | CPF_ReturnParm]
   _0x1: U__ClubUtil_X__IsClubTeam_0x1; // 0x0018 (0x0008) [U__ClubUtil_X__IsClubTeam_0x1*]
+};
+
+/**
+ * Function ProjectX.ClubUtil_X.IsOneTeamGrayScale
+ */
+export type ClubUtil_X_IsOneTeamGrayScale_Params = {
+  Pos0Column: number; // 0x0000 (0x0004) [int32] [CPF_Parm]
+  Pos1Column: number; // 0x0004 (0x0004) [int32] [CPF_Parm]
+  ReturnValue: boolean; // 0x0008 (0x0004) [bool : 0x1] [CPF_Parm | CPF_OutParm | CPF_ReturnParm]
 };
 
 /**
@@ -11348,6 +11391,7 @@ export type OnlineGame_X_CheckPsyNetConnection_Params = {
   ConnectionError: UError; // 0x0008 (0x0008) [UError*]
   _0x1: U__OnlineGame_X__CheckPsyNetConnection_0x1; // 0x0010 (0x0008) [U__OnlineGame_X__CheckPsyNetConnection_0x1*]
   OnlinePlayer: UOnlinePlayer_X; // 0x0018 (0x0008) [UOnlinePlayer_X*]
+  OPlayer: UOnlinePlayer_X; // 0x0020 (0x0008) [UOnlinePlayer_X*]
 };
 
 /**
@@ -11470,6 +11514,17 @@ export type OnlineGame_X_HandleLoginCompleted_Params = {
   Auth: UOnlinePlayerAuthentication_X; // 0x0000 (0x0008) [UOnlinePlayerAuthentication_X*] [CPF_Parm]
   Task: UAsyncTask; // 0x0008 (0x0008) [UAsyncTask*] [CPF_Parm]
   ConnectionError: UError; // 0x0010 (0x0008) [UError*]
+};
+
+/**
+ * Function ProjectX.OnlineGame_X.HandleOnlinePlayerLoginCompleted
+ */
+export type OnlineGame_X_HandleOnlinePlayerLoginCompleted_Params = {
+  ActiveLoginAttemptPlayers: UOnlinePlayer_X[]; // 0x0000 (0x0010) [TArray<UOnlinePlayer_X*>] [CPF_Parm | CPF_OutParm]
+  Task: UAsyncTask; // 0x0010 (0x0008) [UAsyncTask*] [CPF_Parm]
+  bAnyLoginInProgress: boolean; // 0x0018 (0x0004) [bool : 0x1]
+  OnlinePlayer: UOnlinePlayer_X; // 0x0020 (0x0008) [UOnlinePlayer_X*]
+  ConnectionError: UError; // 0x0028 (0x0008) [UError*]
 };
 
 /**
@@ -13726,6 +13781,13 @@ export type OnlineGameMatchmakingBase_X_EventFindGameStatus_Params = {
 };
 
 /**
+ * Function ProjectX.OnlineGameMatchmakingBase_X.EventGetMatchmakingDelaySecs
+ */
+export type OnlineGameMatchmakingBase_X_EventGetMatchmakingDelaySecs_Params = {
+  ReturnValue: number; // 0x0000 (0x0004) [float] [CPF_Parm | CPF_OutParm | CPF_ReturnParm]
+};
+
+/**
  * Function ProjectX.OnlineGameMatchmakingBase_X.GetMatchmakingStateName
  */
 export type OnlineGameMatchmakingBase_X_GetMatchmakingStateName_Params = {
@@ -13796,6 +13858,11 @@ export type OnlineGameMatchmakingBase_X_PrivateMatchAllowsForDoubleQueue_Params 
   ReturnValue: boolean; // 0x0000 (0x0004) [bool : 0x1] [CPF_Parm | CPF_OutParm | CPF_ReturnParm]
   GRI: UGRI_X; // 0x0008 (0x0008) [UGRI_X*]
 };
+
+/**
+ * Function ProjectX.OnlineGameMatchmakingBase_X.StartSearchingAfterDelay
+ */
+export type OnlineGameMatchmakingBase_X_StartSearchingAfterDelay_Params = {};
 
 /**
  * Function ProjectX.OnlineGameParty_X.__bTradeLocked__ChangeNotifyFunc
@@ -23058,10 +23125,28 @@ export type PlayerController_X_ClientRestart_Params = {
 };
 
 /**
+ * Function ProjectX.PlayerController_X.ClientSetPendingProgressMessage
+ */
+export type PlayerController_X_ClientSetPendingProgressMessage_Params = {
+  Reason: string; // 0x0000 (0x0010) [FString] [CPF_Parm]
+  Title: string; // 0x0010 (0x0010) [FString] [CPF_Parm | CPF_OptionalParm]
+  Error: UErrorType; // 0x0020 (0x0008) [UErrorType*]
+};
+
+/**
  * Function ProjectX.PlayerController_X.ClientSetSeasonReward
  */
 export type PlayerController_X_ClientSetSeasonReward_Params = {
   Reward: FPlayerSeasonRewardProgress; // 0x0000 (0x0050) [FPlayerSeasonRewardProgress] [CPF_Parm]
+};
+
+/**
+ * Function ProjectX.PlayerController_X.CloseConnectionWithReason
+ */
+export type PlayerController_X_CloseConnectionWithReason_Params = {
+  Reason: string; // 0x0000 (0x0010) [FString] [CPF_Parm]
+  Title: string; // 0x0010 (0x0010) [FString] [CPF_Parm | CPF_OptionalParm]
+  _0x1: U__PlayerController_X__CloseConnectionWithReason_0x1; // 0x0020 (0x0008) [U__PlayerController_X__CloseConnectionWithReason_0x1*]
 };
 
 /**
@@ -23209,7 +23294,6 @@ export type PlayerController_X_InitPlayerReplicationInfo_Params = {};
 export type PlayerController_X_KickPlayerForReason_Params = {
   Reason: string; // 0x0000 (0x0010) [FString] [CPF_Parm]
   Title: string; // 0x0010 (0x0010) [FString] [CPF_Parm | CPF_OptionalParm]
-  Error: UErrorType; // 0x0020 (0x0008) [UErrorType*]
 };
 
 /**
@@ -23457,6 +23541,15 @@ export type PlayerInput_X_GetRawSplitAxisValue_Params = {
   AxisNegative: FName; // 0x0000 (0x0008) [FName] [CPF_Parm]
   AxisPositive: FName; // 0x0008 (0x0008) [FName] [CPF_Parm]
   ReturnValue: number; // 0x0010 (0x0004) [float] [CPF_Parm | CPF_OutParm | CPF_ReturnParm]
+};
+
+/**
+ * Function ProjectX.PlayerInput_X.GetUIAxisKey
+ */
+export type PlayerInput_X_GetUIAxisKey_Params = {
+  Binding: FPlayerBinding; // 0x0000 (0x002c) [FPlayerBinding] [CPF_Parm]
+  ReturnValue: string; // 0x0030 (0x0010) [FString] [CPF_Parm | CPF_OutParm | CPF_ReturnParm]
+  UIKey: string; // 0x0040 (0x0010) [FString]
 };
 
 /**
@@ -28873,6 +28966,25 @@ export type ServerPlayerTracker_X_RemoveReservationMessage_Params = {
 export type ServerPlayerTracker_X_Reset_Params = {};
 
 /**
+ * Function ProjectX.SetVisibilityComponent_X.ApplyVisibility
+ */
+export type SetVisibilityComponent_X_ApplyVisibility_Params = {
+  bHidden: boolean; // 0x0000 (0x0004) [bool : 0x1] [CPF_Parm]
+  AnimOwner: UActor; // 0x0008 (0x0008) [UActor*]
+  SMC: UStaticMeshComponent; // 0x0010 (0x0008) [UStaticMeshComponent*]
+};
+
+/**
+ * Function ProjectX.SetVisibilityComponent_X.Attached
+ */
+export type SetVisibilityComponent_X_Attached_Params = {};
+
+/**
+ * Function ProjectX.SetVisibilityComponent_X.Detached
+ */
+export type SetVisibilityComponent_X_Detached_Params = {};
+
+/**
  * Function ProjectX.ShakeComponent_X.Attached
  */
 export type ShakeComponent_X_Attached_Params = {};
@@ -29226,6 +29338,17 @@ export type StatusTrigger_X_IsTriggered_Params = {
 export type StatusTrigger_X_ToggleTriggered_Params = {};
 
 /**
+ * Function ProjectX.StringUtil_X.FindWordBoundary
+ */
+export type StringUtil_X_FindWordBoundary_Params = {
+  Haystack: string; // 0x0000 (0x0010) [FString] [CPF_Parm]
+  Needle: string; // 0x0010 (0x0010) [FString] [CPF_Parm]
+  bReverseSearch: boolean; // 0x0020 (0x0004) [bool : 0x1] [CPF_Parm | CPF_OptionalParm]
+  bIgnoreCase: boolean; // 0x0024 (0x0004) [bool : 0x1] [CPF_Parm | CPF_OptionalParm]
+  ReturnValue: number; // 0x0028 (0x0004) [int32] [CPF_Parm | CPF_OutParm | CPF_ReturnParm]
+};
+
+/**
  * Function ProjectX.StringUtil_X.IsStringEmptyOrWhiteSpace
  */
 export type StringUtil_X_IsStringEmptyOrWhiteSpace_Params = {
@@ -29329,22 +29452,22 @@ export type SystemInfo_X_IsSupported_Params = {
  * Function ProjectX.SystemMetrics_X.RecordSpecs
  */
 export type SystemMetrics_X_RecordSpecs_Params = {
-  OS: FOSMetrics; // 0x0000 (0x0020) [FOSMetrics]
-  CPU: FCpuMetrics; // 0x0020 (0x0040) [FCpuMetrics]
-  Memory: FMemoryMetrics; // 0x0060 (0x0004) [FMemoryMetrics]
-  Video: FVideoCardMetrics; // 0x0068 (0x0018) [FVideoCardMetrics]
-  Network: FNetworkAdapterMetrics; // 0x0080 (0x0010) [FNetworkAdapterMetrics]
+  OS: FOSMetrics; // 0x0000 (0x0030) [FOSMetrics]
+  CPU: FCpuMetrics; // 0x0030 (0x0040) [FCpuMetrics]
+  Memory: FMemoryMetrics; // 0x0070 (0x0004) [FMemoryMetrics]
+  Video: FVideoCardMetrics; // 0x0078 (0x0018) [FVideoCardMetrics]
+  Network: FNetworkAdapterMetrics; // 0x0090 (0x0010) [FNetworkAdapterMetrics]
 };
 
 /**
  * Function ProjectX.SystemMetrics_X.Specs
  */
 export type SystemMetrics_X_Specs_Params = {
-  OS: FOSMetrics; // 0x0000 (0x0020) [FOSMetrics] [CPF_Parm]
-  CPU: FCpuMetrics; // 0x0020 (0x0040) [FCpuMetrics] [CPF_Parm]
-  Memory: FMemoryMetrics; // 0x0060 (0x0004) [FMemoryMetrics] [CPF_Parm]
-  Video: FVideoCardMetrics; // 0x0068 (0x0018) [FVideoCardMetrics] [CPF_Parm]
-  Network: FNetworkAdapterMetrics; // 0x0080 (0x0010) [FNetworkAdapterMetrics] [CPF_Parm]
+  OS: FOSMetrics; // 0x0000 (0x0030) [FOSMetrics] [CPF_Parm]
+  CPU: FCpuMetrics; // 0x0030 (0x0040) [FCpuMetrics] [CPF_Parm]
+  Memory: FMemoryMetrics; // 0x0070 (0x0004) [FMemoryMetrics] [CPF_Parm]
+  Video: FVideoCardMetrics; // 0x0078 (0x0018) [FVideoCardMetrics] [CPF_Parm]
+  Network: FNetworkAdapterMetrics; // 0x0090 (0x0010) [FNetworkAdapterMetrics] [CPF_Parm]
 };
 
 /**

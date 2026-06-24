@@ -349,6 +349,7 @@ import type {
   USettings,
   USkeletalMeshComponent,
   USpriteComponent,
+  UStaticMesh,
   UStaticMeshComponent,
   UTexture,
   UTexture2DDynamic,
@@ -1003,14 +1004,16 @@ export type U__OnlineClubProvider_X__SyncPlayerClubDetails_0x1 = UObject & {
 
 /**
  * Class ProjectX.__OnlineGame_X__CheckPsyNetConnection_0x1
- * Size: 0x0068
+ * Size: 0x0078
  * Extends: UObject
  */
 export type U__OnlineGame_X__CheckPsyNetConnection_0x1 = UObject & {
   Task: UAsyncTask; // 0x0060 (0x0008) [UAsyncTask*]
+  ActiveLoginAttemptPlayers: UOnlinePlayer_X[]; // 0x0068 (0x0010) [TArray<UOnlinePlayer_X*>]
 };
 
 // __OnlineGame_X__CheckPsyNetConnection_0x1 Functions
+// __OnlineGame_X__CheckPsyNetConnection_0x2(Auth: UOnlinePlayerAuthentication_X): void
 // __OnlineGame_X__CheckPsyNetConnection_0x1(Auth: UOnlinePlayerAuthentication_X): void
 
 /**
@@ -1576,6 +1579,18 @@ export type U__PartySequence_JoinParty_X__HandleGetPlatformPartyMessage_0x1 = UO
 
 // __PartySequence_JoinParty_X__HandleGetPlatformPartyMessage_0x1 Functions
 // __PartySequence_JoinParty_X__HandleGetPlatformPartyMessage_0x1(M: FPartyMember): boolean
+
+/**
+ * Class ProjectX.__PlayerController_X__CloseConnectionWithReason_0x1
+ * Size: 0x0070
+ * Extends: UObject
+ */
+export type U__PlayerController_X__CloseConnectionWithReason_0x1 = UObject & {
+  Reason: string; // 0x0060 (0x0010) [FString]
+};
+
+// __PlayerController_X__CloseConnectionWithReason_0x1 Functions
+// __PlayerController_X__CloseConnectionWithReason_0x1(): void
 
 /**
  * Class ProjectX.__PRI_X__RegisterPlayerWithSession_0x1
@@ -2838,13 +2853,14 @@ export type UBlockStatusReporterConfig_X = UOnlineConfig_X & {
 
 /**
  * Class ProjectX.BlogConfig_X
- * Size: 0x009C
+ * Size: 0x00A0
  * Extends: UOnlineConfig_X
  */
 export type UBlogConfig_X = UOnlineConfig_X & {
   Entries: UBlogTile_X[]; // 0x0078 (0x0010) [TArray<UBlogTile_X*>]
   MotD: string; // 0x0088 (0x0010) [FString]
   RetryTime: number; // 0x0098 (0x0004) [float]
+  RequestDelay: number; // 0x009c (0x0004) [float]
 };
 
 // BlogConfig_X Functions
@@ -3135,7 +3151,7 @@ export type UCameraState_X = UStateObject_X & {
 // UpdatePOV(DeltaTime: number, OutPOV: FCameraOrientation): void
 // Tick(DeltaTime: number): void
 // EndCameraState(): void
-// BeginCameraState(): void
+// BeginCameraState(PreviousState: UCameraState_X): void
 // GetEndBlendParams(NewState: UCameraState_X): FViewTargetTransitionParams
 // GetStartBlendParams(PreviousState: UCameraState_X): FViewTargetTransitionParams
 // ShouldKeepExecuting(): boolean
@@ -3158,7 +3174,7 @@ export type UCameraState_CamActor_X = UCameraState_X & {
 // CameraState_CamActor_X Functions
 // UpdatePOV(DeltaTime: number, OutPOV: FCameraOrientation): void
 // EndCameraState(): void
-// BeginCameraState(): void
+// BeginCameraState(PreviousState: UCameraState_X): void
 // GetBlendParams(PrevState: UCameraState_X): FViewTargetTransitionParams
 // ShouldExecute(): boolean
 
@@ -3530,8 +3546,10 @@ export type UClubServerResult_X = UObject & {
 export type UClubUtil_X = UObject & {};
 
 // ClubUtil_X Functions
+// static IsOneTeamGrayScale(Pos0Column: number, Pos1Column: number): boolean
 // static Wrap(Column: number, Count: number): number
 // static SwapPrimaryAccentColors(Colors: FClubColorSet, TeamPalette: UColorPalette_X, AccentPalette: UColorPalette_X): FClubColorSet
+// static AreColorsDifferent2D(Palette: UColorPalette_X, Color0: number, Color1: number): boolean
 // static AreColorsDifferent(Palette: UColorPalette_X, Color0: number, Color1: number): boolean
 // static EnsureDifferentColors(TeamPalette: UColorPalette_X, AccentPalette: UColorPalette_X, DefaultColorID0: number, DefaultColorID1: number, Set0: FClubColorSet, Set1: FClubColorSet): EClubColorChange
 // static IsClubTeam(TeamClubs: bigint[], TeamSize: number): boolean
@@ -5868,6 +5886,7 @@ export type ULocalCache_X = UObject & {
   ExportTasks: FPointer[]; // 0x0088 (0x0010) [TArray<FPointer>]
   ExportCallbacks: FCacheExportCallbackData[]; // 0x0098 (0x0010) [TArray<FCacheExportCallbackData>]
   bDebug: boolean; // 0x00a8 (0x0004) [bool : 0x1]
+  GLocalCacheCommitPending: boolean; // 0x00a8 (0x0004) [bool : 0x2]
   __EventImportFinished__Delegate: FScriptDelegate; // 0x00b0 (0x0018) [FScriptDelegate]
   __EventExportFinished__Delegate: FScriptDelegate; // 0x00c8 (0x0018) [FScriptDelegate]
 };
@@ -6713,6 +6732,7 @@ export type UOnlineGame_X = UOnlineGame_Base_X & {
 // CheckNotTooYoung(Error: UError): boolean
 // GetPsyNetLoginError(OnlinePlayer: UOnlinePlayer_X): UError
 // HandleLoginCompleted(Auth: UOnlinePlayerAuthentication_X, Task: UAsyncTask): void
+// HandleOnlinePlayerLoginCompleted(ActiveLoginAttemptPlayers: UOnlinePlayer_X[], Task: UAsyncTask): void
 // CheckPsyNetConnection(): UAsyncTask
 // RequiresSystemNetworkErrorHandling(): boolean
 // ValidateUserOnlineAccount(): boolean
@@ -7158,7 +7178,7 @@ export type UOnlineGameLeaderboards_X = UOnline_X & {
 
 /**
  * Class ProjectX.OnlineGameMatchmakingBase_X
- * Size: 0x0130
+ * Size: 0x0148
  * Extends: UOnline_X
  */
 export type UOnlineGameMatchmakingBase_X = UOnline_X & {
@@ -7169,10 +7189,12 @@ export type UOnlineGameMatchmakingBase_X = UOnline_X & {
   __EventFindGameStatus__Delegate: FScriptDelegate; // 0x00e8 (0x0018) [FScriptDelegate]
   __EventFindGameError__Delegate: FScriptDelegate; // 0x0100 (0x0018) [FScriptDelegate]
   __EventFindGameStateChanged__Delegate: FScriptDelegate; // 0x0118 (0x0018) [FScriptDelegate]
+  __EventGetMatchmakingDelaySecs__Delegate: FScriptDelegate; // 0x0130 (0x0018) [FScriptDelegate]
 };
 
 // OnlineGameMatchmakingBase_X Functions
 // HandleRegionsPinged(InRegions: UOnlineGameRegions_X): void
+// StartSearchingAfterDelay(): void
 // HandleGameStarted(GRI: UGRI_X): void
 // HandleStatusUpdate(NewStatus: string): void
 // HandleJoinGameComplete(bSuccess: boolean, FailReason: string): void
@@ -7190,6 +7212,7 @@ export type UOnlineGameMatchmakingBase_X = UOnline_X & {
 // AddFindGameCompleteDelegate(HandleFindGameComplete: FScriptDelegate): UOnlineGameMatchmakingBase_X
 // AddFindGameErrorDelegate(HandleFindGameError: FScriptDelegate): UOnlineGameMatchmakingBase_X
 // AddFindGameStatusChangedDelegate(HandleFindGameStatusChanged: FScriptDelegate): UOnlineGameMatchmakingBase_X
+// EventGetMatchmakingDelaySecs(): number
 // EventFindGameStateChanged(NewState: FName): void
 // EventFindGameError(NewStatus: string): void
 // EventFindGameStatus(NewStatus: string): void
@@ -7197,31 +7220,31 @@ export type UOnlineGameMatchmakingBase_X = UOnline_X & {
 
 /**
  * Class ProjectX.OnlineGameMatchmaking_X
- * Size: 0x0268
+ * Size: 0x0280
  * Extends: UOnlineGameMatchmakingBase_X
  */
 export type UOnlineGameMatchmaking_X = UOnlineGameMatchmakingBase_X & {
-  PreferredPlaylists: number[]; // 0x0130 (0x0010) [TArray<int32>]
-  PreferredRegions: FDSRegionInfo[]; // 0x0140 (0x0010) [TArray<FDSRegionInfo>]
-  SearchingString: string; // 0x0150 (0x0010) [FString]
-  StartSearchFailString: string; // 0x0160 (0x0010) [FString]
-  FoundServerString: string; // 0x0170 (0x0010) [FString]
-  PlaylistsHaveChangedString: string; // 0x0180 (0x0010) [FString]
-  RegionsHaveChangedString: string; // 0x0190 (0x0010) [FString]
-  MatchmakingAttemptString: string; // 0x01a0 (0x0010) [FString]
-  MatchmakingStartTime: number; // 0x01b0 (0x0004) [float]
-  MatchmakingBanTime: number; // 0x01b4 (0x0004) [int32]
-  EstimatedQueueTime: number; // 0x01b8 (0x0004) [float]
-  bIgnoreSkill: boolean; // 0x01bc (0x0004) [bool : 0x1]
-  MatchmakingDisabledDuration: number; // 0x01c0 (0x0004) [float]
-  MatchmakingDisabledUntilTime: number; // 0x01c4 (0x0004) [float]
-  LastReservationID: string; // 0x01c8 (0x0010) [FString]
-  __EventStartSearch__Delegate: FScriptDelegate; // 0x01d8 (0x0018) [FScriptDelegate]
-  __EventMatchmakingError__Delegate: FScriptDelegate; // 0x01f0 (0x0018) [FScriptDelegate]
-  __EventMatchmakingCanceledOnPartySizeChanged__Delegate: FScriptDelegate; // 0x0208 (0x0018) [FScriptDelegate]
-  __EventMatchmakingRPCSuccess__Delegate: FScriptDelegate; // 0x0220 (0x0018) [FScriptDelegate]
-  __EventMatchmakingRPCError__Delegate: FScriptDelegate; // 0x0238 (0x0018) [FScriptDelegate]
-  __EventSendMatchmakingRPC__Delegate: FScriptDelegate; // 0x0250 (0x0018) [FScriptDelegate]
+  PreferredPlaylists: number[]; // 0x0148 (0x0010) [TArray<int32>]
+  PreferredRegions: FDSRegionInfo[]; // 0x0158 (0x0010) [TArray<FDSRegionInfo>]
+  SearchingString: string; // 0x0168 (0x0010) [FString]
+  StartSearchFailString: string; // 0x0178 (0x0010) [FString]
+  FoundServerString: string; // 0x0188 (0x0010) [FString]
+  PlaylistsHaveChangedString: string; // 0x0198 (0x0010) [FString]
+  RegionsHaveChangedString: string; // 0x01a8 (0x0010) [FString]
+  MatchmakingAttemptString: string; // 0x01b8 (0x0010) [FString]
+  MatchmakingStartTime: number; // 0x01c8 (0x0004) [float]
+  MatchmakingBanTime: number; // 0x01cc (0x0004) [int32]
+  EstimatedQueueTime: number; // 0x01d0 (0x0004) [float]
+  bIgnoreSkill: boolean; // 0x01d4 (0x0004) [bool : 0x1]
+  MatchmakingDisabledDuration: number; // 0x01d8 (0x0004) [float]
+  MatchmakingDisabledUntilTime: number; // 0x01dc (0x0004) [float]
+  LastReservationID: string; // 0x01e0 (0x0010) [FString]
+  __EventStartSearch__Delegate: FScriptDelegate; // 0x01f0 (0x0018) [FScriptDelegate]
+  __EventMatchmakingError__Delegate: FScriptDelegate; // 0x0208 (0x0018) [FScriptDelegate]
+  __EventMatchmakingCanceledOnPartySizeChanged__Delegate: FScriptDelegate; // 0x0220 (0x0018) [FScriptDelegate]
+  __EventMatchmakingRPCSuccess__Delegate: FScriptDelegate; // 0x0238 (0x0018) [FScriptDelegate]
+  __EventMatchmakingRPCError__Delegate: FScriptDelegate; // 0x0250 (0x0018) [FScriptDelegate]
+  __EventSendMatchmakingRPC__Delegate: FScriptDelegate; // 0x0268 (0x0018) [FScriptDelegate]
 };
 
 // OnlineGameMatchmaking_X Functions
@@ -7625,24 +7648,24 @@ export type UOnlineGamePopulation_X = UOnline_X & {
 
 /**
  * Class ProjectX.OnlineGamePrivateMatch_X
- * Size: 0x0288
+ * Size: 0x02A0
  * Extends: UOnlineGameMatchmakingBase_X
  */
 export type UOnlineGamePrivateMatch_X = UOnlineGameMatchmakingBase_X & {
-  bCancelled: boolean; // 0x0130 (0x0004) [bool : 0x1]
-  PreferredRegion: string; // 0x0138 (0x0010) [FString]
-  PreferredPlaylistID: number; // 0x0148 (0x0004) [int32]
-  SearchingString: string; // 0x0150 (0x0010) [FString]
-  StartSearchFailString: string; // 0x0160 (0x0010) [FString]
-  FoundServerString: string; // 0x0170 (0x0010) [FString]
-  AlreadyJoiningGameString: string; // 0x0180 (0x0010) [FString]
-  TimeoutString: string; // 0x0190 (0x0010) [FString]
-  WrongRegionString: string; // 0x01a0 (0x0010) [FString]
-  Settings: FCustomMatchSettings; // 0x01b0 (0x0088) [FCustomMatchSettings]
-  SearchTimeout: number; // 0x0238 (0x0004) [float]
-  __EventPrivateMatchError__Delegate: FScriptDelegate; // 0x0240 (0x0018) [FScriptDelegate]
-  __EventCancelPrivateMatch__Delegate: FScriptDelegate; // 0x0258 (0x0018) [FScriptDelegate]
-  __EventSendMatchmakingRPC__Delegate: FScriptDelegate; // 0x0270 (0x0018) [FScriptDelegate]
+  bCancelled: boolean; // 0x0148 (0x0004) [bool : 0x1]
+  PreferredRegion: string; // 0x0150 (0x0010) [FString]
+  PreferredPlaylistID: number; // 0x0160 (0x0004) [int32]
+  SearchingString: string; // 0x0168 (0x0010) [FString]
+  StartSearchFailString: string; // 0x0178 (0x0010) [FString]
+  FoundServerString: string; // 0x0188 (0x0010) [FString]
+  AlreadyJoiningGameString: string; // 0x0198 (0x0010) [FString]
+  TimeoutString: string; // 0x01a8 (0x0010) [FString]
+  WrongRegionString: string; // 0x01b8 (0x0010) [FString]
+  Settings: FCustomMatchSettings; // 0x01c8 (0x0088) [FCustomMatchSettings]
+  SearchTimeout: number; // 0x0250 (0x0004) [float]
+  __EventPrivateMatchError__Delegate: FScriptDelegate; // 0x0258 (0x0018) [FScriptDelegate]
+  __EventCancelPrivateMatch__Delegate: FScriptDelegate; // 0x0270 (0x0018) [FScriptDelegate]
+  __EventSendMatchmakingRPC__Delegate: FScriptDelegate; // 0x0288 (0x0018) [FScriptDelegate]
 };
 
 // OnlineGamePrivateMatch_X Functions
@@ -8838,6 +8861,8 @@ export type UOnlineSaveLock_X = UObject & {
  */
 export type UOSSConfig_X = UOnlineConfig_X & {
   bEnablePresence: boolean; // 0x0078 (0x0004) [bool : 0x1]
+  bWin64OptimizedKeyPolling: boolean; // 0x0078 (0x0004) [bool : 0x2]
+  bUseSteamControllerCache: boolean; // 0x0078 (0x0004) [bool : 0x4]
   EosInitTimeoutSeconds: number; // 0x007c (0x0004) [float]
   GdkUpdateDlcTimeoutSeconds: number; // 0x0080 (0x0004) [float]
   GdkMaxConcurrentDlcLicenseRequests: number; // 0x0084 (0x0004) [int32]
@@ -9749,6 +9774,7 @@ export type UPlayerController_X = UPlayerController & {
   OldPawnReference: UPawn; // 0x07f8 (0x0008) [UPawn*]
   LockedDebugActor: UActor; // 0x0800 (0x0008) [UActor*]
   bPausedForExternalUI: boolean; // 0x0808 (0x0004) [bool : 0x1]
+  CloseConnectionDelay: number; // 0x080c (0x0004) [float]
   NetConnection: UNetConnection; // 0x0810 (0x0008) [UNetConnection*]
   __EventReceivedPRI__Delegate: FScriptDelegate; // 0x0818 (0x0018) [FScriptDelegate]
   __EventPawnChange__Delegate: FScriptDelegate; // 0x0830 (0x0018) [FScriptDelegate]
@@ -9768,6 +9794,8 @@ export type UPlayerController_X = UPlayerController & {
 // ServerSetParty(MemberId: FUniqueNetId, NewPartyID: FUniqueNetId): void
 // DisconnectSplitScreenPlayer(P: UPlayer): void
 // ServerDestroy(): void
+// ClientSetPendingProgressMessage(Reason: string, Title: string): void
+// CloseConnectionWithReason(Reason: string, Title: string): void
 // KickPlayerForReason(Reason: string, Title: string): void
 // ClientNetLag(PktLag: number, PktVariance: number, PktLoss: number, PktDup: number, PktSpike: number): void
 // ServerNetLag(PktLag: number, PktVariance: number, PktLoss: number, PktDup: number, PktSpike: number): void
@@ -9854,6 +9882,7 @@ export type UPlayerInput_X = UPlayerInput & {
 // RemoveFromDisabledActions(ActionName: FName): void
 // AddToDisabledActions(ActionName: FName): void
 // ReleaseKey(Key: FName, bTriggerEvents: boolean): void
+// static GetUIAxisKey(Binding: FPlayerBinding): string
 // static GetUIKey(KeyName: FName): string
 // static SetCachedUIKey(KeyName: FName, KeyValue: string): void
 // static GetCachedUIKey(KeyName: FName, OutKey: string): boolean
@@ -13154,6 +13183,20 @@ export type USetPlayerStorageResult_X = UObject & {
 };
 
 /**
+ * Class ProjectX.SetVisibilityComponent_X
+ * Size: 0x00B0
+ * Extends: UActorComponent_X
+ */
+export type USetVisibilityComponent_X = UActorComponent_X & {
+  TargetStaticMesh: UStaticMesh; // 0x00a8 (0x0008) [UStaticMesh*]
+};
+
+// SetVisibilityComponent_X Functions
+// ApplyVisibility(bHidden: boolean): void
+// Detached(): void
+// Attached(): void
+
+/**
  * Class ProjectX.ShakeComponent_X
  * Size: 0x01B8
  * Extends: UActorComponent_X
@@ -13344,6 +13387,7 @@ export type UStatusTrigger_X = UObject & {
 export type UStringUtil_X = UObject & {};
 
 // StringUtil_X Functions
+// static FindWordBoundary(Haystack: string, Needle: string, bReverseSearch: boolean, bIgnoreCase: boolean): number
 // static SplitStringIntoMaxSizePieces(OriginalString: string, MaxStringSize: number): string[]
 // static MessageCanBeCorruptedOnConversion(Message: string): boolean
 // static IsStringEmptyOrWhiteSpace(BaseString: string): boolean

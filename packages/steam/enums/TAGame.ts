@@ -298,6 +298,17 @@ export enum EAITeam {
 }
 
 /**
+ * Enum TAGame._Types_TA.EAnonymizationTargets
+ */
+export enum EAnonymizationTargets {
+  ToNobody = 0,
+  ToTeammates = 1,
+  ToOpponents = 2,
+  ToEveryone = 3,
+  EAnonymizationTargets_MAX = 4,
+}
+
+/**
  * Enum TAGame._Types_TA.EArchiveProductFilter
  */
 export enum EArchiveProductFilter {
@@ -927,6 +938,14 @@ export enum EGameplaySettingsSaveVersion {
 }
 
 /**
+ * Enum TAGame.ProfileCameraSave_TA.EGameplaySettingsSaveVersion
+ */
+export enum EGameplaySettingsSaveVersion {
+  EProfileCameraSaveVersion_DemoSpawnSelection = 0,
+  EProfileCameraSaveVersion_MAX = 1,
+}
+
+/**
  * Enum TAGame._Types_TA.EGoalResetType
  */
 export enum EGoalResetType {
@@ -1122,7 +1141,8 @@ export enum ELicenseGroup {
  */
 export enum ELoadoutSaveVersion {
   ELoadoutSaveVersion_InstanceIDV2 = 0,
-  ELoadoutSaveVersion_MAX = 1,
+  ELoadoutSaveVersion_NewColorSet = 1,
+  ELoadoutSaveVersion_MAX = 2,
 }
 
 /**
@@ -1169,7 +1189,8 @@ export enum EMainMenuBackground {
   MMBG_Anniversary = 28,
   MMBG_Mall = 29,
   MMBG_Paris = 30,
-  MMBG_MAX = 31,
+  MMBG_FuturaNight = 31,
+  MMBG_MAX = 32,
 }
 
 /**
@@ -1792,7 +1813,8 @@ export enum EReplayVersion {
   ReplayVersion_MutatorSeekFree = 6,
   ReplayVersion_ClubColors = 7,
   ReplayVersion_CameraTrack = 8,
-  ReplayVersion_MAX = 9,
+  ReplayVersion_CarColorSet = 9,
+  ReplayVersion_MAX = 10,
 }
 
 /**
@@ -1885,7 +1907,8 @@ export enum ERotationType {
  */
 export enum ESaveExportSchemaVersion {
   SaveExportVersion_Base = 0,
-  SaveExportVersion_Max = 1,
+  SaveExportVersion_Products = 1,
+  SaveExportVersion_Max = 2,
 }
 
 /**

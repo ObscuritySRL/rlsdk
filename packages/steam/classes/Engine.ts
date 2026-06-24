@@ -15265,6 +15265,7 @@ export type UOnlineSubsystem = UObject & {
 // SetSessionGameplayMode(GameplayMode: number): void
 // PrintDebugInfo(Drawer: UDebugDrawer): void
 // static GetOnlinePlatformFromName(PlatformName: string): OnlinePlatform
+// static GetOSVersionString(): string
 // static GetNativePlatformName(): string
 // static GetPlatformName(PlatformType: OnlinePlatform): string
 // static ReplacePlatformServiceName(ReplString: string): string
@@ -25484,6 +25485,7 @@ export type UWorldInfo = UZoneInfo & {
 // static IsPlayInPreview(): boolean
 // static IsPlayInEditor(): boolean
 // static IsWithGFx(): boolean
+// static IsSteamDeck(): boolean
 // static IsEpicGamesStoreBuild(): boolean
 // static GetConsoleTypeName(ConsoleType: EConsoleType): string
 // static GetConsoleType(): EConsoleType

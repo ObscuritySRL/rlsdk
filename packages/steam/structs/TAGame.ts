@@ -511,6 +511,15 @@ export type FBallData = {
 };
 
 /**
+ * ScriptStruct TAGame.Ball_TA.BallExtraData
+ * Size: 0x0008
+ */
+export type FBallExtraData = {
+  DamageIndex: number; // 0x0000 (0x0004) [int32]
+  TargetSpeed: number; // 0x0004 (0x0004) [float]
+};
+
+/**
  * ScriptStruct TAGame.CrowdActorSettings_TA.BallHitCrowdNoise
  * Size: 0x0010
  */
@@ -1808,13 +1817,29 @@ export type FDemolishInvulnerability = {
 };
 
 /**
+ * ScriptStruct TAGame.DemoSpawnSelectMetrics_TA.DemoSpawnEvent
+ * Size: 0x0058
+ */
+export type FDemoSpawnEvent = {
+  PlayerID: FUniqueNetId; // 0x0000 (0x0048) [FUniqueNetId]
+  Preference: EDemoSpawnPreference; // 0x0048 (0x0001) [EDemoSpawnPreference]
+  TeamNum: number; // 0x004c (0x0004) [int32]
+  SecondsRemaining: number; // 0x0050 (0x0004) [float]
+  bOverTime: boolean; // 0x0054 (0x0004) [bool : 0x1]
+};
+
+/**
  * ScriptStruct TAGame._Types_TA.DemoSpawnSelectionData
- * Size: 0x0008
+ * Size: 0x002C
  */
 export type FDemoSpawnSelectionData = {
   SpawnPreference: EDemoSpawnPreference; // 0x0000 (0x0001) [EDemoSpawnPreference]
   SelectionState: EDemoSelectionState; // 0x0001 (0x0001) [EDemoSelectionState]
   PercentageTimeLeft: number; // 0x0004 (0x0004) [int32]
+  SpawnActor: UActor; // 0x0008 (0x0008) [UActor*]
+  SpawnIndex: number; // 0x0010 (0x0004) [int32]
+  SpawnLocation: FVector; // 0x0014 (0x000c) [FVector]
+  SpawnRotation: FRotator; // 0x0020 (0x000c) [FRotator]
 };
 
 /**
@@ -4606,6 +4631,16 @@ export type FPlayerMessageInfo = {
 };
 
 /**
+ * ScriptStruct TAGame.RLBot_Util_TA.PlayerPickupData
+ * Size: 0x0010
+ */
+export type FPlayerPickupData = {
+  PickupClass: USpecialPickup_TA; // 0x0000 (0x0008) [USpecialPickup_TA*]
+  TimeTillItem: number; // 0x0008 (0x0004) [int32]
+  MaxTimeTillItem: number; // 0x000c (0x0004) [int32]
+};
+
+/**
  * ScriptStruct TAGame._Types_TA.PlayerPrivateMatchData
  * Size: 0x0050
  */
@@ -4622,6 +4657,15 @@ export type FPlayerPrivateMatchData = {
 export type FPlayerReportReason = {
   ReasonID: number; // 0x0000 (0x0004) [int32]
   Reason: string; // 0x0008 (0x0010) [FString]
+};
+
+/**
+ * ScriptStruct TAGame.RPC_GetWorldCupPlayerCountries_TA.PlayerRepresentingTeamData
+ * Size: 0x0058
+ */
+export type FPlayerRepresentingTeamData = {
+  PlayerID: FUniqueNetId; // 0x0000 (0x0048) [FUniqueNetId]
+  Country: string; // 0x0048 (0x0010) [FString]
 };
 
 /**
@@ -4863,6 +4907,18 @@ export type FProductAttributesArray = {
 };
 
 /**
+ * ScriptStruct TAGame.SettingsSnapshotManager_TA.ProductData
+ * Size: 0x0020
+ */
+export type FProductData = {
+  InstanceID: FProductInstanceID; // 0x0000 (0x0010) [FProductInstanceID]
+  ProductID: number; // 0x0010 (0x0004) [int32]
+  PaintID: number; // 0x0014 (0x0004) [int32]
+  SpecialEditionID: number; // 0x0018 (0x0004) [int32]
+  TeamEditionId: number; // 0x001c (0x0004) [int32]
+};
+
+/**
  * ScriptStruct TAGame._Types_TA.ProductDrop
  * Size: 0x0024
  */
@@ -5049,6 +5105,16 @@ export type FProfileAutoCamSettings = {
   AerialPrediction: number; // 0x0020 (0x0004) [float]
   bUseReplayCamera: boolean; // 0x0024 (0x0004) [bool : 0x1]
   bFocusOnGoals: boolean; // 0x0024 (0x0004) [bool : 0x2]
+};
+
+/**
+ * ScriptStruct TAGame._Types_TA.ProfileCameraInputSettings
+ * Size: 0x0004
+ */
+export type FProfileCameraInputSettings = {
+  bInvertSwivelPitch: boolean; // 0x0000 (0x0004) [bool : 0x1]
+  bUnconstrainRotation: boolean; // 0x0000 (0x0004) [bool : 0x2]
+  bFreeLookSmoothing: boolean; // 0x0000 (0x0004) [bool : 0x4]
 };
 
 /**
@@ -5448,7 +5514,7 @@ export type FReservationLoadout = {
 
 /**
  * ScriptStruct TAGame.PhysicsMetrics_TA.ResimMetricData
- * Size: 0x001C
+ * Size: 0x0024
  */
 export type FResimMetricData = {
   GameStateName: FName; // 0x0000 (0x0008) [FName]
@@ -5457,6 +5523,8 @@ export type FResimMetricData = {
   MinNumResimFramesPerEvent: number; // 0x0010 (0x0004) [int32]
   MaxNumResimFramesPerEvent: number; // 0x0014 (0x0004) [int32]
   AverageNumResimFramesPerEvent: number; // 0x0018 (0x0004) [float]
+  AverageCorrectionEventsPerSecond: number; // 0x001c (0x0004) [float]
+  AverageResimFramesPerSecond: number; // 0x0020 (0x0004) [float]
 };
 
 /**
@@ -6466,7 +6534,7 @@ export type FStateParams = {
 
 /**
  * ScriptStruct TAGame.StatFactory_TA.StatEventCollection
- * Size: 0x0248
+ * Size: 0x0250
  */
 export type FStatEventCollection = {
   Win: UStatEvent_TA; // 0x0000 (0x0008) [UStatEvent_TA*]
@@ -6531,17 +6599,18 @@ export type FStatEventCollection = {
   CrossbarHits: UStatEvent_TA; // 0x01d8 (0x0008) [UStatEvent_TA*]
   DoubleGrapple: UStatEvent_TA; // 0x01e0 (0x0008) [UStatEvent_TA*]
   MaxDodgeStreak: UStatEvent_TA; // 0x01e8 (0x0008) [UStatEvent_TA*]
-  InfectedPlayersDefeated: UStatEvent_TA; // 0x01f0 (0x0008) [UStatEvent_TA*]
-  PlayersInfected: UStatEvent_TA; // 0x01f8 (0x0008) [UStatEvent_TA*]
-  KeepUpPoint: UStatEvent_TA; // 0x0200 (0x0008) [UStatEvent_TA*]
-  KeepUpPossession: UStatEvent_TA; // 0x0208 (0x0008) [UStatEvent_TA*]
-  KeepUpDenial: UStatEvent_TA; // 0x0210 (0x0008) [UStatEvent_TA*]
-  KeepUpClear: UStatEvent_TA; // 0x0218 (0x0008) [UStatEvent_TA*]
-  FlipReset: UStatEvent_TA; // 0x0220 (0x0008) [UStatEvent_TA*]
-  AerialFlipReset: UStatEvent_TA; // 0x0228 (0x0008) [UStatEvent_TA*]
-  BellyFlipReset: UStatEvent_TA; // 0x0230 (0x0008) [UStatEvent_TA*]
-  AerialBellyFlipReset: UStatEvent_TA; // 0x0238 (0x0008) [UStatEvent_TA*]
-  MaxFlipResetStreak: UStatEvent_TA; // 0x0240 (0x0008) [UStatEvent_TA*]
+  PowerUpsUsed: UStatEvent_TA; // 0x01f0 (0x0008) [UStatEvent_TA*]
+  InfectedPlayersDefeated: UStatEvent_TA; // 0x01f8 (0x0008) [UStatEvent_TA*]
+  PlayersInfected: UStatEvent_TA; // 0x0200 (0x0008) [UStatEvent_TA*]
+  KeepUpPoint: UStatEvent_TA; // 0x0208 (0x0008) [UStatEvent_TA*]
+  KeepUpPossession: UStatEvent_TA; // 0x0210 (0x0008) [UStatEvent_TA*]
+  KeepUpDenial: UStatEvent_TA; // 0x0218 (0x0008) [UStatEvent_TA*]
+  KeepUpClear: UStatEvent_TA; // 0x0220 (0x0008) [UStatEvent_TA*]
+  FlipReset: UStatEvent_TA; // 0x0228 (0x0008) [UStatEvent_TA*]
+  AerialFlipReset: UStatEvent_TA; // 0x0230 (0x0008) [UStatEvent_TA*]
+  BellyFlipReset: UStatEvent_TA; // 0x0238 (0x0008) [UStatEvent_TA*]
+  AerialBellyFlipReset: UStatEvent_TA; // 0x0240 (0x0008) [UStatEvent_TA*]
+  MaxFlipResetStreak: UStatEvent_TA; // 0x0248 (0x0008) [UStatEvent_TA*]
 };
 
 /**
@@ -7220,10 +7289,11 @@ export type FTurningCircle = {
 
 /**
  * ScriptStruct TAGame.GFxData_Controls_TA.UIPlayerBinding
- * Size: 0x0040
+ * Size: 0x0050
  */
 export type FUIPlayerBinding = FPlayerBinding & {
   UIKey: string; // 0x0030 (0x0010) [FString]
+  UIAxisKey: string; // 0x0040 (0x0010) [FString]
 };
 
 /**
@@ -7628,6 +7698,17 @@ export type FWorldContactData = {
   Location: FVector; // 0x0004 (0x000c) [FVector]
   Velocity: FVector; // 0x0010 (0x000c) [FVector]
   Normal: FVector; // 0x001c (0x000c) [FVector]
+};
+
+/**
+ * ScriptStruct TAGame.WorldCupConfig_TA.WorldCupData
+ * Size: 0x0034
+ */
+export type FWorldCupData = {
+  TeamCodeName: string; // 0x0000 (0x0010) [FString]
+  TeamColor: FLinearColor; // 0x0010 (0x0010) [FLinearColor]
+  TeamColorSecondary: FLinearColor; // 0x0020 (0x0010) [FLinearColor]
+  CosmeticID: number; // 0x0030 (0x0004) [int32]
 };
 
 /**

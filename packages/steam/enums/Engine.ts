@@ -554,7 +554,8 @@ export enum EConsoleType {
   CONSOLE_Prospero = 16,
   CONSOLE_Scorpio = 17,
   CONSOLE_Ounce = 18,
-  CONSOLE_MAX = 19,
+  CONSOLE_Edmonton = 19,
+  CONSOLE_MAX = 20,
 }
 
 /**
